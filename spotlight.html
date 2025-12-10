@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahaj Aslam | Spotlight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="ribbon-nav">
+            <a href="index.html" class="ribbon-link">RESUME</a>
+            <span style="color:var(--card-border)">|</span>
+            <a href="spotlight.html" class="ribbon-link active">SPOTLIGHT</a>
+            <span style="color:var(--card-border)">|</span>
+            <a href="mygpt.html" class="ribbon-link">GPT</a>
+        </div>
+        <button class="theme-switch" id="themeToggle" onclick="toggleTheme()">THEME</button>
+    </header>
+
+    <main>
+        <section id="archive">
+            <!--
+            <div class="section-header">
+                <span class="label">// PROJECT ARCHIVE</span>
+            </div>
+            <hr class="section-divider active">
+            -->
+            <div class="archive-filters" id="archiveFilters" aria-label="Filter projects by tag"></div>
+
+            <div class="archive-wrapper">
+                <!-- Buttons placed on sides -->
+                <button class="nav-btn prev" id="prevBtn" aria-label="Scroll Left">←</button>
+                <button class="nav-btn next" id="nextBtn" aria-label="Scroll Right">→</button>
+
+                <div class="vhs-gallery" id="galleryContainer">
+                    <!-- Javascript will inject cards here -->
+                </div>
+            </div>
+
+            <!-- Details Section pushed down -->
+            <div class="details-section blur-fade active">
+                <div class="details-meta">
+                    <span class="label">CURRENT SELECTION</span>
+                    <h2 id="detailTitle" style="color: var(--accent)">Select a Title</h2>
+                    <p id="detailYear">--</p>
+                </div>
+                <div class="details-body">
+                    <p id="detailDesc">Browse the archive above. Click a tape to load details from the vault.</p>
+                    <div id="detailContent" class="detail-article"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Data Source - From your provided code
+        const archiveData = [
+            {
+                title: 'Post-Processing Separated Speech',
+                year: 'Master Thesis',
+                format: 'Project Archive',
+                code: 'DSP-01',
+                desc: 'Reconstructed damaged time-frequency components of separated speech using bandwidth extension. Analyzed LPC Analysis/Synthesis, STFT & Pitch Estimation, and Pole/Zero LPC Envelopes.',
+                tags: ['LPC', 'STFT', 'DSP'],
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop'
+            },
+            {
+                title: 'Mobile Positioning & Tracking',
+                year: 'R&D',
+                format: 'Project Archive',
+                code: 'WRL-02',
+                desc: 'Positioning and tracking over wireless links using measurement error models, motion models, and adaptive filtering (Recursive Bayes, Particle Filters).',
+                tags: ['WIRELESS', 'BAYES', 'PARTICLE'],
+                image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop'
+            },
+            {
+                title: 'Vidi',
+                year: 'Audio Tool',
+                format: 'Project Archive',
+                code: 'APP-03',
+                desc: 'Pitch detection and shifting across parametric and non-parametric methods. Built with iOS Core Audio, vDSP/Accelerate, and MIDI Mapping.',
+                tags: ['IOS', 'COREAUDIO', 'VST'],
+                image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop'
+            },
+            {
+                title: 'Intelligent Parking System',
+                year: 'Bachelor Thesis',
+                format: 'Project Archive',
+                code: 'EMB-04',
+                desc: 'Ultrasonic sensing network with token-ring coordination and RF links for parking detection. Built on RF 434 MHz ASK and Java NetBeans.',
+                tags: ['EMBEDDED', 'RF', 'JAVA'],
+                image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop'
+            },
+            {
+                title: 'Beatnik',
+                year: 'Prototype',
+                format: 'Project Archive',
+                code: 'HCI-05',
+                desc: 'Hand-gesture OSC glove with piezo/FSR sensing, active analog filtering, and DMA-driven MCU output. Interfaced with Ableton Live.',
+                tags: ['OSC', 'ABLETON', 'MBED'],
+                image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop'
+            },
+            {
+                title: 'Laser Harp',
+                year: 'Instrument',
+                format: 'Project Archive',
+                code: 'INS-06',
+                desc: 'Laser-triggered MIDI controller using photodiodes and serial comms to drive performance hardware. Built on PIC Microcontroller.',
+                tags: ['MIDI', 'LASER', 'PIC'],
+                image: 'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=1000&auto=format&fit=crop'
+            }
+        ];
+
+        const container = document.getElementById('galleryContainer');
+        const filterContainer = document.getElementById('archiveFilters');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailDesc = document.getElementById('detailDesc');
+        const detailContent = document.getElementById('detailContent');
+        const detailYear = document.getElementById('detailYear');
+
+        let activeIndex = -1;
+        let activeTags = [];
+        let lastScrollPosition = 0;
+        let centerActiveOnRender = false;
+        const allTags = Array.from(new Set(archiveData.flatMap(item => item.tags)));
+        const detailArticles = {
+            'Post-Processing Separated Speech': `
+                <h4>Inside the Reconstruction Pipeline</h4>
+                <p>
+                    After source separation, high-frequency content was often sparse or damaged.
+                    I rebuilt those bands using bandwidth extension guided by LPC envelopes and
+                    fine-tuned with perceptual listening tests.
+                </p>
+                <ul>
+                    <li>Built STFT-based analyzer with overlapping Hann windows for stable phase.</li>
+                    <li>Estimated formants via LPC and blended pole/zero envelopes to smooth artifacts.</li>
+                    <li>Applied pitch-synchronous overlap-add to keep transients clean.</li>
+                    <li>Benchmarked PESQ/STOI while listening for musicality, not just metrics.</li>
+                </ul>
+                <p>
+                    Outcome: restored airiness and intelligibility on synthetic and real-world mixtures,
+                    reducing metallic timbre that plagued the first pass of separation.
+                </p>
+            `
+        };
+
+        const getFilteredData = () => activeTags.length === 0
+            ? archiveData
+            : archiveData.filter(item => activeTags.some(tag => item.tags.includes(tag)));
+
+        function renderFilters() {
+            if (!filterContainer) return;
+            filterContainer.innerHTML = '';
+            const tags = ['ALL', ...allTags];
+            tags.forEach(tag => {
+                const isAll = tag === 'ALL';
+                const isActive = isAll ? activeTags.length === 0 : activeTags.includes(tag);
+                const btn = document.createElement('button');
+                btn.className = `filter-chip ${isActive ? 'active' : ''}`;
+                btn.innerText = isAll ? 'ALL' : `#${tag}`;
+                btn.setAttribute('aria-pressed', isActive);
+                btn.onclick = () => {
+                    if (isAll) {
+                        activeTags = [];
+                    } else {
+                        activeTags = activeTags.includes(tag)
+                            ? activeTags.filter(t => t !== tag)
+                            : [...activeTags, tag];
+                    }
+                    activeIndex = -1;
+                    resetDetails();
+                    renderFilters();
+                    renderGallery();
+                };
+                filterContainer.appendChild(btn);
+            });
+        }
+
+        function centerCard(el) {
+            const containerRect = container.getBoundingClientRect();
+            const cardRect = el.getBoundingClientRect();
+            const target = (cardRect.left - containerRect.left) + container.scrollLeft - (container.clientWidth - cardRect.width) / 2;
+            container.scrollTo({ left: target, behavior: 'smooth' });
+        }
+
+        function setActiveIndex(newIndex) {
+            const filtered = getFilteredData();
+            if (!filtered.length) return;
+            const count = filtered.length;
+            const normalized = ((newIndex % count) + count) % count; // wrap
+            lastScrollPosition = container.scrollLeft;
+            activeIndex = normalized;
+            updateDetails(filtered[normalized]);
+            centerActiveOnRender = true;
+            renderGallery();
+        }
+
+        function renderGallery() {
+            container.innerHTML = '';
+            const filtered = getFilteredData();
+
+            // guard active index in filtered view
+            if (activeIndex >= filtered.length) {
+                activeIndex = -1;
+                resetDetails();
+            }
+
+            filtered.forEach((item, index) => {
+                const el = document.createElement('div');
+                const isActive = (index === activeIndex);
+                el.className = `vhs-item ${isActive ? 'active' : ''}`;
+                
+                // Content Structure
+                el.innerHTML = `
+                    <!-- Closed Spine State -->
+                    <div class="vhs-spine-content">
+                        <div class="vhs-code">${item.code}</div>
+                        <div class="vhs-spine-text">${item.title}</div>
+                        <div class="vhs-code">${item.year}</div>
+                    </div>
+
+                    <!-- Open Card State -->
+                    <div class="vhs-open-content">
+                        <img src="${item.image}" class="vhs-img-bg" alt="Cover">
+                        <div class="vhs-info-layer">
+                            <div class="vhs-header-row">
+                                <span class="vhs-pill">${item.format}</span>
+                                <span class="vhs-pill">${item.code}</span>
+                            </div>
+                            <h3 class="vhs-title">${item.title}</h3>
+                            <p class="vhs-desc">${item.desc}</p>
+                            <div class="vhs-tags">
+                                ${item.tags.map(t => `<span class="vhs-tag">#${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Click Handler
+                el.onclick = () => {
+                    if (activeIndex === index) {
+                        activeIndex = -1; // Close if clicking same
+                        resetDetails();
+                        centerActiveOnRender = false;
+                        renderGallery();
+                        container.scrollTo({ left: lastScrollPosition, behavior: 'smooth' });
+                    } else {
+                        lastScrollPosition = container.scrollLeft;
+                        activeIndex = index;
+                        updateDetails(item);
+                        centerActiveOnRender = true;
+                        renderGallery();
+                    }
+                };
+
+                container.appendChild(el);
+            });
+
+            if (centerActiveOnRender && activeIndex >= 0) {
+                requestAnimationFrame(() => {
+                    const activeEl = container.querySelector('.vhs-item.active');
+                    if (activeEl) centerCard(activeEl);
+                    centerActiveOnRender = false;
+                });
+            }
+        }
+
+        function updateDetails(item) {
+            detailTitle.innerText = item.title;
+            detailDesc.innerText = item.desc;
+            detailYear.innerText = `${item.year} // ${item.format}`;
+            const article = detailArticles[item.title];
+            detailContent.innerHTML = article || '';
+            
+            // Subtle fade animation for text change
+            const section = document.querySelector('.details-section');
+            section.style.opacity = 0.5;
+            setTimeout(() => section.style.opacity = 1, 200);
+        }
+
+        function resetDetails() {
+            detailTitle.innerText = "Select a Project Tape";
+            detailDesc.innerText = "Browse the archive above. Click a project tape to load details.";
+            detailYear.innerText = "--";
+            detailContent.innerHTML = "";
+        }
+
+        // Horizontal Scroll Buttons
+        document.getElementById('prevBtn').onclick = () => {
+            const filtered = getFilteredData();
+            if (!filtered.length) return;
+            if (activeIndex === -1) {
+                setActiveIndex(filtered.length - 1);
+            } else {
+                setActiveIndex(activeIndex - 1);
+            }
+        };
+        document.getElementById('nextBtn').onclick = () => {
+            const filtered = getFilteredData();
+            if (!filtered.length) return;
+            if (activeIndex === -1) {
+                setActiveIndex(0);
+            } else {
+                setActiveIndex(activeIndex + 1);
+            }
+        };
+
+        // Theme Toggle Logic
+        const html = document.documentElement;
+        const themes = ['light', 'dark', 'ink'];
+        let currentThemeIdx = 0;
+        
+        // Check local storage or default
+        (function initTheme() {
+            const saved = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-theme', saved);
+            // set button text to NEXT theme
+            const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+            document.getElementById('themeToggle').innerText = next.toUpperCase();
+        })();
+
+        function toggleTheme() {
+            const current = html.getAttribute('data-theme');
+            const idx = themes.indexOf(current);
+            const next = themes[(idx + 1) % themes.length];
+            html.setAttribute('data-theme', next);
+            const afterNext = themes[(idx + 2) % themes.length];
+            document.getElementById('themeToggle').innerText = afterNext.toUpperCase();
+            localStorage.setItem('theme', next);
+        }
+
+        // Init
+        renderFilters();
+        renderGallery();
+
+    </script>
+</body>
+</html>
