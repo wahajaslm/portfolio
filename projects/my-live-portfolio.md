@@ -1,3 +1,16 @@
+---
+visibility: public
+use_for_ai: true
+title: "My Live Portfolio — VHS"
+summary: "A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive."
+year: "Personal System"
+format: "Project Archive"
+code: "VHS-09"
+cover_image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000&auto=format&fit=crop"
+tags: [portfolio, web_design, javascript, css, html, accessibility, writing, branding, ai, storytelling]
+article_slug: "my-live-portfolio"
+---
+
 # 🎞 My Live Portfolio
 
 VHS Intro — This tape is the “why” behind one of my most personal projects. It’s the story of how a career outgrew a PDF and turned into something alive.

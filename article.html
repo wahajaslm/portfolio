@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article | Wahaj Aslam</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="article-page" data-article="">
+    <header class="top-header">
+        <div class="ribbon-nav">
+            <a href="index.html" class="ribbon-link">RESUME</a>
+            <span style="color:var(--card-border)">|</span>
+            <a href="projects.html" class="ribbon-link">PROJECTS</a>
+            <span style="color:var(--card-border)">|</span>
+            <a href="mygpt.html" class="ribbon-link">GPT</a>
+        </div>
+        <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button>
+    </header>
+
+    <main class="article-shell">
+        <p class="label">// PROJECT ARTICLE</p>
+        <h1 id="articleTitle" class="article-title">Loading...</h1>
+        <p id="articleMeta" class="article-meta"></p>
+        <article id="articleContent" class="article-body" aria-live="polite">
+            <p class="article-loading">Preparing content...</p>
+        </article>
+    </main>
+
+    <script>
+        // Theme toggle (shared with other pages)
+        const html = document.documentElement;
+        const themes = ['light', 'dark'];
+        (function initTheme() {
+            let saved = localStorage.getItem('theme') || 'light';
+            if (!themes.includes(saved)) saved = 'light';
+            html.setAttribute('data-theme', saved);
+            const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+            document.getElementById('themeToggle').innerText = next.toUpperCase();
+        })();
+        function toggleTheme() {
+            const current = html.getAttribute('data-theme');
+            const idx = themes.indexOf(current);
+            const next = themes[(idx + 1) % themes.length];
+            html.setAttribute('data-theme', next);
+            const afterNext = themes[(idx + 2) % themes.length];
+            document.getElementById('themeToggle').innerText = afterNext.toUpperCase();
+            localStorage.setItem('theme', next);
+        }
+        document.getElementById('themeToggle').onclick = toggleTheme;
+
+        // Markdown loader
+        const params = new URLSearchParams(window.location.search);
+        const attrSlug = (document.body.dataset.article || '').trim();
+        const slugParam = (params.get('article') || '').trim();
+        const slugSource = attrSlug || slugParam;
+        const slug = slugSource.replace(/[^a-z0-9-]/gi, '').toLowerCase();
+        const mdPath = slug ? `projects/${slug}.md` : null;
+
+        const titleEl = document.getElementById('articleTitle');
+        const metaEl = document.getElementById('articleMeta');
+        const contentEl = document.getElementById('articleContent');
+
+        // Disable raw HTML from Markdown for safety
+        marked.use({
+            renderer: {
+                html() { return ''; }
+            },
+            gfm: true,
+            breaks: true,
+            headerIds: false,
+            mangle: false
+        });
+
+        function deriveTitleFromSlug(value) {
+            if (!value) return 'Article';
+            return value
+                .split('-')
+                .filter(Boolean)
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        async function loadMarkdown() {
+            if (!mdPath) {
+                titleEl.textContent = 'Article not found';
+                metaEl.textContent = 'Missing ?article=slug query in URL.';
+                contentEl.innerHTML = '<p class="article-error">Specify the article slug in the URL to load content.</p>';
+                return;
+            }
+
+            titleEl.textContent = deriveTitleFromSlug(slug);
+            metaEl.textContent = `/projects/${slug}.md`;
+
+            try {
+                const res = await fetch(mdPath, { cache: 'no-cache' });
+                if (!res.ok) throw new Error('Fetch failed');
+                const markdown = await res.text();
+                const html = marked.parse(markdown);
+                contentEl.innerHTML = html;
+                document.title = `${titleEl.textContent} | Wahaj Aslam`;
+            } catch (err) {
+                contentEl.innerHTML = '<p class="article-error">Unable to load this article right now.</p>';
+            }
+        }
+
+        loadMarkdown();
+    </script>
+</body>
+</html>

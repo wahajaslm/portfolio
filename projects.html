@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahaj Aslam | Spotlight</title>
+    <title>Wahaj Aslam | Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="spotlight-page">
+<body class="projects-page">
 
     <header class="top-header">
         <div class="ribbon-nav">
             <a href="index.html" class="ribbon-link">RESUME</a>
             <span style="color:var(--card-border)">|</span>
-            <a href="spotlight.html" class="ribbon-link active">SPOTLIGHT</a>
+            <a href="projects.html" class="ribbon-link active">PROJECTS</a>
             <span style="color:var(--card-border)">|</span>
             <a href="mygpt.html" class="ribbon-link">GPT</a>
         </div>
@@ -46,97 +46,95 @@
                     <h2 id="detailTitle">Select a Title</h2>
                     <p id="detailYear">--</p>
                     <div id="detailTags" class="detail-tags"></div>
+                    <div id="detailToc" class="detail-toc"></div>
                 </div>
                 <div class="details-body">
                     <p id="detailDesc">Browse the archive above. Click a tape to load details from the vault.</p>
                     <div id="detailContent" class="detail-article"></div>
+                    <div id="detailActions" class="detail-actions"></div>
                 </div>
             </div>
         </section>
     </main>
 
     <script>
-        // Data Source - From your provided code
-        const archiveData = [
-            {
-                title: 'My Live Portfolio — VHS',
-                year: 'Personal System',
-                format: 'Project Archive',
-                code: 'VHS-09',
-                desc: 'A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive.',
-                tags: ['PORTFOLIO', 'SYSTEM', 'WRITING', 'NARRATIVE', 'CAREER', 'AI'],
-                image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/my-live-portfolio.md'
-            },
-            {
-                title: 'Parallel A/V Encoding Framework',
-                year: 'Pipeline',
-                format: 'Project Archive',
-                code: 'AV-07',
-                desc: 'Concurrent FFmpeg + Python encoding framework that spawns multiple encoder variants and fragmented MP4 outputs for adaptive bitrate ladders.',
-                tags: ['FFMPEG', 'PYTHON', 'ABR', 'ENCODING', 'VMAF', 'PSNR', 'HLS', 'DASH', 'PACKAGING', 'METRICS', 'LOGGING', 'FRAGMENTS'],
-                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/parallel-av-encoding-framework.md'
-            },
-            {
-                title: 'Post-Processing Separated Speech',
-                year: 'Master Thesis',
-                format: 'Project Archive',
-                code: 'DSP-01',
-                desc: 'Reconstructed damaged time-frequency components of separated speech using bandwidth extension. Analyzed LPC Analysis/Synthesis, STFT & Pitch Estimation, and Pole/Zero LPC Envelopes.',
-                tags: ['LPC', 'STFT', 'BWE', 'SPEECH', 'PITCH'],
-                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/post-processing-separated-speech.md'
-            },
-            {
-                title: 'Mobile Positioning & Tracking',
-                year: 'R&D',
-                format: 'Project Archive',
-                code: 'WRL-02',
-                desc: 'Positioning and tracking over wireless links using measurement error models, motion models, and adaptive filtering (Recursive Bayes, Particle Filters).',
-                tags: ['WIRELESS', 'BAYES', 'PARTICLE'],
-                image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop'
-            },
-            {
-                title: 'Vidi',
-                year: 'Audio Tool',
-                format: 'Project Archive',
-                code: 'APP-03',
-                desc: 'Pitch detection and shifting across parametric and non-parametric methods. Built with iOS Core Audio, vDSP/Accelerate, and MIDI Mapping.',
-                tags: ['IOS', 'COREAUDIO', 'VST'],
-                image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/vidi.md'
-            },
-            {
-                title: 'Intelligent Parking System',
-                year: 'Bachelor Thesis',
-                format: 'Project Archive',
-                code: 'EMB-04',
-                desc: 'Ultrasonic sensing network with token-ring coordination and RF links for parking detection. Built on RF 434 MHz ASK and Java NetBeans.',
-                tags: ['EMBEDDED', 'RF', 'JAVA'],
-                image: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000&auto=format&fit=crop'
-            },
-            {
-                title: 'Beatnik',
-                year: 'Prototype',
-                format: 'Project Archive',
-                code: 'HCI-05',
-                desc: 'Hand-gesture OSC glove with piezo/FSR sensing, active analog filtering, and DMA-driven MCU output. Interfaced with Ableton Live.',
-                tags: ['OSC', 'ABLETON', 'MBED'],
-                image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/beatnik.md'
-            },
-            {
-                title: 'Laser Harp',
-                year: 'Instrument',
-                format: 'Project Archive',
-                code: 'INS-06',
-                desc: 'Laser-triggered MIDI controller using photodiodes and serial comms to drive performance hardware. Built on PIC Microcontroller.',
-                tags: ['MIDI', 'LASER', 'PIC'],
-                image: 'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=1000&auto=format&fit=crop',
-                contentPath: 'content/spotlight/laser-harp.md'
-            }
+        const projectSlugs = [
+            'my-live-portfolio',
+            'post-processing-separated-speech',
+            'vidi',
+            'beatnik-osc-glove',
+            'laser-harp',
+            'parallel-av-encoding-framework',
+            'dtmf_detector',
+            'traffic_signal_controller',
+            'arp_spoof_detector',
+            'parking_management_system',
+            'multihop_wireless_warp_prototyping',
+            'massive_mimo_seminar'
         ];
+
+        const MAX_TAGS = 10;
+        let allowedTagsSet = null;
+
+        async function ensureAllowedTags() {
+            if (allowedTagsSet) return allowedTagsSet;
+            try {
+                const res = await fetch('data/tags.json', { cache: 'no-cache' });
+                if (!res.ok) throw new Error('tags.json fetch failed');
+                const arr = await res.json();
+                allowedTagsSet = new Set(
+                    Array.isArray(arr)
+                        ? arr.map(t => String(t).trim()).filter(Boolean)
+                        : []
+                );
+            } catch (err) {
+                console.warn('Unable to load central tag list; skipping validation.', err);
+                allowedTagsSet = new Set();
+            }
+            return allowedTagsSet;
+        }
+
+        async function fetchProject(slug) {
+            const path = `projects/${slug}.md`;
+            const res = await fetch(path, { cache: 'no-cache' });
+            if (!res.ok) throw new Error(`Failed to load ${path}`);
+            const markdown = await res.text();
+            const { meta, body } = parseFrontMatter(markdown);
+
+            const title = meta.title || deriveTitleFromSlug(slug);
+            let tags = Array.isArray(meta.tags)
+                ? Array.from(new Set(
+                    meta.tags
+                        .map(t => String(t).trim())
+                        .filter(Boolean)
+                  ))
+                : [];
+
+            const hasAllowlist = allowedTagsSet && allowedTagsSet.size > 0;
+            if (hasAllowlist) {
+                const original = tags;
+                tags = tags.filter(t => allowedTagsSet.has(t));
+                const missing = original.filter(t => !allowedTagsSet.has(t));
+                if (missing.length) {
+                    console.warn(`Project "${slug}" uses tags not in data/tags.json:`, missing);
+                }
+            }
+
+            tags = tags.slice(0, MAX_TAGS);
+
+            return {
+                title,
+                year: meta.year || '',
+                format: meta.format || '',
+                code: meta.code || '',
+                desc: meta.summary || '',
+                tags,
+                image: meta.cover_image || '',
+                contentPath: path,
+                articleSlug: meta.article_slug || slug,
+                body
+            };
+        }
 
         const container = document.getElementById('galleryContainer');
         const filterContainer = document.getElementById('archiveFilters');
@@ -145,14 +143,57 @@
         const detailContent = document.getElementById('detailContent');
         const detailYear = document.getElementById('detailYear');
         const detailTags = document.getElementById('detailTags');
+        const detailActions = document.getElementById('detailActions');
+        const detailToc = document.getElementById('detailToc');
 
         let activeIndex = -1;
         let activeTags = [];
         let lastScrollPosition = 0;
         let centerActiveOnRender = false;
-        const allTags = Array.from(new Set(archiveData.flatMap(item => item.tags)));
+        let archiveData = [];
+        let allTags = [];
         const contentCache = new Map();
         let detailRequestId = 0;
+
+        function deriveTitleFromSlug(value) {
+            if (!value) return 'Project';
+            return value
+                .replace(/_/g, '-')
+                .split('-')
+                .filter(Boolean)
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+
+        function parseFrontMatter(md) {
+            const frontMatterMatch = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+            if (!frontMatterMatch) {
+                return { meta: {}, body: md };
+            }
+
+            const metaLines = frontMatterMatch[1].split('\n');
+            const meta = {};
+            metaLines.forEach(line => {
+                const idx = line.indexOf(':');
+                if (idx === -1) return;
+                const key = line.slice(0, idx).trim();
+                let value = line.slice(idx + 1).trim();
+
+                if (value.startsWith('"') && value.endsWith('"')) {
+                    value = value.slice(1, -1);
+                } else if (value.startsWith("'") && value.endsWith("'")) {
+                    value = value.slice(1, -1);
+                } else if (value.startsWith('[') && value.endsWith(']')) {
+                    const inner = value.slice(1, -1).trim();
+                    value = inner
+                        ? inner.split(',').map(v => v.trim().replace(/^['"]|['"]$/g, ''))
+                        : [];
+                }
+                meta[key.replace(/-/g, '_')] = value;
+            });
+
+            return { meta, body: frontMatterMatch[2] };
+        }
 
         function escapeHtml(str) {
             return str
@@ -167,6 +208,17 @@
             const lines = md.replace(/\r\n/g, '\n').split('\n');
             let html = '';
             let inList = false;
+            const slugCounts = {};
+
+            const slugify = text => {
+                const base = text
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '') || 'section';
+                const count = (slugCounts[base] || 0) + 1;
+                slugCounts[base] = count;
+                return count === 1 ? base : `${base}-${count}`;
+            };
 
             const closeList = () => {
                 if (inList) {
@@ -192,8 +244,10 @@
                 if (headingMatch) {
                     closeList();
                     const level = headingMatch[1].length;
+                    const text = headingMatch[2].trim();
                     const tag = ['h3', 'h4', 'h5'][level - 1] || 'h5';
-                    html += `<${tag}>${escapeHtml(headingMatch[2])}</${tag}>`;
+                    const id = slugify(text);
+                    html += `<${tag} id="${id}">${escapeHtml(text)}</${tag}>`;
                     return;
                 }
 
@@ -210,6 +264,29 @@
 
             if (inList) html += '</ul>';
             return html;
+        }
+
+        function adjustEdgePadding() {
+            if (!container) return;
+            const activeWidth = 450; // match .vhs-item.active width
+            const gap = Math.min(160, Math.max(32, (container.clientWidth - activeWidth) / 2));
+            container.style.setProperty('--vhs-edge-gap', `${gap}px`);
+        }
+
+        async function loadProjects() {
+            try {
+                await ensureAllowedTags();
+                const results = await Promise.all(projectSlugs.map(fetchProject));
+                archiveData = results;
+                allTags = Array.from(new Set(archiveData.flatMap(item => item.tags || [])));
+                renderFilters();
+                renderGallery();
+                adjustEdgePadding();
+                requestAnimationFrame(centerGalleryToMiddle);
+            } catch (err) {
+                detailTitle.innerText = 'Unable to load projects';
+                detailDesc.innerText = 'Please try again later.';
+            }
         }
 
         async function loadArticle(item) {
@@ -236,7 +313,7 @@
                 const isActive = isAll ? activeTags.length === 0 : activeTags.includes(tag);
                 const btn = document.createElement('button');
                 btn.className = `filter-chip ${isActive ? 'active' : ''}`;
-                btn.innerText = isAll ? 'ALL' : `#${tag}`;
+                btn.innerText = isAll ? 'ALL' : `${tag}`;
                 btn.setAttribute('aria-pressed', isActive);
                 btn.onclick = () => {
                     if (isAll) {
@@ -256,9 +333,9 @@
         }
 
         function centerCard(el) {
-            const containerRect = container.getBoundingClientRect();
-            const cardRect = el.getBoundingClientRect();
-            const target = (cardRect.left - containerRect.left) + container.scrollLeft - (container.clientWidth - cardRect.width) / 2;
+            const desired = el.offsetLeft - (container.clientWidth - el.offsetWidth) / 2;
+            const maxScroll = Math.max(0, container.scrollWidth - container.clientWidth);
+            const target = Math.min(Math.max(0, desired), maxScroll);
             container.scrollTo({ left: target, behavior: 'smooth' });
         }
 
@@ -318,7 +395,7 @@
                             <h3 class="vhs-title">${item.title}</h3>
                             <p class="vhs-desc">${item.desc}</p>
                             <div class="vhs-tags">
-                                ${item.tags.map(t => `<span class="vhs-tag">#${t}</span>`).join('')}
+                                ${item.tags.map(t => `<span class="vhs-tag">${t}</span>`).join('')}
                             </div>
                         </div>
                     </div>
@@ -350,16 +427,51 @@
                     if (activeEl) centerCard(activeEl);
                     centerActiveOnRender = false;
                 });
-            } else if (activeIndex === -1) {
+            }
+
+            // When nothing is active, keep the carousel centered
+            if (activeIndex === -1) {
                 requestAnimationFrame(centerGalleryToMiddle);
             }
+        }
+
+        function buildToc() {
+            if (!detailToc) return;
+            detailToc.innerHTML = '';
+            const headings = detailContent.querySelectorAll('h3, h4, h5');
+            if (!headings.length) return;
+            const list = document.createElement('ul');
+            list.className = 'toc-list';
+            headings.forEach(h => {
+                const id = h.id || h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                if (!h.id) h.id = id || 'section';
+                const li = document.createElement('li');
+                li.className = `toc-item level-${h.tagName.toLowerCase()}`;
+                const link = document.createElement('a');
+                link.href = `#${h.id}`;
+                link.textContent = h.textContent.trim();
+                li.appendChild(link);
+                list.appendChild(li);
+            });
+            detailToc.innerHTML = '<span class=\"toc-label\">Contents</span>';
+            detailToc.appendChild(list);
         }
 
         function updateDetails(item) {
             detailTitle.innerText = item.title;
             detailDesc.innerText = item.desc;
-            detailYear.innerText = `${item.year} // ${item.format}`;
-            detailTags.innerHTML = item.tags.map(t => `<span class="detail-tag">#${t}</span>`).join('');
+            const metaLine = [item.year, item.format].filter(Boolean).join(' // ');
+            detailYear.innerText = metaLine || '--';
+            detailToc.innerHTML = '';
+            // Scroll container to keep active card centered when opened
+            requestAnimationFrame(() => {
+                const activeEl = container.querySelector('.vhs-item.active');
+                if (activeEl) centerCard(activeEl);
+            });
+            detailTags.innerHTML = item.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
+            detailActions.innerHTML = item.articleSlug
+                ? `<a class="detail-link" href="article.html?article=${encodeURIComponent(item.articleSlug)}">Open full article</a>`
+                : '';
             detailContent.innerHTML = item.contentPath
                 ? '<p class="detail-loading">Loading tape...</p>'
                 : '';
@@ -371,6 +483,7 @@
                     .then(html => {
                         if (requestId !== detailRequestId) return;
                         detailContent.innerHTML = html;
+                        buildToc();
                     })
                     .catch(() => {
                         if (requestId !== detailRequestId) return;
@@ -385,11 +498,14 @@
         }
 
         function resetDetails() {
+            detailRequestId++; // invalidate any in-flight content loads
             detailTitle.innerText = "Select a Project Tape";
             detailDesc.innerText = "Browse the archive above. Click a project tape to load details.";
             detailYear.innerText = "--";
             detailContent.innerHTML = "";
             detailTags.innerHTML = "";
+            detailActions.innerHTML = "";
+            detailToc.innerHTML = "";
         }
 
         // Horizontal Scroll Buttons
@@ -438,11 +554,12 @@
         }
 
         // Init
-        renderFilters();
-        renderGallery();
-        // center stack on first load only
-        requestAnimationFrame(centerGalleryToMiddle);
-        window.addEventListener('resize', () => requestAnimationFrame(centerGalleryToMiddle));
+        loadProjects().then(centerGalleryToMiddle);
+        window.addEventListener('resize', () => {
+            adjustEdgePadding();
+            requestAnimationFrame(centerGalleryToMiddle);
+        });
+        adjustEdgePadding();
 
     </script>
 </body>

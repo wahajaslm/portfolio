@@ -1,3 +1,11 @@
+---
+visibility: public
+use_for_ai: true
+title: "Parallel A/V Encoding Framework"
+summary: "Concurrent FFmpeg + Python harness for ABR ladder experimentation with metrics and packaging."
+tags: [ffmpeg, python, encoding, abr, metrics, bash, automation, packaging, streaming, monitoring]
+---
+
 # Building an ABR Encoding Lab
 
 Needed: explore encoder variants quickly, measure quality, and assemble ladder candidates without hand-running FFmpeg every time. Built a Python + FFmpeg harness that ingests, fragments, runs variants, and spits out HLS/DASH artifacts with consistent logging.
