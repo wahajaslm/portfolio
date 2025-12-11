@@ -6,7 +6,7 @@
     <title>Wahaj Aslam | Spotlight</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="spotlight-page">
 
     <header class="top-header">
         <div class="ribbon-nav">
@@ -43,8 +43,9 @@
             <div class="details-section blur-fade active">
                 <div class="details-meta">
                     <span class="label">CURRENT SELECTION</span>
-                    <h2 id="detailTitle" style="color: var(--accent)">Select a Title</h2>
+                    <h2 id="detailTitle">Select a Title</h2>
                     <p id="detailYear">--</p>
+                    <div id="detailTags" class="detail-tags"></div>
                 </div>
                 <div class="details-body">
                     <p id="detailDesc">Browse the archive above. Click a tape to load details from the vault.</p>
@@ -58,13 +59,34 @@
         // Data Source - From your provided code
         const archiveData = [
             {
+                title: 'My Live Portfolio — VHS',
+                year: 'Personal System',
+                format: 'Project Archive',
+                code: 'VHS-09',
+                desc: 'A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive.',
+                tags: ['PORTFOLIO', 'SYSTEM', 'WRITING', 'NARRATIVE', 'CAREER', 'AI'],
+                image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/my-live-portfolio.md'
+            },
+            {
+                title: 'Parallel A/V Encoding Framework',
+                year: 'Pipeline',
+                format: 'Project Archive',
+                code: 'AV-07',
+                desc: 'Concurrent FFmpeg + Python encoding framework that spawns multiple encoder variants and fragmented MP4 outputs for adaptive bitrate ladders.',
+                tags: ['FFMPEG', 'PYTHON', 'ABR', 'ENCODING', 'VMAF', 'PSNR', 'HLS', 'DASH', 'PACKAGING', 'METRICS', 'LOGGING', 'FRAGMENTS'],
+                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/parallel-av-encoding-framework.md'
+            },
+            {
                 title: 'Post-Processing Separated Speech',
                 year: 'Master Thesis',
                 format: 'Project Archive',
                 code: 'DSP-01',
                 desc: 'Reconstructed damaged time-frequency components of separated speech using bandwidth extension. Analyzed LPC Analysis/Synthesis, STFT & Pitch Estimation, and Pole/Zero LPC Envelopes.',
-                tags: ['LPC', 'STFT', 'DSP'],
-                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop'
+                tags: ['LPC', 'STFT', 'BWE', 'SPEECH', 'PITCH'],
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/post-processing-separated-speech.md'
             },
             {
                 title: 'Mobile Positioning & Tracking',
@@ -82,7 +104,8 @@
                 code: 'APP-03',
                 desc: 'Pitch detection and shifting across parametric and non-parametric methods. Built with iOS Core Audio, vDSP/Accelerate, and MIDI Mapping.',
                 tags: ['IOS', 'COREAUDIO', 'VST'],
-                image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop'
+                image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/vidi.md'
             },
             {
                 title: 'Intelligent Parking System',
@@ -100,7 +123,8 @@
                 code: 'HCI-05',
                 desc: 'Hand-gesture OSC glove with piezo/FSR sensing, active analog filtering, and DMA-driven MCU output. Interfaced with Ableton Live.',
                 tags: ['OSC', 'ABLETON', 'MBED'],
-                image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop'
+                image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/beatnik.md'
             },
             {
                 title: 'Laser Harp',
@@ -109,7 +133,8 @@
                 code: 'INS-06',
                 desc: 'Laser-triggered MIDI controller using photodiodes and serial comms to drive performance hardware. Built on PIC Microcontroller.',
                 tags: ['MIDI', 'LASER', 'PIC'],
-                image: 'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=1000&auto=format&fit=crop'
+                image: 'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?q=80&w=1000&auto=format&fit=crop',
+                contentPath: 'content/spotlight/laser-harp.md'
             }
         ];
 
@@ -119,32 +144,84 @@
         const detailDesc = document.getElementById('detailDesc');
         const detailContent = document.getElementById('detailContent');
         const detailYear = document.getElementById('detailYear');
+        const detailTags = document.getElementById('detailTags');
 
         let activeIndex = -1;
         let activeTags = [];
         let lastScrollPosition = 0;
         let centerActiveOnRender = false;
         const allTags = Array.from(new Set(archiveData.flatMap(item => item.tags)));
-        const detailArticles = {
-            'Post-Processing Separated Speech': `
-                <h4>Inside the Reconstruction Pipeline</h4>
-                <p>
-                    After source separation, high-frequency content was often sparse or damaged.
-                    I rebuilt those bands using bandwidth extension guided by LPC envelopes and
-                    fine-tuned with perceptual listening tests.
-                </p>
-                <ul>
-                    <li>Built STFT-based analyzer with overlapping Hann windows for stable phase.</li>
-                    <li>Estimated formants via LPC and blended pole/zero envelopes to smooth artifacts.</li>
-                    <li>Applied pitch-synchronous overlap-add to keep transients clean.</li>
-                    <li>Benchmarked PESQ/STOI while listening for musicality, not just metrics.</li>
-                </ul>
-                <p>
-                    Outcome: restored airiness and intelligibility on synthetic and real-world mixtures,
-                    reducing metallic timbre that plagued the first pass of separation.
-                </p>
-            `
-        };
+        const contentCache = new Map();
+        let detailRequestId = 0;
+
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderMarkdown(md) {
+            const lines = md.replace(/\r\n/g, '\n').split('\n');
+            let html = '';
+            let inList = false;
+
+            const closeList = () => {
+                if (inList) {
+                    html += '</ul>';
+                    inList = false;
+                }
+            };
+
+            lines.forEach(rawLine => {
+                const line = rawLine.trimEnd();
+                if (!line.trim()) {
+                    closeList();
+                    return;
+                }
+
+                if (line === '---' || line === '⸻') {
+                    closeList();
+                    html += '<div class="detail-divider">⸻</div>';
+                    return;
+                }
+
+                const headingMatch = line.match(/^(#{1,3})\s+(.*)$/);
+                if (headingMatch) {
+                    closeList();
+                    const level = headingMatch[1].length;
+                    const tag = ['h3', 'h4', 'h5'][level - 1] || 'h5';
+                    html += `<${tag}>${escapeHtml(headingMatch[2])}</${tag}>`;
+                    return;
+                }
+
+                if (/^[-*]\s+/.test(line)) {
+                    if (!inList) html += '<ul>';
+                    inList = true;
+                    html += `<li>${escapeHtml(line.replace(/^[-*]\s+/, ''))}</li>`;
+                    return;
+                }
+
+                closeList();
+                html += `<p>${escapeHtml(line)}</p>`;
+            });
+
+            if (inList) html += '</ul>';
+            return html;
+        }
+
+        async function loadArticle(item) {
+            if (!item.contentPath) return '';
+            if (contentCache.has(item.title)) return contentCache.get(item.title);
+            const response = await fetch(item.contentPath);
+            if (!response.ok) throw new Error('Failed to load content');
+            const text = await response.text();
+            const html = renderMarkdown(text);
+            contentCache.set(item.title, html);
+            return html;
+        }
 
         const getFilteredData = () => activeTags.length === 0
             ? archiveData
@@ -197,6 +274,19 @@
             renderGallery();
         }
 
+        function centerGalleryToMiddle() {
+            if (!container) return;
+            const isScrollable = container.scrollWidth > container.clientWidth + 1;
+            container.classList.toggle('centered', !isScrollable);
+
+            if (isScrollable) {
+                const target = Math.max(0, (container.scrollWidth - container.clientWidth) / 2);
+                container.scrollTo({ left: target });
+            } else {
+                container.scrollLeft = 0;
+            }
+        }
+
         function renderGallery() {
             container.innerHTML = '';
             const filtered = getFilteredData();
@@ -225,10 +315,6 @@
                     <div class="vhs-open-content">
                         <img src="${item.image}" class="vhs-img-bg" alt="Cover">
                         <div class="vhs-info-layer">
-                            <div class="vhs-header-row">
-                                <span class="vhs-pill">${item.format}</span>
-                                <span class="vhs-pill">${item.code}</span>
-                            </div>
                             <h3 class="vhs-title">${item.title}</h3>
                             <p class="vhs-desc">${item.desc}</p>
                             <div class="vhs-tags">
@@ -264,6 +350,8 @@
                     if (activeEl) centerCard(activeEl);
                     centerActiveOnRender = false;
                 });
+            } else if (activeIndex === -1) {
+                requestAnimationFrame(centerGalleryToMiddle);
             }
         }
 
@@ -271,8 +359,24 @@
             detailTitle.innerText = item.title;
             detailDesc.innerText = item.desc;
             detailYear.innerText = `${item.year} // ${item.format}`;
-            const article = detailArticles[item.title];
-            detailContent.innerHTML = article || '';
+            detailTags.innerHTML = item.tags.map(t => `<span class="detail-tag">#${t}</span>`).join('');
+            detailContent.innerHTML = item.contentPath
+                ? '<p class="detail-loading">Loading tape...</p>'
+                : '';
+
+            const requestId = ++detailRequestId;
+
+            if (item.contentPath) {
+                loadArticle(item)
+                    .then(html => {
+                        if (requestId !== detailRequestId) return;
+                        detailContent.innerHTML = html;
+                    })
+                    .catch(() => {
+                        if (requestId !== detailRequestId) return;
+                        detailContent.innerHTML = '<p>Unable to load this tape right now.</p>';
+                    });
+            }
             
             // Subtle fade animation for text change
             const section = document.querySelector('.details-section');
@@ -285,6 +389,7 @@
             detailDesc.innerText = "Browse the archive above. Click a project tape to load details.";
             detailYear.innerText = "--";
             detailContent.innerHTML = "";
+            detailTags.innerHTML = "";
         }
 
         // Horizontal Scroll Buttons
@@ -309,12 +414,13 @@
 
         // Theme Toggle Logic
         const html = document.documentElement;
-        const themes = ['light', 'dark', 'ink'];
+        const themes = ['light', 'dark'];
         let currentThemeIdx = 0;
         
         // Check local storage or default
         (function initTheme() {
-            const saved = localStorage.getItem('theme') || 'light';
+            let saved = localStorage.getItem('theme') || 'light';
+            if (!themes.includes(saved)) saved = 'light';
             html.setAttribute('data-theme', saved);
             // set button text to NEXT theme
             const next = themes[(themes.indexOf(saved) + 1) % themes.length];
@@ -334,6 +440,9 @@
         // Init
         renderFilters();
         renderGallery();
+        // center stack on first load only
+        requestAnimationFrame(centerGalleryToMiddle);
+        window.addEventListener('resize', () => requestAnimationFrame(centerGalleryToMiddle));
 
     </script>
 </body>

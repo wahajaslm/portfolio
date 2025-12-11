@@ -428,7 +428,7 @@
         const themeModes = ['light', 'dark'];
         (function initTheme() {
             let saved = localStorage.getItem('theme') || 'light';
-            if (saved === 'ink') saved = 'light';
+            if (!themeModes.includes(saved)) saved = 'light';
             htmlEl.setAttribute('data-theme', saved);
             const next = themeModes[(themeModes.indexOf(saved) + 1) % themeModes.length];
             toggleBtn.innerText = next.toUpperCase();

@@ -16,6 +16,8 @@
 
     --page-pad: clamp(1rem, 5vw, 4rem);
     --header-bg: rgba(5, 5, 5, 0.8);
+    --pill-radius: 999px;
+    --pill-bg: rgba(255,255,255,0.04);
     
     --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace; 
@@ -40,23 +42,7 @@ html { scroll-behavior: smooth; }
     --vhs-active-bg: #f0f0f0;
     
     --header-bg: rgba(230, 230, 230, 0.85);
-}
-
-/* INK MODE */
-[data-theme="ink"] {
-    --bg-color: #f5f2eb;
-    --card-bg: #f5f2eb;
-    --card-border: #d0c8b6;
-    --text-main: #2b2620;
-    --text-muted: #5e574d;
-    --accent: #c05225;
-    
-    --vhs-bg: #ebe7de;
-    --vhs-border: #d0c8b6;
-    --vhs-spine-color: #2b2620;
-    --vhs-active-bg: #fcfbf9;
-
-    --header-bg: rgba(245, 242, 235, 0.9);
+    --pill-bg: rgba(0,0,0,0.04);
 }
 
 /* --- 2. GLOBAL BASE STYLES --- */
@@ -78,8 +64,6 @@ body::after {
 
 /* Ink Mode Typography Overrides */
 body[data-theme="ink"] { font-family: "Bookerly", "Georgia", serif; letter-spacing: 0.01em; }
-body[data-theme="ink"] h1, body[data-theme="ink"] h2, body[data-theme="ink"] h3, body[data-theme="ink"] .label { font-family: "Iowan Old Style", "Palatino", serif; color: #2a2723; }
-body[data-theme="ink"] .tech-tag, body[data-theme="ink"] .btn { background: rgba(0,0,0,0.03); border-color: #d0c8b6; }
 
 /* --- 3. TYPOGRAPHY & UTILS --- */
 h1, h2, h3 { font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; }
@@ -156,9 +140,10 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
 
 .tech-tag {
     font-family: var(--font-mono); font-size: 0.8rem;
-    background: rgba(255,255,255,0.03); border: 1px solid var(--card-border);
-    padding: 0.4rem 0.8rem; color: var(--text-muted);
+    background: var(--pill-bg); border: 1px solid var(--card-border);
+    padding: 0.4rem 0.85rem; color: var(--text-muted);
     transition: 0.2s; cursor: default; display: inline-block;
+    border-radius: var(--pill-radius);
 }
 .tech-tag:hover { border-color: var(--accent); color: var(--text-main); transform: translateY(-2px); }
 
@@ -357,30 +342,47 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
     position: relative; width: 100vw; max-width: 100%;
     margin-left: 50%; transform: translateX(-50%);
 }
+.spotlight-page main {
+    width: 100%; max-width: none;
+    padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
+}
+.spotlight-page #archive { width: 100%; }
+.spotlight-page .details-section {
+    width: 100%; max-width: none;
+    padding: 0 clamp(1.5rem, 5vw, 6rem);
+    grid-template-columns: minmax(200px, 0.7fr) minmax(760px, 2.6fr);
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+.spotlight-page .details-body { max-width: none; }
 .archive-filters {
-    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    display: flex; flex-wrap: wrap;
+    gap: 0.5rem 0.6rem;
     margin: 1rem 0 2rem; padding: 0 10vw;
+    align-content: flex-start;
 }
 .filter-chip {
-    border: 1px solid var(--card-border); background: transparent;
+    border: 1px solid var(--card-border); background: var(--pill-bg);
     color: var(--text-muted); padding: 0.4rem 0.9rem;
-    border-radius: 999px; font-family: var(--font-mono); font-size: 0.75rem;
+    border-radius: var(--pill-radius); font-family: var(--font-mono); font-size: 0.75rem;
     letter-spacing: 0.04em; cursor: pointer; transition: all 0.2s var(--easing);
+    white-space: nowrap; scroll-snap-align: start;
 }
-.filter-chip:hover { border-color: var(--accent); color: var(--text-main); transform: translateY(-2px); }
+.filter-chip:hover { border-color: var(--accent); color: var(--text-main); transform: translateY(-2px); background: var(--pill-bg); }
 .filter-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 .vhs-gallery {
     display: flex; align-items: center; gap: 1rem;
     overflow-x: auto; overflow-y: hidden;
-    padding: 3rem 10vw 4rem 10vw;
-    min-height: 620px; /* prevent layout jump when a card expands */
+    padding: 2rem 8vw 3rem 8vw;
+    min-height: 540px; /* prevent layout jump when a card expands */
     scroll-behavior: smooth; scroll-snap-type: x mandatory;
     scrollbar-width: none; -ms-overflow-style: none;
+    justify-content: flex-start;
 }
 .vhs-gallery::-webkit-scrollbar { display: none; }
+.vhs-gallery.centered { justify-content: center; }
 
 .vhs-item {
-    position: relative; flex: 0 0 100px; height: 380px;
+    position: relative; flex: 0 0 100px; height: 500px;
     background: var(--vhs-bg); border: 1px solid var(--vhs-border);
     border-radius: 4px; box-shadow: 4px 0 10px rgba(0,0,0,0.1);
     transition: all 0.5s var(--easing); cursor: pointer;
@@ -422,17 +424,15 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 2rem; background: linear-gradient(to top, var(--vhs-active-bg) 20%, transparent 100%);
 }
-.vhs-header-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-.vhs-pill {
-    font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 0.2rem 0.5rem; border: 1px solid var(--card-border);
-    border-radius: 4px; background: rgba(255,255,255,0.1);
-    color: var(--text-main); backdrop-filter: blur(4px);
-}
+/* header row removed */
 .vhs-title { font-size: 2.2rem; color: var(--text-main); margin-bottom: 0.5rem; text-transform: uppercase; }
 .vhs-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; max-width: 90%; }
 .vhs-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.vhs-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); }
+.vhs-tag { 
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+    padding: 0.25rem 0.7rem; border: 1px solid var(--card-border);
+    border-radius: var(--pill-radius); background: var(--pill-bg);
+}
 
 .nav-btn {
     position: absolute; top: 50%; transform: translateY(-50%);
@@ -446,24 +446,47 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
 .nav-btn.prev { left: 2vw; }
 .nav-btn.next { right: 2vw; }
 
-.details-section { margin-top: 5rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
+.details-section { margin-top: 3rem; display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
 .details-meta { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; }
 .details-body { max-width: 72ch; align-self: start; }
+.details-meta h2 { color: var(--text-main); }
+.details-meta p { color: var(--text-muted); }
 .details-body p { margin-bottom: 1rem; font-size: 1rem; line-height: 1.7; color: var(--text-main); }
 .detail-article { font-size: 1rem; color: var(--text-main); line-height: 1.7; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--card-border); }
 .detail-article h4 { margin: 0 0 0.75rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text-main); }
 .detail-article ul { padding-left: 1.2rem; margin: 0 0 1rem; color: var(--text-muted); }
 .detail-article li { margin-bottom: 0.5rem; list-style: disc; }
+.detail-video { width: 100%; max-width: 720px; margin: 1rem 0; border-radius: 10px; border: 1px solid var(--card-border); box-shadow: 0 10px 25px rgba(0,0,0,0.15); background: #000; }
+.detail-divider { margin: 1.25rem 0; text-align: center; letter-spacing: 0.18em; color: var(--text-muted); }
+.detail-loading { color: var(--text-muted); font-style: italic; }
+.detail-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.detail-tag {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    padding: 0.25rem 0.7rem; border: 1px solid var(--card-border);
+    border-radius: var(--pill-radius); color: var(--text-main); background: var(--pill-bg);
+}
+.detail-tag:hover { border-color: var(--accent); color: var(--accent); }
+.detail-tags {
+    min-height: 36px; /* reserve space so layout below doesn't jump */
+    max-height: 84px; /* keep to ~2 rows before scrolling */
+    overflow-y: auto; padding-right: 0.25rem;
+    scrollbar-width: thin; scrollbar-color: var(--accent) transparent;
+    overscroll-behavior: contain;
+}
 
 /* Responsive specifics */
 @media (max-width: 768px) {
     main { padding: 5rem 1.5rem 2rem; }
+    .spotlight-page main { padding: 5rem 1.5rem 2.5rem; }
     .nav-sidebar { display: none; }
     .hero-title { font-size: 3.5rem; }
     .intro-grid { gap: 2rem; }
     .job-header { grid-template-columns: 1fr; }
+    .vhs-item { height: 380px; }
     .vhs-item.active { flex: 0 0 85vw; height: 450px; }
+    .vhs-gallery { min-height: 520px; }
     .details-section { grid-template-columns: 1fr; gap: 1rem; }
+    .spotlight-page .details-section { padding: 0; gap: 1.25rem; }
     .nav-btn { display: none; } 
     .vhs-gallery { padding: 2rem 5vw; }
 }
