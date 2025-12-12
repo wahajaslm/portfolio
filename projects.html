@@ -75,6 +75,7 @@
 
         const MAX_TAGS = 10;
         let allowedTagsSet = null;
+        let galleryShown = false;
 
         async function ensureAllowedTags() {
             if (allowedTagsSet) return allowedTagsSet;
@@ -95,10 +96,24 @@
         }
 
         async function fetchProject(slug) {
-            const path = `projects/${slug}.md`;
-            const res = await fetch(path, { cache: 'no-cache' });
-            if (!res.ok) throw new Error(`Failed to load ${path}`);
-            const markdown = await res.text();
+            const paths = [
+                `projects/${slug}/index.md`,
+                `projects/${slug}.md` // legacy fallback
+            ];
+            let markdown = '';
+            let usedPath = '';
+
+            for (const path of paths) {
+                const res = await fetch(path, { cache: 'no-store' });
+                if (res.ok) {
+                    markdown = await res.text();
+                    usedPath = path;
+                    break;
+                }
+            }
+
+            if (!markdown) throw new Error(`Failed to load any markdown for ${slug}`);
+
             const { meta, body } = parseFrontMatter(markdown);
 
             const title = meta.title || deriveTitleFromSlug(slug);
@@ -130,7 +145,7 @@
                 desc: meta.summary || '',
                 tags,
                 image: meta.cover_image || '',
-                contentPath: path,
+                contentPath: usedPath,
                 articleSlug: meta.article_slug || slug,
                 body
             };
@@ -145,6 +160,13 @@
         const detailTags = document.getElementById('detailTags');
         const detailActions = document.getElementById('detailActions');
         const detailToc = document.getElementById('detailToc');
+        if (container) container.classList.add('loading');
+
+        const finishGalleryLoading = () => {
+            if (!container || galleryShown) return;
+            galleryShown = true;
+            requestAnimationFrame(() => requestAnimationFrame(() => container.classList.remove('loading')));
+        };
 
         let activeIndex = -1;
         let activeTags = [];
@@ -210,6 +232,13 @@
             let inList = false;
             const slugCounts = {};
 
+            const formatInline = (text) => {
+                const escaped = escapeHtml(text);
+                return escaped
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>');
+            };
+
             const slugify = text => {
                 const base = text
                     .toLowerCase()
@@ -247,19 +276,19 @@
                     const text = headingMatch[2].trim();
                     const tag = ['h3', 'h4', 'h5'][level - 1] || 'h5';
                     const id = slugify(text);
-                    html += `<${tag} id="${id}">${escapeHtml(text)}</${tag}>`;
+                    html += `<${tag} id="${id}">${formatInline(text)}</${tag}>`;
                     return;
                 }
 
                 if (/^[-*]\s+/.test(line)) {
                     if (!inList) html += '<ul>';
                     inList = true;
-                    html += `<li>${escapeHtml(line.replace(/^[-*]\s+/, ''))}</li>`;
+                    html += `<li>${formatInline(line.replace(/^[-*]\s+/, ''))}</li>`;
                     return;
                 }
 
                 closeList();
-                html += `<p>${escapeHtml(line)}</p>`;
+                html += `<p>${formatInline(line)}</p>`;
             });
 
             if (inList) html += '</ul>';
@@ -276,13 +305,24 @@
         async function loadProjects() {
             try {
                 await ensureAllowedTags();
-                const results = await Promise.all(projectSlugs.map(fetchProject));
-                archiveData = results;
+                const results = await Promise.allSettled(projectSlugs.map(fetchProject));
+                const successes = results
+                    .filter(r => r.status === 'fulfilled')
+                    .map(r => r.value);
+                const failures = results.filter(r => r.status === 'rejected');
+
+                if (!successes.length) throw new Error('No projects loaded');
+
+                archiveData = successes;
                 allTags = Array.from(new Set(archiveData.flatMap(item => item.tags || [])));
                 renderFilters();
                 renderGallery();
                 adjustEdgePadding();
                 requestAnimationFrame(centerGalleryToMiddle);
+
+                if (failures.length) {
+                    console.warn('Some projects failed to load:', failures.map(f => f.reason));
+                }
             } catch (err) {
                 detailTitle.innerText = 'Unable to load projects';
                 detailDesc.innerText = 'Please try again later.';
@@ -290,13 +330,25 @@
         }
 
         async function loadArticle(item) {
-            if (!item.contentPath) return '';
-            if (contentCache.has(item.title)) return contentCache.get(item.title);
-            const response = await fetch(item.contentPath);
-            if (!response.ok) throw new Error('Failed to load content');
-            const text = await response.text();
+            if (!item.contentPath && !item.body) return '';
+            const cacheKey = item.articleSlug || item.title;
+            if (contentCache.has(cacheKey)) return contentCache.get(cacheKey);
+
+            let text = item.body || '';
+
+            if (!text && item.contentPath) {
+                const response = await fetch(item.contentPath, { cache: 'no-cache' });
+                if (!response.ok) throw new Error('Failed to load content');
+                text = await response.text();
+            }
+
+            // Strip front matter if it slipped through
+            const parsed = parseFrontMatter(text);
+            text = parsed.body || text;
+            text = text.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, '');
+
             const html = renderMarkdown(text);
-            contentCache.set(item.title, html);
+            contentCache.set(cacheKey, html);
             return html;
         }
 
@@ -386,6 +438,7 @@
                         <div class="vhs-code">${item.code}</div>
                         <div class="vhs-spine-text">${item.title}</div>
                         <div class="vhs-code">${item.year}</div>
+                        <div class="vhs-play-icon" aria-hidden="true">▶</div>
                     </div>
 
                     <!-- Open Card State -->
@@ -426,12 +479,14 @@
                     const activeEl = container.querySelector('.vhs-item.active');
                     if (activeEl) centerCard(activeEl);
                     centerActiveOnRender = false;
+                    finishGalleryLoading();
                 });
             }
 
             // When nothing is active, keep the carousel centered
             if (activeIndex === -1) {
                 requestAnimationFrame(centerGalleryToMiddle);
+                finishGalleryLoading();
             }
         }
 

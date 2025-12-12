@@ -378,12 +378,14 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
     scrollbar-width: none; -ms-overflow-style: none;
     justify-content: flex-start;
     --vhs-edge-gap: 4vw;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 .vhs-gallery::before,
 .vhs-gallery::after {
     content: '';
     flex: 0 0 var(--vhs-edge-gap); /* spacer to prevent edge overlap */
 }
+.vhs-gallery.loading { opacity: 0; pointer-events: none; transform: translateY(8px); scroll-snap-type: none; }
 .vhs-gallery::-webkit-scrollbar { display: none; }
 .vhs-gallery.centered { justify-content: center; }
 
@@ -405,11 +407,12 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
 
 .vhs-spine-content {
     width: 100%; height: 100%;
-    display: flex; flex-direction: column; 
+    display: flex; flex-direction: column;
     align-items: center; justify-content: space-between;
-    gap: 1rem;
-    padding: 1.25rem 0.75rem;
+    gap: 0.6rem;
+    padding: 2.6rem 0.75rem 1.4rem; /* reserve space for play icon at the top */
     opacity: 1; transition: opacity 0.3s;
+    position: relative;
 }
 .vhs-item.active .vhs-spine-content { opacity: 0; pointer-events: none; position: absolute; }
 
@@ -426,6 +429,23 @@ footer { text-align: center; padding: 2.5rem 0 2rem; color: var(--text-muted); f
     word-break: break-word;
 }
 .vhs-code { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
+.vhs-play-icon {
+    position: absolute; top: 0.8rem; left: 50%; transform: translateX(-50%);
+    width: 26px; height: 26px;
+    border-radius: 50%; border: 1px solid var(--card-border);
+    display: grid; place-items: center;
+    font-size: 0.75rem; color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+    transition: transform 0.25s var(--easing), box-shadow 0.25s var(--easing), color 0.25s, border-color 0.25s;
+    pointer-events: none;
+}
+.vhs-item:not(.active):hover .vhs-play-icon {
+    transform: translateX(-50%);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.22);
+    color: var(--accent);
+    border-color: var(--accent);
+}
 
 .vhs-open-content {
     position: absolute; inset: 0; display: flex; flex-direction: column;

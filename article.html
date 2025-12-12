@@ -55,8 +55,13 @@
         const attrSlug = (document.body.dataset.article || '').trim();
         const slugParam = (params.get('article') || '').trim();
         const slugSource = attrSlug || slugParam;
-        const slug = slugSource.replace(/[^a-z0-9-]/gi, '').toLowerCase();
-        const mdPath = slug ? `projects/${slug}.md` : null;
+        const slug = slugSource.replace(/[^a-z0-9-_]/gi, '').toLowerCase();
+        const mdCandidates = slug
+            ? [
+                `projects/${slug}/index.md`,
+                `projects/${slug}.md` // legacy path fallback
+            ]
+            : [];
 
         const titleEl = document.getElementById('articleTitle');
         const metaEl = document.getElementById('articleMeta');
@@ -82,8 +87,13 @@
                 .join(' ');
         }
 
+        function stripFrontMatter(md) {
+            const match = md.match(/^---\s*\n[\s\S]*?\n---\s*\n/);
+            return match ? md.slice(match[0].length) : md;
+        }
+
         async function loadMarkdown() {
-            if (!mdPath) {
+            if (!mdCandidates.length) {
                 titleEl.textContent = 'Article not found';
                 metaEl.textContent = 'Missing ?article=slug query in URL.';
                 contentEl.innerHTML = '<p class="article-error">Specify the article slug in the URL to load content.</p>';
@@ -91,16 +101,25 @@
             }
 
             titleEl.textContent = deriveTitleFromSlug(slug);
-            metaEl.textContent = `/projects/${slug}.md`;
+            let loaded = false;
 
-            try {
-                const res = await fetch(mdPath, { cache: 'no-cache' });
-                if (!res.ok) throw new Error('Fetch failed');
-                const markdown = await res.text();
-                const html = marked.parse(markdown);
-                contentEl.innerHTML = html;
-                document.title = `${titleEl.textContent} | Wahaj Aslam`;
-            } catch (err) {
+            for (const path of mdCandidates) {
+                metaEl.textContent = `/${path}`;
+                try {
+                    const res = await fetch(`${path}?t=${Date.now()}`, { cache: 'no-cache' });
+                    if (!res.ok) continue;
+                    const markdown = stripFrontMatter(await res.text());
+                    const html = marked.parse(markdown);
+                    contentEl.innerHTML = html;
+                    document.title = `${titleEl.textContent} | Wahaj Aslam`;
+                    loaded = true;
+                    break;
+                } catch (err) {
+                    // try next candidate
+                }
+            }
+
+            if (!loaded) {
                 contentEl.innerHTML = '<p class="article-error">Unable to load this article right now.</p>';
             }
         }

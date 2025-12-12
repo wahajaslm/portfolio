@@ -2,6 +2,7 @@
 visibility: public
 use_for_ai: true
 tags: [network_security, arp_spoofing, intrusion_detection, packet_sniffing, python, scapy, wireshark, bash, networking, automation]
+summary: "Python/Scapy ARP spoof detector with packet inspection, MAC/IP verification, and Wireshark-friendly logging."
 ---
 
 # ARP Spoof Detector — Python-Based Network Security Tool  

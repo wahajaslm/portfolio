@@ -2,6 +2,7 @@
 visibility: public
 use_for_ai: true
 tags: [embedded, microcontroller, state_machine, real_time, c, timers, interrupts, firmware, prototyping, testing]
+summary: "Finite-state traffic light controller in C using timers/interrupts for deterministic, safe signal sequencing."
 ---
 
 # Traffic Signal Controller — Embedded C State Machine  

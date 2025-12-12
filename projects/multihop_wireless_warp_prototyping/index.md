@@ -2,6 +2,7 @@
 visibility: public
 use_for_ai: true
 tags: [wireless, sdr, matlab, multi_hop, cooperative_relays, ofdm, channel_modeling, warp, synchronization, link_budget]
+summary: "WARP SDR multi-hop prototype with MATLAB tooling for packet tracing, channel modeling, and cooperative relay experiments."
 ---
 
 # Multi-Hop Wireless Prototyping with WARP SDR  

@@ -2,6 +2,7 @@
 visibility: restricted
 use_for_ai: false
 tags: [wireless, mimo, linear_precoding, sdr, beamforming, channel_modeling, matlab, mmwave, research, link_budget]
+summary: "Academic seminar on massive MU-MIMO downlink: linear precoding, beamforming pilots, achievable rates, and MATLAB simulations."
 ---
 
 # Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots  

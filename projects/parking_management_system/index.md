@@ -2,6 +2,7 @@
 visibility: public
 use_for_ai: true
 tags: [embedded, sensors, microcontroller, parking_system, real_time, c, firmware, interrupts, uart, prototyping]
+summary: "Embedded parking system in C with sensor polling, UART/display updates, and real-time slot tracking."
 ---
 
 # Intelligent Parking System — Embedded C Project  
