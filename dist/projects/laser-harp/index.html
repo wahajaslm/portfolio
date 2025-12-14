@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Laser Harp — Optical Motion-Based Musical Instrument</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Instrument // Project Archive</p> <div class="article-body"> <h1 id="laser-harp--optical-motion-based-musical-instrument">Laser Harp — Optical Motion-Based Musical Instrument</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>The <strong>Laser Harp</strong> is an optical musical instrument where each “string” is a <strong>beam of laser light</strong>.<br>
+When a performer moves their hand through a beam, the interruption is detected and translated into a:</p>
+<ul>
+<li><strong>MIDI note</strong>,</li>
+<li><strong>OSC message</strong>, or</li>
+<li><strong>control signal</strong></li>
+</ul>
+<p>depending on the chosen output mode.</p>
+<p>The project combines:</p>
+<ul>
+<li>real-time embedded sensing</li>
+<li>optical alignment and calibration</li>
+<li>noise filtering</li>
+<li>musical mapping logic</li>
+<li>gestural control concepts</li>
+</ul>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Physical harps require string plucking.<br>
+The goal here was to design a <strong>touchless</strong>, visually striking instrument that:</p>
+<ul>
+<li>reacts instantly to hand motion</li>
+<li>avoids false triggers from ambient light</li>
+<li>maps gestures to musical notes cleanly</li>
+<li>is playable in low and high lighting conditions</li>
+</ul>
+<p>Challenges solved:</p>
+<ul>
+<li>optical noise from room lighting</li>
+<li>sensor threshold calibration</li>
+<li>fast detection of beam interruption</li>
+<li>avoiding note flicker and retriggers</li>
+<li>mapping multiple beams to a musical scale</li>
+</ul>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<h3 id="1-optical-beam-system"><strong>1. Optical Beam System</strong></h3>
+<ul>
+<li>Multiple laser diodes positioned vertically</li>
+<li>Photodiodes or LDRs aligned opposite each laser</li>
+<li>A constant laser → photodiode reading indicates “beam intact”</li>
+<li>A drop in sensor voltage indicates “beam broken”</li>
+</ul>
+<h3 id="2-signal-conditioning"><strong>2. Signal Conditioning</strong></h3>
+<p>To create stable digital-like signals:</p>
+<ul>
+<li>Analog low-pass filters</li>
+<li>Comparator circuits for thresholding</li>
+<li>Pull-up/pull-down stabilization</li>
+<li>Shielding to reduce ambient noise</li>
+</ul>
+<h3 id="3-embedded-controller"><strong>3. Embedded Controller</strong></h3>
+<p>A microcontroller (Arduino/Teensy-level) handled:</p>
+<ul>
+<li>Reading photodiode outputs</li>
+<li>Applying debounce logic</li>
+<li>State transitions (INTACT → BROKEN → INTACT)</li>
+<li>Generating MIDI/OSC messages</li>
+</ul>
+<h3 id="4-output-layer"><strong>4. Output Layer</strong></h3>
+<p>Supports three modes:</p>
+<h4 id="midi-mode">MIDI Mode</h4>
+<ul>
+<li>Note ON when the beam is broken</li>
+<li>Note OFF when the beam is restored</li>
+<li>Notes mapped to diatonic or chromatic scales</li>
+</ul>
+<h4 id="osc-mode">OSC Mode</h4>
+<ul>
+<li>OSC messages for:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/laserharp/string1</span></span>
+<span class="line"><span>/laserharp/string2</span></span>
+<span class="line"><span>/laserharp/string3</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>Useful for synthesis engines like Max/MSP, Pure Data, SuperCollider</li>
+</ul>
+<h4 id="hybrid-mode">Hybrid Mode</h4>
+<ul>
+<li>Both OSC + MIDI for advanced performance rigs</li>
+</ul>
+<hr>
+<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h3 id="41-photodiode-alignment">4.1 Photodiode Alignment</h3>
+<ul>
+<li>Required precise beam-to-sensor alignment</li>
+<li>Beam intensity adjusted to prevent oversaturation</li>
+<li>Ambient light tested in different environments</li>
+</ul>
+<h3 id="42-embedded-logic-c">4.2 Embedded Logic (C)</h3>
+<p>The core loop ran at a stable frequency:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (sensor_value </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> INTACT) {</span></span>
+<span class="line"><span style="color:#B392F0">    trigger_note</span><span style="color:#E1E4E8">(string_id);</span></span>
+<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> BROKEN;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (sensor_value </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> BROKEN) {</span></span>
+<span class="line"><span style="color:#B392F0">    release_note</span><span style="color:#E1E4E8">(string_id);</span></span>
+<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> INTACT;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Additional logic:</p>
+<ul>
+<li>Software debounce</li>
+<li>Minimum-hold timers</li>
+<li>Velocity/glide options</li>
+</ul>
+<h3 id="43-midi-note-mapping">4.3 MIDI Note Mapping</h3>
+<p>Two options:</p>
+<h4 id="fixed-scale"><strong>Fixed Scale</strong></h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Beam 1 → MIDI 60 (C4)</span></span>
+<span class="line"><span>Beam 2 → MIDI 62 (D4)</span></span>
+<span class="line"><span>Beam 3 → MIDI 64 (E4)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="dynamic-mode"><strong>Dynamic Mode</strong></h4>
+<p>Pitch determined by:</p>
+<ul>
+<li>hand height</li>
+<li>beam index</li>
+<li>external scale tables</li>
+</ul>
+<h3 id="44-osc-mapping">4.4 OSC Mapping</h3>
+<p>Example:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/harp/beam1 1   → beam broken</span></span>
+<span class="line"><span>/harp/beam1 0   → beam restored</span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="5-results">5. Results</h2>
+<ul>
+<li>Intuitive and fun to play</li>
+<li>Clear on/off triggering with minimal jitter</li>
+<li>Visually striking, ideal for performance</li>
+<li>Low latency due to efficient embedded design</li>
+</ul>
+<hr>
+<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<ul>
+<li>Embedded C development</li>
+<li>Analog/digital signal conditioning</li>
+<li>Real-time state machine implementation</li>
+<li>MIDI and OSC output design</li>
+<li>Hardware prototyping</li>
+<li>UX design for interactive instruments</li>
+</ul>
+<hr>
+<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<p>Building a <strong>touchless optical instrument</strong> taught me how environmental factors, noise, timing stability,
+and physical placement influence real-time interaction.</p>
+<p>A laser harp only feels “correct” when triggering is instantaneous and stable.<br>
+This reinforced principles that later shaped my DSP and audio engineering mindset:</p>
+<ul>
+<li>responsiveness matters</li>
+<li>noise must be controlled</li>
+<li>thresholds require tuning</li>
+<li>UX is just as important as code</li>
+</ul>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

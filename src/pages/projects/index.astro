@@ -1,0 +1,753 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const deriveTitle = (slug) =>
+  slug
+    .replace(/_/g, '-')
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+const pageTitle = 'Wahaj Aslam | Projects';
+const projectEntries = await getCollection('projects');
+const projects = await Promise.all(
+  projectEntries.map(async (entry) => {
+    const { Content } = await entry.render();
+    return {
+      slug: entry.slug,
+      meta: entry.data,
+      Content
+    };
+  })
+);
+
+const projectData = projects.map(({ slug, meta }) => ({
+  slug,
+  title: meta.title || deriveTitle(slug),
+  year: meta.year || '',
+  format: meta.format || '',
+  code: meta.code || '',
+  desc: meta.summary || '',
+  tags: Array.isArray(meta.tags) ? meta.tags : [],
+  image: meta.cover_image || '',
+  articleSlug: meta.article_slug || slug,
+  contentId: `project-content-${slug}`
+}));
+---
+<BaseLayout title={pageTitle} bodyClass="projects-page" activeNav="projects">
+  <section id="archive">
+        <div class="section-header">
+          <span class="label">// PROJECTS</span>
+          <div class="filter-controls">
+            <button class="filter-toggle-btn" id="filterToggle" aria-label="Open filters">
+              <span class="filter-icon">🔍</span>
+              <span class="filter-label">SEARCH</span>
+              <span class="filter-count" id="filterCount"></span>
+            </button>
+          </div>
+        </div>
+        <hr class="section-divider" />
+        
+        <div class="selected-tags-preview" id="selectedTagsPreview"></div>
+
+        <div class="filter-panel" id="filterPanel" aria-hidden="true">
+          <div class="filter-panel-backdrop" id="filterPanelBackdrop"></div>
+          <div class="filter-panel-content">
+            <div class="filter-panel-header">
+              <h3 class="filter-panel-title">FILTER PROJECTS</h3>
+              <button class="filter-panel-close" id="filterPanelClose" aria-label="Close filters">×</button>
+            </div>
+            <div class="filter-search-wrapper">
+              <input 
+                type="text" 
+                class="filter-search-input" 
+                id="filterSearchInput" 
+                placeholder="Search tags..." 
+                autocomplete="off"
+              />
+              <span class="filter-search-icon">🔍</span>
+            </div>
+            <div class="filter-panel-body">
+              <div class="archive-filters" id="archiveFilters" aria-label="Filter projects by tag"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-wrapper">
+          <div class="carousel-layout">
+            <button class="nav-btn prev" id="prevBtn" aria-label="Scroll Left">←</button>
+
+            <div class="vhs-gallery" id="galleryContainer">
+              {projectData.map((item) => (
+                <div
+                class="vhs-item"
+                data-slug={item.slug}
+                data-title={item.title}
+                data-year={item.year}
+                data-format={item.format}
+                data-code={item.code}
+                data-desc={item.desc}
+                data-tags={(item.tags || []).join(',')}
+                data-image={item.image}
+                data-article={item.articleSlug}
+              >
+                <div class="vhs-spine-content">
+                  <div class="vhs-code">{item.code}</div>
+                  <div class="vhs-spine-text">{item.title}</div>
+                  <div class="vhs-code">{item.year}</div>
+                  <div class="vhs-play-icon" aria-hidden="true">▶</div>
+                </div>
+                <div class="vhs-open-content">
+                  <img src={item.image} class="vhs-img-bg" alt="Cover" />
+                  <div class="vhs-info-layer">
+                    <h3 class="vhs-title">{item.title}</h3>
+                    <p class="vhs-desc">{item.desc}</p>
+                    <div class="vhs-tags">
+                      {item.tags.map((t) => (
+                        <span class="vhs-tag">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            </div>
+            <button class="nav-btn next" id="nextBtn" aria-label="Scroll Right">→</button>
+          </div>
+        </div>
+
+        <div class="details-section blur-fade active">
+          <div class="details-meta">
+            <span class="label">CURRENT SELECTION</span>
+            <h2 id="detailTitle" class="edu-degree mask-reveal active"><span>Select a Title</span></h2>
+            <p id="detailYear">--</p>
+            <p id="detailSummary" class="detail-summary">Select a tape to view its summary.</p>
+            <div id="detailTags" class="detail-tags"></div>
+            <div id="detailActions" class="detail-actions"></div>
+            <div id="detailToc" class="detail-toc"></div>
+          </div>
+          <div class="details-body">
+            <p id="detailDesc">Browse the archive above. Click a tape to load details from the vault.</p>
+            <div id="detailContent" class="detail-article"></div>
+          </div>
+        </div>
+
+        <div id="projectContentStore" style="display:none">
+          {projects.map(({ slug, Content }) => (
+            <div id={`project-content-${slug}`} data-slug={slug}>
+              <Content />
+            </div>
+          ))}
+        </div>
+  </section>
+  <script type="application/json" id="projectData">
+      {JSON.stringify(projectData).replace(/</g, '\\u003c')}
+    </script>
+
+  <script is:inline>
+      // Activate section divider animation on load
+      document.addEventListener('DOMContentLoaded', () => {
+        const divider = document.querySelector('.section-divider');
+        if (divider) {
+          requestAnimationFrame(() => {
+            divider.classList.add('active');
+          });
+        }
+      });
+
+      const projectDataNode = document.getElementById('projectData');
+      let projectData = [];
+      try {
+        projectData = projectDataNode ? JSON.parse(projectDataNode.textContent || '[]') : [];
+      } catch (err) {
+        console.error('Unable to parse project data JSON', err);
+      }
+      if (!Array.isArray(projectData) || projectData.length === 0) {
+        // Fallback: derive from server-rendered cards if JSON failed
+        projectData = Array.from(document.querySelectorAll('.vhs-item')).map((el) => {
+          const tagStr = el.dataset.tags || '';
+          return {
+            slug: el.dataset.slug || '',
+            title: el.dataset.title || el.querySelector('.vhs-spine-text')?.textContent?.trim() || '',
+            year: el.dataset.year || '',
+            format: el.dataset.format || '',
+            code: el.dataset.code || '',
+            desc: el.dataset.desc || '',
+            tags: tagStr ? tagStr.split(',').filter(Boolean) : [],
+            image: el.dataset.image || '',
+            articleSlug: el.dataset.article || el.dataset.slug || ''
+          };
+        });
+      }
+      const storedContent = new Map();
+      document.querySelectorAll('#projectContentStore [data-slug]').forEach((node) => {
+        const slug = node.dataset.slug || '';
+        storedContent.set(slug, node.innerHTML);
+      });
+
+      const MAX_TAGS = 10;
+      let allowedTagsSet = null;
+      let galleryShown = false;
+
+      async function ensureAllowedTags() {
+        if (allowedTagsSet) return allowedTagsSet;
+        try {
+          const res = await fetch('/data/tags.json', { cache: 'no-cache' });
+          if (!res.ok) throw new Error('tags.json fetch failed');
+          const arr = await res.json();
+          allowedTagsSet = new Set(
+            Array.isArray(arr)
+              ? arr.map((t) => String(t).trim()).filter(Boolean)
+              : []
+          );
+        } catch (err) {
+          console.warn('Unable to load central tag list; skipping validation.', err);
+          allowedTagsSet = new Set();
+        }
+        return allowedTagsSet;
+      }
+
+      const container = document.getElementById('galleryContainer');
+      const filterContainer = document.getElementById('archiveFilters');
+      const filterPanel = document.getElementById('filterPanel');
+      const filterToggle = document.getElementById('filterToggle');
+      const filterPanelClose = document.getElementById('filterPanelClose');
+      const filterPanelBackdrop = document.getElementById('filterPanelBackdrop');
+      const filterSearchInput = document.getElementById('filterSearchInput');
+      const filterCount = document.getElementById('filterCount');
+      const selectedTagsPreview = document.getElementById('selectedTagsPreview');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailSummary = document.getElementById('detailSummary');
+      const detailDesc = document.getElementById('detailDesc');
+      const detailContent = document.getElementById('detailContent');
+      const detailYear = document.getElementById('detailYear');
+      const detailTags = document.getElementById('detailTags');
+      const detailActions = document.getElementById('detailActions');
+      const detailToc = document.getElementById('detailToc');
+      if (container) container.classList.add('loading');
+
+      const setDetailTitle = (text) => {
+        if (!detailTitle) return;
+        const span = detailTitle.querySelector('span');
+        if (span) span.textContent = text;
+        else detailTitle.textContent = text;
+        detailTitle.classList.remove('active');
+        void detailTitle.offsetWidth;
+        detailTitle.classList.add('active');
+      };
+
+      const setDetailSummary = (text) => {
+        if (!detailSummary) return;
+        detailSummary.textContent = text || '';
+      };
+
+      const setDetailBodyMessage = (text) => {
+        if (!detailDesc) return;
+        detailDesc.textContent = text || '';
+        detailDesc.style.display = text ? '' : 'none';
+      };
+
+      const stripHeaderAndSummary = (html) => {
+        try {
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const firstHeading = doc.body.querySelector('h1');
+          if (firstHeading) firstHeading.remove();
+          const firstParagraph = doc.body.querySelector('p');
+          if (firstParagraph) firstParagraph.remove();
+          doc.body.querySelectorAll('hr').forEach((node) => node.remove());
+          return doc.body.innerHTML;
+        } catch (err) {
+          return html;
+        }
+      };
+
+      const enhanceMarkdownRendering = (html) => {
+        if (!html) return html;
+        try {
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          
+          // Convert divider paragraphs (⸻) to styled dividers
+          const paragraphs = doc.body.querySelectorAll('p');
+          paragraphs.forEach((p) => {
+            const text = p.textContent.trim();
+            const isDivider = ['⸻', '---', '——'].includes(text);
+            const isInlineDivider = text.startsWith('⸻') || text.endsWith('⸻');
+            if (isDivider) {
+              const prev = p.previousElementSibling;
+              const next = p.nextElementSibling;
+              const adjacentToHeading = [prev, next].some(
+                (node) => node && /^H[1-6]$/.test(node.tagName)
+              );
+              if (!prev || adjacentToHeading) {
+                p.remove();
+                return;
+              }
+              const divider = doc.createElement('div');
+              divider.className = 'detail-divider';
+              divider.innerHTML = '<span class="divider-line"></span>';
+              p.replaceWith(divider);
+            } else if (isInlineDivider) {
+              const cleanText = text.replace(/⸻/g, '').trim();
+              if (cleanText) {
+                p.textContent = cleanText;
+              } else {
+                const divider = doc.createElement('div');
+                divider.className = 'detail-divider';
+                divider.innerHTML = '<span class="divider-line"></span>';
+                p.replaceWith(divider);
+              }
+            }
+          });
+
+          // Clean up empty paragraphs
+          doc.body.querySelectorAll('p').forEach((p) => {
+            if (!p.textContent.trim() && !p.querySelector('img, br')) {
+              p.remove();
+            }
+          });
+
+          return doc.body.innerHTML;
+        } catch (err) {
+          console.warn('Error enhancing markdown:', err);
+          return html;
+        }
+      };
+
+      const finishGalleryLoading = () => {
+        if (!container || galleryShown) return;
+        galleryShown = true;
+        requestAnimationFrame(() => requestAnimationFrame(() => container.classList.remove('loading')));
+      };
+
+      let activeIndex = -1;
+      let activeTags = [];
+      let centerActiveOnRender = false;
+      let archiveData = [];
+      let allTags = [];
+      const contentCache = new Map();
+      storedContent.forEach((html, slug) => {
+        contentCache.set(slug, html);
+      });
+
+      function deriveTitleFromSlug(value) {
+        if (!value) return 'Project';
+        return value
+          .replace(/_/g, '-')
+          .split('-')
+          .filter(Boolean)
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+      }
+
+      async function loadProjects() {
+        try {
+          await ensureAllowedTags();
+          const hasAllowlist = allowedTagsSet && allowedTagsSet.size > 0;
+          archiveData = projectData.map((item) => {
+            const tags = Array.isArray(item.tags)
+              ? item.tags
+                  .map((t) => String(t).trim())
+                  .filter(Boolean)
+              : [];
+            const filteredTags = hasAllowlist ? tags.filter((t) => allowedTagsSet.has(t)) : tags;
+            return {
+              ...item,
+              tags: filteredTags.slice(0, MAX_TAGS),
+              title: item.title || deriveTitleFromSlug(item.slug)
+            };
+          });
+          if (!archiveData.length) throw new Error('No projects loaded');
+
+          allTags = Array.from(new Set(archiveData.flatMap((item) => item.tags || [])));
+          renderFilters();
+          renderSelectedTagsPreview();
+          updateFilterCount();
+          renderGallery();
+          requestAnimationFrame(centerGalleryToMiddle);
+        } catch (err) {
+          console.error(err);
+          setDetailTitle('Unable to load projects');
+          setDetailSummary('Unable to load project summary.');
+          setDetailBodyMessage('Please try again later.');
+          finishGalleryLoading();
+        }
+      }
+
+      const getFilteredData = () =>
+        activeTags.length === 0 ? archiveData : archiveData.filter((item) => activeTags.some((tag) => item.tags.includes(tag)));
+
+      let searchQuery = '';
+
+      function renderFilters() {
+        if (!filterContainer) return;
+        filterContainer.innerHTML = '';
+        const tags = ['ALL'].concat(allTags);
+        const query = searchQuery.toLowerCase().trim();
+        
+        tags.forEach((tag) => {
+          const isAll = tag === 'ALL';
+          const tagLower = String(tag).toLowerCase();
+          const matchesSearch = isAll || !query || tagLower.includes(query);
+          
+          if (!matchesSearch) return;
+          
+          const isActive = isAll ? activeTags.length === 0 : activeTags.includes(tag);
+          const btn = document.createElement('button');
+          btn.className = 'filter-chip ' + (isActive ? 'active' : '');
+          btn.innerText = isAll ? 'ALL' : String(tag);
+          btn.setAttribute('aria-pressed', isActive);
+          btn.onclick = () => {
+            if (isAll) {
+              activeTags = [];
+            } else {
+              activeTags = activeTags.includes(tag)
+                ? activeTags.filter((t) => t !== tag)
+                : activeTags.concat([tag]);
+            }
+            activeIndex = -1;
+            resetDetails();
+            renderFilters();
+            renderSelectedTagsPreview();
+            updateFilterCount();
+            renderGallery();
+          };
+          filterContainer.appendChild(btn);
+        });
+      }
+
+      function renderSelectedTagsPreview() {
+        if (!selectedTagsPreview) return;
+        selectedTagsPreview.innerHTML = '';
+        if (activeTags.length === 0) return;
+        
+        activeTags.forEach((tag) => {
+          const chip = document.createElement('span');
+          chip.className = 'selected-tag-preview';
+          chip.innerHTML = `
+            <span>${tag}</span>
+            <span class="remove-tag" data-tag="${tag}">×</span>
+          `;
+          chip.querySelector('.remove-tag').onclick = (e) => {
+            e.stopPropagation();
+            activeTags = activeTags.filter((t) => t !== tag);
+            activeIndex = -1;
+            resetDetails();
+            renderFilters();
+            renderSelectedTagsPreview();
+            updateFilterCount();
+            renderGallery();
+          };
+          selectedTagsPreview.appendChild(chip);
+        });
+      }
+
+      function updateFilterCount() {
+        if (!filterCount) return;
+        if (activeTags.length > 0) {
+          filterCount.textContent = activeTags.length;
+          filterCount.classList.add('active');
+        } else {
+          filterCount.classList.remove('active');
+        }
+      }
+
+      function openFilterPanel() {
+        if (filterPanel) {
+          filterPanel.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          requestAnimationFrame(() => {
+            if (filterSearchInput) filterSearchInput.focus();
+          });
+        }
+      }
+
+      function closeFilterPanel() {
+        if (filterPanel) {
+          filterPanel.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          searchQuery = '';
+          if (filterSearchInput) filterSearchInput.value = '';
+          renderFilters();
+        }
+      }
+
+      // Filter panel event handlers
+      if (filterToggle) {
+        filterToggle.addEventListener('click', openFilterPanel);
+      }
+      if (filterPanelClose) {
+        filterPanelClose.addEventListener('click', closeFilterPanel);
+      }
+      if (filterPanelBackdrop) {
+        filterPanelBackdrop.addEventListener('click', closeFilterPanel);
+      }
+      if (filterSearchInput) {
+        filterSearchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderFilters();
+        });
+        filterSearchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeFilterPanel();
+          }
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && filterPanel?.getAttribute('aria-hidden') === 'false') {
+          closeFilterPanel();
+        }
+      });
+
+      function centerCard(el, smooth = true) {
+        if (!container || !el) return;
+        
+        requestAnimationFrame(() => {
+          const isActive = el.classList.contains('active');
+          const openWidth = 450;
+          
+          // Get current scroll position and container dimensions
+          const scrollLeft = container.scrollLeft;
+          const containerRect = container.getBoundingClientRect();
+          const elRect = el.getBoundingClientRect();
+          
+          // Calculate the card's position relative to the scroll container
+          const cardLeftInScroll = scrollLeft + (elRect.left - containerRect.left);
+          
+          // If active, use the expanded width; otherwise use current width
+          const finalWidth = isActive ? openWidth : elRect.width;
+          
+          // Calculate where the center of the card will be (or is)
+          const cardCenter = cardLeftInScroll + (finalWidth / 2);
+          
+          // Calculate desired scroll to center the card
+          const desired = cardCenter - (containerRect.width / 2);
+          
+          const maxScroll = Math.max(0, container.scrollWidth - containerRect.width);
+          const target = Math.min(Math.max(0, desired), maxScroll);
+          
+          container.scrollTo({ left: target, behavior: smooth ? 'smooth' : 'auto' });
+        });
+      }
+
+      function setActiveIndex(newIndex) {
+        const filtered = getFilteredData();
+        if (!filtered.length) return;
+        const count = filtered.length;
+        const normalized = ((newIndex % count) + count) % count;
+        activeIndex = normalized;
+        updateDetails(filtered[normalized]);
+        centerActiveOnRender = true;
+        renderGallery();
+      }
+
+      function centerGalleryToMiddle() {
+        if (!container) return;
+        const items = container.querySelectorAll('.vhs-item');
+        if (items.length === 0) {
+          container.classList.remove('centered');
+          return;
+        }
+        container.classList.add('centered');
+        
+        // Always scroll to center the middle item
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const middleIndex = Math.floor(items.length / 2);
+            const middleItem = items[middleIndex];
+            if (middleItem) {
+              // Calculate center position
+              const containerRect = container.getBoundingClientRect();
+              const itemRect = middleItem.getBoundingClientRect();
+              const scrollLeft = container.scrollLeft;
+              const itemLeftInScroll = scrollLeft + (itemRect.left - containerRect.left);
+              const itemWidth = itemRect.width;
+              const itemCenter = itemLeftInScroll + (itemWidth / 2);
+              const targetScroll = itemCenter - (containerRect.width / 2);
+              const maxScroll = Math.max(0, container.scrollWidth - container.clientWidth);
+              const finalScroll = Math.min(Math.max(0, targetScroll), maxScroll);
+              
+              container.scrollTo({ left: finalScroll, behavior: 'auto' });
+            }
+          });
+        });
+      }
+
+      function renderGallery() {
+        container.innerHTML = '';
+        const filtered = getFilteredData();
+
+        if (activeIndex >= filtered.length) {
+          activeIndex = -1;
+          resetDetails();
+        }
+
+        filtered.forEach((item, index) => {
+          const el = document.createElement('div');
+          const isActive = index === activeIndex;
+          el.className = 'vhs-item ' + (isActive ? 'active' : '');
+
+          el.innerHTML =
+          '<div class="vhs-spine-content">' +
+            '<div class="vhs-code">' + item.code + '</div>' +
+            '<div class="vhs-spine-text">' + item.title + '</div>' +
+            '<div class="vhs-code">' + item.year + '</div>' +
+            '<div class="vhs-play-icon" aria-hidden="true">▶</div>' +
+          '</div>' +
+            '<div class="vhs-open-content">' +
+            '<img src="' + item.image + '" class="vhs-img-bg" alt="Cover">' +
+            '<div class="vhs-info-layer">' +
+            '<h3 class="vhs-title">' + item.title + '</h3>' +
+            '<p class="vhs-desc">' + item.desc + '</p>' +
+            '<div class="vhs-tags">' +
+            item.tags.map((t) => '<span class="vhs-tag">' + t + '</span>').join('') +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+          el.onclick = () => {
+            if (activeIndex === index) {
+              activeIndex = -1;
+              resetDetails();
+              centerActiveOnRender = false;
+              renderGallery();
+              // Re-center immediately after closing
+              requestAnimationFrame(() => {
+                centerGalleryToMiddle();
+              });
+            } else {
+              activeIndex = index;
+              updateDetails(item);
+              centerActiveOnRender = true;
+              renderGallery();
+            }
+          };
+
+          container.appendChild(el);
+        });
+
+        if (centerActiveOnRender && activeIndex >= 0) {
+          container.classList.remove('centered');
+          container.classList.add('has-active');
+          requestAnimationFrame(() => {
+            const activeEl = container.querySelector('.vhs-item.active');
+            if (activeEl) {
+              // Center immediately based on final expanded position
+              centerCard(activeEl, true);
+            }
+            centerActiveOnRender = false;
+            finishGalleryLoading();
+          });
+        } else if (activeIndex === -1) {
+          container.classList.remove('has-active');
+          // Center gallery when no item is selected (whether filtered or not)
+          finishGalleryLoading();
+          // Use double RAF to ensure layout has settled before centering
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              centerGalleryToMiddle();
+            });
+          });
+        } else {
+          container.classList.remove('centered');
+          container.classList.add('has-active');
+          finishGalleryLoading();
+        }
+      }
+
+      function buildToc() {
+        if (!detailToc) return;
+        detailToc.innerHTML = '';
+        const headings = detailContent.querySelectorAll('h2, h3, h4, h5');
+        if (!headings.length) return;
+        const list = document.createElement('ul');
+        list.className = 'toc-list';
+        headings.forEach((h) => {
+          const id = h.id || h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          if (!h.id) h.id = id || 'section';
+          const li = document.createElement('li');
+          li.className = 'toc-item level-' + h.tagName.toLowerCase();
+          const link = document.createElement('a');
+          link.href = '#' + h.id;
+          link.textContent = h.textContent.trim();
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+        detailToc.innerHTML = '<span class="toc-label">Contents</span>';
+        detailToc.appendChild(list);
+      }
+
+      function updateDetails(item) {
+        setDetailTitle(item.title);
+        setDetailSummary(item.desc || 'No summary available.');
+        setDetailBodyMessage('');
+        const metaLine = [item.year, item.format].filter(Boolean).join(' // ');
+        detailYear.innerText = metaLine;
+        detailYear.style.display = metaLine ? '' : 'none';
+        detailToc.innerHTML = '';
+        // Don't center here - let renderGallery handle it after transition
+        detailTags.innerHTML = item.tags.map((t) => '<span class="detail-tag">' + t + '</span>').join('');
+        detailActions.innerHTML = item.articleSlug
+          ? '<a class="detail-link" href="/projects/' + encodeURIComponent(item.articleSlug) + '/">Open full article</a>'
+          : '';
+        const html = contentCache.get(item.slug) || storedContent.get(item.slug) || '';
+        let cleaned = html ? stripHeaderAndSummary(html) : '';
+        // Enhance markdown rendering
+        cleaned = enhanceMarkdownRendering(cleaned);
+        detailContent.innerHTML = cleaned || '<p>Unable to load this tape right now.</p>';
+        buildToc();
+
+        const section = document.querySelector('.details-section');
+        if (section) {
+          section.style.opacity = 0.5;
+          setTimeout(() => {
+            section.style.opacity = 1;
+          }, 200);
+        }
+      }
+
+      function resetDetails() {
+        setDetailTitle('Select a Project Tape');
+        setDetailSummary('Select a project tape to view its summary.');
+        setDetailBodyMessage('Browse the archive above. Click a project tape to load details.');
+        detailYear.innerText = '';
+        detailYear.style.display = 'none';
+        detailContent.innerHTML = '';
+        detailTags.innerHTML = '';
+        detailActions.innerHTML = '';
+        detailToc.innerHTML = '';
+      }
+
+      document.getElementById('prevBtn').onclick = () => {
+        const filtered = getFilteredData();
+        if (!filtered.length) return;
+        if (activeIndex === -1) {
+          setActiveIndex(filtered.length - 1);
+        } else {
+          setActiveIndex(activeIndex - 1);
+        }
+      };
+      document.getElementById('nextBtn').onclick = () => {
+        const filtered = getFilteredData();
+        if (!filtered.length) return;
+        if (activeIndex === -1) {
+          setActiveIndex(0);
+        } else {
+          setActiveIndex(activeIndex + 1);
+        }
+      };
+
+      loadProjects().then(centerGalleryToMiddle);
+      window.addEventListener('resize', () => {
+        if (activeIndex === -1) {
+          requestAnimationFrame(centerGalleryToMiddle);
+        } else {
+          const activeEl = container?.querySelector('.vhs-item.active');
+          if (activeEl) {
+            requestAnimationFrame(() => centerCard(activeEl));
+          }
+        }
+      });
+    </script>
+</BaseLayout>

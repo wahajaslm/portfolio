@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>massive_mimo_seminar</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="academic-seminar--massive-mu-mimo-downlink-with-linear-precoding-and-downlink-pilots">Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>This seminar explored <strong>Massive Multi-User MIMO</strong> in TDD systems with a focus on:</p>
+<ul>
+<li>Linear precoding (MRT, ZF)</li>
+<li>CSI acquisition</li>
+<li>Beamforming-based downlink training</li>
+<li>Achievable rate analysis</li>
+<li>MATLAB simulations</li>
+</ul>
+<p>This was an <strong>academic research seminar</strong>, not industry work, and provides foundational understanding of
+multi-antenna wireless systems.</p>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Massive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:</p>
+<ul>
+<li>CSI acquisition challenges</li>
+<li>Pilot overhead</li>
+<li>Inter-user interference</li>
+<li>Precoding complexity</li>
+</ul>
+<p>The goal was to evaluate practical training schemes and achievable rate bounds under realistic constraints.</p>
+<hr>
+<h2 id="3-system-components">3. System Components</h2>
+<ul>
+<li>TDD reciprocity</li>
+<li>MMSE channel estimation</li>
+<li>Orthogonal pilot sequences</li>
+</ul>
+<h3 id="2-downlink-beamforming-pilots"><strong>2. Downlink Beamforming Pilots</strong></h3>
+<p>Beamformed pilots help users estimate <strong>effective channel gain</strong>, reducing overhead from M to K.</p>
+<h3 id="3-linear-precoding"><strong>3. Linear Precoding</strong></h3>
+<ul>
+<li>
+<p><strong>MRT (Maximum Ratio Transmission)</strong></p>
+<ul>
+<li>Simple, high SNR behavior</li>
+<li>Poor interference suppression</li>
+</ul>
+</li>
+<li>
+<p><strong>ZF (Zero-Forcing)</strong></p>
+<ul>
+<li>Better interference handling</li>
+<li>Requires more accurate CSI</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-achievable-rate-analysis"><strong>4. Achievable Rate Analysis</strong></h3>
+<p>Analytical lower bounds computed for both precoding schemes.</p>
+<hr>
+<h2 id="4-matlab-simulations">4. MATLAB Simulations</h2>
+<p>Simulated:</p>
+<ul>
+<li>Spectral efficiency vs SNR</li>
+<li>MRT vs ZF comparison</li>
+<li>Genie-aided receiver benchmarks</li>
+<li>Varying coherence intervals</li>
+<li>Impact of imperfect CSI</li>
+</ul>
+<p>Findings:</p>
+<ul>
+<li>ZF outperforms MRT in multi-user settings</li>
+<li>Beamforming training reduces pilot overhead significantly</li>
+<li>Longer coherence intervals improve achievable rates</li>
+</ul>
+<hr>
+<h2 id="5-skills-demonstrated">5. Skills Demonstrated</h2>
+<ul>
+<li>Wireless system modeling</li>
+<li>MATLAB simulation</li>
+<li>Linear algebra for communication systems</li>
+<li>Reading and summarizing research papers</li>
+<li>Understanding spectral efficiency bounds</li>
+</ul>
+<hr>
+<h2 id="6-narration">6. Narration</h2>
+<p>This seminar gave me foundational insight into how large-scale antenna systems operate.
+Although I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence
+in analyzing complex communication systems, which later supported my DSP and engineering mindset.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

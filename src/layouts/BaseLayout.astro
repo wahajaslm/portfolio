@@ -1,0 +1,62 @@
+---
+interface Props {
+  title?: string;
+  bodyClass?: string;
+  activeNav?: 'resume' | 'projects' | 'gpt';
+  wrapMain?: boolean;
+}
+
+const { title = 'Wahaj Aslam', bodyClass = '', activeNav, wrapMain = true } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class={bodyClass}>
+    <header class="top-header">
+      <div class="ribbon-nav">
+        <a href="/" class={`ribbon-link ${activeNav === 'resume' ? 'active' : ''}`}>RESUME</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href="/projects/" class={`ribbon-link ${activeNav === 'projects' ? 'active' : ''}`}>PROJECTS</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href="/mygpt/" class={`ribbon-link ${activeNav === 'gpt' ? 'active' : ''}`}>GPT</a>
+      </div>
+      <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button>
+    </header>
+    {wrapMain ? (
+      <main>
+        <slot />
+      </main>
+    ) : (
+      <slot />
+    )}
+    <script is:inline>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const title = entry.data.title || entry.slug;
+const metaLine = [entry.data.year, entry.data.format].filter(Boolean).join(' // ');
+---
+
+<BaseLayout title={title} bodyClass="projects-page article-page" activeNav="projects">
+  <div class="details-section" style="margin-top: 5rem;">
+    <div class="details-meta">
+      <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a>
+      <span class="label">PROJECT</span>
+      <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">{title}</h2>
+      
+      {metaLine && (
+        <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;">
+          {metaLine}
+        </p>
+      )}
+
+      {entry.data.summary && (
+        <p class="detail-summary" style="margin-bottom: 1rem;">
+          {entry.data.summary}
+        </p>
+      )}
+
+      {entry.data.tags && entry.data.tags.length > 0 && (
+        <div class="detail-tags" style="margin-bottom:1rem;">
+          {entry.data.tags.map((t) => (
+            <span class="detail-tag">{t}</span>
+          ))}
+        </div>
+      )}
+
+      <div id="detailToc" class="detail-toc"></div>
+    </div>
+    <div class="details-body">
+      <div id="detailContent" class="detail-article">
+         <Content />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const detailToc = document.getElementById('detailToc');
+      const detailContent = document.getElementById('detailContent');
+
+      function buildToc() {
+        if (!detailToc || !detailContent) return;
+        detailToc.innerHTML = '';
+        const headings = detailContent.querySelectorAll('h2, h3, h4, h5');
+        if (!headings.length) return;
+        
+        const list = document.createElement('ul');
+        list.className = 'toc-list';
+        
+        headings.forEach((h) => {
+          const id = h.id || h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+          if (!h.id) h.id = id || 'section';
+          
+          const li = document.createElement('li');
+          li.className = 'toc-item level-' + h.tagName.toLowerCase();
+          
+          const link = document.createElement('a');
+          link.href = '#' + h.id;
+          link.textContent = h.textContent.trim();
+          
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+        
+        detailToc.innerHTML = '<span class="toc-label">Contents</span>';
+        detailToc.appendChild(list);
+      }
+
+      buildToc();
+    });
+  </script>
+</BaseLayout>

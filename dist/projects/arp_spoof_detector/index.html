@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>arp_spoof_detector</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="arp-spoof-detector--python-based-network-security-tool">ARP Spoof Detector — Python-Based Network Security Tool</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>The <strong>ARP Spoof Detector</strong> is a Python-based defensive security tool that monitors a local network for
+<strong>ARP poisoning</strong> attacks. ARP spoofing is a common technique used to:</p>
+<ul>
+<li>intercept traffic (Man-in-the-Middle attacks)</li>
+<li>disrupt network connectivity</li>
+<li>impersonate gateway or device IPs</li>
+</ul>
+<p>This tool continuously scans ARP packets, identifies suspicious MAC/IP mismatches, and alerts the user
+in real time.</p>
+<p>It demonstrates:</p>
+<ul>
+<li>network traffic analysis</li>
+<li>ARP protocol understanding</li>
+<li>attack detection logic</li>
+<li>practical cybersecurity engineering</li>
+</ul>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>In ARP spoofing:</p>
+<ul>
+<li>an attacker sends false ARP replies</li>
+<li>associates their MAC with a victim’s IP address</li>
+<li>reroutes or intercepts traffic</li>
+</ul>
+<p>Most devices never verify ARP messages, making the LAN vulnerable.</p>
+<p>The goal of this project:</p>
+<ul>
+<li>detect ARP spoof events quickly</li>
+<li>verify MAC/IP relationships</li>
+<li>warn the user immediately</li>
+<li>run efficiently on typical local networks</li>
+</ul>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Network Traffic → Packet Sniffer → ARP Analyzer → MAC Verification → Alert System</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="components">Components</h3>
+<ol>
+<li>
+<p><strong>Packet Sniffer</strong></p>
+<ul>
+<li>Uses <code>scapy</code> in Python</li>
+<li>Listens for ARP “who-has” and “is-at” packets</li>
+</ul>
+</li>
+<li>
+<p><strong>MAC Verification Engine</strong></p>
+<ul>
+<li>Maintains a trusted MAC–IP mapping table</li>
+<li>Detects changes or inconsistencies</li>
+</ul>
+</li>
+<li>
+<p><strong>Spoof Detection Logic</strong></p>
+<ul>
+<li>Identifies if two different MAC addresses claim the same IP</li>
+<li>Flags if gateway IP is claimed by a non-gateway MAC</li>
+</ul>
+</li>
+<li>
+<p><strong>Alert System</strong></p>
+<ul>
+<li>Console warnings</li>
+<li>Optional logging</li>
+<li>Optional email/SMS alerts (extensible)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h3 id="41-packet-sniffing">4.1 Packet Sniffing</h3>
+<p>Using Scapy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> scapy.all </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> sniff, </span><span style="color:#79B8FF">ARP</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> sniff_packets</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#E1E4E8">    sniff(</span><span style="color:#FFAB70">store</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">prn</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">analyze_packet, </span><span style="color:#FFAB70">filter</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"arp"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="42-arp-analysis-logic">4.2 ARP Analysis Logic</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> analyze_packet</span><span style="color:#E1E4E8">(pkt):</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> pkt.haslayer(</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].op </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">:  </span><span style="color:#6A737D"># ARP Reply</span></span>
+<span class="line"><span style="color:#E1E4E8">        ip </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].psrc</span></span>
+<span class="line"><span style="color:#E1E4E8">        mac </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].hwsrc</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> ip </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> ip_mac_table </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> ip_mac_table[ip] </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> mac:</span></span>
+<span class="line"><span style="color:#E1E4E8">            alert(ip, ip_mac_table[ip], mac)</span></span>
+<span class="line"><span style="color:#F97583">        else</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">            ip_mac_table[ip] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> mac</span></span>
+<span class="line"></span></code></pre>
+<h3 id="43-spoof-detection-conditions">4.3 Spoof Detection Conditions</h3>
+<ul>
+<li><strong>Condition A:</strong> Same IP seen with two different MACs</li>
+<li><strong>Condition B:</strong> Gateway IP claimed by an unknown MAC</li>
+<li><strong>Condition C:</strong> MAC address appears on sudden multiple IPs</li>
+</ul>
+<h3 id="44-alert-function">4.4 Alert Function</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> alert</span><span style="color:#E1E4E8">(ip, original_mac, spoofed_mac):</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"[!] Possible ARP Spoof Detected:"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    IP Address: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">ip</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    Original MAC: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">original_mac</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    Detected MAC: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">spoofed_mac</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="45-performance-considerations">4.5 Performance Considerations</h3>
+<ul>
+<li>Real-time detection with low CPU usage</li>
+<li>Works on Wi-Fi and Ethernet</li>
+<li>No need for packet storage → memory efficient</li>
+</ul>
+<hr>
+<h2 id="5-results">5. Results</h2>
+<ul>
+<li>Successfully detects ARP spoof attempts in real networks</li>
+<li>Works immediately on common networks without special setup</li>
+<li>Detects gateway spoofing (most dangerous case)</li>
+<li>Minimal system resource usage</li>
+<li>Easy to extend into a full IDS module</li>
+</ul>
+<hr>
+<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<ul>
+<li>Python networking</li>
+<li>Packet sniffing using Scapy</li>
+<li>Understanding ARP protocol internals</li>
+<li>Intrusion detection logic</li>
+<li>Pattern recognition for MAC/IP inconsistencies</li>
+<li>Practical cybersecurity tooling</li>
+</ul>
+<hr>
+<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<p>Building this tool gave me hands-on insight into how simple but dangerous ARP spoofing is on typical
+networks. It reinforced:</p>
+<ul>
+<li>the importance of validating assumptions in protocols</li>
+<li>how fragile local network trust systems can be</li>
+<li>how lightweight detection can significantly improve security</li>
+</ul>
+<p>This project strengthened my ability to think like both an attacker <strong>and</strong> a defender — a skill that later
+helped in debugging complex system interactions across networking, DSP, and embedded domains.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

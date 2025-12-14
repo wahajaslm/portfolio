@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portfolio GPT | Wahaj Aslam</title><link rel="stylesheet" href="../styles/global.css"><link rel="stylesheet" href="/_astro/index.CdwNiqR7.css"></head> <body class=""> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link ">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link active">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>   <section id="chat" data-astro-cid-4etzqsph> <hr class="section-divider" data-astro-cid-4etzqsph> <div class="chat-grid" data-astro-cid-4etzqsph> <div class="chat-aside blur-fade" data-astro-cid-4etzqsph> <div class="aside-header" data-astro-cid-4etzqsph> <span data-astro-cid-4etzqsph>Quick Prompts</span> <span class="status-pill" data-astro-cid-4etzqsph><span class="status-dot" data-astro-cid-4etzqsph></span>Online</span> </div> <p style="color: var(--text-muted);" data-astro-cid-4etzqsph>
+Tap a prompt to auto-fill the chat. The assistant references my resume, shipped work, and preferred workflows.
+</p> <div class="prompt-grid" data-astro-cid-4etzqsph> <button class="prompt-chip" onclick="askQuestion('What is your current focus at Fraunhofer IIS?')" data-astro-cid-4etzqsph>Current focus at Fraunhofer</button> <button class="prompt-chip" onclick="askQuestion('Summarize your DSP strengths in one paragraph.')" data-astro-cid-4etzqsph>DSP strengths</button> <button class="prompt-chip" onclick="askQuestion('How do you collaborate with research teams?')" data-astro-cid-4etzqsph>Collaboration style</button> <button class="prompt-chip" onclick="askQuestion('Are you open for new roles or freelance work?')" data-astro-cid-4etzqsph>Availability</button> <button class="prompt-chip" onclick="askQuestion('What performance gains have you delivered recently?')" data-astro-cid-4etzqsph>Recent impact</button> <button class="prompt-chip" onclick="askQuestion('How do you de-risk a new codec feature?')" data-astro-cid-4etzqsph>De-risking approach</button> </div> </div> <div class="chat-widget-wrapper" data-astro-cid-4etzqsph> <div class="chat-header" data-astro-cid-4etzqsph> <div class="chat-status" data-astro-cid-4etzqsph> <div class="status-dot" data-astro-cid-4etzqsph></div> </div> </div> <div class="chat-history" id="chat-history" data-astro-cid-4etzqsph> <div class="message bot" data-astro-cid-4etzqsph> <span class="bot-label" data-astro-cid-4etzqsph>System</span> <div class="message-content" data-astro-cid-4etzqsph>
+Hello! I can answer questions about Wahaj's work, stack, and availability. Ask away.
+</div> </div> </div> <div class="typing-indicator" id="typing-indicator" data-astro-cid-4etzqsph> <div class="typing-dot" data-astro-cid-4etzqsph></div> <div class="typing-dot" data-astro-cid-4etzqsph></div> <div class="typing-dot" data-astro-cid-4etzqsph></div> </div> <div class="chat-input-area" data-astro-cid-4etzqsph> <div class="chat-input-wrapper" data-astro-cid-4etzqsph> <input type="text" class="chat-input" id="user-input" placeholder="Type a question..." autocomplete="off" data-astro-cid-4etzqsph> <div class="input-border" data-astro-cid-4etzqsph></div> </div> <button class="send-btn" id="send-btn" aria-label="Send message" data-astro-cid-4etzqsph> <svg viewBox="0 0 24 24" data-astro-cid-4etzqsph><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" data-astro-cid-4etzqsph></path></svg> </button> </div> </div> </div> </section> <script>
+        // THEME TOGGLE handled in BaseLayout
+
+        const chatHistory = document.getElementById('chat-history');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const typingIndicator = document.getElementById('typing-indicator');
+
+        const knowledgeBase = {
+            'stack': "I specialize in production-grade audio software: C/C++, DSP pipelines, and highly optimized codec work. I ship across ARM/x86 with strong attention to latency, throughput, and memory.",
+            'tech': "Core skills: C/C++, xHE-AAC, MPEG-H 3D Audio, AAC, multithreaded pipelines, CI/CD at scale, and profiling/optimization across targets.",
+            'hire': "I’m open to new opportunities. For contract or roles, share your timeline and platform requirements.",
+            'available': "I’m open to new opportunities. For contract or roles, share your timeline and platform requirements.",
+            'contact': "Best path: email hello@portfolio.dev. I can also sync via LinkedIn or short intro call.",
+            'experience': "8+ years shipping codecs and DSP systems. Recent work: leading Next-Generation Audio features at Fraunhofer IIS, improving performance and reliability in production deployments.",
+            'collaborate': "I pair closely with research and product teams—agree on acceptance signals, de-risk with prototypes, and harden with profiling, CI, and staged rollouts.",
+            'default': "Happy to help. Ask about stack, shipped work, availability, or how I de-risk new features."
+        };
+
+        function scrollToBottom() {
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message user';
+            msgDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            chatHistory.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function addBotMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message bot';
+
+            const label = document.createElement('span');
+            label.className = 'bot-label';
+            label.innerText = 'AI Model';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+
+            msgDiv.appendChild(label);
+            msgDiv.appendChild(contentDiv);
+            chatHistory.appendChild(msgDiv);
+
+            const words = text.split(/(\s+)/);
+            let delay = 0;
+            const baseDelay = 45;
+
+            words.forEach((word) => {
+                const span = document.createElement('span');
+                if (word.includes('**')) {
+                    span.innerHTML = word.replace(/\*\*/g, '');
+                    span.style.color = 'var(--accent)';
+                    span.style.fontWeight = 'bold';
+                } else {
+                    span.textContent = word;
+                }
+                span.className = 'word-fade';
+                if (!/^\s+$/.test(word)) {
+                    span.style.marginRight = '0.2em';
+                }
+                contentDiv.appendChild(span);
+                setTimeout(() => {
+                    span.classList.add('visible');
+                    scrollToBottom();
+                }, delay);
+                delay += baseDelay + (Math.random() * 30);
+            });
+        }
+
+        function handleInput() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            addUserMessage(text);
+            userInput.value = '';
+
+            typingIndicator.classList.add('active');
+            scrollToBottom();
+
+            setTimeout(() => {
+                typingIndicator.classList.remove('active');
+                const lowerText = text.toLowerCase();
+                let response = knowledgeBase['default'];
+                for (const key in knowledgeBase) {
+                    if (lowerText.includes(key)) {
+                        response = knowledgeBase[key];
+                        break;
+                    }
+                }
+                addBotMessage(response);
+            }, 900 + Math.random() * 700);
+        }
+
+        window.askQuestion = function(q) {
+            userInput.value = q;
+            handleInput();
+        };
+
+        sendBtn.addEventListener('click', handleInput);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleInput(); });
+
+        setTimeout(() => { document.querySelector('.mask-reveal')?.classList.add('active'); }, 100);
+    </script>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

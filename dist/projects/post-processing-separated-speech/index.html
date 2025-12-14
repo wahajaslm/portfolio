@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Post-Processing Separated Speech</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Master Thesis // Project Archive</p> <div class="article-body"> <h1 id="master-thesis--speech-bandwidth-extension-using-non-linear-post-processing">Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>This thesis focused on reconstructing <strong>wideband speech</strong> from narrowband (telephone-band) input
+using <strong>non-linear post-processing</strong>, <strong>excitation modelling</strong>, and <strong>spectral envelope reconstruction</strong>.
+The goal was to increase perceived bandwidth, restore brightness, and improve naturalness <strong>without</strong>
+requiring changes to the encoder or any side information.</p>
+<p>The work brought together:</p>
+<ul>
+<li>Digital signal processing theory (LPC, source–filter models)</li>
+<li>Practical system design</li>
+<li>MATLAB &#x26; Python prototyping</li>
+<li>Perceptual audio evaluation and tuning</li>
+<li>Iterative refinement based on listening tests and spectral analysis</li>
+</ul>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Traditional narrowband speech (0–4 kHz) loses:</p>
+<ul>
+<li>High-frequency harmonics</li>
+<li>Brightness and “air”</li>
+<li>Natural articulation cues</li>
+<li>Wideband timbral characteristics</li>
+</ul>
+<p>The challenge is reconstructing plausible high-band components <strong>from missing information</strong>, not noisy
+information. This is fundamentally an <strong>ill-posed inverse problem</strong>, requiring:</p>
+<ul>
+<li>Excitation generation</li>
+<li>Envelope reconstruction</li>
+<li>Stability against artifacts</li>
+<li>Low computational cost</li>
+</ul>
+<p>Goal:<br>
+Produce <strong>wideband-like speech</strong> that is perceptually convincing and spectrally coherent.</p>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<p>The thesis designed a processing chain consisting of:</p>
+<h3 id="1-narrowband-analysis"><strong>(1) Narrowband Analysis</strong></h3>
+<ul>
+<li>Pre-emphasis</li>
+<li>Windowing</li>
+<li>LPC analysis (10–14th order)</li>
+<li>Extraction of the excitation signal</li>
+</ul>
+<h3 id="2-excitation-modelling"><strong>(2) Excitation Modelling</strong></h3>
+<p>Tested approaches included:</p>
+<ul>
+<li>Non-linear expansion</li>
+<li>Odd/even harmonic generation</li>
+<li>Sign-preserving power functions</li>
+<li>Spectral folding</li>
+<li>Blended excitation shaping</li>
+</ul>
+<p>The final system used <strong>non-linear excitation expansion</strong> with a <strong>high-band shaping filter</strong>.</p>
+<h3 id="3-envelope-reconstruction"><strong>(3) Envelope Reconstruction</strong></h3>
+<p>Methods explored:</p>
+<ul>
+<li>LPC envelope extrapolation</li>
+<li>High-band envelope smoothing</li>
+<li>Adaptive energy matching</li>
+<li>Band-tilting adjustments</li>
+</ul>
+<h3 id="4-synthesis"><strong>(4) Synthesis</strong></h3>
+<ul>
+<li>Excitation filtering using reconstructed LPC coefficients</li>
+<li>Overlap–add synthesis</li>
+<li>Envelope smoothing and final spectral correction</li>
+</ul>
+<hr>
+<h2 id="4-block-diagram-textual">4. Block Diagram (Textual)</h2>
+<p>Narrowband Speech
+↓
+Analysis
+(LPC, excitation)
+↓
+Non-linear Excitation Expansion
+↓
+High-band Spectral Shaping
+↓
+Envelope Reconstruction
+↓
+Synthesis
+↓
+Enhanced Wideband-like Speech</p>
+<hr>
+<h2 id="5-implementation-details">5. Implementation Details</h2>
+<h3 id="matlab-prototyping">MATLAB Prototyping</h3>
+<ul>
+<li>LPC extraction (autocorrelation &#x26; Burg methods)</li>
+<li>Excitation expansion experiments</li>
+<li>Envelope smoothing filters</li>
+<li>Spectral envelope visualization</li>
+<li>Objective metrics:
+<ul>
+<li>log-spectral distance (LSD)</li>
+<li>harmonic envelope deviation</li>
+</ul>
+</li>
+</ul>
+<h3 id="python-experiments">Python Experiments</h3>
+<ul>
+<li>Rapid testing of excitation functions</li>
+<li>Plotting envelope differences</li>
+<li>Generating spectrograms and comparison views</li>
+<li>Automating batch evaluation sets</li>
+</ul>
+<hr>
+<h2 id="6-evaluation-strategy">6. Evaluation Strategy</h2>
+<h3 id="objective-measures">Objective Measures</h3>
+<ul>
+<li>High-band energy reconstruction accuracy</li>
+<li>Envelope shape similarity</li>
+<li>Temporal smoothness</li>
+</ul>
+<h3 id="perceptual-evaluation">Perceptual Evaluation</h3>
+<p>Performed <strong>A/B and A/B/X listening tests</strong> on:</p>
+<ul>
+<li>Male + female speech</li>
+<li>Different languages</li>
+<li>Varied articulation patterns</li>
+<li>Clean vs. challenging content</li>
+</ul>
+<p>Artifacts tracked and tuned:</p>
+<ul>
+<li>Metallic ringing</li>
+<li>Whistle-like tones</li>
+<li>Synthetic “hiss”</li>
+<li>Harsh high-frequency energy</li>
+<li>Energy mismatch between narrowband and high-band</li>
+</ul>
+<p><strong>Perceptual testing was essential</strong> — many methods that looked good numerically produced
+unacceptable artifacts during listening.</p>
+<hr>
+<h2 id="7-key-results">7. Key Results</h2>
+<ul>
+<li>Reconstructed high-band content <strong>significantly improved</strong> perceived brightness and clarity.</li>
+<li>Non-linear excitation + spectral shaping produced stable and natural-sounding results.</li>
+<li>High-band envelope reconstruction matched reference wideband behavior well.</li>
+<li>Objective and subjective evaluations aligned closely after tuning.</li>
+</ul>
+<hr>
+<h2 id="8-skills-demonstrated">8. Skills Demonstrated</h2>
+<h3 id="dsp-expertise">DSP Expertise</h3>
+<ul>
+<li>LPC modelling</li>
+<li>Excitation generation</li>
+<li>Non-linear processing</li>
+<li>Envelope shaping</li>
+<li>Filter design</li>
+<li>Time–frequency analysis</li>
+</ul>
+<h3 id="prototyping-skills">Prototyping Skills</h3>
+<ul>
+<li>MATLAB algorithm development</li>
+<li>Python batch experiments + visualization</li>
+<li>Handling multi-file evaluation pipelines</li>
+</ul>
+<h3 id="perceptual-engineering">Perceptual Engineering</h3>
+<ul>
+<li>Systematic listening test methodology</li>
+<li>Artifact identification</li>
+<li>Iterative tuning based on perceptual + spectral evidence</li>
+</ul>
+<h3 id="research--documentation">Research &#x26; Documentation</h3>
+<ul>
+<li>Reproducible experiments</li>
+<li>Clear reporting of results</li>
+<li>Scientific and engineering communication</li>
+</ul>
+<hr>
+<h2 id="9-narration--personal-reflection">9. Narration / Personal Reflection</h2>
+<p>This thesis shaped my understanding of audio engineering at a deep level.<br>
+I learned that:</p>
+<ul>
+<li>A mathematically “correct” algorithm may still sound terrible.</li>
+<li>Spectral plots, excitation behavior, and envelopes must align with what listeners perceive.</li>
+<li>Perceptual tuning is a <strong>core part of DSP</strong>, not an afterthought.</li>
+</ul>
+<p>The project taught me to think simultaneously like a:</p>
+<ul>
+<li><strong>scientist</strong> (theory, modelling)</li>
+<li><strong>engineer</strong> (system design, prototyping)</li>
+<li><strong>listener</strong> (perception, artifacts, tuning)</li>
+</ul>
+<p>This balance between <strong>math, engineering, and human hearing</strong> continues to define how I approach
+audio, DSP, and media systems today.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

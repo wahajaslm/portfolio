@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>multihop_wireless_warp_prototyping</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="multi-hop-wireless-prototyping-with-warp-sdr">Multi-Hop Wireless Prototyping with WARP SDR</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>This project involved building a <strong>research-grade multi-hop wireless prototyping system</strong> using:</p>
+<ul>
+<li><strong>WARP SDR boards</strong></li>
+<li><strong>MATLAB visualization tools</strong></li>
+<li><strong>Custom data parsing and analysis scripts</strong></li>
+</ul>
+<p>The aim was to allow researchers and students to <strong>see and understand</strong> how packets propagate through
+multi-hop and cooperative communication networks under real wireless conditions.</p>
+<p>The project unified:</p>
+<ul>
+<li>SDR experimentation</li>
+<li>Wireless communication theory</li>
+<li>Data visualization</li>
+<li>MATLAB GUI development</li>
+<li>Research methodology</li>
+</ul>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Multi-hop wireless networks behave far differently in practice than in theoretical models.<br>
+Difficulties include:</p>
+<ul>
+<li>unpredictable packet drops</li>
+<li>timing misalignments between relays</li>
+<li>asymmetric link quality</li>
+<li>non-intuitive hop progression</li>
+<li>unclear forwarding behaviors in coded vs. uncoded relays</li>
+</ul>
+<p>Raw logs alone make these behaviors <strong>very hard to understand</strong>.</p>
+<p>Researchers needed:</p>
+<p>✔ A visualization tool<br>
+✔ Real-time or near-real-time feedback<br>
+✔ Clear multi-hop path reconstruction<br>
+✔ Comparison between forwarding schemes</p>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<h3 id="1-warp-sdr-nodes"><strong>(1) WARP SDR Nodes</strong></h3>
+<p>Roles included:</p>
+<ul>
+<li>Source</li>
+<li>One or more relays</li>
+<li>Destination</li>
+</ul>
+<p>Nodes were configured to run experiments on cooperative relaying and multi-hop forwarding.</p>
+<h3 id="2-experiment-logging"><strong>(2) Experiment Logging</strong></h3>
+<p>Each WARP node logged:</p>
+<ul>
+<li>packet arrivals</li>
+<li>MAC/PHY timing</li>
+<li>hop counts</li>
+<li>relay decisions</li>
+<li>RSSI / link quality indicators</li>
+</ul>
+<h3 id="3-matlab-data-interface"><strong>(3) MATLAB Data Interface</strong></h3>
+<p>A MATLAB module was written to:</p>
+<ul>
+<li>import logs</li>
+<li>parse timestamps</li>
+<li>synchronize node records</li>
+<li>reconstruct packet paths</li>
+<li>compute per-hop statistics</li>
+</ul>
+<h3 id="4-matlab-visualization-gui"><strong>(4) MATLAB Visualization GUI</strong></h3>
+<p>Custom GUI displayed:</p>
+<ul>
+<li>node topology</li>
+<li>live or replayed packet flow</li>
+<li>hop progression animation</li>
+<li>RSSI bars</li>
+<li>coded vs. uncoded performance difference</li>
+<li>timelines and link behavior</li>
+</ul>
+<hr>
+<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h3 id="matlab-parsing-logic">MATLAB Parsing Logic</h3>
+<ul>
+<li>Parsed CSV/log files from each node</li>
+<li>Mapped packet IDs → forwarding chain</li>
+<li>Detected losses and duplicates</li>
+<li>Aligned timestamps across nodes</li>
+<li>Constructed directed graphs of packet movement</li>
+</ul>
+<h3 id="gui-modules">GUI Modules</h3>
+<ul>
+<li><strong>Topology View</strong>: nodes arranged visually, routing lines updated dynamically</li>
+<li><strong>Hop Timeline</strong>: how many hops a packet took across time</li>
+<li><strong>RSSI Panel</strong>: color-coded link quality</li>
+<li><strong>Per-packet Playback</strong>: replay packet propagation step-by-step</li>
+</ul>
+<h3 id="sdr-experiment-configuration">SDR Experiment Configuration</h3>
+<ul>
+<li>Configured transmit power</li>
+<li>Selected carrier frequency</li>
+<li>Adjusted PHY parameters</li>
+<li>Collected logs in controlled and noisy environments</li>
+</ul>
+<h3 id="data-analysis-scripts">Data Analysis Scripts</h3>
+<ul>
+<li>computed per-hop success rates</li>
+<li>compared coded vs uncoded forwarding reliability</li>
+<li>plotted latency distributions</li>
+<li>identified link asymmetries</li>
+</ul>
+<hr>
+<h2 id="5-key-findings">5. Key Findings</h2>
+<p>The visualization revealed behaviors that were NOT obvious from theory:</p>
+<ul>
+<li><strong>Relay–destination links behaved asymmetrically</strong>, causing unexpected drops</li>
+<li><strong>Coded forwarding improved robustness</strong>, especially under low SNR</li>
+<li><strong>Timing misalignment</strong> between relays caused packet duplication or premature discard</li>
+<li><strong>Hop count fluctuated dynamically</strong>, depending on the wireless environment</li>
+</ul>
+<p>Graphs and animations provided immediate intuition about the multi-hop behavior that traditional logs
+and equations could not convey.</p>
+<hr>
+<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<h3 id="wireless-communication-engineering">Wireless Communication Engineering</h3>
+<ul>
+<li>Understanding of multi-hop and cooperative relaying</li>
+<li>SDR hardware handling</li>
+<li>Wireless measurement interpretation</li>
+</ul>
+<h3 id="matlab-engineering">MATLAB Engineering</h3>
+<ul>
+<li>GUI development</li>
+<li>Data parsing / cleaning</li>
+<li>Signal visualization</li>
+<li>Experiment automation</li>
+</ul>
+<h3 id="research-workflow-skills">Research Workflow Skills</h3>
+<ul>
+<li>Experiment design</li>
+<li>Interpretation of real channel behaviors</li>
+<li>Presenting wireless concepts visually</li>
+</ul>
+<h3 id="systems-thinking">Systems Thinking</h3>
+<ul>
+<li>Bridging hardware measurements → interpretable information</li>
+<li>Making complex wireless behavior intuitive</li>
+</ul>
+<hr>
+<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<p>This project was my first experience in turning <strong>raw wireless behavior</strong> into <strong>visual insight</strong>.</p>
+<p>I realized:</p>
+<ul>
+<li>Real channels don’t behave like textbook channels</li>
+<li>Logs are meaningless without visualization</li>
+<li>Timing mismatches and asymmetric links dominate multi-hop performance</li>
+<li>Visualization accelerates research understanding dramatically</li>
+</ul>
+<p>The project strengthened my skills in combining <strong>engineering rigor</strong>, <strong>experimental thinking</strong>, and
+<strong>visual communication</strong>, which later translated directly into how I approach debugging and system
+analysis in DSP and audio engineering.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

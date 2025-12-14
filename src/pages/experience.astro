@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const experiences = await Promise.all(
+  (await getCollection('experience')).map(async (entry) => ({
+    entry,
+    rendered: await entry.render()
+  }))
+);
+---
+
+<BaseLayout title="Experience" activeNav="resume">
+  <section class="article-shell">
+    <p class="label">// EXPERIENCE</p>
+    {experiences.map(({ entry, rendered }) => (
+      <article style="margin-bottom:3rem;">
+        <rendered.Content />
+      </article>
+    ))}
+  </section>
+</BaseLayout>

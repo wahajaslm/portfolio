@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Experience</title><link rel="stylesheet" href="../styles/global.css"></head> <body class=""> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link active">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link ">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <section class="article-shell"> <p class="label">// EXPERIENCE</p> <article style="margin-bottom:3rem;"> <h1 id="fraunhofer-iis--audio--dsp-engineer">Fraunhofer IIS – Audio &#x26; DSP Engineer</h1>
+<h2 id="role-summary">Role Summary</h2>
+<p>At Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio
+codecs such as MPEG-H 3D Audio and xHE-AAC. The work combined:</p>
+<ul>
+<li><strong>C-based DSP and systems engineering</strong></li>
+<li><strong>Modern C++ integration and tooling</strong></li>
+<li><strong>Python-based evaluation and automation</strong></li>
+<li><strong>Critical listening and artifact analysis</strong></li>
+<li><strong>Streaming-oriented validation</strong> of encoder behavior in ecosystems used by major platforms like<br>
+<strong>Netflix, Amazon Music, YouTube, and Microsoft</strong> (public ecosystem level, not confidential).</li>
+</ul>
+<p>This role forced me to think end-to-end: from a line of C code in a DSP block to how that change
+affects perceived quality in a streaming scenario.</p>
+<hr>
+<h2 id="key-responsibilities-non-confidential">Key Responsibilities (Non-Confidential)</h2>
+<h3 id="1-dsp--system-level-development-in-c">1. DSP &#x26; System-Level Development in C</h3>
+<ul>
+<li>Implemented and maintained performance-critical C modules used in internal encoder / toolchain flows.</li>
+<li>Worked on signal-path logic, buffer management, state handling, and configuration-dependent behavior.</li>
+<li>Ensured stability and determinism across multiple operating modes and platforms.</li>
+</ul>
+<h3 id="2-modern-c-tools--media-integration-mft">2. Modern C++ Tools &#x26; Media Integration (MFT)</h3>
+<ul>
+<li>Developed C++ utilities and test applications around encoders/decoders.</li>
+<li>Integrated components into <strong>Microsoft Windows Media Foundation (MFT)</strong> to simulate realistic playback /
+processing pipelines.</li>
+<li>Built small frameworks / harnesses for automated end-to-end tests in media-like environments.</li>
+</ul>
+<h3 id="3-streaming-oriented-encoder-validation">3. Streaming-Oriented Encoder Validation</h3>
+<ul>
+<li>Supported test flows that mirror <strong>streaming use cases</strong>:
+<ul>
+<li>ABR-style bitrate ladders</li>
+<li>Segment-based encoding behavior</li>
+<li>Consistency across renditions and presets</li>
+<li>Handling of metadata / loudness / configuration changes</li>
+</ul>
+</li>
+<li>Participated in internal evaluations that reflect usage by major streaming platforms<br>
+(e.g. Netflix, Amazon Music, YouTube, Microsoft – as publicly associated with these codecs).</li>
+</ul>
+<h3 id="4-python-automation--evaluation-frameworks">4. Python Automation &#x26; Evaluation Frameworks</h3>
+<ul>
+<li>Wrote Python scripts to:
+<ul>
+<li>run batch encoder evaluations,</li>
+<li>compare different builds / presets,</li>
+<li>generate plots and numerical summaries,</li>
+<li>manage input/output sets for regression testing.</li>
+</ul>
+</li>
+<li>Automated repetitive tasks (e.g. multiple bitrate runs, content sets, preset combinations) to make
+evaluation more systematic and less manual.</li>
+</ul>
+<h3 id="5-cicd--engineering-operations">5. CI/CD &#x26; Engineering Operations</h3>
+<ul>
+<li>Contributed to <strong>GitLab CI</strong> pipelines to ensure regular automated builds and tests.</li>
+<li>Used Bash/Python glue to orchestrate multi-stage test jobs and artifact handling.</li>
+<li>Helped improve reliability of the evaluation pipeline over time.</li>
+</ul>
+<hr>
+<h2 id="critical-listening--perceptual-analysis">Critical Listening &#x26; Perceptual Analysis</h2>
+<h3 id="6-critical-listening--artifact-detection">6. Critical Listening &#x26; Artifact Detection</h3>
+<ul>
+<li>Spent <strong>hundreds of hours</strong> in structured listening sessions across speech, music and complex content.</li>
+<li>Developed the ability to detect and classify artifacts such as:
+<ul>
+<li>pre-echo</li>
+<li>transient smearing</li>
+<li>metallic ringing / “metallic” voices</li>
+<li>spectral holes / narrowband notches</li>
+<li>high-band / low-band tone mismatch</li>
+<li>roughness / hiss / “synthetic” timbre</li>
+<li>stereo image instability or collapse</li>
+</ul>
+</li>
+<li>Learned to connect what I heard to what I saw in:
+<ul>
+<li>spectrograms (Adobe Audition, Python/MATLAB plots),</li>
+<li>waveforms,</li>
+<li>difference signals and diagnostic views.</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-audio-analysis-tools--workflow">7. Audio Analysis Tools &#x26; Workflow</h3>
+<p>Regularly used:</p>
+<ul>
+<li><strong>Adobe Audition</strong> – spectrograms, transient analysis, zooming into problem regions.</li>
+<li><strong>FFmpeg</strong> – transcoding, re-encoding, ABR ladder generation, waveform extraction, segmenting.</li>
+<li><strong>MediaInfo</strong> – checking codec configuration, bitrate, channel layouts, and container info.</li>
+<li><strong>Python/MATLAB</strong> – custom plots (LPC envelopes, spectral envelopes, error curves, etc.).</li>
+<li>Internal waveform / spectrum tools to localize issues and verify fixes.</li>
+</ul>
+<p>This toolchain became my standard way to <strong>triangulate</strong> issues: listen → visualize → inspect metadata →
+adjust DSP logic or configuration.</p>
+<hr>
+<h2 id="achievements">Achievements</h2>
+<ul>
+<li>
+<p><strong>Perceptual Quality Safeguard</strong><br>
+Identified subtle artifacts in internal evaluation runs (for specific content types and bitrates) that were
+not obvious from metrics alone, helping prevent regressions from progressing further.</p>
+</li>
+<li>
+<p><strong>Streaming-Aligned Testing</strong><br>
+Contributed to testing setups that better reflected how encoders behave in streaming-style usage<br>
+(bitrates, segments, switching scenarios), improving confidence for ecosystem deployments involving
+platforms like Netflix, Amazon Music, YouTube, and Microsoft.</p>
+</li>
+<li>
+<p><strong>Evaluation Pipeline Reliability</strong><br>
+Helped stabilize Python-driven evaluation flows and CI jobs so that larger sets of tests could run more
+reliably without manual babysitting.</p>
+</li>
+<li>
+<p><strong>Cross-Domain Intuition</strong><br>
+Built strong intuition linking:</p>
+<ul>
+<li>mathematical changes in DSP modules,</li>
+<li>visual patterns in spectrograms / plots,</li>
+<li>and final perceptual outcomes.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="narration--stories">Narration / Stories</h2>
+<h3 id="story--when-a-small-change-became-a-big-artifact">Story – When a Small Change Became a Big Artifact</h3>
+<p>A small change in one block produced a faint but irritating metallic ringing only on specific female
+vocals with strong high-frequency content. On paper the change looked harmless; metrics hardly moved.
+But listening exposed a clear regression. Looking at spectrograms showed a narrowband spike that lined
+up exactly with what I heard. That moment reinforced a key lesson: <strong>perception is the final judge</strong>, not
+just numbers.</p>
+<h3 id="story--thinking-like-a-streaming-engineer-not-just-a-dsp-engineer">Story – Thinking Like a Streaming Engineer, Not Just a DSP Engineer</h3>
+<p>Working on streaming-oriented tests forced me to care about:</p>
+<ul>
+<li>how the encoder behaves across an ABR ladder,</li>
+<li>what happens when bitrates switch,</li>
+<li>how metadata and loudness are preserved,
+not just how “clean” a single coded file sounds under ideal conditions. That shifted my mindset from
+pure DSP to <strong>system-level media engineering</strong>.</li>
+</ul>
+<hr> </article><article style="margin-bottom:3rem;"> <h1 id="tu-darmstadt--research-assistant-hiwi">TU Darmstadt – Research Assistant (HiWi)</h1>
+<h2 id="role-summary">Role Summary</h2>
+<p>As a research assistant in wireless communications, I supported experiments using <strong>WARP SDR</strong> and
+developed <strong>MATLAB visualization tools</strong> to understand multi-hop and cooperative wireless behavior.
+The role sat between research and engineering: turning equations and concepts into real measurements
+and plots.</p>
+<hr>
+<h2 id="responsibilities">Responsibilities</h2>
+<ul>
+<li>Developed MATLAB GUIs to visualize multi-hop paths, relay behavior and packet flows.</li>
+<li>Helped set up and run WARP-based experiments (cooperative forwarding, multi-hop chains).</li>
+<li>Wrote analysis scripts (MATLAB / Python) to interpret logs and timing data.</li>
+<li>Assisted with preparing figures and structured results for academic use.</li>
+</ul>
+<hr>
+<h2 id="achievements">Achievements</h2>
+<ul>
+<li>Delivered visualization tools that other students / researchers could use to understand multi-hop
+experiments more intuitively.</li>
+<li>Helped make experiments more <strong>repeatable</strong>: clearer logging, structured scripts, and consistent setups.</li>
+</ul>
+<hr>
+<h2 id="narration">Narration</h2>
+<p>This work made wireless systems more “real” for me. Instead of only thinking in terms of channel matrices
+and equations, I could see how packets and relays actually behaved in practice. It also taught me that
+even research tools benefit from basic engineering discipline—if others are going to use a script or GUI,
+it needs to be structured and understandable.</p> </article><article style="margin-bottom:3rem;"> <h1 id="u-blox--lte-nas-engineer">u-blox – LTE NAS Engineer</h1>
+<h2 id="role-summary">Role Summary</h2>
+<p>At u-blox, I worked as an Embedded Protocol Engineer on <strong>LTE NAS (Non-Access Stratum)</strong> for cellular
+modules. The work was centered around <strong>C-based state machines</strong>, <strong>3GPP-compliant signaling</strong>, and
+<strong>trace-driven debugging</strong> for attach / detach / mobility / security procedures.</p>
+<hr>
+<h2 id="key-responsibilities">Key Responsibilities</h2>
+<h3 id="1-nas-state-machine-development-in-c">1. NAS State Machine Development in C</h3>
+<ul>
+<li>Implemented and maintained LTE NAS procedures:
+<ul>
+<li>attach / detach,</li>
+<li>tracking area update (TAU),</li>
+<li>basic mobility-related signaling.</li>
+</ul>
+</li>
+<li>Followed relevant 3GPP specs for message formats, timers and expected state transitions.</li>
+<li>Handled error paths and corner cases that arise in real networks.</li>
+</ul>
+<h3 id="2-mobility--security-flows">2. Mobility &#x26; Security Flows</h3>
+<ul>
+<li>Contributed to security-related NAS flows (e.g. security mode procedures) at a high level.</li>
+<li>Ensured correct interaction with mobility procedures so the device behaves predictably as it moves
+across cells / regions.</li>
+</ul>
+<h3 id="3-at-command-integration">3. AT Command Integration</h3>
+<ul>
+<li>Mapped NAS procedures to AT commands used by external control (e.g. attach control, network info).</li>
+<li>Ensured AT behavior was consistent and predictable for integrators.</li>
+</ul>
+<h3 id="4-trace-based-debugging--automation">4. Trace-Based Debugging &#x26; Automation</h3>
+<ul>
+<li>Analyzed NAS traces and logging output to find where and why flows broke.</li>
+<li>Used Python and simple scripts to replay or post-process traces and verify changes.</li>
+</ul>
+<hr>
+<h2 id="achievements">Achievements</h2>
+<ul>
+<li>
+<p><strong>Improved NAS Stability</strong><br>
+Helped fix issues in NAS flows (e.g. attach / TAU behavior) based on trace findings, reducing failure cases.</p>
+</li>
+<li>
+<p><strong>Better Debugging Workflows</strong><br>
+Contributed scripts / approaches to make investigating signaling problems faster and more systematic.</p>
+</li>
+</ul>
+<hr>
+<h2 id="narration">Narration</h2>
+<p>This role trained me to think in <strong>state machines and protocol flows</strong>. You can’t just “hack something in”
+when dealing with NAS—one missing transition or mishandled timer can break connectivity. The habit of
+reading traces carefully and mapping them back to code paths carried over to my later work in DSP and
+media, where failures are also often indirect and subtle.</p> </article> </section>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

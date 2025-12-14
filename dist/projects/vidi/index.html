@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Vidi — Low-Latency Pitch Tool</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Audio Tool // Project Archive</p> <div class="article-body"> <h1 id="vidi--low-latency-reliable-pitch-detection--pitch-shifting-tool">VIDI — Low-Latency, Reliable Pitch Detection &#x26; Pitch-Shifting Tool</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p><strong>VIDI</strong> is a real-time pitch detection and pitch-shifting tool designed for musicians who need<br>
+<strong>fast, stable, low-latency pitch tracking</strong> — even in noisy rooms or during rapid melodic passages.</p>
+<p>Instead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide
+confidence-weighted pitch estimates that:</p>
+<ul>
+<li><strong>lock quickly</strong>,</li>
+<li><strong>don’t drift</strong>,</li>
+<li><strong>remain stable under noise</strong>, and</li>
+<li><strong>produce natural, musical pitch shifts</strong> without chipmunk artifacts.</li>
+</ul>
+<p>It was built with <strong>Core Audio</strong> and <strong>vDSP</strong>, optimized for <strong>mobile-class hardware</strong> with strict
+latency and performance constraints.</p>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Musicians need pitch tools that work <strong>live</strong>, not only in ideal studio conditions.<br>
+Most existing systems fail in at least one area:</p>
+<ul>
+<li>too sensitive to noise</li>
+<li>unstable on fast notes</li>
+<li>slow lock-in time</li>
+<li>robotic or chipmunk-like pitch shifts</li>
+<li>MIDI output that drifts under load</li>
+</ul>
+<p>VIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion.</p>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Incoming Audio  </span></span>
+<span class="line"><span>      ↓  </span></span>
+<span class="line"><span>Frame Processing (Core Audio)  </span></span>
+<span class="line"><span>      ↓  </span></span>
+<span class="line"><span>Parallel Pitch Estimators (AMDF / Autocorrelation / HPS)  </span></span>
+<span class="line"><span>      ↓  </span></span>
+<span class="line"><span>Confidence Fusion Engine  </span></span>
+<span class="line"><span>      ↓  </span></span>
+<span class="line"><span>Formant-Aware Pitch Shifting  </span></span>
+<span class="line"><span>      ↓  </span></span>
+<span class="line"><span>Low-Latency MIDI Output  </span></span>
+<span class="line"><span></span></span></code></pre>
+<hr>
+<h2 id="4-key-dsp-components">4. Key DSP Components</h2>
+<h3 id="41-parallel-pitch-detection-engines"><strong>4.1 Parallel Pitch Detection Engines</strong></h3>
+<p>VIDI runs three pitch detectors concurrently:</p>
+<h4 id="1-amdf-average-magnitude-difference-function">(1) <strong>AMDF (Average Magnitude Difference Function)</strong></h4>
+<ul>
+<li>Excellent for fast passages</li>
+<li>Good resolution for monophonic signals</li>
+<li>Works well in noisy conditions</li>
+</ul>
+<h4 id="2-autocorrelation">(2) <strong>Autocorrelation</strong></h4>
+<ul>
+<li>Stable periodicity detection</li>
+<li>Helps reduce octave errors</li>
+<li>Provides reliable fundamentals</li>
+</ul>
+<h4 id="3-harmonic-product-spectrum-hps">(3) <strong>Harmonic Product Spectrum (HPS)</strong></h4>
+<ul>
+<li>FFT-based approach using harmonic reinforcement</li>
+<li>Useful for strong harmonic structures</li>
+<li>Helps refine ambiguous pitch regions</li>
+</ul>
+<hr>
+<h3 id="42-confidence-weighted-fusion"><strong>4.2 Confidence-Weighted Fusion</strong></h3>
+<p>Results are combined using a confidence score per method:</p>
+<ul>
+<li>consistency across methods</li>
+<li>signal periodicity</li>
+<li>harmonic energy distribution</li>
+<li>AMDF minima stability</li>
+<li>autocorrelation peak clarity</li>
+</ul>
+<p>The fusion engine outputs a <strong>single, stable pitch value</strong> resistant to noise and instability.</p>
+<hr>
+<h2 id="5-low-latency-architecture">5. Low-Latency Architecture</h2>
+<h3 id="core-audio--vdsp-pipeline"><strong>Core Audio + vDSP Pipeline</strong></h3>
+<p>VIDI uses:</p>
+<ul>
+<li><strong>Core Audio render callbacks</strong> for sub-10 ms frame processing</li>
+<li><strong>vDSP FFTs</strong> for spectral methods</li>
+<li>Hot loop optimizations:
+<ul>
+<li>inlining critical operations</li>
+<li>avoiding unnecessary heap allocations</li>
+<li>tight C loops for AMDF</li>
+<li>vectorized operations where beneficial</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance-targets">Performance Targets</h3>
+<ul>
+<li><strong>Frame size:</strong> 64–128 samples</li>
+<li><strong>Latency budget:</strong> configurable, typically 10–20 ms end-to-end</li>
+<li><strong>CPU footprint:</strong> optimized for mobile processors</li>
+</ul>
+<hr>
+<h2 id="6-formant-aware-pitch-shifting">6. Formant-Aware Pitch Shifting</h2>
+<p>Standard pitch shifting introduces:</p>
+<ul>
+<li>chipmunk vocals</li>
+<li>unnatural brightness</li>
+<li>timbre distortion</li>
+</ul>
+<p>VIDI avoids this with:</p>
+<ul>
+<li><strong>formant tracking</strong></li>
+<li><strong>spectral envelope estimation</strong></li>
+<li><strong>formant-preserving warping</strong></li>
+<li>blending PSOLA-like and phase-vocoder concepts</li>
+</ul>
+<p>Result: <strong>natural, human-sounding pitch shifts</strong>, even at large intervals.</p>
+<hr>
+<h2 id="7-midi-output-engine">7. MIDI Output Engine</h2>
+<p>VIDI generates highly stable MIDI output:</p>
+<ul>
+<li>configurable smoothing</li>
+<li>hysteresis to reduce jitter</li>
+<li>velocity modeling based on onset detection</li>
+<li>guarantee of no timing drift under CPU load</li>
+</ul>
+<p>Compatible with:</p>
+<ul>
+<li>Ableton Live</li>
+<li>Logic Pro</li>
+<li>FL Studio</li>
+<li>Max/MSP</li>
+<li>Hardware synthesizers</li>
+</ul>
+<hr>
+<h2 id="8-results">8. Results</h2>
+<p>VIDI delivered:</p>
+<ul>
+<li><strong>fast pitch lock-in</strong></li>
+<li><strong>stable tracking</strong> even with noise</li>
+<li><strong>natural pitch shifts</strong> without artifacts</li>
+<li><strong>low latency</strong>, suitable for live use</li>
+<li><strong>accurate MIDI output</strong></li>
+</ul>
+<p>Musicians rated it as:</p>
+<ul>
+<li>predictable</li>
+<li>responsive</li>
+<li>expressive</li>
+<li>trustworthy in live performance</li>
+</ul>
+<hr>
+<h2 id="9-skills-demonstrated">9. Skills Demonstrated</h2>
+<ul>
+<li>DSP algorithm design</li>
+<li>Multi-method pitch estimation</li>
+<li>Confidence scoring &#x26; fusion</li>
+<li>vDSP FFT optimization</li>
+<li>Core Audio real-time pipelines</li>
+<li>Formant-preserving pitch shifting</li>
+<li>MIDI integration</li>
+<li>Low-latency engineering</li>
+<li>Performance optimization</li>
+</ul>
+<hr>
+<h2 id="10-narration--reflection">10. Narration / Reflection</h2>
+<p>VIDI was a significant step in understanding <strong>real-time DSP under real-world constraints</strong>.<br>
+I learned how:</p>
+<ul>
+<li>AMDF + autocorrelation + HPS complement one another</li>
+<li>confidence fusion stabilizes noisy estimates</li>
+<li>low-latency budgets drive architectural choices</li>
+<li>musicians value <em>feel</em> as much as technical accuracy</li>
+</ul>
+<p>VIDI fused <strong>DSP theory</strong>, <strong>musical sensitivity</strong>, and <strong>engineering practicality</strong>, shaping how I approach
+audio systems, performance tuning, and perceptually meaningful DSP.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

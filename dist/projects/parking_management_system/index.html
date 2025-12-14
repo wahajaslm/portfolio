@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>parking_management_system</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="intelligent-parking-system--embedded-c-project">Intelligent Parking System — Embedded C Project</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>The <strong>Intelligent Parking System</strong> is an embedded project designed to detect parking slot occupancy in
+real time using sensors and a microcontroller. The system reports free/occupied slots on a display and
+can be extended for automated gate control or IoT integration.</p>
+<p>This project demonstrates:</p>
+<ul>
+<li>embedded C development</li>
+<li>real-time sensor polling</li>
+<li>decision logic</li>
+<li>LCD/LED display control</li>
+<li>hardware–software integration</li>
+</ul>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Parking spaces require:</p>
+<ul>
+<li>clear visibility of available slots</li>
+<li>fast and reliable detection</li>
+<li>low-cost hardware</li>
+<li>stable operation under noise</li>
+</ul>
+<p>Traditional systems rely on manual observation or expensive camera setups. The goal was to build a
+simple, reliable embedded solution using basic sensors and microcontroller logic.</p>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<h3 id="components">Components</h3>
+<ul>
+<li>Microcontroller (e.g., AVR, PIC, or Arduino-class)</li>
+<li>Ultrasonic or IR sensors for vehicle detection</li>
+<li>LCD/LED display module</li>
+<li>Optional buzzer/indicator lights</li>
+<li>Power regulation and wiring</li>
+</ul>
+<h3 id="architecture-flow">Architecture Flow</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sensors → Microcontroller → Decision Logic → Display Output</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="detection-logic">Detection Logic</h3>
+<ul>
+<li>Each sensor monitors a parking slot.</li>
+<li>Sensor readings converted to digital occupancy state.</li>
+<li>Microcontroller aggregates results and updates the display.</li>
+</ul>
+<hr>
+<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h3 id="embedded-c-logic">Embedded C Logic</h3>
+<p>Key functions:</p>
+<ul>
+<li>Initialization of GPIO and sensor interfaces</li>
+<li>Continuous sampling loop</li>
+<li>Threshold-based detection</li>
+<li>Debounce and filtering to avoid false triggers</li>
+<li>Display update routines</li>
+</ul>
+<p>Example pseudocode:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> EMPTY) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> OCCUPIED;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> OCCUPIED) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> EMPTY;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="filtering--stability">Filtering &#x26; Stability</h3>
+<ul>
+<li>Simple moving average to reduce noise</li>
+<li>Minimum-change thresholding</li>
+<li>Timing delays to prevent rapid toggling</li>
+</ul>
+<h3 id="display-output">Display Output</h3>
+<ul>
+<li>Number of free slots</li>
+<li>Visual indicators for each slot</li>
+<li>Optional arrow signs or buzzer for user guidance</li>
+</ul>
+<hr>
+<h2 id="5-results">5. Results</h2>
+<ul>
+<li>Accurate detection in typical parking environments</li>
+<li>Low jitter after filtering</li>
+<li>Easy-to-read status output</li>
+<li>Low-cost hardware footprint</li>
+<li>Reliable operation under continuous polling</li>
+</ul>
+<hr>
+<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<ul>
+<li>Embedded C programming</li>
+<li>Sensor integration (IR/ultrasonic)</li>
+<li>Real-time signal filtering</li>
+<li>State-machine logic</li>
+<li>Display interfacing (LCD/LED)</li>
+<li>Debugging hardware–software interactions</li>
+</ul>
+<hr>
+<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<p>This project helped me understand how real-time embedded systems behave under real-world noise and
+sensor inconsistency. Building a robust detection pipeline taught me fundamentals of:</p>
+<ul>
+<li>threshold tuning</li>
+<li>debounce strategies</li>
+<li>display synchronization</li>
+<li>embedded timing constraints</li>
+</ul>
+<p>It was one of the earliest projects where I saw how <strong>simple sensing + reliable logic</strong> can create a usable,
+real-world system.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Parallel A/V Encoding Framework</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="building-an-abr-encoding-lab">Building an ABR Encoding Lab</h1>
+<p>Needed: explore encoder variants quickly, measure quality, and assemble ladder candidates without hand-running FFmpeg every time. Built a Python + FFmpeg harness that ingests, fragments, runs variants, and spits out HLS/DASH artifacts with consistent logging.</p>
+<p>⸻</p>
+<p>Ingest &#x26; fragment:</p>
+<ul>
+<li>Auto-detect inputs, normalize tracks, segment into fragments with stable GOP alignment.</li>
+<li>Write fragment manifests so every variant keeps matching metadata.</li>
+</ul>
+<p>Concurrent runs:</p>
+<ul>
+<li>Spawn FFmpeg workers across cores; track PIDs, timeouts, per-job temp dirs.</li>
+<li>Sweep GOP, tune/preset, RC mode, filters; produce fragmented MP4s per variant.</li>
+<li>Concatenate select fragments into short A/B clips for quick playback checks.</li>
+</ul>
+<p>Metrics &#x26; packaging:</p>
+<ul>
+<li>Generate HLS/DASH playlists and ladders automatically from successful variants.</li>
+<li>Log VMAF, PSNR, bitrate, throughput; export CSVs to compare size vs. quality.</li>
+<li>Add guardrails: retries on transient failures, cleanup of orphaned processes, disk budget enforcement.</li>
+</ul>
+<p>Outcome: faster ladder tuning with reproducible runs, instant A/B inspection, and clear quality/bandwidth trade-offs.</p> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>traffic_signal_controller</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="traffic-signal-controller--embedded-c-state-machine">Traffic Signal Controller — Embedded C State Machine</h1>
+<hr>
+<h2 id="1-overview">1. Overview</h2>
+<p>This project implements a <strong>Traffic Signal Controller</strong> using an embedded microcontroller and a<br>
+<strong>finite state machine (FSM)</strong>. The system handles:</p>
+<ul>
+<li>red / yellow / green cycle timing</li>
+<li>safe state transitions</li>
+<li>pedestrian or extended-timing modes (optional)</li>
+<li>real-time light switching logic</li>
+</ul>
+<p>It demonstrates real-time embedded programming, state-machine design, and stable time-driven logic.</p>
+<hr>
+<h2 id="2-problem-statement">2. Problem Statement</h2>
+<p>Traffic signals must operate:</p>
+<ul>
+<li>predictably</li>
+<li>safely</li>
+<li>with strict timing control</li>
+<li>without glitches or ambiguous states</li>
+</ul>
+<p>A naive implementation (e.g., delays or manual toggles) is unreliable.<br>
+A proper FSM is needed to ensure:</p>
+<ul>
+<li>correct sequence → Red → Green → Yellow → Red</li>
+<li>timing consistency</li>
+<li>no illegal combinations</li>
+<li>clean reset behavior</li>
+</ul>
+<hr>
+<h2 id="3-system-architecture">3. System Architecture</h2>
+<h3 id="hardware-components"><strong>Hardware Components</strong></h3>
+<ul>
+<li>Microcontroller (AVR / PIC / Arduino-class)</li>
+<li>LED indicators:
+<ul>
+<li>Red</li>
+<li>Yellow</li>
+<li>Green</li>
+</ul>
+</li>
+<li>Timer module or software timer</li>
+<li>Optional input button (e.g., pedestrian mode)</li>
+</ul>
+<h3 id="state-machine-diagram"><strong>State Machine Diagram</strong></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>     [GREEN]</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>     [YELLOW]</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>      [RED]  (loop)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="state-definitions"><strong>State Definitions</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>State</th><th>Lights Active</th><th>Duration</th></tr></thead><tbody><tr><td>RED</td><td>Red ON</td><td>t_red</td></tr><tr><td>GREEN</td><td>Green ON</td><td>t_green</td></tr><tr><td>YELLOW</td><td>Yellow ON</td><td>t_yellow</td></tr></tbody></table>
+<hr>
+<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h3 id="41-fsm-structure-c">4.1 FSM Structure (C)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
+<span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> loop</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    switch</span><span style="color:#E1E4E8">(current_state) {</span></span>
+<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> RED:</span></span>
+<span class="line"><span style="color:#B392F0">            red_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_red);</span></span>
+<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> GREEN;</span></span>
+<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> GREEN:</span></span>
+<span class="line"><span style="color:#B392F0">            green_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_green);</span></span>
+<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> YELLOW;</span></span>
+<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> YELLOW:</span></span>
+<span class="line"><span style="color:#B392F0">            yellow_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_yellow);</span></span>
+<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
+<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="42-timer-integration">4.2 Timer Integration</h3>
+<ul>
+<li>Using hardware timers or non-blocking timing loops</li>
+<li>Ensures system remains responsive</li>
+</ul>
+<h3 id="43-optional-pedestrian-handling">4.3 Optional Pedestrian Handling</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">button_pressed</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#B392F0"> safe_to_interrupt</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#B392F0">    extend_red_phase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="44-safety-guarantees">4.4 Safety Guarantees</h3>
+<ul>
+<li>Never GREEN + RED at the same time</li>
+<li>Minimum time per state is enforced</li>
+<li>Guaranteed sequence order</li>
+<li>Optional emergency all-red mode</li>
+</ul>
+<hr>
+<h2 id="5-results">5. Results</h2>
+<ul>
+<li>Smooth, predictable transitions</li>
+<li>Timing accuracy and stability</li>
+<li>Extensible to multi-intersection control</li>
+<li>No illegal LED combinations</li>
+<li>Reliable due to strict FSM structure</li>
+</ul>
+<hr>
+<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<ul>
+<li>Embedded C</li>
+<li>State machine design</li>
+<li>Real-time logic</li>
+<li>Timing systems</li>
+<li>IO interfacing</li>
+<li>Debugging embedded timing issues</li>
+</ul>
+<hr>
+<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<p>This project taught me the importance of deterministic timing and clean control flow.<br>
+Using a state machine made the behavior predictable and easy to reason about — an approach that applies
+not only to embedded systems but also to larger software and DSP pipelines.</p>
+<hr> </div> </article>  </main> <script>
+      const html = document.documentElement;
+      const themes = ['light', 'dark'];
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themes.includes(saved)) saved = 'light';
+        html.setAttribute('data-theme', saved);
+        const next = themes[(themes.indexOf(saved) + 1) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = next.toUpperCase();
+      })();
+      function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        const idx = themes.indexOf(current);
+        const next = themes[(idx + 1) % themes.length];
+        html.setAttribute('data-theme', next);
+        const afterNext = themes[(idx + 2) % themes.length];
+        const btn = document.getElementById('themeToggle');
+        if (btn) btn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+      const toggle = document.getElementById('themeToggle');
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+    </script> </body> </html>
