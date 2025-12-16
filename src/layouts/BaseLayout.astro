@@ -14,16 +14,16 @@ const { title = 'Wahaj Aslam', bodyClass = '', activeNav, wrapMain = true } = As
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="stylesheet" href={import.meta.env.BASE_URL + 'style.css'} />
+    <link rel="stylesheet" href={import.meta.env.BASE_URL + '/style.css'} />
   </head>
   <body class={bodyClass}>
     <header class="top-header">
       <div class="ribbon-nav">
         <a href={import.meta.env.BASE_URL} class={`ribbon-link ${activeNav === 'resume' ? 'active' : ''}`}>RESUME</a>
         <span style="color:var(--card-border)">|</span>
-        <a href={import.meta.env.BASE_URL + 'projects/'} class={`ribbon-link ${activeNav === 'projects' ? 'active' : ''}`}>PROJECTS</a>
+        <a href={import.meta.env.BASE_URL + '/projects/'} class={`ribbon-link ${activeNav === 'projects' ? 'active' : ''}`}>PROJECTS</a>
         <span style="color:var(--card-border)">|</span>
-        <a href={import.meta.env.BASE_URL + 'mygpt/'} class={`ribbon-link ${activeNav === 'gpt' ? 'active' : ''}`}>GPT</a>
+        <a href={import.meta.env.BASE_URL + '/mygpt/'} class={`ribbon-link ${activeNav === 'gpt' ? 'active' : ''}`}>GPT</a>
       </div>
       <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button>
     </header>
