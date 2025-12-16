@@ -4,4 +4,6 @@ export default defineConfig({
   integrations: [],
   srcDir: 'src',
   publicDir: 'public',
+  site: 'https://wahajaslm.github.io',
+  base: '/portfolio',
 });
