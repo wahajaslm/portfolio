@@ -1,48 +1,96 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 
-const CONTENT_ROOT = "src/content";
-const OUTPUT_FILE = "public/data/content.json";
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { fileURLToPath } from 'url';
 
-function walk(dir) {
-  let results = [];
-  for (const file of fs.readdirSync(dir)) {
-    const full = path.join(dir, file);
-    if (fs.statSync(full).isDirectory()) {
-      results = results.concat(walk(full));
-    } else if (file.endsWith(".md")) {
-      results.push(full);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const PROJECT_ROOT = path.resolve(__dirname, '..');
+const CONTENT_DIR = path.join(PROJECT_ROOT, 'src/content');
+const OUTPUT_FILE = path.join(PROJECT_ROOT, 'public/data/content.json');
+
+function getAllFiles(dirPath, arrayOfFiles) {
+  const files = fs.readdirSync(dirPath);
+
+  arrayOfFiles = arrayOfFiles || [];
+
+  files.forEach(function (file) {
+    if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+      arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles);
+    } else {
+      if (file.endsWith('.md')) {
+        arrayOfFiles.push(path.join(dirPath, "/", file));
+      }
     }
-  }
-  return results;
-}
-
-const files = walk(CONTENT_ROOT);
-const documents = [];
-
-for (const file of files) {
-  const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw);
-
-  const relPath = file
-    .replace(CONTENT_ROOT + "/", "")
-    .replace("/index.md", "")
-    .replace(".md", "");
-
-  const type = relPath.split("/")[0];
-
-  documents.push({
-    id: relPath,
-    type,
-    title: data.title || relPath.split("/").pop(),
-    tags: data.tags || [],
-    visibility: data.visibility || "public",
-    text: content.replace(/\s+/g, " ").trim()
   });
+
+  return arrayOfFiles;
 }
 
-fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-fs.writeFileSync(OUTPUT_FILE, JSON.stringify(documents, null, 2));
+function exportContent() {
+  console.log('Exporting content from', CONTENT_DIR);
 
-console.log(`✔ Exported ${documents.length} documents`);
+  if (!fs.existsSync(CONTENT_DIR)) {
+    console.error('Content directory not found:', CONTENT_DIR);
+    process.exit(1);
+  }
+
+  const files = getAllFiles(CONTENT_DIR);
+  const data = files.map(file => {
+    const fileContent = fs.readFileSync(file, 'utf8');
+    try {
+      console.log(`Processing: ${file}`);
+      const { data, content } = matter(fileContent);
+      // Get relative path from src/content to use as ID
+      const relativePath = path.relative(CONTENT_DIR, file);
+
+      const parts = relativePath.split('/');
+      const collection = parts[0];
+      const filename = parts[parts.length - 1];
+      const slugBase = path.dirname(relativePath).split(path.sep).slice(1).join('/'); // remove collection
+
+      // Heuristic for slug: if filename is index.md, use parent dir. Else use filename.
+      let slug = filename === 'index.md' ? slugBase : path.join(slugBase, path.basename(filename, '.md'));
+      // Remove leading slash if any
+      if (slug.startsWith('/')) slug = slug.substring(1);
+
+      // Override slug if in frontmatter
+      if (data.article_slug) slug = data.article_slug;
+
+      // Construct URL (naive assumption based on standard Astro routing)
+      let url = null;
+      if (collection === 'projects') {
+        url = `/projects/${slug}/`;
+      }
+
+      const wordCount = content.split(/\s+/).length;
+
+      return {
+        id: relativePath,
+        collection,
+        slug,
+        url,
+        word_count: wordCount,
+        data,
+        content
+      };
+    } catch (e) {
+      console.error(`Error parsing file: ${file}`);
+      console.error(e);
+      process.exit(1);
+    }
+  });
+
+  // Ensure output directory exists
+  const outputDir = path.dirname(OUTPUT_FILE);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data, null, 2));
+  console.log(`Exported ${data.length} files to ${OUTPUT_FILE}`);
+}
+
+exportContent();

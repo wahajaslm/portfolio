@@ -2,6 +2,7 @@
   "name": "portfolio-astro",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/export-content.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
@@ -11,6 +12,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
+    "gray-matter": "^4.0.3",
     "typescript": "^5.3.3"
   }
 }

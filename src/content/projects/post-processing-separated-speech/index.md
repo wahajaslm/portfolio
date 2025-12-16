@@ -9,6 +9,7 @@ code: "DSP-01"
 cover_image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"
 tags: [speech, dsp, bandwidth_extension, lpc, excitation, speech_enhancement, stft, python, matlab, research]
 article_slug: "post-processing-separated-speech"
+---
 
 # Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing  
 
@@ -191,3 +192,4 @@ This balance between **math, engineering, and human hearing** continues to defin
 audio, DSP, and media systems today.
 
 ---
+
