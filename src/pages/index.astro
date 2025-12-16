@@ -97,6 +97,11 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
                 </div>
               </div>
               <div class="job-date blur-fade">2023 — PRESENT</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="job-content stagger-item">
               <ul>
@@ -122,6 +127,11 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
                 </div>
               </div>
               <div class="job-date blur-fade">2018 — 2023</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="job-content stagger-item">
               <ul>
@@ -147,6 +157,11 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
                 </div>
               </div>
               <div class="job-date blur-fade">2016 — 2017</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="job-content stagger-item">
               <ul>
@@ -168,6 +183,11 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
                 </div>
               </div>
               <div class="job-date blur-fade">2015 — 2016</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="job-content stagger-item">
               <ul>
@@ -189,6 +209,11 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
                 </div>
               </div>
               <div class="job-date blur-fade">2012 — 2014</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
             </div>
             <div class="job-content stagger-item">
               <ul>
@@ -480,10 +505,7 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
         const header = entry.querySelector('.job-header');
         if (!header) return;
 
-        if (idx === 0) {
-          entry.classList.add('open');
-          setContentHeight(entry, true);
-        }
+
 
         header.addEventListener('click', () => {
           const isOpen = entry.classList.contains('open');
