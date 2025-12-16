@@ -2140,6 +2140,7 @@ footer {
     .projects-page .details-section {
         padding: 0 1rem;
         gap: 1.25rem;
+        grid-template-columns: 1fr;
     }
 
     .nav-btn {
