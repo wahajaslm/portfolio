@@ -2130,7 +2130,25 @@ footer {
     }
 
     .job-header {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 24px;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .job-title-block {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .job-toggle-icon {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .job-date {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 0.2rem;
     }
 
     .vhs-item {
