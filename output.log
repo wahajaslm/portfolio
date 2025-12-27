@@ -1,0 +1,233 @@
+
+> prebuild
+> node scripts/export-content.mjs
+
+Exporting content from /Users/wahajaslam/Portfolio/portfolio/src/content
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/experience/fraunhofer/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/experience/tu_darmstadt/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/experience/u_blox/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/profile/profile.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/arp_spoof_detector/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/beatnik-osc-glove/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/dtmf_detector/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/laser-harp/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/massive_mimo_seminar/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/multihop_wireless_warp_prototyping/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/my-live-portfolio/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/parallel-av-encoding-framework/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/parking_management_system/index.md
+Processing: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/post-processing-separated-speech/index.md
+Error parsing file: /Users/wahajaslam/Portfolio/portfolio/src/content/projects/post-processing-separated-speech/index.md
+YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 22, column 26:
+    The work brought together:
+                             ^
+    at generateError (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:183:10)
+    at throwError (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:189:9)
+    at readBlockMapping (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1089:9)
+    at composeNode (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1375:12)
+    at readDocument (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1541:3)
+    at loadDocuments (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1604:5)
+    at load (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1630:19)
+    at Object.safeLoad (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/node_modules/js-yaml/lib/js-yaml/loader.js:1653:10)
+    at module.exports (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/lib/parse.js:12:17)
+    at parseMatter (/Users/wahajaslam/Portfolio/portfolio/node_modules/gray-matter/index.js:109:17) {
+  reason: 'can not read a block mapping entry; a multiline key may not be an implicit key',
+  mark: Mark {
+    name: null,
+    buffer: '\n' +
+      'visibility: public\n' +
+      'use_for_ai: true\n' +
+      'title: "Post-Processing Separated Speech"\n' +
+      'summary: "Reconstructed damaged time-frequency components of separated speech using bandwidth extension. Analyzed LPC Analysis/Synthesis, STFT & Pitch Estimation, and Pole/Zero LPC Envelopes."\n' +
+      'year: "Master Thesis"\n' +
+      'format: "Project Archive"\n' +
+      'code: "DSP-01"\n' +
+      'cover_image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop"\n' +
+      'tags: [speech, dsp, bandwidth_extension, lpc, excitation, speech_enhancement, stft, python, matlab, research]\n' +
+      'article_slug: "post-processing-separated-speech"\n' +
+      '\n' +
+      '# Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing  \n' +
+      '\n' +
+      '## Overview\n' +
+      '\n' +
+      'This thesis focused on reconstructing **wideband speech** from narrowband (telephone-band) input\n' +
+      'using **non-linear post-processing**, **excitation modelling**, and **spectral envelope reconstruction**.\n' +
+      'The goal was to increase perceived bandwidth, restore brightness, and improve naturalness **without**\n' +
+      'requiring changes to the encoder or any side information.\n' +
+      '\n' +
+      'The work brought together:\n' +
+      '\n' +
+      '- Digital signal processing theory (LPC, source–filter models)\n' +
+      '- Practical system design\n' +
+      '- MATLAB & Python prototyping\n' +
+      '- Perceptual audio evaluation and tuning\n' +
+      '- Iterative refinement based on listening tests and spectral analysis\n' +
+      '\n' +
+      '## Problem Statement\n' +
+      '\n' +
+      'Traditional narrowband speech (0–4 kHz) loses:\n' +
+      '\n' +
+      '- High-frequency harmonics  \n' +
+      '- Brightness and “air”  \n' +
+      '- Natural articulation cues  \n' +
+      '- Wideband timbral characteristics  \n' +
+      '\n' +
+      'The challenge is reconstructing plausible high-band components **from missing information**, not noisy\n' +
+      'information. This is fundamentally an **ill-posed inverse problem**, requiring:\n' +
+      '\n' +
+      '- Excitation generation  \n' +
+      '- Envelope reconstruction  \n' +
+      '- Stability against artifacts  \n' +
+      '- Low computational cost  \n' +
+      '\n' +
+      'Goal:  \n' +
+      'Produce **wideband-like speech** that is perceptually convincing and spectrally coherent.\n' +
+      '\n' +
+      '## System Architecture\n' +
+      '\n' +
+      'The thesis designed a processing chain consisting of:\n' +
+      '\n' +
+      '### Narrowband Analysis\n' +
+      '- Pre-emphasis  \n' +
+      '- Windowing  \n' +
+      '- LPC analysis (10–14th order)  \n' +
+      '- Extraction of the excitation signal  \n' +
+      '\n' +
+      '### Excitation Modelling\n' +
+      'Tested approaches included:\n' +
+      '\n' +
+      '- Non-linear expansion  \n' +
+      '- Odd/even harmonic generation  \n' +
+      '- Sign-preserving power functions  \n' +
+      '- Spectral folding  \n' +
+      '- Blended excitation shaping  \n' +
+      '\n' +
+      'The final system used **non-linear excitation expansion** with a **high-band shaping filter**.\n' +
+      '\n' +
+      '### Envelope Reconstruction\n' +
+      'Methods explored:\n' +
+      '\n' +
+      '- LPC envelope extrapolation  \n' +
+      '- High-band envelope smoothing  \n' +
+      '- Adaptive energy matching  \n' +
+      '- Band-tilting adjustments  \n' +
+      '\n' +
+      '### Synthesis\n' +
+      '- Excitation filtering using reconstructed LPC coefficients  \n' +
+      '- Overlap–add synthesis  \n' +
+      '- Envelope smoothing and final spectral correction  \n' +
+      '\n' +
+      '## Block Diagram (Textual)\n' +
+      'Narrowband Speech\n' +
+      '↓\n' +
+      'Analysis\n' +
+      '(LPC, excitation)\n' +
+      '↓\n' +
+      'Non-linear Excitation Expansion\n' +
+      '↓\n' +
+      'High-band Spectral Shaping\n' +
+      '↓\n' +
+      'Envelope Reconstruction\n' +
+      '↓\n' +
+      'Synthesis\n' +
+      '↓\n' +
+      'Enhanced Wideband-like Speech\n' +
+      '\n' +
+      '## Implementation Details\n' +
+      '\n' +
+      '### MATLAB Prototyping\n' +
+      '- LPC extraction (autocorrelation & Burg methods)\n' +
+      '- Excitation expansion experiments\n' +
+      '- Envelope smoothing filters\n' +
+      '- Spectral envelope visualization\n' +
+      '- Objective metrics:\n' +
+      '  - log-spectral distance (LSD)\n' +
+      '  - harmonic envelope deviation\n' +
+      '\n' +
+      '### Python Experiments\n' +
+      '- Rapid testing of excitation functions\n' +
+      '- Plotting envelope differences\n' +
+      '- Generating spectrograms and comparison views\n' +
+      '- Automating batch evaluation sets\n' +
+      '\n' +
+      '## Evaluation Strategy\n' +
+      '\n' +
+      '### Objective Measures\n' +
+      '- High-band energy reconstruction accuracy  \n' +
+      '- Envelope shape similarity  \n' +
+      '- Temporal smoothness  \n' +
+      '\n' +
+      '### Perceptual Evaluation\n' +
+      'Performed **A/B and A/B/X listening tests** on:\n' +
+      '\n' +
+      '- Male + female speech  \n' +
+      '- Different languages  \n' +
+      '- Varied articulation patterns  \n' +
+      '- Clean vs. challenging content  \n' +
+      '\n' +
+      'Artifacts tracked and tuned:\n' +
+      '\n' +
+      '- Metallic ringing  \n' +
+      '- Whistle-like tones  \n' +
+      '- Synthetic “hiss”  \n' +
+      '- Harsh high-frequency energy  \n' +
+      '- Energy mismatch between narrowband and high-band  \n' +
+      '\n' +
+      '**Perceptual testing was essential** — many methods that looked good numerically produced \n' +
+      'unacceptable artifacts during listening.\n' +
+      '\n' +
+      '## Key Results\n' +
+      '\n' +
+      '- Reconstructed high-band content **significantly improved** perceived brightness and clarity.  \n' +
+      '- Non-linear excitation + spectral shaping produced stable and natural-sounding results.  \n' +
+      '- High-band envelope reconstruction matched reference wideband behavior well.  \n' +
+      '- Objective and subjective evaluations aligned closely after tuning.\n' +
+      '\n' +
+      '## Skills Demonstrated\n' +
+      '\n' +
+      '### DSP Expertise\n' +
+      '- LPC modelling  \n' +
+      '- Excitation generation  \n' +
+      '- Non-linear processing  \n' +
+      '- Envelope shaping  \n' +
+      '- Filter design  \n' +
+      '- Time–frequency analysis  \n' +
+      '\n' +
+      '### Prototyping Skills\n' +
+      '- MATLAB algorithm development  \n' +
+      '- Python batch experiments + visualization  \n' +
+      '- Handling multi-file evaluation pipelines  \n' +
+      '\n' +
+      '### Perceptual Engineering\n' +
+      '- Systematic listening test methodology  \n' +
+      '- Artifact identification  \n' +
+      '- Iterative tuning based on perceptual + spectral evidence  \n' +
+      '\n' +
+      '### Research & Documentation\n' +
+      '- Reproducible experiments  \n' +
+      '- Clear reporting of results  \n' +
+      '- Scientific and engineering communication  \n' +
+      '\n' +
+      '## Narration / Personal Reflection\n' +
+      '\n' +
+      'This thesis shaped my understanding of audio engineering at a deep level.  \n' +
+      'I learned that:\n' +
+      '\n' +
+      '- A mathematically “correct” algorithm may still sound terrible.  \n' +
+      '- Spectral plots, excitation behavior, and envelopes must align with what listeners perceive.  \n' +
+      '- Perceptual tuning is a **core part of DSP**, not an afterthought.  \n' +
+      '\n' +
+      'The project taught me to think simultaneously like a:\n' +
+      '\n' +
+      '- **scientist** (theory, modelling)  \n' +
+      '- **engineer** (system design, prototyping)  \n' +
+      '- **listener** (perception, artifacts, tuning)  \n' +
+      '\n' +
+      'This balance between **math, engineering, and human hearing** continues to define how I approach\n' +
+      'audio, DSP, and media systems today.\n' +
+      '\x00',
+    position: 1087,
+    line: 21,
+    column: 25
+  }
+}

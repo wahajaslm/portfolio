@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Live Portfolio — VHS</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Personal System // Project Archive</p> <div class="article-body"> <p>⸻</p>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Live Portfolio — VHS</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">My Live Portfolio — VHS</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Personal System // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">portfolio</span><span class="detail-tag">web_design</span><span class="detail-tag">javascript</span><span class="detail-tag">css</span><span class="detail-tag">html</span><span class="detail-tag">accessibility</span><span class="detail-tag">writing</span><span class="detail-tag">branding</span><span class="detail-tag">ai</span><span class="detail-tag">storytelling</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <p>⸻</p>
 <p>🎞 My Live Portfolio</p>
 <p>Why I Turned My Career Into a Living System Instead of a PDF</p>
 <p>⸻</p>
@@ -18,9 +19,7 @@ The bullet points looked well-behaved.</p>
 <p>The strangest part wasn’t that others couldn’t see it.
 The strangest part was that I had forgotten half of it too.</p>
 <p>⸻</p>
-<ol>
-<li>When a PDF stops being enough</li>
-</ol>
+<h2 id="when-a-pdf-stops-being-enough">When a PDF stops being enough</h2>
 <p>It hit me when I tried to “properly update” my CV.
 Scrolling through old sections, I realised I had to think hard just to remember certain projects I once worked on daily. Technical decisions I made confidently back then were now blurry details buried under years of new responsibilities.</p>
 <p>That’s when it clicked:
@@ -28,9 +27,7 @@ A CV is not a portrait.
 It’s a passport photo — flat, tiny, and only vaguely similar to the real person.</p>
 <p>I didn’t want to be represented by something that forgettable.</p>
 <p>⸻</p>
-<ol start="2">
-<li>Excavating my own past</li>
-</ol>
+<h2 id="excavating-my-own-past">Excavating my own past</h2>
 <p>Before anything became a project, it became an excavation.</p>
 <p>I opened old internship reports, thesis documents, job folders, research notes, side projects, random screenshots, and files with suspicious names like “final_v3_realfinal_OK.pdf”. Some of it made me laugh. Some of it made me nostalgic. Some of it made me wonder how I ever did those things and then just… moved on.</p>
 <p>But the more I organised, the more overwhelming it became.
@@ -40,9 +37,7 @@ Not even me.</p>
 <p>Organisation alone wasn’t enough.
 I needed something that could make sense of it.</p>
 <p>⸻</p>
-<ol start="3">
-<li>What if my career could actually respond?</li>
-</ol>
+<h2 id="what-if-my-career-could-actually-respond">What if my career could actually respond?</h2>
 <p>This was the moment the idea sharpened.</p>
 <p>Instead of juggling 15 versions of a CV or writing summaries for every purpose, I wondered:</p>
 <p>What if my portfolio could adapt?
@@ -53,17 +48,13 @@ What if it could tell different stories based on what someone needs to know?</p>
 What if my career could talk back?</p>
 <p>That’s how the idea of a Live Portfolio came to life — a system that doesn’t display my work, but understands it.</p>
 <p>⸻</p>
-<ol start="4">
-<li>The honest human motivation</li>
-</ol>
+<h2 id="the-honest-human-motivation">The honest human motivation</h2>
 <p>Let’s be direct.
 Part of this project is absolutely me refusing to let anyone judge my entire engineering life in eight seconds of CV scanning.</p>
 <p>The other part is personal: I don’t want to forget who I became through all these years. Skills fade when they aren’t revisited. Memories blur. Achievements shrink when squeezed between bullet point formatting.</p>
 <p>I realised I needed something alive — something that grows with me, remembers for me, and helps me articulate my own capabilities with clarity, not guesswork.</p>
 <p>⸻</p>
-<ol start="5">
-<li>Then the engineer in me took over</li>
-</ol>
+<h2 id="then-the-engineer-in-me-took-over">Then the engineer in me took over</h2>
 <p>Emotions got me started, but systems thinking finished the idea.</p>
 <p>I began treating my career like an engineering problem:
 •	Raw data: documents, projects, roles, timelines
@@ -76,9 +67,7 @@ Part of this project is absolutely me refusing to let anyone judge my entire eng
 Output → tailored, coherent, human explanations</p>
 <p>This felt more “me” than any CV I had ever written.</p>
 <p>⸻</p>
-<ol start="6">
-<li>What My Live Portfolio really is</li>
-</ol>
+<h2 id="what-my-live-portfolio-really-is">What My Live Portfolio really is</h2>
 <p>It is:
 •	A rebellion against being reduced to two pages
 •	A system that keeps my work alive instead of archived
@@ -96,7 +85,7 @@ This one was never about the system. It was about the person building it.</p>
 <p>⸻</p>
 <p>Back-Cover Summary</p>
 <p>A reflective and slightly humorous story about why I built My Live Portfolio. After years of work compressed into a lifeless CV, I went back through my past, rediscovered forgotten projects, and realised I needed a living system that understands and expresses my career in a way a PDF never could. This article is the story behind that decision.</p>
-<p>⸻</p> </div> </article>  </main> <script>
+<p>⸻</p> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

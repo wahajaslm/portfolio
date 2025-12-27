@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>massive_mimo_seminar</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="academic-seminar--massive-mu-mimo-downlink-with-linear-precoding-and-downlink-pilots">Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Massive MU-MIMO Seminar</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Massive MU-MIMO Seminar</h2>  <p class="detail-summary" style="margin-bottom: 1rem;"> Academic seminar on massive MU-MIMO downlink: linear precoding, beamforming pilots, achievable rates, and MATLAB simulations. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">wireless</span><span class="detail-tag">mimo</span><span class="detail-tag">linear_precoding</span><span class="detail-tag">sdr</span><span class="detail-tag">beamforming</span><span class="detail-tag">channel_modeling</span><span class="detail-tag">matlab</span><span class="detail-tag">mmwave</span><span class="detail-tag">research</span><span class="detail-tag">link_budget</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="academic-seminar--massive-mu-mimo-downlink-with-linear-precoding-and-downlink-pilots">Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots</h1>
+<h2 id="overview">Overview</h2>
 <p>This seminar explored <strong>Massive Multi-User MIMO</strong> in TDD systems with a focus on:</p>
 <ul>
 <li>Linear precoding (MRT, ZF)</li>
@@ -11,8 +11,7 @@
 </ul>
 <p>This was an <strong>academic research seminar</strong>, not industry work, and provides foundational understanding of
 multi-antenna wireless systems.</p>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Massive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:</p>
 <ul>
 <li>CSI acquisition challenges</li>
@@ -21,16 +20,15 @@ multi-antenna wireless systems.</p>
 <li>Precoding complexity</li>
 </ul>
 <p>The goal was to evaluate practical training schemes and achievable rate bounds under realistic constraints.</p>
-<hr>
-<h2 id="3-system-components">3. System Components</h2>
+<h2 id="system-components">System Components</h2>
 <ul>
 <li>TDD reciprocity</li>
 <li>MMSE channel estimation</li>
 <li>Orthogonal pilot sequences</li>
 </ul>
-<h3 id="2-downlink-beamforming-pilots"><strong>2. Downlink Beamforming Pilots</strong></h3>
+<h3 id="downlink-beamforming-pilots">Downlink Beamforming Pilots</h3>
 <p>Beamformed pilots help users estimate <strong>effective channel gain</strong>, reducing overhead from M to K.</p>
-<h3 id="3-linear-precoding"><strong>3. Linear Precoding</strong></h3>
+<h3 id="linear-precoding">Linear Precoding</h3>
 <ul>
 <li>
 <p><strong>MRT (Maximum Ratio Transmission)</strong></p>
@@ -47,10 +45,9 @@ multi-antenna wireless systems.</p>
 </ul>
 </li>
 </ul>
-<h3 id="4-achievable-rate-analysis"><strong>4. Achievable Rate Analysis</strong></h3>
+<h3 id="achievable-rate-analysis">Achievable Rate Analysis</h3>
 <p>Analytical lower bounds computed for both precoding schemes.</p>
-<hr>
-<h2 id="4-matlab-simulations">4. MATLAB Simulations</h2>
+<h2 id="matlab-simulations">MATLAB Simulations</h2>
 <p>Simulated:</p>
 <ul>
 <li>Spectral efficiency vs SNR</li>
@@ -65,8 +62,7 @@ multi-antenna wireless systems.</p>
 <li>Beamforming training reduces pilot overhead significantly</li>
 <li>Longer coherence intervals improve achievable rates</li>
 </ul>
-<hr>
-<h2 id="5-skills-demonstrated">5. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>Wireless system modeling</li>
 <li>MATLAB simulation</li>
@@ -74,12 +70,10 @@ multi-antenna wireless systems.</p>
 <li>Reading and summarizing research papers</li>
 <li>Understanding spectral efficiency bounds</li>
 </ul>
-<hr>
-<h2 id="6-narration">6. Narration</h2>
+<h2 id="narration">Narration</h2>
 <p>This seminar gave me foundational insight into how large-scale antenna systems operate.
 Although I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence
-in analyzing complex communication systems, which later supported my DSP and engineering mindset.</p>
-<hr> </div> </article>  </main> <script>
+in analyzing complex communication systems, which later supported my DSP and engineering mindset.</p> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

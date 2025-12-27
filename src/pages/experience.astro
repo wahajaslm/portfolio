@@ -12,7 +12,12 @@ const experiences = await Promise.all(
 
 <BaseLayout title="Experience" activeNav="resume">
   <section class="article-shell">
-    <p class="label">// EXPERIENCE</p>
+    <div class="section-header">
+      <p class="label">// EXPERIENCE</p>
+      <a href="/Wahaj_Aslam_CV.pdf" download class="btn" aria-label="Download CV PDF">
+        DOWNLOAD CV
+      </a>
+    </div>
     {experiences.map(({ entry, rendered }) => (
       <article style="margin-bottom:3rem;">
         <rendered.Content />

@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>parking_management_system</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="intelligent-parking-system--embedded-c-project">Intelligent Parking System — Embedded C Project</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Intelligent Parking System</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Intelligent Parking System</h2>  <p class="detail-summary" style="margin-bottom: 1rem;"> Embedded parking system in C with sensor polling, UART/display updates, and real-time slot tracking. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">embedded</span><span class="detail-tag">sensors</span><span class="detail-tag">microcontroller</span><span class="detail-tag">parking_system</span><span class="detail-tag">real_time</span><span class="detail-tag">c</span><span class="detail-tag">firmware</span><span class="detail-tag">interrupts</span><span class="detail-tag">uart</span><span class="detail-tag">prototyping</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="intelligent-parking-system--embedded-c-project">Intelligent Parking System — Embedded C Project</h1>
+<h2 id="overview">Overview</h2>
 <p>The <strong>Intelligent Parking System</strong> is an embedded project designed to detect parking slot occupancy in
 real time using sensors and a microcontroller. The system reports free/occupied slots on a display and
 can be extended for automated gate control or IoT integration.</p>
@@ -12,8 +12,7 @@ can be extended for automated gate control or IoT integration.</p>
 <li>LCD/LED display control</li>
 <li>hardware–software integration</li>
 </ul>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Parking spaces require:</p>
 <ul>
 <li>clear visibility of available slots</li>
@@ -23,8 +22,7 @@ can be extended for automated gate control or IoT integration.</p>
 </ul>
 <p>Traditional systems rely on manual observation or expensive camera setups. The goal was to build a
 simple, reliable embedded solution using basic sensors and microcontroller logic.</p>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
+<h2 id="system-architecture">System Architecture</h2>
 <h3 id="components">Components</h3>
 <ul>
 <li>Microcontroller (e.g., AVR, PIC, or Arduino-class)</li>
@@ -42,8 +40,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Sensor readings converted to digital occupancy state.</li>
 <li>Microcontroller aggregates results and updates the display.</li>
 </ul>
-<hr>
-<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h2 id="implementation-details">Implementation Details</h2>
 <h3 id="embedded-c-logic">Embedded C Logic</h3>
 <p>Key functions:</p>
 <ul>
@@ -74,8 +71,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Visual indicators for each slot</li>
 <li>Optional arrow signs or buzzer for user guidance</li>
 </ul>
-<hr>
-<h2 id="5-results">5. Results</h2>
+<h2 id="results">Results</h2>
 <ul>
 <li>Accurate detection in typical parking environments</li>
 <li>Low jitter after filtering</li>
@@ -83,8 +79,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Low-cost hardware footprint</li>
 <li>Reliable operation under continuous polling</li>
 </ul>
-<hr>
-<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>Embedded C programming</li>
 <li>Sensor integration (IR/ultrasonic)</li>
@@ -93,8 +88,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Display interfacing (LCD/LED)</li>
 <li>Debugging hardware–software interactions</li>
 </ul>
-<hr>
-<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>This project helped me understand how real-time embedded systems behave under real-world noise and
 sensor inconsistency. Building a robust detection pipeline taught me fundamentals of:</p>
 <ul>
@@ -105,7 +99,7 @@ sensor inconsistency. Building a robust detection pipeline taught me fundamental
 </ul>
 <p>It was one of the earliest projects where I saw how <strong>simple sensing + reliable logic</strong> can create a usable,
 real-world system.</p>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

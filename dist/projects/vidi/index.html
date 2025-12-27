@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Vidi — Low-Latency Pitch Tool</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Audio Tool // Project Archive</p> <div class="article-body"> <h1 id="vidi--low-latency-reliable-pitch-detection--pitch-shifting-tool">VIDI — Low-Latency, Reliable Pitch Detection &#x26; Pitch-Shifting Tool</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Vidi — Low-Latency Pitch Tool</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Vidi — Low-Latency Pitch Tool</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Audio Tool // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> Pitch detection and shifting across parametric and non-parametric methods. Built with iOS Core Audio, vDSP/Accelerate, and MIDI Mapping. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">audio</span><span class="detail-tag">speech</span><span class="detail-tag">dsp</span><span class="detail-tag">pitch</span><span class="detail-tag">core_audio</span><span class="detail-tag">vDSP</span><span class="detail-tag">ios</span><span class="detail-tag">swift</span><span class="detail-tag">midi</span><span class="detail-tag">latency_optimization</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="vidi--low-latency-reliable-pitch-detection--pitch-shifting-tool">VIDI — Low-Latency, Reliable Pitch Detection &#x26; Pitch-Shifting Tool</h1>
+<h2 id="overview">Overview</h2>
 <p><strong>VIDI</strong> is a real-time pitch detection and pitch-shifting tool designed for musicians who need<br>
 <strong>fast, stable, low-latency pitch tracking</strong> — even in noisy rooms or during rapid melodic passages.</p>
 <p>Instead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide
@@ -13,8 +13,7 @@ confidence-weighted pitch estimates that:</p>
 </ul>
 <p>It was built with <strong>Core Audio</strong> and <strong>vDSP</strong>, optimized for <strong>mobile-class hardware</strong> with strict
 latency and performance constraints.</p>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Musicians need pitch tools that work <strong>live</strong>, not only in ideal studio conditions.<br>
 Most existing systems fail in at least one area:</p>
 <ul>
@@ -25,8 +24,7 @@ Most existing systems fail in at least one area:</p>
 <li>MIDI output that drifts under load</li>
 </ul>
 <p>VIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion.</p>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
+<h2 id="system-architecture">System Architecture</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Incoming Audio  </span></span>
 <span class="line"><span>      ↓  </span></span>
 <span class="line"><span>Frame Processing (Core Audio)  </span></span>
@@ -39,30 +37,28 @@ Most existing systems fail in at least one area:</p>
 <span class="line"><span>      ↓  </span></span>
 <span class="line"><span>Low-Latency MIDI Output  </span></span>
 <span class="line"><span></span></span></code></pre>
-<hr>
-<h2 id="4-key-dsp-components">4. Key DSP Components</h2>
-<h3 id="41-parallel-pitch-detection-engines"><strong>4.1 Parallel Pitch Detection Engines</strong></h3>
+<h2 id="key-dsp-components">Key DSP Components</h2>
+<h3 id="parallel-pitch-detection-engines">Parallel Pitch Detection Engines</h3>
 <p>VIDI runs three pitch detectors concurrently:</p>
-<h4 id="1-amdf-average-magnitude-difference-function">(1) <strong>AMDF (Average Magnitude Difference Function)</strong></h4>
+<h4 id="amdf-average-magnitude-difference-function">AMDF (Average Magnitude Difference Function)</h4>
 <ul>
 <li>Excellent for fast passages</li>
 <li>Good resolution for monophonic signals</li>
 <li>Works well in noisy conditions</li>
 </ul>
-<h4 id="2-autocorrelation">(2) <strong>Autocorrelation</strong></h4>
+<h4 id="autocorrelation">Autocorrelation</h4>
 <ul>
 <li>Stable periodicity detection</li>
 <li>Helps reduce octave errors</li>
 <li>Provides reliable fundamentals</li>
 </ul>
-<h4 id="3-harmonic-product-spectrum-hps">(3) <strong>Harmonic Product Spectrum (HPS)</strong></h4>
+<h4 id="harmonic-product-spectrum-hps">Harmonic Product Spectrum (HPS)</h4>
 <ul>
 <li>FFT-based approach using harmonic reinforcement</li>
 <li>Useful for strong harmonic structures</li>
 <li>Helps refine ambiguous pitch regions</li>
 </ul>
-<hr>
-<h3 id="42-confidence-weighted-fusion"><strong>4.2 Confidence-Weighted Fusion</strong></h3>
+<h3 id="confidence-weighted-fusion">Confidence-Weighted Fusion</h3>
 <p>Results are combined using a confidence score per method:</p>
 <ul>
 <li>consistency across methods</li>
@@ -72,9 +68,8 @@ Most existing systems fail in at least one area:</p>
 <li>autocorrelation peak clarity</li>
 </ul>
 <p>The fusion engine outputs a <strong>single, stable pitch value</strong> resistant to noise and instability.</p>
-<hr>
-<h2 id="5-low-latency-architecture">5. Low-Latency Architecture</h2>
-<h3 id="core-audio--vdsp-pipeline"><strong>Core Audio + vDSP Pipeline</strong></h3>
+<h2 id="low-latency-architecture">Low-Latency Architecture</h2>
+<h3 id="core-audio--vdsp-pipeline">Core Audio + vDSP Pipeline</h3>
 <p>VIDI uses:</p>
 <ul>
 <li><strong>Core Audio render callbacks</strong> for sub-10 ms frame processing</li>
@@ -94,8 +89,7 @@ Most existing systems fail in at least one area:</p>
 <li><strong>Latency budget:</strong> configurable, typically 10–20 ms end-to-end</li>
 <li><strong>CPU footprint:</strong> optimized for mobile processors</li>
 </ul>
-<hr>
-<h2 id="6-formant-aware-pitch-shifting">6. Formant-Aware Pitch Shifting</h2>
+<h2 id="formant-aware-pitch-shifting">Formant-Aware Pitch Shifting</h2>
 <p>Standard pitch shifting introduces:</p>
 <ul>
 <li>chipmunk vocals</li>
@@ -110,8 +104,7 @@ Most existing systems fail in at least one area:</p>
 <li>blending PSOLA-like and phase-vocoder concepts</li>
 </ul>
 <p>Result: <strong>natural, human-sounding pitch shifts</strong>, even at large intervals.</p>
-<hr>
-<h2 id="7-midi-output-engine">7. MIDI Output Engine</h2>
+<h2 id="midi-output-engine">MIDI Output Engine</h2>
 <p>VIDI generates highly stable MIDI output:</p>
 <ul>
 <li>configurable smoothing</li>
@@ -127,8 +120,7 @@ Most existing systems fail in at least one area:</p>
 <li>Max/MSP</li>
 <li>Hardware synthesizers</li>
 </ul>
-<hr>
-<h2 id="8-results">8. Results</h2>
+<h2 id="results">Results</h2>
 <p>VIDI delivered:</p>
 <ul>
 <li><strong>fast pitch lock-in</strong></li>
@@ -144,8 +136,7 @@ Most existing systems fail in at least one area:</p>
 <li>expressive</li>
 <li>trustworthy in live performance</li>
 </ul>
-<hr>
-<h2 id="9-skills-demonstrated">9. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>DSP algorithm design</li>
 <li>Multi-method pitch estimation</li>
@@ -157,8 +148,7 @@ Most existing systems fail in at least one area:</p>
 <li>Low-latency engineering</li>
 <li>Performance optimization</li>
 </ul>
-<hr>
-<h2 id="10-narration--reflection">10. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>VIDI was a significant step in understanding <strong>real-time DSP under real-world constraints</strong>.<br>
 I learned how:</p>
 <ul>
@@ -169,7 +159,7 @@ I learned how:</p>
 </ul>
 <p>VIDI fused <strong>DSP theory</strong>, <strong>musical sensitivity</strong>, and <strong>engineering practicality</strong>, shaping how I approach
 audio systems, performance tuning, and perceptually meaningful DSP.</p>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

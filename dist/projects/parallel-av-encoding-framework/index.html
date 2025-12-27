@@ -1,24 +1,26 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Parallel A/V Encoding Framework</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="building-an-abr-encoding-lab">Building an ABR Encoding Lab</h1>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Parallel A/V Encoding Framework</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Parallel A/V Encoding Framework</h2>  <p class="detail-summary" style="margin-bottom: 1rem;"> Concurrent FFmpeg + Python harness for ABR ladder experimentation with metrics and packaging. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">ffmpeg</span><span class="detail-tag">python</span><span class="detail-tag">encoding</span><span class="detail-tag">abr</span><span class="detail-tag">metrics</span><span class="detail-tag">bash</span><span class="detail-tag">automation</span><span class="detail-tag">packaging</span><span class="detail-tag">streaming</span><span class="detail-tag">monitoring</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="building-an-abr-encoding-lab">Building an ABR Encoding Lab</h1>
 <p>Needed: explore encoder variants quickly, measure quality, and assemble ladder candidates without hand-running FFmpeg every time. Built a Python + FFmpeg harness that ingests, fragments, runs variants, and spits out HLS/DASH artifacts with consistent logging.</p>
 <p>⸻</p>
-<p>Ingest &#x26; fragment:</p>
+<h2 id="ingest--fragment">Ingest &#x26; fragment</h2>
 <ul>
 <li>Auto-detect inputs, normalize tracks, segment into fragments with stable GOP alignment.</li>
 <li>Write fragment manifests so every variant keeps matching metadata.</li>
 </ul>
-<p>Concurrent runs:</p>
+<h2 id="concurrent-runs">Concurrent runs</h2>
 <ul>
 <li>Spawn FFmpeg workers across cores; track PIDs, timeouts, per-job temp dirs.</li>
 <li>Sweep GOP, tune/preset, RC mode, filters; produce fragmented MP4s per variant.</li>
 <li>Concatenate select fragments into short A/B clips for quick playback checks.</li>
 </ul>
-<p>Metrics &#x26; packaging:</p>
+<h2 id="metrics--packaging">Metrics &#x26; packaging</h2>
 <ul>
 <li>Generate HLS/DASH playlists and ladders automatically from successful variants.</li>
 <li>Log VMAF, PSNR, bitrate, throughput; export CSVs to compare size vs. quality.</li>
 <li>Add guardrails: retries on transient failures, cleanup of orphaned processes, disk budget enforcement.</li>
 </ul>
-<p>Outcome: faster ladder tuning with reproducible runs, instant A/B inspection, and clear quality/bandwidth trade-offs.</p> </div> </article>  </main> <script>
+<h2 id="outcome">Outcome</h2>
+<p>Faster ladder tuning with reproducible runs, instant A/B inspection, and clear quality/bandwidth trade-offs.</p> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

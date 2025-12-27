@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Post-Processing Separated Speech</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Master Thesis // Project Archive</p> <div class="article-body"> <h1 id="master-thesis--speech-bandwidth-extension-using-non-linear-post-processing">Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Post-Processing Separated Speech</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Post-Processing Separated Speech</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Master Thesis // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> Reconstructed damaged time-frequency components of separated speech using bandwidth extension. Analyzed LPC Analysis/Synthesis, STFT &amp; Pitch Estimation, and Pole/Zero LPC Envelopes. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">speech</span><span class="detail-tag">dsp</span><span class="detail-tag">bandwidth_extension</span><span class="detail-tag">lpc</span><span class="detail-tag">excitation</span><span class="detail-tag">speech_enhancement</span><span class="detail-tag">stft</span><span class="detail-tag">python</span><span class="detail-tag">matlab</span><span class="detail-tag">research</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="master-thesis--speech-bandwidth-extension-using-non-linear-post-processing">Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing</h1>
+<h2 id="overview">Overview</h2>
 <p>This thesis focused on reconstructing <strong>wideband speech</strong> from narrowband (telephone-band) input
 using <strong>non-linear post-processing</strong>, <strong>excitation modelling</strong>, and <strong>spectral envelope reconstruction</strong>.
 The goal was to increase perceived bandwidth, restore brightness, and improve naturalness <strong>without</strong>
@@ -13,8 +13,7 @@ requiring changes to the encoder or any side information.</p>
 <li>Perceptual audio evaluation and tuning</li>
 <li>Iterative refinement based on listening tests and spectral analysis</li>
 </ul>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Traditional narrowband speech (0–4 kHz) loses:</p>
 <ul>
 <li>High-frequency harmonics</li>
@@ -32,17 +31,16 @@ information. This is fundamentally an <strong>ill-posed inverse problem</strong>
 </ul>
 <p>Goal:<br>
 Produce <strong>wideband-like speech</strong> that is perceptually convincing and spectrally coherent.</p>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
+<h2 id="system-architecture">System Architecture</h2>
 <p>The thesis designed a processing chain consisting of:</p>
-<h3 id="1-narrowband-analysis"><strong>(1) Narrowband Analysis</strong></h3>
+<h3 id="narrowband-analysis">Narrowband Analysis</h3>
 <ul>
 <li>Pre-emphasis</li>
 <li>Windowing</li>
 <li>LPC analysis (10–14th order)</li>
 <li>Extraction of the excitation signal</li>
 </ul>
-<h3 id="2-excitation-modelling"><strong>(2) Excitation Modelling</strong></h3>
+<h3 id="excitation-modelling">Excitation Modelling</h3>
 <p>Tested approaches included:</p>
 <ul>
 <li>Non-linear expansion</li>
@@ -52,7 +50,7 @@ Produce <strong>wideband-like speech</strong> that is perceptually convincing an
 <li>Blended excitation shaping</li>
 </ul>
 <p>The final system used <strong>non-linear excitation expansion</strong> with a <strong>high-band shaping filter</strong>.</p>
-<h3 id="3-envelope-reconstruction"><strong>(3) Envelope Reconstruction</strong></h3>
+<h3 id="envelope-reconstruction">Envelope Reconstruction</h3>
 <p>Methods explored:</p>
 <ul>
 <li>LPC envelope extrapolation</li>
@@ -60,14 +58,13 @@ Produce <strong>wideband-like speech</strong> that is perceptually convincing an
 <li>Adaptive energy matching</li>
 <li>Band-tilting adjustments</li>
 </ul>
-<h3 id="4-synthesis"><strong>(4) Synthesis</strong></h3>
+<h3 id="synthesis">Synthesis</h3>
 <ul>
 <li>Excitation filtering using reconstructed LPC coefficients</li>
 <li>Overlap–add synthesis</li>
 <li>Envelope smoothing and final spectral correction</li>
 </ul>
-<hr>
-<h2 id="4-block-diagram-textual">4. Block Diagram (Textual)</h2>
+<h2 id="block-diagram-textual">Block Diagram (Textual)</h2>
 <p>Narrowband Speech
 ↓
 Analysis
@@ -82,8 +79,7 @@ Envelope Reconstruction
 Synthesis
 ↓
 Enhanced Wideband-like Speech</p>
-<hr>
-<h2 id="5-implementation-details">5. Implementation Details</h2>
+<h2 id="implementation-details">Implementation Details</h2>
 <h3 id="matlab-prototyping">MATLAB Prototyping</h3>
 <ul>
 <li>LPC extraction (autocorrelation &#x26; Burg methods)</li>
@@ -104,8 +100,7 @@ Enhanced Wideband-like Speech</p>
 <li>Generating spectrograms and comparison views</li>
 <li>Automating batch evaluation sets</li>
 </ul>
-<hr>
-<h2 id="6-evaluation-strategy">6. Evaluation Strategy</h2>
+<h2 id="evaluation-strategy">Evaluation Strategy</h2>
 <h3 id="objective-measures">Objective Measures</h3>
 <ul>
 <li>High-band energy reconstruction accuracy</li>
@@ -130,16 +125,14 @@ Enhanced Wideband-like Speech</p>
 </ul>
 <p><strong>Perceptual testing was essential</strong> — many methods that looked good numerically produced
 unacceptable artifacts during listening.</p>
-<hr>
-<h2 id="7-key-results">7. Key Results</h2>
+<h2 id="key-results">Key Results</h2>
 <ul>
 <li>Reconstructed high-band content <strong>significantly improved</strong> perceived brightness and clarity.</li>
 <li>Non-linear excitation + spectral shaping produced stable and natural-sounding results.</li>
 <li>High-band envelope reconstruction matched reference wideband behavior well.</li>
 <li>Objective and subjective evaluations aligned closely after tuning.</li>
 </ul>
-<hr>
-<h2 id="8-skills-demonstrated">8. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <h3 id="dsp-expertise">DSP Expertise</h3>
 <ul>
 <li>LPC modelling</li>
@@ -167,8 +160,7 @@ unacceptable artifacts during listening.</p>
 <li>Clear reporting of results</li>
 <li>Scientific and engineering communication</li>
 </ul>
-<hr>
-<h2 id="9-narration--personal-reflection">9. Narration / Personal Reflection</h2>
+<h2 id="narration--personal-reflection">Narration / Personal Reflection</h2>
 <p>This thesis shaped my understanding of audio engineering at a deep level.<br>
 I learned that:</p>
 <ul>
@@ -184,7 +176,7 @@ I learned that:</p>
 </ul>
 <p>This balance between <strong>math, engineering, and human hearing</strong> continues to define how I approach
 audio, DSP, and media systems today.</p>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

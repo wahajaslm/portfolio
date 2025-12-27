@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Beatnik — Gesture-Controlled OSC/MIDI Glove</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Prototype // Project Archive</p> <div class="article-body"> <h1 id="beatnik--gesture-controlled-oscmidi-glove">BEATNIK – Gesture-Controlled OSC/MIDI Glove</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Beatnik — Gesture-Controlled OSC/MIDI Glove</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Beatnik — Gesture-Controlled OSC/MIDI Glove</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Prototype // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> Hand-gesture OSC glove with piezo/FSR sensing, active analog filtering, and DMA-driven MCU output. Interfaced with Ableton Live. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">gesture_control</span><span class="detail-tag">osc</span><span class="detail-tag">midi</span><span class="detail-tag">sensors</span><span class="detail-tag">embedded</span><span class="detail-tag">dma</span><span class="detail-tag">piezo_sensing</span><span class="detail-tag">stm32</span><span class="detail-tag">c</span><span class="detail-tag">ableton_live</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="beatnik--gesture-controlled-oscmidi-glove">BEATNIK – Gesture-Controlled OSC/MIDI Glove</h1>
+<h2 id="overview">Overview</h2>
 <p>BEATNIK is a wearable glove-based controller that converts gestures and finger movements into:</p>
 <ul>
 <li><strong>OSC (Open Sound Control) messages</strong>, and</li>
@@ -22,8 +22,7 @@
 <li>host-side sound engines</li>
 </ul>
 <p>Its goal is to provide <strong>fluid, human, gestural music control</strong> that traditional knobs/sliders cannot offer.</p>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Most music controllers:</p>
 <ul>
 <li>are discrete</li>
@@ -39,34 +38,32 @@
 <li>expressive mapping to MIDI/OSC</li>
 <li>intuitive interface for performers</li>
 </ul>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
-<h3 id="hardware-layer"><strong>Hardware Layer</strong></h3>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="hardware-layer">Hardware Layer</h3>
 <ul>
 <li>Flex sensors (1 per finger)</li>
 <li>IMU/accelerometer for tilt / roll / shake</li>
 <li>Microcontroller (Arduino/Teensy class)</li>
 </ul>
-<h3 id="signal-processing-layer"><strong>Signal Processing Layer</strong></h3>
+<h3 id="signal-processing-layer">Signal Processing Layer</h3>
 <ul>
 <li>ADC sampling</li>
 <li>Exponential smoothing to reduce jitter</li>
 <li>Gesture classification</li>
 <li>Noise thresholding</li>
 </ul>
-<h3 id="osc--midi-output-layer"><strong>OSC &#x26; MIDI Output Layer</strong></h3>
+<h3 id="osc--midi-output-layer">OSC &#x26; MIDI Output Layer</h3>
 <ul>
 <li>OSC message packer</li>
 <li>MIDI note generator</li>
 <li>MIDI CC mapping</li>
 <li>Configurable output mode (OSC-only, MIDI-only, hybrid)</li>
 </ul>
-<h3 id="host-system"><strong>Host System</strong></h3>
+<h3 id="host-system">Host System</h3>
 <ul>
 <li>DAW or synthesis environment that receives OSC or MIDI</li>
 </ul>
-<hr>
-<h2 id="4-osc-messaging-full-technical-detail">4. OSC Messaging (Full Technical Detail)</h2>
+<h2 id="osc-messaging-full-technical-detail">OSC Messaging (Full Technical Detail)</h2>
 <p>OSC messages follow a structured namespace:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/beatnik/finger1      float 0.0–1.0</span></span>
 <span class="line"><span>/beatnik/finger2      float 0.0–1.0</span></span>
@@ -88,10 +85,9 @@
 <ul>
 <li>Sent at <strong>30–60 Hz</strong> for smooth motion without overloading host apps</li>
 </ul>
-<hr>
-<h2 id="5-midi-note--cc-messaging-full-detail">5. MIDI Note + CC Messaging (Full Detail)</h2>
+<h2 id="midi-note--cc-messaging-full-detail">MIDI Note + CC Messaging (Full Detail)</h2>
 <p>The glove supports three musical modes:</p>
-<h3 id="a-midi-note-triggering"><strong>A) MIDI Note Triggering</strong></h3>
+<h3 id="midi-note-triggering">MIDI Note Triggering</h3>
 <p>Each finger can trigger notes:</p>
 
 
@@ -124,12 +120,11 @@
 
 
 <table><thead><tr><th>Finger Gesture</th><th>Threshold</th><th>MIDI Output</th></tr></thead><tbody><tr><td>Index bent</td><td>> bend_t</td><td>NOTE ON 60 velocity=X</td></tr><tr><td>Index released</td><td>&#x3C; bend_t</td><td>NOTE OFF 60</td></tr><tr><td>Middle bent</td><td>> bend_t</td><td>NOTE ON 62</td></tr><tr><td>Ring bent</td><td>…</td><td>NOTE ON 64</td></tr></tbody></table>
-<h3 id="velocity-calculation"><strong>Velocity Calculation</strong></h3>
+<h3 id="velocity-calculation">Velocity Calculation</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>velocity = clamp( (Δfinger_bend / Δt) * 127 )</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>This creates <strong>human feel</strong> rather than fixed velocity.</p>
-<hr>
-<h3 id="b-midi-cc-control-continuous-control"><strong>B) MIDI CC Control (Continuous Control)</strong></h3>
+<h3 id="midi-cc-control-continuous-control">MIDI CC Control (Continuous Control)</h3>
 <p>Recommended mappings:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>finger1 → CC74 (Filter Cutoff)</span></span>
 <span class="line"><span>finger2 → CC1  (Mod Wheel / Vibrato)</span></span>
@@ -138,12 +133,10 @@
 <span class="line"><span>shake   → CC5  (Portamento or FX depth)</span></span>
 <span class="line"><span></span></span></code></pre>
 <p>Gestures map to CC values <strong>0–127</strong>.</p>
-<hr>
-<h3 id="c-pitch-bend"><strong>C) Pitch Bend</strong></h3>
+<h3 id="pitch-bend">Pitch Bend</h3>
 <p>Tilt angle → bend value:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pitchbend = map(tilt, -1.0..1.0 → -8192..8191)</span></span>
 <span class="line"><span></span></span></code></pre>
-<hr>
 <h3 id="supported-output-modes">Supported Output Modes</h3>
 
 
@@ -167,8 +160,7 @@
 
 
 <table><thead><tr><th>Mode</th><th>Behavior</th></tr></thead><tbody><tr><td>OSC-only</td><td>Continuous OSC messages only</td></tr><tr><td>MIDI-only</td><td>Notes + CC only</td></tr><tr><td>Hybrid</td><td>Sends both OSC + MIDI for experimental rigs</td></tr></tbody></table>
-<hr>
-<h2 id="6-implementation-details">6. Implementation Details</h2>
+<h2 id="implementation-details">Implementation Details</h2>
 <h3 id="firmware-c">Firmware (C)</h3>
 <ul>
 <li>ADC sampling loop</li>
@@ -194,8 +186,7 @@
 <li>Logic Pro (MIDI layer)</li>
 <li>Pure Data &#x26; VCV Rack (OSC)</li>
 </ul>
-<hr>
-<h2 id="7-results">7. Results</h2>
+<h2 id="results">Results</h2>
 <ul>
 <li>Very expressive modulation (filter/fx sweeps)</li>
 <li>Stable continuous CC values</li>
@@ -203,8 +194,7 @@
 <li>&#x3C;20 ms total end-to-end latency</li>
 <li>Natural gestural performance experience</li>
 </ul>
-<hr>
-<h2 id="8-skills-demonstrated">8. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>Embedded C</li>
 <li>Sensor fusion</li>
@@ -214,8 +204,7 @@
 <li>Human–computer interaction</li>
 <li>Hardware–software integration</li>
 </ul>
-<hr>
-<h2 id="9-narration--reflection">9. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>This project showed me how raw movement becomes <strong>musical performance</strong>.</p>
 <p>I learned that:</p>
 <ul>
@@ -227,7 +216,7 @@
 <p>BEATNIK taught me to think from the <strong>performer’s perspective</strong>, not just the engineer’s.<br>
 It shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced
 my DSP and audio engineering work.</p>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

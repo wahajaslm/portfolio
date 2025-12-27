@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Laser Harp — Optical Motion-Based Musical Instrument</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell"> <p class="article-meta" style="margin-top:0;">Instrument // Project Archive</p> <div class="article-body"> <h1 id="laser-harp--optical-motion-based-musical-instrument">Laser Harp — Optical Motion-Based Musical Instrument</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Laser Harp — Optical Motion-Based Musical Instrument</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Laser Harp — Optical Motion-Based Musical Instrument</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Instrument // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> Laser-triggered MIDI controller using photodiodes and serial comms to drive performance hardware. Built on PIC Microcontroller. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">laser</span><span class="detail-tag">optics</span><span class="detail-tag">embedded</span><span class="detail-tag">sensors</span><span class="detail-tag">musical_interface</span><span class="detail-tag">midi</span><span class="detail-tag">photodiodes</span><span class="detail-tag">c</span><span class="detail-tag">analog_filtering</span><span class="detail-tag">calibration</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="laser-harp--optical-motion-based-musical-instrument">Laser Harp — Optical Motion-Based Musical Instrument</h1>
+<h2 id="overview">Overview</h2>
 <p>The <strong>Laser Harp</strong> is an optical musical instrument where each “string” is a <strong>beam of laser light</strong>.<br>
 When a performer moves their hand through a beam, the interruption is detected and translated into a:</p>
 <ul>
@@ -17,8 +17,7 @@ When a performer moves their hand through a beam, the interruption is detected a
 <li>musical mapping logic</li>
 <li>gestural control concepts</li>
 </ul>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Physical harps require string plucking.<br>
 The goal here was to design a <strong>touchless</strong>, visually striking instrument that:</p>
 <ul>
@@ -35,16 +34,15 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <li>avoiding note flicker and retriggers</li>
 <li>mapping multiple beams to a musical scale</li>
 </ul>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
-<h3 id="1-optical-beam-system"><strong>1. Optical Beam System</strong></h3>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="optical-beam-system">Optical Beam System</h3>
 <ul>
 <li>Multiple laser diodes positioned vertically</li>
 <li>Photodiodes or LDRs aligned opposite each laser</li>
 <li>A constant laser → photodiode reading indicates “beam intact”</li>
 <li>A drop in sensor voltage indicates “beam broken”</li>
 </ul>
-<h3 id="2-signal-conditioning"><strong>2. Signal Conditioning</strong></h3>
+<h3 id="signal-conditioning">Signal Conditioning</h3>
 <p>To create stable digital-like signals:</p>
 <ul>
 <li>Analog low-pass filters</li>
@@ -52,7 +50,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <li>Pull-up/pull-down stabilization</li>
 <li>Shielding to reduce ambient noise</li>
 </ul>
-<h3 id="3-embedded-controller"><strong>3. Embedded Controller</strong></h3>
+<h3 id="embedded-controller">Embedded Controller</h3>
 <p>A microcontroller (Arduino/Teensy-level) handled:</p>
 <ul>
 <li>Reading photodiode outputs</li>
@@ -60,7 +58,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <li>State transitions (INTACT → BROKEN → INTACT)</li>
 <li>Generating MIDI/OSC messages</li>
 </ul>
-<h3 id="4-output-layer"><strong>4. Output Layer</strong></h3>
+<h3 id="output-layer">Output Layer</h3>
 <p>Supports three modes:</p>
 <h4 id="midi-mode">MIDI Mode</h4>
 <ul>
@@ -82,15 +80,14 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <ul>
 <li>Both OSC + MIDI for advanced performance rigs</li>
 </ul>
-<hr>
-<h2 id="4-implementation-details">4. Implementation Details</h2>
-<h3 id="41-photodiode-alignment">4.1 Photodiode Alignment</h3>
+<h2 id="implementation-details">Implementation Details</h2>
+<h3 id="photodiode-alignment">Photodiode Alignment</h3>
 <ul>
 <li>Required precise beam-to-sensor alignment</li>
 <li>Beam intensity adjusted to prevent oversaturation</li>
 <li>Ambient light tested in different environments</li>
 </ul>
-<h3 id="42-embedded-logic-c">4.2 Embedded Logic (C)</h3>
+<h3 id="embedded-logic-c">Embedded Logic (C)</h3>
 <p>The core loop ran at a stable frequency:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (sensor_value </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> INTACT) {</span></span>
 <span class="line"><span style="color:#B392F0">    trigger_note</span><span style="color:#E1E4E8">(string_id);</span></span>
@@ -108,35 +105,33 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <li>Minimum-hold timers</li>
 <li>Velocity/glide options</li>
 </ul>
-<h3 id="43-midi-note-mapping">4.3 MIDI Note Mapping</h3>
+<h3 id="midi-note-mapping">MIDI Note Mapping</h3>
 <p>Two options:</p>
-<h4 id="fixed-scale"><strong>Fixed Scale</strong></h4>
+<h4 id="fixed-scale">Fixed Scale</h4>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Beam 1 → MIDI 60 (C4)</span></span>
 <span class="line"><span>Beam 2 → MIDI 62 (D4)</span></span>
 <span class="line"><span>Beam 3 → MIDI 64 (E4)</span></span>
 <span class="line"><span></span></span></code></pre>
-<h4 id="dynamic-mode"><strong>Dynamic Mode</strong></h4>
+<h4 id="dynamic-mode">Dynamic Mode</h4>
 <p>Pitch determined by:</p>
 <ul>
 <li>hand height</li>
 <li>beam index</li>
 <li>external scale tables</li>
 </ul>
-<h3 id="44-osc-mapping">4.4 OSC Mapping</h3>
+<h3 id="osc-mapping">OSC Mapping</h3>
 <p>Example:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/harp/beam1 1   → beam broken</span></span>
 <span class="line"><span>/harp/beam1 0   → beam restored</span></span>
 <span class="line"><span></span></span></code></pre>
-<hr>
-<h2 id="5-results">5. Results</h2>
+<h2 id="results">Results</h2>
 <ul>
 <li>Intuitive and fun to play</li>
 <li>Clear on/off triggering with minimal jitter</li>
 <li>Visually striking, ideal for performance</li>
 <li>Low latency due to efficient embedded design</li>
 </ul>
-<hr>
-<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>Embedded C development</li>
 <li>Analog/digital signal conditioning</li>
@@ -145,8 +140,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <li>Hardware prototyping</li>
 <li>UX design for interactive instruments</li>
 </ul>
-<hr>
-<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>Building a <strong>touchless optical instrument</strong> taught me how environmental factors, noise, timing stability,
 and physical placement influence real-time interaction.</p>
 <p>A laser harp only feels “correct” when triggering is instantaneous and stable.<br>
@@ -157,7 +151,7 @@ This reinforced principles that later shaped my DSP and audio engineering mindse
 <li>thresholds require tuning</li>
 <li>UX is just as important as code</li>
 </ul>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

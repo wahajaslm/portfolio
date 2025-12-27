@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>traffic_signal_controller</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="traffic-signal-controller--embedded-c-state-machine">Traffic Signal Controller — Embedded C State Machine</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Traffic Signal Controller</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Traffic Signal Controller</h2>  <p class="detail-summary" style="margin-bottom: 1rem;"> Finite-state traffic light controller in C using timers/interrupts for deterministic, safe signal sequencing. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">embedded</span><span class="detail-tag">microcontroller</span><span class="detail-tag">state_machine</span><span class="detail-tag">real_time</span><span class="detail-tag">c</span><span class="detail-tag">timers</span><span class="detail-tag">interrupts</span><span class="detail-tag">firmware</span><span class="detail-tag">prototyping</span><span class="detail-tag">testing</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="traffic-signal-controller--embedded-c-state-machine">Traffic Signal Controller — Embedded C State Machine</h1>
+<h2 id="overview">Overview</h2>
 <p>This project implements a <strong>Traffic Signal Controller</strong> using an embedded microcontroller and a<br>
 <strong>finite state machine (FSM)</strong>. The system handles:</p>
 <ul>
@@ -10,8 +10,7 @@
 <li>real-time light switching logic</li>
 </ul>
 <p>It demonstrates real-time embedded programming, state-machine design, and stable time-driven logic.</p>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Traffic signals must operate:</p>
 <ul>
 <li>predictably</li>
@@ -27,9 +26,8 @@ A proper FSM is needed to ensure:</p>
 <li>no illegal combinations</li>
 <li>clean reset behavior</li>
 </ul>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
-<h3 id="hardware-components"><strong>Hardware Components</strong></h3>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="hardware-components">Hardware Components</h3>
 <ul>
 <li>Microcontroller (AVR / PIC / Arduino-class)</li>
 <li>LED indicators:
@@ -42,7 +40,7 @@ A proper FSM is needed to ensure:</p>
 <li>Timer module or software timer</li>
 <li>Optional input button (e.g., pedestrian mode)</li>
 </ul>
-<h3 id="state-machine-diagram"><strong>State Machine Diagram</strong></h3>
+<h3 id="state-machine-diagram">State Machine Diagram</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
 <span class="line"><span>        |</span></span>
 <span class="line"><span>        v</span></span>
@@ -54,7 +52,7 @@ A proper FSM is needed to ensure:</p>
 <span class="line"><span>        v</span></span>
 <span class="line"><span>      [RED]  (loop)</span></span>
 <span class="line"><span></span></span></code></pre>
-<h3 id="state-definitions"><strong>State Definitions</strong></h3>
+<h3 id="state-definitions">State Definitions</h3>
 
 
 
@@ -81,9 +79,8 @@ A proper FSM is needed to ensure:</p>
 
 
 <table><thead><tr><th>State</th><th>Lights Active</th><th>Duration</th></tr></thead><tbody><tr><td>RED</td><td>Red ON</td><td>t_red</td></tr><tr><td>GREEN</td><td>Green ON</td><td>t_green</td></tr><tr><td>YELLOW</td><td>Yellow ON</td><td>t_yellow</td></tr></tbody></table>
-<hr>
-<h2 id="4-implementation-details">4. Implementation Details</h2>
-<h3 id="41-fsm-structure-c">4.1 FSM Structure (C)</h3>
+<h2 id="implementation-details">Implementation Details</h2>
+<h3 id="fsm-structure-c">FSM Structure (C)</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
 <span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
 <span class="line"></span>
@@ -109,25 +106,24 @@ A proper FSM is needed to ensure:</p>
 <span class="line"><span style="color:#E1E4E8">    }</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<h3 id="42-timer-integration">4.2 Timer Integration</h3>
+<h3 id="timer-integration">Timer Integration</h3>
 <ul>
 <li>Using hardware timers or non-blocking timing loops</li>
 <li>Ensures system remains responsive</li>
 </ul>
-<h3 id="43-optional-pedestrian-handling">4.3 Optional Pedestrian Handling</h3>
+<h3 id="optional-pedestrian-handling">Optional Pedestrian Handling</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">button_pressed</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#B392F0"> safe_to_interrupt</span><span style="color:#E1E4E8">()) {</span></span>
 <span class="line"><span style="color:#B392F0">    extend_red_phase</span><span style="color:#E1E4E8">();</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<h3 id="44-safety-guarantees">4.4 Safety Guarantees</h3>
+<h3 id="safety-guarantees">Safety Guarantees</h3>
 <ul>
 <li>Never GREEN + RED at the same time</li>
 <li>Minimum time per state is enforced</li>
 <li>Guaranteed sequence order</li>
 <li>Optional emergency all-red mode</li>
 </ul>
-<hr>
-<h2 id="5-results">5. Results</h2>
+<h2 id="results">Results</h2>
 <ul>
 <li>Smooth, predictable transitions</li>
 <li>Timing accuracy and stability</li>
@@ -135,8 +131,7 @@ A proper FSM is needed to ensure:</p>
 <li>No illegal LED combinations</li>
 <li>Reliable due to strict FSM structure</li>
 </ul>
-<hr>
-<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <ul>
 <li>Embedded C</li>
 <li>State machine design</li>
@@ -145,12 +140,10 @@ A proper FSM is needed to ensure:</p>
 <li>IO interfacing</li>
 <li>Debugging embedded timing issues</li>
 </ul>
-<hr>
-<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>This project taught me the importance of deterministic timing and clean control flow.<br>
 Using a state machine made the behavior predictable and easy to reason about — an approach that applies
-not only to embedded systems but also to larger software and DSP pipelines.</p>
-<hr> </div> </article>  </main> <script>
+not only to embedded systems but also to larger software and DSP pipelines.</p> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {

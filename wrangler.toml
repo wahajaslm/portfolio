@@ -1,0 +1,8 @@
+name = "portfolio-chat"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "CHAT_LOGS"
+id = "PASTE_YOUR_KV_ID_HERE"
+

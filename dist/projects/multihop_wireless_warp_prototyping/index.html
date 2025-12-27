@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>multihop_wireless_warp_prototyping</title><link rel="stylesheet" href="../styles/global.css"></head> <body class="article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <article class="article-shell">  <div class="article-body"> <h1 id="multi-hop-wireless-prototyping-with-warp-sdr">Multi-Hop Wireless Prototyping with WARP SDR</h1>
-<hr>
-<h2 id="1-overview">1. Overview</h2>
+<!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Multi-Hop Wireless Prototyping with WARP SDR</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">Multi-Hop Wireless Prototyping with WARP SDR</h2>  <p class="detail-summary" style="margin-bottom: 1rem;"> WARP SDR multi-hop prototype with MATLAB tooling for packet tracing, channel modeling, and cooperative relay experiments. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">wireless</span><span class="detail-tag">sdr</span><span class="detail-tag">matlab</span><span class="detail-tag">multi_hop</span><span class="detail-tag">cooperative_relays</span><span class="detail-tag">ofdm</span><span class="detail-tag">channel_modeling</span><span class="detail-tag">warp</span><span class="detail-tag">synchronization</span><span class="detail-tag">link_budget</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <h1 id="multi-hop-wireless-prototyping-with-warp-sdr">Multi-Hop Wireless Prototyping with WARP SDR</h1>
+<h2 id="overview">Overview</h2>
 <p>This project involved building a <strong>research-grade multi-hop wireless prototyping system</strong> using:</p>
 <ul>
 <li><strong>WARP SDR boards</strong></li>
@@ -17,8 +17,7 @@ multi-hop and cooperative communication networks under real wireless conditions.
 <li>MATLAB GUI development</li>
 <li>Research methodology</li>
 </ul>
-<hr>
-<h2 id="2-problem-statement">2. Problem Statement</h2>
+<h2 id="problem-statement">Problem Statement</h2>
 <p>Multi-hop wireless networks behave far differently in practice than in theoretical models.<br>
 Difficulties include:</p>
 <ul>
@@ -34,9 +33,8 @@ Difficulties include:</p>
 ✔ Real-time or near-real-time feedback<br>
 ✔ Clear multi-hop path reconstruction<br>
 ✔ Comparison between forwarding schemes</p>
-<hr>
-<h2 id="3-system-architecture">3. System Architecture</h2>
-<h3 id="1-warp-sdr-nodes"><strong>(1) WARP SDR Nodes</strong></h3>
+<h2 id="system-architecture">System Architecture</h2>
+<h3 id="warp-sdr-nodes">WARP SDR Nodes</h3>
 <p>Roles included:</p>
 <ul>
 <li>Source</li>
@@ -44,7 +42,7 @@ Difficulties include:</p>
 <li>Destination</li>
 </ul>
 <p>Nodes were configured to run experiments on cooperative relaying and multi-hop forwarding.</p>
-<h3 id="2-experiment-logging"><strong>(2) Experiment Logging</strong></h3>
+<h3 id="experiment-logging">Experiment Logging</h3>
 <p>Each WARP node logged:</p>
 <ul>
 <li>packet arrivals</li>
@@ -53,7 +51,7 @@ Difficulties include:</p>
 <li>relay decisions</li>
 <li>RSSI / link quality indicators</li>
 </ul>
-<h3 id="3-matlab-data-interface"><strong>(3) MATLAB Data Interface</strong></h3>
+<h3 id="matlab-data-interface">MATLAB Data Interface</h3>
 <p>A MATLAB module was written to:</p>
 <ul>
 <li>import logs</li>
@@ -62,7 +60,7 @@ Difficulties include:</p>
 <li>reconstruct packet paths</li>
 <li>compute per-hop statistics</li>
 </ul>
-<h3 id="4-matlab-visualization-gui"><strong>(4) MATLAB Visualization GUI</strong></h3>
+<h3 id="matlab-visualization-gui">MATLAB Visualization GUI</h3>
 <p>Custom GUI displayed:</p>
 <ul>
 <li>node topology</li>
@@ -72,8 +70,7 @@ Difficulties include:</p>
 <li>coded vs. uncoded performance difference</li>
 <li>timelines and link behavior</li>
 </ul>
-<hr>
-<h2 id="4-implementation-details">4. Implementation Details</h2>
+<h2 id="implementation-details">Implementation Details</h2>
 <h3 id="matlab-parsing-logic">MATLAB Parsing Logic</h3>
 <ul>
 <li>Parsed CSV/log files from each node</li>
@@ -103,8 +100,7 @@ Difficulties include:</p>
 <li>plotted latency distributions</li>
 <li>identified link asymmetries</li>
 </ul>
-<hr>
-<h2 id="5-key-findings">5. Key Findings</h2>
+<h2 id="key-findings">Key Findings</h2>
 <p>The visualization revealed behaviors that were NOT obvious from theory:</p>
 <ul>
 <li><strong>Relay–destination links behaved asymmetrically</strong>, causing unexpected drops</li>
@@ -114,8 +110,7 @@ Difficulties include:</p>
 </ul>
 <p>Graphs and animations provided immediate intuition about the multi-hop behavior that traditional logs
 and equations could not convey.</p>
-<hr>
-<h2 id="6-skills-demonstrated">6. Skills Demonstrated</h2>
+<h2 id="skills-demonstrated">Skills Demonstrated</h2>
 <h3 id="wireless-communication-engineering">Wireless Communication Engineering</h3>
 <ul>
 <li>Understanding of multi-hop and cooperative relaying</li>
@@ -140,8 +135,7 @@ and equations could not convey.</p>
 <li>Bridging hardware measurements → interpretable information</li>
 <li>Making complex wireless behavior intuitive</li>
 </ul>
-<hr>
-<h2 id="7-narration--reflection">7. Narration / Reflection</h2>
+<h2 id="narration--reflection">Narration / Reflection</h2>
 <p>This project was my first experience in turning <strong>raw wireless behavior</strong> into <strong>visual insight</strong>.</p>
 <p>I realized:</p>
 <ul>
@@ -153,7 +147,7 @@ and equations could not convey.</p>
 <p>The project strengthened my skills in combining <strong>engineering rigor</strong>, <strong>experimental thinking</strong>, and
 <strong>visual communication</strong>, which later translated directly into how I approach debugging and system
 analysis in DSP and audio engineering.</p>
-<hr> </div> </article>  </main> <script>
+<hr> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {
