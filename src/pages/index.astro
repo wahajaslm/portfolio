@@ -19,7 +19,8 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
         <span style="color:var(--card-border)">|</span>
         <a href={import.meta.env.BASE_URL + '/mygpt/'} class="ribbon-link">GPT</a>
       </div>
-      <div class="header-actions">
+      <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
+        <a href={import.meta.env.BASE_URL + '/Wahaj_Aslam_CV.pdf'} download class="btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" aria-label="Download CV PDF">CV</a>
         <button class="theme-switch" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">LIGHT</button>
       </div>
     </header>
@@ -78,7 +79,6 @@ const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
       <section id="experience">
         <div class="section-header">
           <span class="label">// 02 EXPERIENCE</span>
-          <a href="/Wahaj_Aslam_CV.pdf" download class="btn" aria-label="Download CV PDF">DOWNLOAD CV</a>
         </div>
         <hr class="section-divider" />
 
