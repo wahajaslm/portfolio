@@ -5,7 +5,8 @@
     "prebuild": "node scripts/export-content.mjs",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "cv:watch": "node scripts/watch_cv.js"
   },
   "dependencies": {
     "astro": "^4.10.0"
