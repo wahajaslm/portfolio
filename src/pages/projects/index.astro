@@ -689,7 +689,7 @@ const projectData = projects.map(({ slug, meta }) => ({
         // Don't center here - let renderGallery handle it after transition
         detailTags.innerHTML = item.tags.map((t) => '<span class="detail-tag">' + t + '</span>').join('');
         detailActions.innerHTML = item.articleSlug
-          ? '<a class="detail-link" href="/portfolio/projects/' + encodeURIComponent(item.articleSlug) + '/">Open full article</a>'
+          ? '<a class="detail-link" href="/projects/' + encodeURIComponent(item.articleSlug) + '/">Open full article</a>'
           : '';
         const html = contentCache.get(item.slug) || storedContent.get(item.slug) || '';
         let cleaned = html ? stripHeaderAndSummary(html) : '';
