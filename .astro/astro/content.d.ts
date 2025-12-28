@@ -187,6 +187,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
+"deterministic-rag-assistant/index.md": {
+	id: "deterministic-rag-assistant/index.md";
+  slug: "deterministic-rag-assistant";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
 "dtmf_detector/index.md": {
 	id: "dtmf_detector/index.md";
   slug: "dtmf_detector";

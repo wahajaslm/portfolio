@@ -17,3 +17,8 @@ end tell
 EOF
 
 echo "Done! Updated $OUTPUT_FILE"
+
+# Also copy to docs folder to keep them in sync
+DOCS_PDF="$REPO_ROOT/docs/Wahaj_Aslam_CV.pdf"
+cp "$OUTPUT_FILE" "$DOCS_PDF"
+echo "Synced to $DOCS_PDF"

@@ -1,0 +1,622 @@
+---
+const pageTitle = 'Wahaj Aslam | Senior Audio DSP Engineer | Audio Codec Specialist';
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <link rel="stylesheet" href={import.meta.env.BASE_URL + '/style.css'} />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="top-header">
+      <div class="ribbon-nav blur-fade">
+        <a href={import.meta.env.BASE_URL} class="ribbon-link">HOME</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href={import.meta.env.BASE_URL + '/resume/'} class="ribbon-link active">RESUME</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href={import.meta.env.BASE_URL + '/projects/'} class="ribbon-link">PROJECTS</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href={import.meta.env.BASE_URL + '/mygpt/'} class="ribbon-link">GPT</a>
+      </div>
+      <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
+        <a href={import.meta.env.BASE_URL + '/Wahaj_Aslam_CV.pdf'} download class="btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" aria-label="Download CV PDF">DOWNLOAD CV</a>
+        <button class="theme-switch" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">LIGHT</button>
+      </div>
+    </header>
+
+    <nav class="nav-sidebar">
+      <button class="nav-link active" data-index="0">Intro</button>
+      <button class="nav-link" data-index="1">Experience</button>
+      <button class="nav-link" data-index="2">Skills</button>
+      <button class="nav-link" data-index="3">Certificates & Patent</button>
+      <button class="nav-link" data-index="4">Education</button>
+      <button class="nav-link" data-index="5">Languages</button>
+      <button class="nav-link" data-index="6">Interests</button>
+      <button class="nav-link" data-index="7">Contact</button>
+    </nav>
+
+    <main>
+      <!-- 01 INTRO -->
+      <section id="intro">
+        <div class="section-header">
+          <span class="label"> // 01 INTRO</span>
+        </div>
+        <hr class="section-divider" />
+
+        <div class="intro-grid">
+          <div class="intro-left">
+            <p class="hero-accent blur-fade">SENIOR ENGINEER</p>
+            <h1 class="hero-title mask-reveal"><span>WAHAJ<br />ASLAM</span></h1>
+          </div>
+          <div class="intro-right blur-fade" style="transition-delay: 0.1s;">
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1rem;">
+              Senior Audio DSP Engineer with 8+ years of experience developing advanced audio codecs for real-time and streaming applications used by major global partners.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1rem;">
+              Strong background in audio signal processing and perceptual coding, with hands-on contributions to MPEG standards including xHE-AAC, MPEG-H 3D Audio, and AAC.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+              Focused on turning research concepts into robust, production-quality C/C++ implementations, with emphasis on performance, audio quality, and long-term maintainability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFINITE TAPE MARQUEE -->
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+          <div class="marquee-item">SENIOR AUDIO ENGINEER</div>•<div class="marquee-item">C/C++</div>•<div class="marquee-item">PYTHON</div>•<div class="marquee-item">DSP ALGORITHMS</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">xHE-AAC</div>•<div class="marquee-item">REAL-TIME SYSTEMS</div>•
+          <div class="marquee-item">SENIOR AUDIO ENGINEER</div>•<div class="marquee-item">C/C++</div>•<div class="marquee-item">PYTHON</div>•<div class="marquee-item">DSP ALGORITHMS</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">xHE-AAC</div>•<div class="marquee-item">REAL-TIME SYSTEMS</div>•
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <div class="marquee-item">SENIOR AUDIO ENGINEER</div>•<div class="marquee-item">C/C++</div>•<div class="marquee-item">PYTHON</div>•<div class="marquee-item">DSP ALGORITHMS</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">xHE-AAC</div>•<div class="marquee-item">REAL-TIME SYSTEMS</div>•
+          <div class="marquee-item">SENIOR AUDIO ENGINEER</div>•<div class="marquee-item">C/C++</div>•<div class="marquee-item">PYTHON</div>•<div class="marquee-item">DSP ALGORITHMS</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">xHE-AAC</div>•<div class="marquee-item">REAL-TIME SYSTEMS</div>•
+        </div>
+      </div>
+
+      <!-- 02 EXPERIENCE -->
+      <section id="experience">
+        <div class="section-header">
+          <span class="label">// 02 EXPERIENCE</span>
+        </div>
+        <hr class="section-divider" />
+
+        <div class="timeline-container">
+          <div class="timeline-bg-line"></div>
+          <div class="timeline-active-line" id="draw-line"></div>
+
+          <!-- Job 1 -->
+          <div class="job-entry stagger-parent open">
+            <div class="job-marker"></div>
+            <div class="job-header">
+              <div class="job-title-block">
+                <div class="job-role mask-reveal"><span>Senior Engineer – Audio Codec Development</span></div>
+                <div class="job-subline blur-fade">
+                  <span class="job-company">FRAUNHOFER IIS</span>
+                  <span class="job-location">ERLANGEN, DE</span>
+                </div>
+              </div>
+              <div class="job-date blur-fade">Mar 2023 — PRESENT</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="job-content stagger-item">
+              <ul>
+                <li>Led the technical design and implementation of new codec tools from research to deployment.</li>
+                <li>Architectural contributions related to low-latency, adaptive streaming, and scalable encoding frameworks.</li>
+                <li>Performance and complexity optimization on ARM and x86_64 platforms.</li>
+                <li>Integration and validation within FFmpeg and Windows Media Foundation pipelines.</li>
+                <li>Long-term maintenance, testing, and regression analysis for production codebases.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 2 -->
+          <div class="job-entry stagger-parent open">
+            <div class="job-marker"></div>
+            <div class="job-header">
+              <div class="job-title-block">
+                <div class="job-role mask-reveal"><span>Scientific Researcher – Audio Signal Processing</span></div>
+                <div class="job-subline blur-fade">
+                  <span class="job-company">FRAUNHOFER IIS</span>
+                  <span class="job-location">ERLANGEN, DE</span>
+                </div>
+              </div>
+              <div class="job-date blur-fade">Apr 2018 — Feb 2023</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="job-content stagger-item">
+              <ul>
+                <li>Development and maintenance of core audio coding components in xHE-AAC, MPEG-H 3D Audio, and AAC encoders.</li>
+                <li>Research on audio and speech coding algorithms including bandwidth extension and signal reconstruction.</li>
+                <li>Algorithm design and evaluation using MATLAB, Python and C.</li>
+                <li>Objective and subjective evaluation using MUSHRA listening tests.</li>
+                <li>Collaboration with engineering teams to assess feasibility for production integration.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 3 -->
+          <div class="job-entry stagger-parent open">
+            <div class="job-marker"></div>
+            <div class="job-header">
+              <div class="job-title-block">
+                <div class="job-role mask-reveal"><span>Audio DSP Engineer – Research Internship</span></div>
+                <div class="job-subline blur-fade">
+                  <span class="job-company">FRAUNHOFER IIS</span>
+                  <span class="job-location">ERLANGEN, DE</span>
+                </div>
+              </div>
+              <div class="job-date blur-fade">Dec 2016 – Mar 2017</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="job-content stagger-item">
+              <ul>
+                <li>Implementation of MPEG-H audio coding tools in C and MATLAB.</li>
+                <li>Development of multichannel coding tools using time-differential techniques.</li>
+                <li>Evaluation of bitrate efficiency and perceptual quality.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 4 -->
+          <div class="job-entry stagger-parent open">
+            <div class="job-marker"></div>
+            <div class="job-header">
+              <div class="job-title-block">
+                <div class="job-role mask-reveal"><span>Student Research Assistant</span></div>
+                <div class="job-subline blur-fade">
+                  <span class="job-company">Technische Universität Darmstadt</span>
+                  <span class="job-location">DARMSTADT, DE</span>
+                </div>
+              </div>
+              <div class="job-date blur-fade">Mar 2015 — Nov 2016</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="job-content stagger-item">
+              <ul>
+                <li>Developed physical-layer algorithms and multi-hop DSP prototypes using WARPLAB/WARPDrive.</li>
+                <li>Implemented MIMO receive beamforming, channel-processing tools, and real-time visual analytics for sensor networks.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 5 -->
+          <div class="job-entry stagger-parent open">
+            <div class="job-marker"></div>
+            <div class="job-header">
+              <div class="job-title-block">
+                <div class="job-role mask-reveal"><span>Software Engineer – Embedded LTE/4G Protocol Stack</span></div>
+                <div class="job-subline blur-fade">
+                  <span class="job-company">U-BLOX</span>
+                  <span class="job-location">LAHORE, PK</span>
+                </div>
+              </div>
+              <div class="job-date blur-fade">Jul 2012 — Aug 2014</div>
+              <div class="job-toggle-icon blur-fade">
+                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
+                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="job-content stagger-item">
+              <ul>
+                <li>Development of LTE/4G NAS-layer components according to 3GPP Releases 9–11.</li>
+                <li>Implementation of AT command handling and USIM modules in embedded C.</li>
+                <li>Customization of protocol stack components for embedded devices.</li>
+                <li>Protocol verification using Anite conformance tools.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 SKILLS -->
+      <section id="specs">
+        <div class="section-header">
+          <span class="label">// 03 TECHNICAL_EXPERTISE</span>
+        </div>
+        <hr class="section-divider" />
+        <div class="tech-grid stagger-parent">
+          <div class="stagger-item">
+            <span class="label" style="color: var(--accent);">AUDIO CODEC & DSP</span>
+            <div class="tech-row">
+              <div class="tech-tag">Audio Coding Algorithms</div>
+              <div class="tech-tag">Perceptual Models</div>
+              <div class="tech-tag">Bandwidth Extension</div>
+              <div class="tech-tag">Source Localization</div>
+              <div class="tech-tag">Beam-forming</div>
+              <div class="tech-tag">STFT / LPC</div>
+              <div class="tech-tag">Psychoacoustics</div>
+              <div class="tech-tag">Immersive Audio</div>
+              <div class="tech-tag">Quality Tuning</div>
+            </div>
+          </div>
+          <div class="stagger-item" style="transition-delay: 0.1s;">
+            <span class="label" style="color: var(--accent);">PROGRAMMING & SYSTEMS</span>
+            <div class="tech-row">
+              <div class="tech-tag">C/C++</div>
+              <div class="tech-tag">Python</div>
+              <div class="tech-tag">Bash</div>
+              <div class="tech-tag">Embedded Linux</div>
+              <div class="tech-tag">Multithreading</div>
+              <div class="tech-tag">Real-time Systems</div>
+              <div class="tech-tag">OOP</div>
+              <div class="tech-tag">Performance Optimization</div>
+            </div>
+          </div>
+          <div class="stagger-item" style="transition-delay: 0.2s;">
+            <span class="label" style="color: var(--accent);">EMBEDDED SYSTEMS</span>
+            <div class="tech-row">
+              <div class="tech-tag">Embedded C/C++</div>
+              <div class="tech-tag">ARM Cortex-M</div>
+              <div class="tech-tag">DSP on Embedded</div>
+              <div class="tech-tag">mbedOS</div>
+              <div class="tech-tag">Memory-Constrained Systems</div>
+              <div class="tech-tag">Hardware/Software Integration</div>
+            </div>
+          </div>
+          <div class="stagger-item" style="transition-delay: 0.3s;">
+            <span class="label" style="color: var(--accent);">FRAMEWORKS & TOOLING</span>
+            <div class="tech-row">
+              <div class="tech-tag">FFmpeg</div>
+              <div class="tech-tag">Adobe Audition</div>
+              <div class="tech-tag">JUCE / VST</div>
+              <div class="tech-tag">Windows Media Foundation</div>
+              <div class="tech-tag">MATLAB</div>
+              <div class="tech-tag">GitLab CI/CD</div>
+              <div class="tech-tag">CMake</div>
+              <div class="tech-tag">Visual Studio / Xcode</div>
+            </div>
+          </div>
+          <div class="stagger-item" style="transition-delay: 0.4s;">
+            <span class="label" style="color: var(--accent);">AI / ML (INDEPENDENT)</span>
+            <div class="tech-row">
+              <div class="tech-tag">PyTorch</div>
+              <div class="tech-tag">Spatial Transformer Training</div>
+              <div class="tech-tag">RAG</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 CERTIFICATES & PATENT -->
+      <section id="certificates">
+        <div class="section-header">
+          <span class="label">// 04 CERTIFICATES & PATENT</span>
+        </div>
+        <hr class="section-divider" />
+        <div class="meta-grid stagger-parent">
+          <div class="stagger-item">
+            <h3 style="margin-bottom: 1rem; color: var(--text-main);">PATENT</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              WO2023021137A1 (Granted & Published) – Audio encoder and method for providing an encoded representation of audio information.
+            </p>
+          </div>
+          <div class="stagger-item" style="transition-delay: 0.1s;">
+            <h3 style="margin-bottom: 1rem; color: var(--text-main);">CERTIFICATES</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Available upon request.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 EDUCATION -->
+      <section id="education">
+        <div class="section-header">
+          <span class="label">// 05 EDUCATION</span>
+        </div>
+        <hr class="section-divider" />
+
+        <div class="edu-list stagger-parent">
+          <div class="edu-entry stagger-item">
+            <div class="edu-header">
+              <div class="edu-title-block">
+                <div class="edu-degree mask-reveal"><span>M.Sc. Information & Communication Engineering</span></div>
+                <div class="edu-subline blur-fade">
+                  <span class="edu-school">Technische Universität Darmstadt</span>
+                </div>
+              </div>
+              <div class="edu-date blur-fade">Sept 2014 — Sept 2017</div>
+            </div>
+            <div class="edu-content">
+              <p class="edu-summary">Graduate studies spanning digital signal processing, wireless communications, and information theory.</p>
+            </div>
+          </div>
+
+          <div class="edu-entry stagger-item" style="transition-delay: 0.1s;">
+            <div class="edu-header">
+              <div class="edu-title-block">
+                <div class="edu-degree mask-reveal"><span>B.Sc. Telecommunication Engineering</span></div>
+                <div class="edu-subline blur-fade">
+                  <span class="edu-school"> National University of Computer & Emerging Sciences - FAST </span>
+                </div>
+              </div>
+              <div class="edu-date blur-fade">Sept 2008 — May 2012</div>
+            </div>
+            <div class="edu-content">
+              <p class="edu-summary">Undergraduate focus on communication systems, networking fundamentals, programming and electronics.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- 06 LANGUAGE SKILLS -->
+      <section id="languages">
+        <div class="section-header">
+          <span class="label">// 06 LANGUAGE_SKILLS</span>
+        </div>
+        <hr class="section-divider" />
+
+        <div class="meta-grid stagger-parent">
+          <div class="stagger-item">
+            <div class="lang-stack">
+              <div class="lang-item">
+                <div class="lang-info">
+                  <span class="lang-name">ENGLISH</span>
+                  <span class="lang-level">FLUENT</span>
+                </div>
+                <div class="lang-meter">
+                  <div class="lang-fill" style="--level: 95%;"></div>
+                </div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-info">
+                  <span class="lang-name">GERMAN</span>
+                  <span class="lang-level">B1</span>
+                </div>
+                <div class="lang-meter">
+                  <div class="lang-fill" style="--level: 60%;"></div>
+                </div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-info">
+                  <span class="lang-name">URDU</span>
+                  <span class="lang-level">NATIVE</span>
+                </div>
+                <div class="lang-meter">
+                  <div class="lang-fill" style="--level: 100%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 INTERESTS -->
+      <section id="interests">
+        <div class="section-header">
+          <span class="label">// 07 INTERESTS</span>
+        </div>
+        <hr class="section-divider" />
+
+        <div class="meta-grid stagger-parent">
+          <div class="stagger-item">
+            <h3 style="margin-bottom: 1rem; color: var(--text-main);">INTEREST AREAS</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              Audio signal processing beyond production work, exploratory use of machine learning for audio analysis.
+              Exploring applications of AI, DSP, and multi-agent architectures. Modern design trends.
+              Team sports, cycling, hiking and cricket.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <span class="label">// 08 CONTACT</span>
+        </div>
+        <hr class="section-divider" />
+
+        <h2 class="hero-title mask-reveal" style="font-size: 3rem;"><span>READY TO<br />COLLABORATE?</span></h2>
+
+        <div class="blur-fade" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <a href="mailto:wahajaslam08@gmail.com" class="btn">INITIATE_CONTACT</a>
+          </div>
+          <div class="mono" style="color: var(--text-muted); font-size: 0.9rem;">
+            <p style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+              STATUS:
+              <span class="availability-badge blur-fade" style="margin: 0;">
+                <span class="status-dot"></span>AVAILABLE FOR WORK
+              </span>
+            </p>
+            <p>LOC: NÜRNBERG, GERMANY</p>
+            <br />
+            <p><a href="https://linkedin.com/in/wahaj-aslam" target="_blank" style="color: var(--text-main);">LINKEDIN PROFILE</a></p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="mono">
+      WAHAJ ASLAM &copy; 2025 // AUDIO DSP ENGINEER
+    </footer>
+
+    <script is:inline>
+      // --- NAV & SCROLL SPY ---
+      const sections = document.querySelectorAll('main section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navBar = document.querySelector('.nav-sidebar');
+      const navOffset = () => {
+        const extra = 24; // add breathing room below the fixed nav
+        return (navBar?.getBoundingClientRect().height || 0) + extra;
+      };
+
+      // Reveal animation on load
+      document.querySelectorAll('.top-header .mask-reveal, .top-header .blur-fade').forEach(el => el.classList.add('active'));
+
+      function scrollToSection(index) {
+        const target = sections[index];
+        if (!target) return;
+        const label = target.querySelector('.section-header .label') || target.querySelector('.label');
+        const labelY = label ? label.getBoundingClientRect().top + window.pageYOffset : target.offsetTop;
+        const anchor = window.innerHeight * 0.35; // place label around 35% from top
+        const offsetTop = Math.max(0, labelY - anchor - navOffset());
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+
+      function setActive(index) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const targetLink = document.querySelector('.nav-link[data-index="' + index + '"]');
+        if (targetLink) targetLink.classList.add('active');
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const idx = Number(link.dataset.index);
+          if (!Number.isNaN(idx)) {
+            setActive(idx);
+            scrollToSection(idx);
+          }
+        });
+      });
+
+      // --- EXPERIENCE ACCORDION ---
+      const jobEntries = document.querySelectorAll('#experience .job-entry');
+      const setContentHeight = (entry, expand) => {
+        const content = entry.querySelector('.job-content');
+        if (!content) return;
+        content.style.maxHeight = expand ? content.scrollHeight + 'px' : null;
+      };
+
+      jobEntries.forEach((entry, idx) => {
+        const header = entry.querySelector('.job-header');
+        if (!header) return;
+
+
+
+        header.addEventListener('click', () => {
+          const isOpen = entry.classList.contains('open');
+          entry.classList.toggle('open');
+          setContentHeight(entry, !isOpen);
+          syncActive();
+        });
+      });
+
+      // --- INTERSECTION OBSERVER ---
+      let observer;
+      const buildObserver = () => {
+        if (observer) observer.disconnect();
+        const observerOptions = { threshold: 0.2, rootMargin: '-' + navOffset() + 'px 0px -40% 0px' };
+        observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll('.mask-reveal, .blur-fade, .section-divider, .stagger-parent')
+                .forEach(el => el.classList.add('active'));
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach(sec => observer.observe(sec));
+      };
+
+      const syncActive = () => {
+        const anchorY = window.scrollY + window.innerHeight * 0.35;
+        const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
+        let idx = 0;
+        let bestLabelY = -Infinity;
+        let bestDistance = Infinity;
+
+        sections.forEach((sec, i) => {
+          const label = sec.querySelector('.section-header .label') || sec.querySelector('.label');
+          const labelY = label ? label.getBoundingClientRect().top + window.scrollY : sec.offsetTop;
+
+          if (labelY <= anchorY && labelY > bestLabelY) {
+            bestLabelY = labelY;
+            idx = i;
+          }
+
+          if (bestLabelY === -Infinity) {
+            const dist = Math.abs(labelY - anchorY);
+            if (dist < bestDistance) {
+              bestDistance = dist;
+              idx = i;
+            }
+          }
+        });
+        if (nearBottom) idx = sections.length - 1;
+        setActive(idx);
+      };
+
+      buildObserver();
+      syncActive();
+      window.addEventListener('resize', () => {
+        buildObserver();
+        syncActive();
+      });
+      window.addEventListener('scroll', syncActive);
+
+      // --- TIMELINE DRAW ---
+      const experienceSection = document.getElementById('experience');
+      const timelineLine = document.getElementById('draw-line');
+      const jobMarkers = document.querySelectorAll('.job-marker');
+
+      const updateTimeline = () => {
+        if (!experienceSection || !timelineLine) return;
+        const rect = experienceSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const startOffset = windowHeight * 0.6;
+        const endOffset = windowHeight * 0.4;
+
+        let progress = (windowHeight - rect.top - startOffset) / (rect.height - endOffset);
+        progress = Math.max(0, Math.min(1, progress));
+        timelineLine.style.height = `${progress * 100}%`;
+
+        jobMarkers.forEach(marker => {
+          const markerRect = marker.getBoundingClientRect();
+          if (markerRect.top < windowHeight * 0.7) marker.classList.add('active');
+          else marker.classList.remove('active');
+        });
+      };
+
+      window.addEventListener('scroll', updateTimeline);
+      window.addEventListener('resize', updateTimeline);
+      updateTimeline();
+
+      // --- THEME TOGGLE ---
+      const htmlEl = document.documentElement;
+      const toggleBtn = document.getElementById('themeToggle');
+      const themeModes = ['light', 'dark'];
+
+      (function initTheme() {
+        let saved = localStorage.getItem('theme') || 'light';
+        if (!themeModes.includes(saved)) saved = 'light';
+        htmlEl.setAttribute('data-theme', saved);
+        const next = themeModes[(themeModes.indexOf(saved) + 1) % themeModes.length];
+        toggleBtn.innerText = next.toUpperCase();
+      })();
+
+      function toggleTheme() {
+        const current = htmlEl.getAttribute('data-theme');
+        const idx = themeModes.indexOf(current);
+        const next = themeModes[(idx + 1) % themeModes.length];
+        htmlEl.setAttribute('data-theme', next);
+        const afterNext = themeModes[(idx + 2) % themeModes.length];
+        toggleBtn.innerText = afterNext.toUpperCase();
+        localStorage.setItem('theme', next);
+      }
+    </script>
+  </body>
+</html>

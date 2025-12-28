@@ -1,676 +1,287 @@
 ---
-const pageTitle = 'Wahaj Aslam | Senior Audio Engineer';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-    <link rel="stylesheet" href={import.meta.env.BASE_URL + '/style.css'} />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="top-header">
-      <div class="ribbon-nav blur-fade">
-        <a href={import.meta.env.BASE_URL} class="ribbon-link active">RESUME</a>
-        <span style="color:var(--card-border)">|</span>
-        <a href={import.meta.env.BASE_URL + '/projects/'} class="ribbon-link">PROJECTS</a>
-        <span style="color:var(--card-border)">|</span>
-        <a href={import.meta.env.BASE_URL + '/mygpt/'} class="ribbon-link">GPT</a>
-      </div>
-      <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
-        <a href={import.meta.env.BASE_URL + '/Wahaj_Aslam_CV.pdf'} download class="btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" aria-label="Download CV PDF">DOWNLOAD CV</a>
-        <button class="theme-switch" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">LIGHT</button>
-      </div>
-    </header>
 
-    <nav class="nav-sidebar">
-      <button class="nav-link active" data-index="0">Intro</button>
-      <button class="nav-link" data-index="1">Experience</button>
-      <button class="nav-link" data-index="2">Skills</button>
-      <button class="nav-link" data-index="3">Education</button>
-      <button class="nav-link" data-index="4">Certificates</button>
-      <button class="nav-link" data-index="5">Languages</button>
-      <button class="nav-link" data-index="6">Interests</button>
-      <button class="nav-link" data-index="7">Contact</button>
-    </nav>
+<BaseLayout title="Wahaj Aslam | Portfolio Hub" bodyClass="landing-page">
+  <style>
+    /* Landing Page Specific Styles */
+    .landing-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 2rem;
+    }
 
-    <main>
-      <!-- 01 INTRO -->
-      <section id="intro">
-        <div class="section-header">
-          <span class="label"> // 01 INTRO</span>
+    .hero-wrapper {
+      margin-bottom: 3rem;
+    }
+
+    .hero-title-large {
+      font-size: 4rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .nav-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-card .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .nav-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .nav-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .nav-card .arrow {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+      color: var(--accent);
+    }
+
+    .nav-card:hover .arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title-large { font-size: 2.5rem; }
+    }
+  </style>
+
+  <div class="landing-container">
+    <div class="hero-wrapper">
+      <h1 class="hero-title-large mask-reveal active"><span>WAHAJ ASLAM</span></h1>
+      <p class="hero-subtitle blur-fade active">Senior Audio Engineer // C/C++ // Python // DSP</p>
+    </div>
+
+    <!-- Main Navigation Cards -->
+    <div class="nav-grid stagger-parent active" style="margin-bottom: 2rem;">
+      <a href={import.meta.env.BASE_URL + '/resume/'} class="nav-card stagger-item">
+        <span class="card-icon">📄</span>
+        <h2>Resume</h2>
+        <p>Detailed professional history, experience, skills, and education.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href={import.meta.env.BASE_URL + '/projects/'} class="nav-card stagger-item" style="transition-delay: 0.1s;">
+        <span class="card-icon">📼</span>
+        <h2>Projects</h2>
+        <p>Interactive archive of shipped products, research, and personal work.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href={import.meta.env.BASE_URL + '/mygpt/'} class="nav-card stagger-item" style="transition-delay: 0.2s;">
+        <span class="card-icon">🤖</span>
+        <h2>MyGPT</h2>
+        <p>Ask my AI assistant about my background, coding style, and availability.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+
+    <!-- Info Grid (Teaser + About) -->
+    <div class="info-grid blur-fade active" style="transition-delay: 0.25s;">
+      
+      <!-- FEATURED TEASER -->
+      <a href={import.meta.env.BASE_URL + '/projects/my-live-portfolio/'} class="featured-teaser">
+        <div>
+          <span class="teaser-label">// LATEST_TAPE</span>
+          <h3 class="teaser-hook">"My CV had become a stranger."</h3>
+          <p class="teaser-sub">The story behind why I built this live system.</p>
         </div>
-        <hr class="section-divider" />
+        <span class="arrow">→</span>
+      </a>
 
-        <div class="intro-grid">
-          <div class="intro-left">
-            <p class="hero-accent blur-fade">SENIOR ENGINEER</p>
-            <h1 class="hero-title mask-reveal"><span>WAHAJ<br />ASLAM</span></h1>
-          </div>
-          <div class="intro-right blur-fade" style="transition-delay: 0.1s;">
-            <p style="color: var(--text-muted); font-size: 1.1rem;">
-              Senior C/C++ Engineer with 8+ years of experience architecting and delivering production-grade audio codecs, real-time DSP pipelines, and cross-platform media systems used by major global partners.
-            </p>
-            <p style="color: var(--text-muted); font-size: 1rem;">
-              Specializes in transforming research prototypes into high-performance, maintainable software for large-scale commercial deployments across streaming, broadcasting, and embedded device platforms.
-            </p>
-            <p style="color: var(--text-muted); font-size: 1rem;">
-              My Expertise spans xHE-AAC, MPEG-H 3D Audio, AAC, psychoacoustics, real-time processing, multithreaded pipelines, and ARM/x86 optimization. Recognized for strong cross-functional collaboration with research, systems, platform, and product engineering teams.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- INFINITE TAPE MARQUEE -->
-      <div class="marquee-wrapper">
-        <div class="marquee-content">
-          <div class="marquee-item">DSP SYSTEMS</div>•<div class="marquee-item">C++</div>•<div class="marquee-item">AUDIO CODING</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">REAL-TIME</div>•
-          <div class="marquee-item">DSP SYSTEMS</div>•<div class="marquee-item">C++</div>•<div class="marquee-item">AUDIO CODING</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">REAL-TIME</div>•
-        </div>
-        <div class="marquee-content" aria-hidden="true">
-          <div class="marquee-item">DSP SYSTEMS</div>•<div class="marquee-item">C++</div>•<div class="marquee-item">AUDIO CODING</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">REAL-TIME</div>•
-          <div class="marquee-item">DSP SYSTEMS</div>•<div class="marquee-item">C++</div>•<div class="marquee-item">AUDIO CODING</div>•<div class="marquee-item">MPEG-H</div>•<div class="marquee-item">REAL-TIME</div>•
-        </div>
-      </div>
-
-      <!-- 02 EXPERIENCE -->
-      <section id="experience">
-        <div class="section-header">
-          <span class="label">// 02 EXPERIENCE</span>
-        </div>
-        <hr class="section-divider" />
-
-        <div class="timeline-container">
-          <div class="timeline-bg-line"></div>
-          <div class="timeline-active-line" id="draw-line"></div>
-
-          <!-- Job 1 -->
-          <div class="job-entry stagger-parent">
-            <div class="job-marker"></div>
-            <div class="job-header">
-              <div class="job-title-block">
-                <div class="job-role mask-reveal"><span>Senior Engineer</span></div>
-                <div class="job-subline blur-fade">
-                  <span class="job-company">FRAUNHOFER IIS</span>
-                  <span class="job-location">ERLANGEN, DE</span>
-                </div>
-              </div>
-              <div class="job-date blur-fade">2023 — PRESENT</div>
-              <div class="job-toggle-icon blur-fade">
-                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
-                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="job-content stagger-item">
-              <ul>
-                <li>Lead engineer on Next-Generation Audio (NGA) codec development and system-level integration.</li>
-                <li>Design and maintain high-performance C/C++ codec libraries (xHE-AAC, MPEG-H 3D Audio, AAC) deployed in commercial media products worldwide.</li>
-                <li>Own architecture and implementation of API interfaces, real-time DSP pipelines, and multi-threaded processing frameworks.</li>
-                <li>Improve latency, throughput, and CPU/memory efficiency across ARM and x86 targets.</li>
-                <li>Strengthen CI/CD pipelines, automated testing, and release engineering for enterprise-grade reliability.</li>
-                <li>Collaborate across research, product, and partner teams to convert algorithmic concepts into scalable, production-ready software.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Job 2 -->
-          <div class="job-entry stagger-parent">
-            <div class="job-marker"></div>
-            <div class="job-header">
-              <div class="job-title-block">
-                <div class="job-role mask-reveal"><span>Research Associate</span></div>
-                <div class="job-subline blur-fade">
-                  <span class="job-company">FRAUNHOFER IIS</span>
-                  <span class="job-location">ERLANGEN, DE</span>
-                </div>
-              </div>
-              <div class="job-date blur-fade">2018 — 2023</div>
-              <div class="job-toggle-icon blur-fade">
-                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
-                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="job-content stagger-item">
-              <ul>
-                <li>Developed production-level implementations of xHE-AAC, MPEG-H 3D Audio, and AAC, enabling adoption by Microsoft, Netflix, Amazon, and global broadcasters.</li>
-                <li>Translated MATLAB/Python prototypes into optimized, maintainable C/C++ with measurable performance gains.</li>
-                <li>Designed streaming features including ABR (Adaptive Bitrate), low-latency modes, parallel processing pipelines, and SAPs for DASH/HLS environments.</li>
-                <li>Performed MUSHRA and AB subjective evaluations, optimizing psychoacoustic performance for commercial quality requirements.</li>
-                <li>Engineered integration components: FFmpeg/MFT modules, cross-platform C/C++ APIs, and automated analysis tools.</li>
-                <li>Built and maintained large-scale GitLab CI/CD workflows for validation, release, and compliance.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Job 3 -->
-          <div class="job-entry stagger-parent">
-            <div class="job-marker"></div>
-            <div class="job-header">
-              <div class="job-title-block">
-                <div class="job-role mask-reveal"><span>Intern — Audio Coding</span></div>
-                <div class="job-subline blur-fade">
-                  <span class="job-company">FRAUNHOFER IIS</span>
-                  <span class="job-location">ERLANGEN, DE</span>
-                </div>
-              </div>
-              <div class="job-date blur-fade">2016 — 2017</div>
-              <div class="job-toggle-icon blur-fade">
-                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
-                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="job-content stagger-item">
-              <ul>
-                <li>Implemented time-differential coding improvements in the Multichannel Coding Tool (MCT).</li>
-                <li>Enhanced IGF (Intelligent Gap Filling) perceptual reconstruction, improving coding efficiency and subjective audio quality.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Job 4 -->
-          <div class="job-entry stagger-parent">
-            <div class="job-marker"></div>
-            <div class="job-header">
-              <div class="job-title-block">
-                <div class="job-role mask-reveal"><span>Student Research Assistant</span></div>
-                <div class="job-subline blur-fade">
-                  <span class="job-company">Technische Universität Darmstadt</span>
-                  <span class="job-location">DARMSTADT, DE</span>
-                </div>
-              </div>
-              <div class="job-date blur-fade">2015 — 2016</div>
-              <div class="job-toggle-icon blur-fade">
-                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
-                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="job-content stagger-item">
-              <ul>
-                <li>Developed physical-layer algorithms and multi-hop DSP prototypes using WARPLAB/WARPDrive.</li>
-                <li>Implemented MIMO receive beamforming, channel-processing tools, and real-time visual analytics for sensor networks.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Job 5 -->
-          <div class="job-entry stagger-parent">
-            <div class="job-marker"></div>
-            <div class="job-header">
-              <div class="job-title-block">
-                <div class="job-role mask-reveal"><span>Software Engineer</span></div>
-                <div class="job-subline blur-fade">
-                  <span class="job-company">U-BLOX</span>
-                  <span class="job-location">LAHORE, PK</span>
-                </div>
-              </div>
-              <div class="job-date blur-fade">2012 — 2014</div>
-              <div class="job-toggle-icon blur-fade">
-                <svg viewBox="0 0 24 24" fill="none" class="chevron-icon">
-                   <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div class="job-content stagger-item">
-              <ul>
-                <li>Designed and implemented the LTE/4G NAS protocol stack (3GPP Rel. 9–11) in embedded C across NAS, RRC, and PDCP layers.</li>
-                <li>Developed and customized multi-threaded embedded frameworks for mobile communication stacks.</li>
-                <li>Utilized Anite conformance testing, Python tooling, and multi-platform build systems for protocol validation.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 03 SKILLS -->
-      <section id="specs">
-        <div class="section-header">
-          <span class="label">// 03 TECHNICAL_SKILLS</span>
-        </div>
-        <hr class="section-divider" />
-        <div class="tech-grid stagger-parent">
-          <div class="stagger-item">
-            <span class="label" style="color: var(--accent);">CORE ENGINEERING</span>
-            <div class="tech-row">
-              <div class="tech-tag">C/C++</div>
-              <div class="tech-tag">Embedded C</div>
-              <div class="tech-tag">Multithreading</div>
-              <div class="tech-tag">Memory/CPU Opt.</div>
-              <div class="tech-tag">ARM NEON</div>
-              <div class="tech-tag">Low-latency Design</div>
-            </div>
-          </div>
-          <div class="stagger-item" style="transition-delay: 0.1s;">
-            <span class="label" style="color: var(--accent);">AUDIO & DSP</span>
-            <div class="tech-row">
-              <div class="tech-tag">xHE-AAC / AAC</div>
-              <div class="tech-tag">MPEG-H 3D Audio</div>
-              <div class="tech-tag">Psychoacoustics</div>
-              <div class="tech-tag">Filterbanks</div>
-              <div class="tech-tag">Real-time DSP</div>
-              <div class="tech-tag">DASH / HLS / ABR</div>
-            </div>
-          </div>
-          <div class="stagger-item" style="transition-delay: 0.2s;">
-            <span class="label" style="color: var(--accent);">TOOLS & BUILD</span>
-            <div class="tech-row">
-              <div class="tech-tag">FFmpeg</div>
-              <div class="tech-tag">CMake</div>
-              <div class="tech-tag">GitLab CI/CD</div>
-              <div class="tech-tag">Visual Studio</div>
-              <div class="tech-tag">Python/MATLAB</div>
-              <div class="tech-tag">JUCE / VST</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 04 EDUCATION -->
-      <section id="education">
-        <div class="section-header">
-          <span class="label">// 04 EDUCATION</span>
-        </div>
-        <hr class="section-divider" />
-
-        <div class="edu-list stagger-parent">
-          <div class="edu-entry stagger-item">
-            <div class="edu-header">
-              <div class="edu-title-block">
-                <div class="edu-degree mask-reveal"><span>M.Sc. Information & Communication Engineering</span></div>
-                <div class="edu-subline blur-fade">
-                  <span class="edu-school">Technische Universität Darmstadt</span>
-                </div>
-              </div>
-              <div class="edu-date blur-fade">2014 — 2016</div>
-            </div>
-            <div class="edu-content">
-              <p class="edu-summary">Graduate studies spanning digital signal processing, wireless communications, and information theory.</p>
-            </div>
-          </div>
-
-          <div class="edu-entry stagger-item" style="transition-delay: 0.1s;">
-            <div class="edu-header">
-              <div class="edu-title-block">
-                <div class="edu-degree mask-reveal"><span>B.Sc. Telecommunication Engineering</span></div>
-                <div class="edu-subline blur-fade">
-                  <span class="edu-school"> National University of Computer & Emerging Sciences - FAST </span>
-                </div>
-              </div>
-              <div class="edu-date blur-fade">2008 — 2012</div>
-            </div>
-            <div class="edu-content">
-              <p class="edu-summary">Undergraduate focus on communication systems, networking fundamentals, programming and electronics.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 05 CERTIFICATES & PATENT -->
-      <section id="certificates">
-        <div class="section-header">
-          <span class="label">// 05 CERTIFICATES & PATENT</span>
-        </div>
-        <hr class="section-divider" />
-
-        <div class="meta-grid stagger-parent">
-          <div class="stagger-item">
-            <h3 style="margin-bottom: 1rem; color: var(--text-main);">PATENT</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">
-              Audio encoder, method for providing an encoded representation of audio information, computer program and encoded audio representation using immediate playout frames.
-            </p>
-          </div>
-          <div class="stagger-item" style="transition-delay: 0.1s;">
-            <h3 style="margin-bottom: 1rem; color: var(--text-main);">CERTIFICATES</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Available upon request.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 06 LANGUAGE SKILLS -->
-      <section id="languages">
-        <div class="section-header">
-          <span class="label">// 06 LANGUAGE_SKILLS</span>
-        </div>
-        <hr class="section-divider" />
-
-        <div class="meta-grid stagger-parent">
-          <div class="stagger-item">
-            <div class="lang-stack">
-              <div class="lang-item">
-                <div class="lang-info">
-                  <span class="lang-name">ENGLISH</span>
-                  <span class="lang-level">FLUENT</span>
-                </div>
-                <div class="lang-meter">
-                  <div class="lang-fill" style="--level: 95%;"></div>
-                </div>
-              </div>
-              <div class="lang-item">
-                <div class="lang-info">
-                  <span class="lang-name">GERMAN</span>
-                  <span class="lang-level">B1</span>
-                </div>
-                <div class="lang-meter">
-                  <div class="lang-fill" style="--level: 60%;"></div>
-                </div>
-              </div>
-              <div class="lang-item">
-                <div class="lang-info">
-                  <span class="lang-name">URDU</span>
-                  <span class="lang-level">NATIVE</span>
-                </div>
-                <div class="lang-meter">
-                  <div class="lang-fill" style="--level: 100%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 07 INTERESTS -->
-      <section id="interests">
-        <div class="section-header">
-          <span class="label">// 07 INTERESTS</span>
-        </div>
-        <hr class="section-divider" />
-
-        <div class="meta-grid stagger-parent">
-          <div class="stagger-item">
-            <h3 style="margin-bottom: 1rem; color: var(--text-main);">INTEREST AREAS</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">
-              Audio/video technologies, streaming systems, DSP research, biking, hiking, modern UI/UX design.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 08 CONTACT -->
-      <section id="contact">
-        <div class="section-header">
-          <span class="label">// 08 CONTACT</span>
-        </div>
-        <hr class="section-divider" />
-
-        <h2 class="hero-title mask-reveal" style="font-size: 3rem;"><span>READY TO<br />COLLABORATE?</span></h2>
-
-        <div class="blur-fade" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-          <div>
-            <button class="btn" id="contactTrigger" type="button">INITIATE_CONTACT</button>
-          </div>
-          <div class="mono" style="color: var(--text-muted); font-size: 0.9rem;">
-            <p style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-              STATUS:
-              <span class="availability-badge blur-fade" style="margin: 0;">
-                <span class="status-dot"></span>AVAILABLE FOR WORK
-              </span>
-            </p>
-            <p>LOC: NÜRNBERG, GERMANY</p>
-            <br />
-            <p><a href="https://linkedin.com/in/wahaj-aslam" target="_blank" style="color: var(--text-main);">LINKEDIN PROFILE</a></p>
-          </div>
-        </div>
-      </section>
-
-      <div class="contact-modal" id="contactModal" aria-hidden="true">
-        <div class="contact-modal__backdrop" id="contactBackdrop"></div>
-        <div class="contact-modal__card">
-          <button class="contact-modal__close" id="contactClose" aria-label="Close contact panel">×</button>
-          <p class="label" style="margin-bottom: 0.35rem;">INITIATE CONTACT</p>
-          <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">Let’s build something together.</h3>
-          <p style="color: var(--text-muted); margin-bottom: 1rem;">Send a quick note with your project, timeline, and desired outcome.</p>
-          <form id="contactForm" class="contact-form">
-            <div class="form-row">
-              <label for="contactName">Name</label>
-              <input id="contactName" name="name" type="text" placeholder="Your name" required />
-            </div>
-            <div class="form-row">
-              <label for="contactEmail">Email</label>
-              <input id="contactEmail" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div class="form-row">
-              <label for="contactMessage">Message</label>
-              <textarea id="contactMessage" name="message" rows="4" placeholder="Project brief, goals, timeline..." required></textarea>
-            </div>
-            <div class="contact-actions">
-              <button type="submit" class="btn" id="contactSubmit">Send Email</button>
-              <a class="btn" href="https://linkedin.com/in/wahaj-aslam" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-            <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
-          </form>
-          <div class="contact-meta">
-            <span class="contact-dot"></span>
-            <span>Based in Nürnberg, Germany — Available for work</span>
-          </div>
+      <!-- PORTFOLIO INTRO SECTION -->
+      <div class="landing-content">
+        <div class="intro-block">
+          <h3 class="section-label">// ABOUT_THIS_PORTFOLIO</h3>
+          <p class="intro-text">
+            Welcome to my digital archive. This site is a <strong>living demonstration</strong> of my engineering philosophy.
+          </p>
+          <p class="intro-text">
+            It contains a detailed catalog of my projects, professional history, and an experimental <strong>AI interface ("MyGPT")</strong> trained on my own knowledge base.
+          </p>
         </div>
       </div>
-    </main>
 
-    <footer class="mono">
-      WAHAJ ASLAM &copy; 2025 // AUDIO DSP ENGINEER
-    </footer>
+    </div>
 
-    <script is:inline>
-      // --- NAV & SCROLL SPY ---
-      const sections = document.querySelectorAll('main section');
-      const navLinks = document.querySelectorAll('.nav-link');
-      const navBar = document.querySelector('.nav-sidebar');
-      const navOffset = () => {
-        const extra = 24; // add breathing room below the fixed nav
-        return (navBar?.getBoundingClientRect().height || 0) + extra;
-      };
-
-      // Reveal animation on load
-      document.querySelectorAll('.top-header .mask-reveal, .top-header .blur-fade').forEach(el => el.classList.add('active'));
-
-      function scrollToSection(index) {
-        const target = sections[index];
-        if (!target) return;
-        const label = target.querySelector('.section-header .label') || target.querySelector('.label');
-        const labelY = label ? label.getBoundingClientRect().top + window.pageYOffset : target.offsetTop;
-        const anchor = window.innerHeight * 0.35; // place label around 35% from top
-        const offsetTop = Math.max(0, labelY - anchor - navOffset());
-        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    <style>
+      /* ... Existing Landing Styles ... */
+      .landing-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center content vertically for the dashboard feel */
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 4rem 1rem;
+        /* ensure sufficient spacing */
+      }
+      .hero-wrapper { margin-bottom: 1.5rem; margin-top: 0.5rem; }
+      .hero-title-large { font-size: 3rem; line-height: 1; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+      .hero-subtitle { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; }
+      
+      .nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; width: 100%; max-width: 1000px; }
+      .nav-card { background: var(--bg-card); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 10px; text-decoration: none; transition: all 0.3s ease; display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; }
+      .nav-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3); }
+      .nav-card .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--accent); }
+      .nav-card h2 { font-size: 1.25rem; margin-bottom: 0.3rem; color: var(--text-main); }
+      .nav-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+      .nav-card .arrow { position: absolute; bottom: 1.5rem; right: 1.5rem; opacity: 0; transform: translateX(-10px); transition: all 0.3s ease; color: var(--accent); }
+      .nav-card:hover .arrow { opacity: 1; transform: translateX(0); }
+      /* Info Grid */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1000px;
+        margin-top: 2rem;
+        align-items: stretch;
       }
 
-      function setActive(index) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        const targetLink = document.querySelector('.nav-link[data-index="' + index + '"]');
-        if (targetLink) targetLink.classList.add('active');
+      /* Featured Teaser */
+      .featured-teaser {
+        background: rgba(var(--accent-rgb), 0.03);
+        border: 1px solid var(--card-border);
+        border-left: 3px solid var(--accent);
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        transition: all 0.3s ease;
+        height: 100%;
+        min-height: 140px;
+      }
+      .featured-teaser:hover {
+        background: rgba(var(--accent-rgb), 0.08);
+        transform: translateY(-2px);
+      }
+      .featured-teaser .teaser-label {
+        font-family: var(--font-mono);
+        color: var(--accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+      .featured-teaser .teaser-hook {
+        font-size: 1.2rem;
+        color: var(--text-main);
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+      .featured-teaser .teaser-sub {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin: 0;
+      }
+      .featured-teaser .arrow {
+        font-size: 1.2rem;
+        color: var(--accent);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        margin-left: 1rem;
+        position: static;
+        transform: none;
+      }
+      .featured-teaser:hover .arrow {
+        opacity: 1;
+        transform: translateX(3px);
       }
 
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          const idx = Number(link.dataset.index);
-          if (!Number.isNaN(idx)) {
-            setActive(idx);
-            scrollToSection(idx);
-          }
-        });
-      });
-
-      // --- EXPERIENCE ACCORDION ---
-      const jobEntries = document.querySelectorAll('#experience .job-entry');
-      const setContentHeight = (entry, expand) => {
-        const content = entry.querySelector('.job-content');
-        if (!content) return;
-        content.style.maxHeight = expand ? content.scrollHeight + 'px' : null;
-      };
-
-      jobEntries.forEach((entry, idx) => {
-        const header = entry.querySelector('.job-header');
-        if (!header) return;
-
-
-
-        header.addEventListener('click', () => {
-          const isOpen = entry.classList.contains('open');
-          entry.classList.toggle('open');
-          setContentHeight(entry, !isOpen);
-          syncActive();
-        });
-      });
-
-      // --- INTERSECTION OBSERVER ---
-      let observer;
-      const buildObserver = () => {
-        if (observer) observer.disconnect();
-        const observerOptions = { threshold: 0.2, rootMargin: '-' + navOffset() + 'px 0px -40% 0px' };
-        observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.querySelectorAll('.mask-reveal, .blur-fade, .section-divider, .stagger-parent')
-                .forEach(el => el.classList.add('active'));
-            }
-          });
-        }, observerOptions);
-
-        sections.forEach(sec => observer.observe(sec));
-      };
-
-      const syncActive = () => {
-        const anchorY = window.scrollY + window.innerHeight * 0.35;
-        const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
-        let idx = 0;
-        let bestLabelY = -Infinity;
-        let bestDistance = Infinity;
-
-        sections.forEach((sec, i) => {
-          const label = sec.querySelector('.section-header .label') || sec.querySelector('.label');
-          const labelY = label ? label.getBoundingClientRect().top + window.scrollY : sec.offsetTop;
-
-          if (labelY <= anchorY && labelY > bestLabelY) {
-            bestLabelY = labelY;
-            idx = i;
-          }
-
-          if (bestLabelY === -Infinity) {
-            const dist = Math.abs(labelY - anchorY);
-            if (dist < bestDistance) {
-              bestDistance = dist;
-              idx = i;
-            }
-          }
-        });
-        if (nearBottom) idx = sections.length - 1;
-        setActive(idx);
-      };
-
-      buildObserver();
-      syncActive();
-      window.addEventListener('resize', () => {
-        buildObserver();
-        syncActive();
-      });
-      window.addEventListener('scroll', syncActive);
-
-      // --- TIMELINE DRAW ---
-      const experienceSection = document.getElementById('experience');
-      const timelineLine = document.getElementById('draw-line');
-      const jobMarkers = document.querySelectorAll('.job-marker');
-
-      const updateTimeline = () => {
-        if (!experienceSection || !timelineLine) return;
-        const rect = experienceSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const startOffset = windowHeight * 0.6;
-        const endOffset = windowHeight * 0.4;
-
-        let progress = (windowHeight - rect.top - startOffset) / (rect.height - endOffset);
-        progress = Math.max(0, Math.min(1, progress));
-        timelineLine.style.height = `${progress * 100}%`;
-
-        jobMarkers.forEach(marker => {
-          const markerRect = marker.getBoundingClientRect();
-          if (markerRect.top < windowHeight * 0.7) marker.classList.add('active');
-          else marker.classList.remove('active');
-        });
-      };
-
-      window.addEventListener('scroll', updateTimeline);
-      window.addEventListener('resize', updateTimeline);
-      updateTimeline();
-
-      // --- THEME TOGGLE ---
-      const htmlEl = document.documentElement;
-      const toggleBtn = document.getElementById('themeToggle');
-      const themeModes = ['light', 'dark'];
-
-      (function initTheme() {
-        let saved = localStorage.getItem('theme') || 'light';
-        if (!themeModes.includes(saved)) saved = 'light';
-        htmlEl.setAttribute('data-theme', saved);
-        const next = themeModes[(themeModes.indexOf(saved) + 1) % themeModes.length];
-        toggleBtn.innerText = next.toUpperCase();
-      })();
-
-      function toggleTheme() {
-        const current = htmlEl.getAttribute('data-theme');
-        const idx = themeModes.indexOf(current);
-        const next = themeModes[(idx + 1) % themeModes.length];
-        htmlEl.setAttribute('data-theme', next);
-        const afterNext = themeModes[(idx + 2) % themeModes.length];
-        toggleBtn.innerText = afterNext.toUpperCase();
-        localStorage.setItem('theme', next);
+      /* Portfolio Intro (inside grid) */
+      .landing-content {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
+      .section-label { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+      .intro-text { color: var(--text-muted); line-height: 1.5; margin-bottom: 0.5rem; font-size: 0.9rem; }
+      .intro-text:last-child { margin-bottom: 0; }
+      .intro-text strong { color: var(--text-main); font-weight: 500; }
 
-      // --- CONTACT MODAL ---
-      const contactTrigger = document.getElementById('contactTrigger');
-      const contactModal = document.getElementById('contactModal');
-      const contactClose = document.getElementById('contactClose');
-      const contactBackdrop = document.getElementById('contactBackdrop');
-      const contactForm = document.getElementById('contactForm');
-      const contactStatus = document.getElementById('contactStatus');
-      const contactSubmit = document.getElementById('contactSubmit');
-      const contactEndpoint = 'https://formspree.io/f/mzzblezb'; // replace with your Formspree ID
+      @media (max-width: 768px) {
+        .hero-title-large { font-size: 2.2rem; }
+        .hero-wrapper { margin-top: 1rem; margin-bottom: 2rem; }
+        .info-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        .landing-content { text-align: left; }
+        .featured-teaser { min-height: auto; padding: 1.5rem; align-items: flex-start; flex-direction: column; }
+        .featured-teaser .arrow { position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); margin: 0; }
+      }
+    </style>
+  </div>
 
-      const openContact = () => {
-        contactModal?.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      };
-      const closeContact = () => {
-        contactModal?.classList.remove('open');
-        document.body.style.overflow = '';
-      };
-
-      contactTrigger?.addEventListener('click', openContact);
-      contactClose?.addEventListener('click', closeContact);
-      contactBackdrop?.addEventListener('click', closeContact);
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && contactModal?.classList.contains('open')) closeContact();
+  <script>
+    // Reveal animations
+    document.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.mask-reveal, .blur-fade, .stagger-parent').forEach(el => {
+          el.classList.add('active');
+        });
       });
-
-      contactForm?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        contactStatus.className = 'contact-status';
-        contactStatus.textContent = 'Sending...';
-        contactSubmit.disabled = true;
-        const name = document.getElementById('contactName')?.value || '';
-        const email = document.getElementById('contactEmail')?.value || '';
-        const message = document.getElementById('contactMessage')?.value || '';
-        try {
-          const res = await fetch(contactEndpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify({ name, email, message })
-          });
-          if (!res.ok) throw new Error('Request failed');
-          contactStatus.classList.add('success');
-          contactStatus.textContent = 'Sent! I will get back to you soon.';
-          contactForm.reset();
-          setTimeout(closeContact, 1000);
-        } catch (err) {
-          contactStatus.classList.add('error');
-          contactStatus.textContent = 'Could not send right now. Please email wahajaslam08@gmail.com instead.';
-        } finally {
-          contactSubmit.disabled = false;
-        }
-      });
-    </script>
-  </body>
-</html>
+    });
+  </script>
+</BaseLayout>

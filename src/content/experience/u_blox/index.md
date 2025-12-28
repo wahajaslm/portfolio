@@ -18,12 +18,10 @@ modules. The work was centered around **C-based state machines**, **3GPP-complia
 
 ### 1. NAS State Machine Development in C
 
-- Implemented and maintained LTE NAS procedures:
-  - attach / detach,
-  - tracking area update (TAU),
-  - basic mobility-related signaling.
-- Followed relevant 3GPP specs for message formats, timers and expected state transitions.
-- Handled error paths and corner cases that arise in real networks.
+- Development of LTE/4G NAS-layer components according to 3GPP Releases 9–11
+- Implementation of AT command handling and USIM modules in embedded C
+- Customization of protocol stack components for embedded devices
+- Protocol verification using Anite conformance tools
 
 ### 2. Mobility & Security Flows
 

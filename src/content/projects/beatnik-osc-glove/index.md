@@ -1,211 +1,113 @@
 ---
 visibility: public
 use_for_ai: true
-title: "Beatnik — Gesture-Controlled OSC/MIDI Glove"
-summary: "Hand-gesture OSC glove with piezo/FSR sensing, active analog filtering, and DMA-driven MCU output. Interfaced with Ableton Live."
+title: "Beatnik — Gesture-Controlled OSC/MIDI Interface"
+summary: "Design and implementation of a wireless gesture controller using mbed LPC1768, DMA-driven acquisition, and active signal conditioning."
 year: "Prototype"
-format: "Project Archive"
+format: "Technical Archive"
 code: "HCI-05"
 cover_image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
-tags: [gesture_control, osc, midi, sensors, embedded, dma, piezo_sensing, stm32, c, ableton_live]
+tags: [gesture_control, osc, midi, sensors, embedded, dma, active_filtering, c++]
 article_slug: "beatnik-osc-glove"
 ---
 
-# BEATNIK – Gesture-Controlled OSC/MIDI Glove  
+## Demo Video
 
-## Overview
+<video controls muted playsinline class="project-video" style="width: 100%; border-radius: 8px; margin-bottom: 2rem;">
+  <source src="/portfolio/projects/beatnik-osc-glove/assets/beatnik.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-BEATNIK is a wearable glove-based controller that converts gestures and finger movements into:
+## Abstract
 
-- **OSC (Open Sound Control) messages**, and  
-- **MIDI notes / MIDI Control Change messages**
-
-It enables expressive performance control for:
-
-- synthesizers  
-- DAWs (Ableton, Logic, FL Studio)  
-- modular synthesis environments (Max/MSP, SuperCollider, Pure Data)  
-- VST plugins and live performance rigs  
-
-The system integrates:
-
-- flex sensors  
-- IMU/accelerometer  
-- embedded C firmware  
-- OSC/MIDI communication  
-- host-side sound engines  
-
-Its goal is to provide **fluid, human, gestural music control** that traditional knobs/sliders cannot offer.
-
-## Problem Statement
-
-Most music controllers:
-
-- are discrete  
-- rely on buttons/knobs  
-- lack expressive nuance  
-- feel mechanical rather rather than human  
-
-BEATNIK enables **natural, continuous, real-time control** using gestures.
-
-Challenges solved:
-
-- stable sensor readings under noise  
-- low-latency gesture detection  
-- expressive mapping to MIDI/OSC  
-- intuitive interface for performers  
-
-## System Architecture
-
-### Hardware Layer
-- Flex sensors (1 per finger)
-- IMU/accelerometer for tilt / roll / shake
-- Microcontroller (Arduino/Teensy class)
-
-### Signal Processing Layer
-- ADC sampling  
-- Exponential smoothing to reduce jitter  
-- Gesture classification  
-- Noise thresholding  
-
-### OSC & MIDI Output Layer
-- OSC message packer  
-- MIDI note generator  
-- MIDI CC mapping  
-- Configurable output mode (OSC-only, MIDI-only, hybrid)
-
-### Host System
-- DAW or synthesis environment that receives OSC or MIDI  
-
-## OSC Messaging (Full Technical Detail)
-
-OSC messages follow a structured namespace:
-
-```
-/beatnik/finger1      float 0.0–1.0
-/beatnik/finger2      float 0.0–1.0
-/beatnik/finger3      float 0.0–1.0
-/beatnik/finger4      float 0.0–1.0
-/beatnik/finger5      float 0.0–1.0
-
-/beatnik/tilt         float -1.0–1.0
-/beatnik/roll         float -1.0–1.0
-/beatnik/shake        float 0–127
-```
-
-### OSC Uses
-- Flex → filter cutoff, LFO depth, amplitude envelope  
-- Tilt → pitch bend or spatialization  
-- Shake → percussive trigger or FX burst  
-
-### OSC Rate
-- Sent at **30–60 Hz** for smooth motion without overloading host apps  
-
-## MIDI Note + CC Messaging (Full Detail)
-
-The glove supports three musical modes:
-
-### MIDI Note Triggering
-Each finger can trigger notes:
-
-| Finger Gesture | Threshold | MIDI Output |
-|----------------|-----------|-------------|
-| Index bent     | > bend_t  | NOTE ON 60 velocity=X |
-| Index released | < bend_t  | NOTE OFF 60 |
-| Middle bent    | > bend_t  | NOTE ON 62 |
-| Ring bent      | …         | NOTE ON 64 |
-
-### Velocity Calculation
-```
-velocity = clamp( (Δfinger_bend / Δt) * 127 )
-```
-
-This creates **human feel** rather than fixed velocity.
-
-### MIDI CC Control (Continuous Control)
-
-Recommended mappings:
-
-```
-finger1 → CC74 (Filter Cutoff)
-finger2 → CC1  (Mod Wheel / Vibrato)
-finger3 → CC11 (Expression)
-tilt    → CC10 (Pan)
-shake   → CC5  (Portamento or FX depth)
-```
-
-Gestures map to CC values **0–127**.
-
-### Pitch Bend
-Tilt angle → bend value:
-
-```
-pitchbend = map(tilt, -1.0..1.0 → -8192..8191)
-```
-
-### Supported Output Modes
-
-| Mode | Behavior |
-|------|----------|
-| OSC-only | Continuous OSC messages only |
-| MIDI-only | Notes + CC only |
-| Hybrid | Sends both OSC + MIDI for experimental rigs |
-
-## Implementation Details
-
-### Firmware (C)
-- ADC sampling loop  
-- Normalization of sensor values  
-- Exponential smoothing filter  
-- State machine for gesture detection  
-- OSC packing (Lightweight OSC library)  
-- MIDI over USB or serial  
-
-### Latency Optimization
-- Non-blocking timing loops  
-- Minimal filtering delay (<5 ms)  
-- Efficient OSC batching  
-- USB MIDI for ultra-low latency  
-
-### Host Setup
-Compatible with:
-- Ableton Live (via virtual MIDI port or OSC bridge)
-- Max/MSP patches
-- SuperCollider SynthDefs
-- Logic Pro (MIDI layer)
-- Pure Data & VCV Rack (OSC)
-
-## Results
-
-- Very expressive modulation (filter/fx sweeps)  
-- Stable continuous CC values  
-- Clean note triggering  
-- <20 ms total end-to-end latency  
-- Natural gestural performance experience  
-
-## Skills Demonstrated
-
-- Embedded C  
-- Sensor fusion  
-- Real-time filtering  
-- OSC protocol implementation  
-- MIDI generation  
-- Human–computer interaction  
-- Hardware–software integration  
-
-## Narration / Reflection
-
-This project showed me how raw movement becomes **musical performance**.
-
-I learned that:
-
-- sensor data is noisy and must be shaped,  
-- expressiveness requires continuous control,  
-- OSC and MIDI each offer unique strengths,  
-- real-time systems must feel responsive, not only correct.
-
-BEATNIK taught me to think from the **performer's perspective**, not just the engineer’s.  
-It shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced
-my DSP and audio engineering work.
+This project details the development of a wearable interface designed to translate biocontinual hand gestures into Open Sound Control (OSC) and MIDI messages. The system utilizes a custom sensor array, an mbed LPC1768 microcontroller, and a Direct Memory Access (DMA) acquisition architecture to achieve low-latency (<10ms) performance suitable for real-time musical expression.
 
 ---
+
+## System Overview
+
+The Beatnik system acts as a translation layer between physical gesture and digital sound synthesis. Unlike discrete controllers (keyboards, buttons), it provides continuous multi-dimensional control data.
+
+### Architecture Block Diagram:
+```
+[Flex Sensors] -> [Voltage Divider/Filter] -> [ADC (LPC1768)]
+                                                  | (DMA Transfer)
+                                            [Memory Buffer]
+                                                  |
+                                            [DSP & Logic]
+                                                  |
+                                            [OSC Packetizer]
+                                                  | (UDP)
+                                            [Host Computer]
+```
+
+---
+
+## Hardware Implementation
+
+The physical interface consists of a fabric glove integrated with variable resistance flex sensors (Spectra Symbol) along the fingers and an Inertial Measurement Unit (IMU) on the dorsal side.
+
+### Signal Conditioning
+Raw flex sensors exhibit significant noise and non-linearity. To mitigate this, a hardware interface circuit was designed:
+*   **Voltage Divider:** Converts resistance change to voltage (0-3.3V range).
+*   **Active Low-Pass FIltering:** A first-order RC filter is applied before the ADC input to reject high-frequency mechanical noise and electromagnetic interference.
+
+<div class="gallery-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <img src="/portfolio/projects/beatnik-osc-glove/assets/1.png" alt="Hardware fabrication" loading="lazy" style="border-radius: 8px;" />
+  <img src="/portfolio/projects/beatnik-osc-glove/assets/3.png" alt="Circuit schematic detail" loading="lazy" style="border-radius: 8px;" />
+</div>
+
+---
+
+## Firmware & Signal Processing
+
+The firmware is developed in C++ on the mbed platform (ARM Cortex-M3). A critical design constraint was keeping the main execution loop non-blocking to maintain network throughput.
+
+### DMA-Driven Acquisition
+Standard ADC polling introduces CPU overhead and timing jitter. This implementation utilizes the LPC1768's **GPDMA (General Purpose Direct Memory Access)** controller. The ADC is configured in "Burst Mode," continuously sampling the sensor channels and writing results directly to a circular memory buffer. This decouples sampling from processing.
+
+```cpp
+// ADC Burst Mode Configuration with DMA
+void setup_dma() {
+    dma.Setup( conf ); 
+    dma.Enable( conf );
+    LPC_ADC->ADCR |= (1UL << 16); // Enable Burst Mode
+    // The hardware now manages sampling independently of the CPU
+}
+```
+
+### Digital Filtering
+To further stabilize the signal without introducing perceptible lag, a two-stage software filter is applied:
+1.  **Hysteresis:** Prevents oscillation around threshold points.
+2.  **Exponential Smoothing:** applied as `y[n] = α * x[n] + (1-α) * y[n-1]`. An alpha value of 0.3 was found to balance potential latency against jitter reduction.
+
+<img src="/portfolio/projects/beatnik-osc-glove/assets/4.png" alt="Sensor calibration data" loading="lazy" style="width: 100%; border-radius: 8px; margin: 2rem 0;" />
+
+---
+
+## Communication Protocol
+
+The system outputs **Open Sound Control (OSC)** over UDP. OSC was selected over MIDI 1.0 for its high-resolution floating-point support.
+
+*   **MIDI Resolution:** 7-bit (0-127). Insufficient for smooth filter cutoffs.
+*   **OSC Resolution:** 32-bit Float. Eliminates "zipper noise" (audible stepping artifacts) during slow sweeps.
+
+### Namespace Structure
+```
+/beatnik/finger/[id]  <float> (0.0 - 1.0)
+/beatnik/imu/pitch    <float> (-1.0 - 1.0)
+/beatnik/imu/roll     <float> (-1.0 - 1.0)
+```
+
+---
+
+## Performance Metrics
+
+*   **Latency:** <10ms end-to-end (sensor to OSC packet transmission).
+*   **Sample Rate:** Sensors sampled at 100Hz; Network packets transmitted at 60Hz.
+*   **Stability:** Active filtering reduced signal variance by approx. 40% compared to raw input.
+
+<div class="gallery-grid" style="margin-top: 2rem;">
+  <img src="/portfolio/projects/beatnik-osc-glove/assets/2.png" alt="Prototype bench testing" loading="lazy" style="border-radius: 8px;" />
+  <img src="/portfolio/projects/beatnik-osc-glove/assets/5.png" alt="Final assembly" loading="lazy" style="border-radius: 8px;" />
+</div>

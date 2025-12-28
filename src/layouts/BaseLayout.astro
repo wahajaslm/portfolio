@@ -19,7 +19,9 @@ const { title = 'Wahaj Aslam', bodyClass = '', activeNav, wrapMain = true } = As
   <body class={bodyClass}>
     <header class="top-header">
       <div class="ribbon-nav">
-        <a href={import.meta.env.BASE_URL} class={`ribbon-link ${activeNav === 'resume' ? 'active' : ''}`}>RESUME</a>
+        <a href={import.meta.env.BASE_URL} class="ribbon-link">HOME</a>
+        <span style="color:var(--card-border)">|</span>
+        <a href={import.meta.env.BASE_URL + '/resume/'} class={`ribbon-link ${activeNav === 'resume' ? 'active' : ''}`}>RESUME</a>
         <span style="color:var(--card-border)">|</span>
         <a href={import.meta.env.BASE_URL + '/projects/'} class={`ribbon-link ${activeNav === 'projects' ? 'active' : ''}`}>PROJECTS</a>
         <span style="color:var(--card-border)">|</span>

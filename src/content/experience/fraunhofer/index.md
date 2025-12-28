@@ -8,6 +8,14 @@ tags: [audio, dsp, codec, streaming, c, c++, python, ci_cd, critical_listening]
 
 ## Role Summary
 
+### Senior Engineer – Audio Codec Development (Mar 2023 – Present)
+- Led the technical design and implementation of new codec tools from research to deployment
+- Architectural contributions related to low-latency, adaptive streaming, and scalable encoding frameworks
+- Performance and complexity optimization on ARM and x86_64 platforms
+- Integration and validation within FFmpeg and Windows Media Foundation pipelines
+- Long-term maintenance, testing, and regression analysis for production codebases
+
+### Scientific Researcher – Audio Signal Processing (Apr 2018 – Feb 2023)
 At Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio
 codecs such as MPEG-H 3D Audio and xHE-AAC. The work combined:
 

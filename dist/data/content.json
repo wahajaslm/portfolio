@@ -20,7 +20,204 @@
         "critical_listening"
       ]
     },
-    "content": "\n# Fraunhofer IIS – Audio & DSP Engineer\n\n## Role Summary\n\nAt Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio\ncodecs such as MPEG-H 3D Audio and xHE-AAC. The work combined:\n\n- **C-based DSP and systems engineering**\n- **Modern C++ integration and tooling**\n- **Python-based evaluation and automation**\n- **Critical listening and artifact analysis**\n- **Streaming-oriented validation** of encoder behavior in ecosystems used by major platforms like  \n  **Netflix, Amazon Music, YouTube, and Microsoft** (public ecosystem level, not confidential).\n\nThis role forced me to think end-to-end: from a line of C code in a DSP block to how that change\naffects perceived quality in a streaming scenario.\n\n---\n\n## Key Responsibilities (Non-Confidential)\n\n### 1. DSP & System-Level Development in C\n\n- Implemented and maintained performance-critical C modules used in internal encoder / toolchain flows.\n- Worked on signal-path logic, buffer management, state handling, and configuration-dependent behavior.\n- Ensured stability and determinism across multiple operating modes and platforms.\n\n### 2. Modern C++ Tools & Media Integration (MFT)\n\n- Developed C++ utilities and test applications around encoders/decoders.\n- Integrated components into **Microsoft Windows Media Foundation (MFT)** to simulate realistic playback /\n  processing pipelines.\n- Built small frameworks / harnesses for automated end-to-end tests in media-like environments.\n\n### 3. Streaming-Oriented Encoder Validation\n\n- Supported test flows that mirror **streaming use cases**:\n  - ABR-style bitrate ladders\n  - Segment-based encoding behavior\n  - Consistency across renditions and presets\n  - Handling of metadata / loudness / configuration changes\n- Participated in internal evaluations that reflect usage by major streaming platforms  \n  (e.g. Netflix, Amazon Music, YouTube, Microsoft – as publicly associated with these codecs).\n\n### 4. Python Automation & Evaluation Frameworks\n\n- Wrote Python scripts to:\n  - run batch encoder evaluations,\n  - compare different builds / presets,\n  - generate plots and numerical summaries,\n  - manage input/output sets for regression testing.\n- Automated repetitive tasks (e.g. multiple bitrate runs, content sets, preset combinations) to make\n  evaluation more systematic and less manual.\n\n### 5. CI/CD & Engineering Operations\n\n- Contributed to **GitLab CI** pipelines to ensure regular automated builds and tests.\n- Used Bash/Python glue to orchestrate multi-stage test jobs and artifact handling.\n- Helped improve reliability of the evaluation pipeline over time.\n\n---\n\n## Critical Listening & Perceptual Analysis\n\n### 6. Critical Listening & Artifact Detection\n\n- Spent **hundreds of hours** in structured listening sessions across speech, music and complex content.\n- Developed the ability to detect and classify artifacts such as:\n  - pre-echo\n  - transient smearing\n  - metallic ringing / “metallic” voices\n  - spectral holes / narrowband notches\n  - high-band / low-band tone mismatch\n  - roughness / hiss / “synthetic” timbre\n  - stereo image instability or collapse\n- Learned to connect what I heard to what I saw in:\n  - spectrograms (Adobe Audition, Python/MATLAB plots),\n  - waveforms,\n  - difference signals and diagnostic views.\n\n### 7. Audio Analysis Tools & Workflow\n\nRegularly used:\n\n- **Adobe Audition** – spectrograms, transient analysis, zooming into problem regions.\n- **FFmpeg** – transcoding, re-encoding, ABR ladder generation, waveform extraction, segmenting.\n- **MediaInfo** – checking codec configuration, bitrate, channel layouts, and container info.\n- **Python/MATLAB** – custom plots (LPC envelopes, spectral envelopes, error curves, etc.).\n- Internal waveform / spectrum tools to localize issues and verify fixes.\n\nThis toolchain became my standard way to **triangulate** issues: listen → visualize → inspect metadata →\nadjust DSP logic or configuration.\n\n---\n\n## Achievements\n\n- **Perceptual Quality Safeguard**  \n  Identified subtle artifacts in internal evaluation runs (for specific content types and bitrates) that were\n  not obvious from metrics alone, helping prevent regressions from progressing further.\n\n- **Streaming-Aligned Testing**  \n  Contributed to testing setups that better reflected how encoders behave in streaming-style usage  \n  (bitrates, segments, switching scenarios), improving confidence for ecosystem deployments involving\n  platforms like Netflix, Amazon Music, YouTube, and Microsoft.\n\n- **Evaluation Pipeline Reliability**  \n  Helped stabilize Python-driven evaluation flows and CI jobs so that larger sets of tests could run more\n  reliably without manual babysitting.\n\n- **Cross-Domain Intuition**  \n  Built strong intuition linking:\n  - mathematical changes in DSP modules,\n  - visual patterns in spectrograms / plots,\n  - and final perceptual outcomes.\n\n---\n\n## Narration / Stories\n\n### Story – When a Small Change Became a Big Artifact\n\nA small change in one block produced a faint but irritating metallic ringing only on specific female\nvocals with strong high-frequency content. On paper the change looked harmless; metrics hardly moved.\nBut listening exposed a clear regression. Looking at spectrograms showed a narrowband spike that lined\nup exactly with what I heard. That moment reinforced a key lesson: **perception is the final judge**, not\njust numbers.\n\n### Story – Thinking Like a Streaming Engineer, Not Just a DSP Engineer\n\nWorking on streaming-oriented tests forced me to care about:\n- how the encoder behaves across an ABR ladder,\n- what happens when bitrates switch,\n- how metadata and loudness are preserved,\nnot just how “clean” a single coded file sounds under ideal conditions. That shifted my mindset from\npure DSP to **system-level media engineering**.\n\n---"
+    "content": "\n# Fraunhofer IIS – Audio & DSP Engineer\n\n## Role Summary\n\nAt Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio\ncodecs such as MPEG-H 3D Audio and xHE-AAC. The work combined:\n\n- **C-based DSP and systems engineering**\n- **Modern C++ integration and tooling**\n- **Python-based evaluation and automation**\n- **Critical listening and artifact analysis**\n- **Streaming-oriented validation** of encoder behavior in ecosystems used by major platforms like  \n  **Netflix, Amazon Music, YouTube, and Microsoft** (public ecosystem level, not confidential).\n\nThis role forced me to think end-to-end: from a line of C code in a DSP block to how that change\naffects perceived quality in a streaming scenario.\n\n---\n\n## Key Responsibilities (Non-Confidential)\n\n### 1. DSP & System-Level Development in C\n\n- Implemented and maintained performance-critical C modules used in internal encoder / toolchain flows.\n- Worked on signal-path logic, buffer management, state handling, and configuration-dependent behavior.\n- Ensured stability and determinism across multiple operating modes and platforms.\n\n### 2. Modern C++ Tools & Media Integration (MFT)\n\n- Developed C++ utilities and test applications around encoders/decoders.\n- Integrated components into **Microsoft Windows Media Foundation (MFT)** to simulate realistic playback /\n  processing pipelines.\n- Built small frameworks / harnesses for automated end-to-end tests in media-like environments.\n\n### 3. Streaming-Oriented Encoder Validation\n\n- Supported test flows that mirror **streaming use cases**:\n  - ABR-style bitrate ladders\n  - Segment-based encoding behavior\n  - Consistency across renditions and presets\n  - Handling of metadata / loudness / configuration changes\n- Participated in internal evaluations that reflect usage by major streaming platforms  \n  (e.g. Netflix, Amazon Music, YouTube, Microsoft – as publicly associated with these codecs).\n\n### 4. Python Automation & Evaluation Frameworks\n\n- Wrote Python scripts to:\n  - run batch encoder evaluations,\n  - compare different builds / presets,\n  - generate plots and numerical summaries,\n  - manage input/output sets for regression testing.\n- Automated repetitive tasks (e.g. multiple bitrate runs, content sets, preset combinations) to make\n  evaluation more systematic and less manual.\n\n### 5. CI/CD & Engineering Operations\n\n- Contributed to **GitLab CI** pipelines to ensure regular automated builds and tests.\n- Used Bash/Python glue to orchestrate multi-stage test jobs and artifact handling.\n- Helped improve reliability of the evaluation pipeline over time.\n\n---\n\n## Critical Listening & Perceptual Analysis\n\n### 6. Critical Listening & Artifact Detection\n\n- Spent **hundreds of hours** in structured listening sessions across speech, music and complex content.\n- Developed the ability to detect and classify artifacts such as:\n  - pre-echo\n  - transient smearing\n  - metallic ringing / “metallic” voices\n  - spectral holes / narrowband notches\n  - high-band / low-band tone mismatch\n  - roughness / hiss / “synthetic” timbre\n  - stereo image instability or collapse\n- Learned to connect what I heard to what I saw in:\n  - spectrograms (Adobe Audition, Python/MATLAB plots),\n  - waveforms,\n  - difference signals and diagnostic views.\n\n### 7. Audio Analysis Tools & Workflow\n\nRegularly used:\n\n- **Adobe Audition** – spectrograms, transient analysis, zooming into problem regions.\n- **FFmpeg** – transcoding, re-encoding, ABR ladder generation, waveform extraction, segmenting.\n- **MediaInfo** – checking codec configuration, bitrate, channel layouts, and container info.\n- **Python/MATLAB** – custom plots (LPC envelopes, spectral envelopes, error curves, etc.).\n- Internal waveform / spectrum tools to localize issues and verify fixes.\n\nThis toolchain became my standard way to **triangulate** issues: listen → visualize → inspect metadata →\nadjust DSP logic or configuration.\n\n---\n\n## Achievements\n\n- **Perceptual Quality Safeguard**  \n  Identified subtle artifacts in internal evaluation runs (for specific content types and bitrates) that were\n  not obvious from metrics alone, helping prevent regressions from progressing further.\n\n- **Streaming-Aligned Testing**  \n  Contributed to testing setups that better reflected how encoders behave in streaming-style usage  \n  (bitrates, segments, switching scenarios), improving confidence for ecosystem deployments involving\n  platforms like Netflix, Amazon Music, YouTube, and Microsoft.\n\n- **Evaluation Pipeline Reliability**  \n  Helped stabilize Python-driven evaluation flows and CI jobs so that larger sets of tests could run more\n  reliably without manual babysitting.\n\n- **Cross-Domain Intuition**  \n  Built strong intuition linking:\n  - mathematical changes in DSP modules,\n  - visual patterns in spectrograms / plots,\n  - and final perceptual outcomes.\n\n---\n\n## Narration / Stories\n\n### Story – When a Small Change Became a Big Artifact\n\nA small change in one block produced a faint but irritating metallic ringing only on specific female\nvocals with strong high-frequency content. On paper the change looked harmless; metrics hardly moved.\nBut listening exposed a clear regression. Looking at spectrograms showed a narrowband spike that lined\nup exactly with what I heard. That moment reinforced a key lesson: **perception is the final judge**, not\njust numbers.\n\n### Story – Thinking Like a Streaming Engineer, Not Just a DSP Engineer\n\nWorking on streaming-oriented tests forced me to care about:\n- how the encoder behaves across an ABR ladder,\n- what happens when bitrates switch,\n- how metadata and loudness are preserved,\nnot just how “clean” a single coded file sounds under ideal conditions. That shifted my mindset from\npure DSP to **system-level media engineering**.\n\n---",
+    "chunks": [
+      {
+        "kind": "experience.summary",
+        "text": "At Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "codecs such as MPEG-H 3D Audio and xHE-AAC. The work combined:"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "C-based DSP and systems engineering"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "Modern C++ integration and tooling"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "Python-based evaluation and automation"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "Critical listening and artifact analysis"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "Streaming-oriented validation of encoder behavior in ecosystems used by major platforms like"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "Netflix, Amazon Music, YouTube, and Microsoft (public ecosystem level, not confidential)."
+      },
+      {
+        "kind": "experience.summary",
+        "text": "This role forced me to think end-to-end: from a line of C code in a DSP block to how that change"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "affects perceived quality in a streaming scenario."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "# Fraunhofer IIS – Audio & DSP Engineer ## Role Summary At Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio codecs such as MPEG-H 3D Audio and xHE-AAC"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Streaming-oriented validation of encoder behavior in ecosystems used by major platforms like     Netflix, Amazon Music, YouTube, and Microsoft (public ecosystem level, not confidential)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "This role forced me to think end-to-end: from a line of C code in a DSP block to how that change affects perceived quality in a streaming scenario"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP & System-Level Development in C"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Worked on signal-path logic, buffer management, state handling, and configuration-dependent behavior."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Streaming-Oriented Encoder Validation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Supported test flows that mirror streaming use cases:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Participated in internal evaluations that reflect usage by major streaming platforms     (e.g"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Netflix, Amazon Music, YouTube, Microsoft – as publicly associated with these codecs)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spent hundreds of hours in structured listening sessions across speech, music and complex content."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "spectral holes / narrowband notches"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Audio Analysis Tools & Workflow Regularly used:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "MediaInfo – checking codec configuration, bitrate, channel layouts, and container info."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Python/MATLAB – custom plots (LPC envelopes, spectral envelopes, error curves, etc.)."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "This toolchain became my standard way to triangulate issues: listen → visualize → inspect metadata → adjust DSP logic or configuration"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Streaming-Aligned Testing     Contributed to testing setups that better reflected how encoders behave in streaming-style usage     (bitrates, segments, switching scenarios), improving confidence for ecosystem deployments involving   platforms like Netflix, Amazon Music, YouTube, and Microsoft."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "mathematical changes in DSP modules,"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Story – Thinking Like a Streaming Engineer, Not Just a DSP Engineer Working on streaming-oriented tests forced me to care about:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "That shifted my mindset from pure DSP to system-level media engineering"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C++"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Bash"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "FFmpeg"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "MediaInfo"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Adobe Audition"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "GitLab CI"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Git"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "C++",
+        "Python",
+        "MATLAB",
+        "Bash"
+      ],
+      "tools": [
+        "FFmpeg",
+        "MediaInfo",
+        "Adobe Audition",
+        "GitLab CI",
+        "Git"
+      ],
+      "audio_dsp": [
+        "# Fraunhofer IIS – Audio & DSP Engineer ## Role Summary At Fraunhofer IIS, I worked as an Audio/DSP Engineer on tools and components around modern audio codecs such as MPEG-H 3D Audio and xHE-AAC",
+        "Streaming-oriented validation of encoder behavior in ecosystems used by major platforms like     Netflix, Amazon Music, YouTube, and Microsoft (public ecosystem level, not confidential)",
+        "This role forced me to think end-to-end: from a line of C code in a DSP block to how that change affects perceived quality in a streaming scenario",
+        "DSP & System-Level Development in C",
+        "Streaming-Oriented Encoder Validation",
+        "Supported test flows that mirror streaming use cases:",
+        "Participated in internal evaluations that reflect usage by major streaming platforms     (e.g",
+        "Netflix, Amazon Music, YouTube, Microsoft – as publicly associated with these codecs)",
+        "Spent hundreds of hours in structured listening sessions across speech, music and complex content.",
+        "spectral holes / narrowband notches",
+        "Audio Analysis Tools & Workflow Regularly used:",
+        "MediaInfo – checking codec configuration, bitrate, channel layouts, and container info.",
+        "Python/MATLAB – custom plots (LPC envelopes, spectral envelopes, error curves, etc.).",
+        "This toolchain became my standard way to triangulate issues: listen → visualize → inspect metadata → adjust DSP logic or configuration",
+        "Streaming-Aligned Testing     Contributed to testing setups that better reflected how encoders behave in streaming-style usage     (bitrates, segments, switching scenarios), improving confidence for ecosystem deployments involving   platforms like Netflix, Amazon Music, YouTube, and Microsoft.",
+        "mathematical changes in DSP modules,",
+        "Story – Thinking Like a Streaming Engineer, Not Just a DSP Engineer Working on streaming-oriented tests forced me to care about:",
+        "That shifted my mindset from pure DSP to system-level media engineering"
+      ],
+      "real_time": [
+        "Worked on signal-path logic, buffer management, state handling, and configuration-dependent behavior."
+      ]
+    }
   },
   {
     "id": "experience/tu_darmstadt/index.md",
@@ -38,7 +235,48 @@
         "research"
       ]
     },
-    "content": "\n# TU Darmstadt – Research Assistant (HiWi)\n\n## Role Summary\n\nAs a research assistant in wireless communications, I supported experiments using **WARP SDR** and\ndeveloped **MATLAB visualization tools** to understand multi-hop and cooperative wireless behavior.\nThe role sat between research and engineering: turning equations and concepts into real measurements\nand plots.\n\n---\n\n## Responsibilities\n\n- Developed MATLAB GUIs to visualize multi-hop paths, relay behavior and packet flows.\n- Helped set up and run WARP-based experiments (cooperative forwarding, multi-hop chains).\n- Wrote analysis scripts (MATLAB / Python) to interpret logs and timing data.\n- Assisted with preparing figures and structured results for academic use.\n\n---\n\n## Achievements\n\n- Delivered visualization tools that other students / researchers could use to understand multi-hop\n  experiments more intuitively.\n- Helped make experiments more **repeatable**: clearer logging, structured scripts, and consistent setups.\n\n---\n\n## Narration\n\nThis work made wireless systems more “real” for me. Instead of only thinking in terms of channel matrices\nand equations, I could see how packets and relays actually behaved in practice. It also taught me that\neven research tools benefit from basic engineering discipline—if others are going to use a script or GUI,\nit needs to be structured and understandable."
+    "content": "\n# TU Darmstadt – Research Assistant (HiWi)\n\n## Role Summary\n\nAs a research assistant in wireless communications, I supported experiments using **WARP SDR** and\ndeveloped **MATLAB visualization tools** to understand multi-hop and cooperative wireless behavior.\nThe role sat between research and engineering: turning equations and concepts into real measurements\nand plots.\n\n---\n\n## Responsibilities\n\n- Developed MATLAB GUIs to visualize multi-hop paths, relay behavior and packet flows.\n- Helped set up and run WARP-based experiments (cooperative forwarding, multi-hop chains).\n- Wrote analysis scripts (MATLAB / Python) to interpret logs and timing data.\n- Assisted with preparing figures and structured results for academic use.\n\n---\n\n## Achievements\n\n- Delivered visualization tools that other students / researchers could use to understand multi-hop\n  experiments more intuitively.\n- Helped make experiments more **repeatable**: clearer logging, structured scripts, and consistent setups.\n\n---\n\n## Narration\n\nThis work made wireless systems more “real” for me. Instead of only thinking in terms of channel matrices\nand equations, I could see how packets and relays actually behaved in practice. It also taught me that\neven research tools benefit from basic engineering discipline—if others are going to use a script or GUI,\nit needs to be structured and understandable.",
+    "chunks": [
+      {
+        "kind": "experience.summary",
+        "text": "As a research assistant in wireless communications, I supported experiments using WARP SDR and"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "developed MATLAB visualization tools to understand multi-hop and cooperative wireless behavior."
+      },
+      {
+        "kind": "experience.summary",
+        "text": "The role sat between research and engineering: turning equations and concepts into real measurements"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "and plots."
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Wrote analysis scripts (MATLAB / Python) to interpret logs and timing data."
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "Python",
+        "MATLAB"
+      ],
+      "tools": [],
+      "audio_dsp": [],
+      "real_time": [
+        "Wrote analysis scripts (MATLAB / Python) to interpret logs and timing data."
+      ]
+    }
   },
   {
     "id": "experience/u_blox/index.md",
@@ -57,7 +295,44 @@
         "protocols"
       ]
     },
-    "content": "\n# u-blox – LTE NAS Engineer\n\n## Role Summary\n\nAt u-blox, I worked as an Embedded Protocol Engineer on **LTE NAS (Non-Access Stratum)** for cellular\nmodules. The work was centered around **C-based state machines**, **3GPP-compliant signaling**, and\n**trace-driven debugging** for attach / detach / mobility / security procedures.\n\n---\n\n## Key Responsibilities\n\n### 1. NAS State Machine Development in C\n\n- Implemented and maintained LTE NAS procedures:\n  - attach / detach,\n  - tracking area update (TAU),\n  - basic mobility-related signaling.\n- Followed relevant 3GPP specs for message formats, timers and expected state transitions.\n- Handled error paths and corner cases that arise in real networks.\n\n### 2. Mobility & Security Flows\n\n- Contributed to security-related NAS flows (e.g. security mode procedures) at a high level.\n- Ensured correct interaction with mobility procedures so the device behaves predictably as it moves\n  across cells / regions.\n\n### 3. AT Command Integration\n\n- Mapped NAS procedures to AT commands used by external control (e.g. attach control, network info).\n- Ensured AT behavior was consistent and predictable for integrators.\n\n### 4. Trace-Based Debugging & Automation\n\n- Analyzed NAS traces and logging output to find where and why flows broke.\n- Used Python and simple scripts to replay or post-process traces and verify changes.\n\n---\n\n## Achievements\n\n- **Improved NAS Stability**  \n  Helped fix issues in NAS flows (e.g. attach / TAU behavior) based on trace findings, reducing failure cases.\n\n- **Better Debugging Workflows**  \n  Contributed scripts / approaches to make investigating signaling problems faster and more systematic.\n\n---\n\n## Narration\n\nThis role trained me to think in **state machines and protocol flows**. You can’t just “hack something in”\nwhen dealing with NAS—one missing transition or mishandled timer can break connectivity. The habit of\nreading traces carefully and mapping them back to code paths carried over to my later work in DSP and\nmedia, where failures are also often indirect and subtle."
+    "content": "\n# u-blox – LTE NAS Engineer\n\n## Role Summary\n\nAt u-blox, I worked as an Embedded Protocol Engineer on **LTE NAS (Non-Access Stratum)** for cellular\nmodules. The work was centered around **C-based state machines**, **3GPP-compliant signaling**, and\n**trace-driven debugging** for attach / detach / mobility / security procedures.\n\n---\n\n## Key Responsibilities\n\n### 1. NAS State Machine Development in C\n\n- Implemented and maintained LTE NAS procedures:\n  - attach / detach,\n  - tracking area update (TAU),\n  - basic mobility-related signaling.\n- Followed relevant 3GPP specs for message formats, timers and expected state transitions.\n- Handled error paths and corner cases that arise in real networks.\n\n### 2. Mobility & Security Flows\n\n- Contributed to security-related NAS flows (e.g. security mode procedures) at a high level.\n- Ensured correct interaction with mobility procedures so the device behaves predictably as it moves\n  across cells / regions.\n\n### 3. AT Command Integration\n\n- Mapped NAS procedures to AT commands used by external control (e.g. attach control, network info).\n- Ensured AT behavior was consistent and predictable for integrators.\n\n### 4. Trace-Based Debugging & Automation\n\n- Analyzed NAS traces and logging output to find where and why flows broke.\n- Used Python and simple scripts to replay or post-process traces and verify changes.\n\n---\n\n## Achievements\n\n- **Improved NAS Stability**  \n  Helped fix issues in NAS flows (e.g. attach / TAU behavior) based on trace findings, reducing failure cases.\n\n- **Better Debugging Workflows**  \n  Contributed scripts / approaches to make investigating signaling problems faster and more systematic.\n\n---\n\n## Narration\n\nThis role trained me to think in **state machines and protocol flows**. You can’t just “hack something in”\nwhen dealing with NAS—one missing transition or mishandled timer can break connectivity. The habit of\nreading traces carefully and mapping them back to code paths carried over to my later work in DSP and\nmedia, where failures are also often indirect and subtle.",
+    "chunks": [
+      {
+        "kind": "experience.summary",
+        "text": "At u-blox, I worked as an Embedded Protocol Engineer on LTE NAS (Non-Access Stratum) for cellular"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "modules. The work was centered around C-based state machines, 3GPP-compliant signaling, and"
+      },
+      {
+        "kind": "experience.summary",
+        "text": "trace-driven debugging for attach / detach / mobility / security procedures."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "The habit of reading traces carefully and mapping them back to code paths carried over to my later work in DSP and media, where failures are also often indirect and subtle."
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "Python"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "The habit of reading traces carefully and mapping them back to code paths carried over to my later work in DSP and media, where failures are also often indirect and subtle."
+      ],
+      "real_time": []
+    }
   },
   {
     "id": "profile/profile.md",
@@ -76,7 +351,193 @@
         "software_engineering"
       ]
     },
-    "content": "\n# Professional Profile — Wahaj Aslam  \n### Audio/DSP Engineer • Embedded Systems • Real-Time Media • Research‑Driven Problem Solver\n\n---\n\n## 1. Who I Am\n\nI am an engineer who works at the intersection of **audio signal processing**, **embedded systems**, and\n**high‑performance software development**.  \nMy background spans **research**, **product engineering**, and **system‑level debugging**, with hands-on \nexperience building tools, algorithms, and testing frameworks that must perform reliably under real‑time \nconstraints.\n\nI approach problems by balancing:\n\n- scientific rigor,  \n- practical engineering constraints, and  \n- user‑centered intuition (how the system *should feel*).  \n\nMy work ranges from **DSP research** (speech bandwidth extension, pitch systems, wireless modeling) to\n**industry-grade product work**, such as audio codec feature development, media streaming, system-level\nintegration, and critical listening analysis.\n\n---\n\n## 2. What I’m Good At\n\n### **DSP & Audio Engineering**\n- Pitch detection, enhancement, envelopes, filters, formants, spectral analysis  \n- Real-time DSP pipelines (Core Audio, vDSP, FFT optimization)  \n- Speech bandwidth extension, time‑frequency modeling  \n- Algorithm tuning through critical listening and perceptual analysis  \n\n### **Embedded & Systems Engineering**\n- C as a primary language (Fraunhofer systems work)  \n- Modern C++ for application frameworks, tools, and integration layers  \n- Python for research tooling, automation, concurrency, data analysis  \n- Real-time debugging, timing constraints, memory-sensitive systems  \n\n### **Media, Streaming & Codec Work**\n- Working with internal encoders/decoders  \n- Streaming‑relevant features  \n- Quality investigations based on artifacts, logs, bitstreams  \n- Tools such as FFmpeg, MediaInfo, Adobe Audition, internal QA systems  \n\n### **Signal Testing & Evaluation**\n- Critical listening sessions (hundreds of hours)  \n- Subjective + objective evaluation of audio quality  \n- Artifact identification, regression detection  \n- Designing test plans and experiments  \n\n---\n\n## 3. How I Work\n\n### **Scientifically**\nI rely on theory where it matters:\n- modeling signals,  \n- evaluating tradeoffs,  \n- tuning algorithms based on measurable behavior.\n\n### **Practically**\nI make engineering decisions based on:\n- latency budgets,  \n- CPU/memory constraints,  \n- integration realities,  \nnot just idealized models.\n\n### **Empirically**\nI frequently prototype in Python or MATLAB, validate ideas, compare outputs, and refine them using:\n- spectral visualization,  \n- waveform inspection,  \n- controlled listening tests.\n\n### **Collaboratively**\nI work well with:\n- researchers,  \n- QA teams,  \n- firmware engineers,  \n- product teams,  \nensuring alignment between DSP theory and product needs.\n\n---\n\n## 4. Where I’ve Worked\n\n### **Fraunhofer IIS — Audio, Video & Media Systems**\n- C as primary development language  \n- Audio codec feature development  \n- Streaming-related system integration  \n- Artifact detection and quality analysis  \n- Critical listening evaluations  \n- Encoder/decoder feature testing and debugging  \n- Worked indirectly with formats and customers such as Netflix, Amazon, Microsoft, etc.  \n\n### **u‑blox**\n- Systems-level engineering  \n- DSP‑adjacent tasks  \n- C/C++ tooling development  \n- Software testing and integration work  \n\n### **TU Darmstadt (Research)**\n- Speech bandwidth extension (master thesis)  \n- Wireless modeling and MATLAB tool development  \n- Academic research presentations and implementation work  \n\n---\n\n## 5. What I Bring to a Team\n\n- **End‑to‑end ownership**: from research → prototyping → implementation → evaluation.  \n- **Strong debugging intuition**, especially in timing-/signal-/quality‑sensitive systems.  \n- **Cross‑disciplinary thinking**, blending DSP, embedded design, and software engineering.  \n- **Fast context ramp‑up** due to years of switching between research and product environments.  \n- **Stability under complexity** — I thrive in problem spaces where correctness, latency, and subjective \nquality all intersect.  \n\n---\n\n## 6. Personal Narrative (Short)\n\nI enjoy building systems that *sound good*, not just ones that *compute correctly*.  \nMuch of my work centers around bridging the gap between raw algorithms and real‑world perception—whether \nI’m tuning a bandwidth extension model, optimizing a pitch detector, or helping evaluate codec behavior.\n\nI’m driven by curiosity, long-term skill growth, and the satisfaction of making complex systems behave in\nclean, predictable, and perceptually meaningful ways.\n\n---\n\n## 7. Personal Interests\n\n- DSP research & algorithm design  \n- Audio enhancement and reconstruction  \n- Musical interface design (gestural controllers, pitch tools)  \n- Wireless systems  \n- System-level tooling, automation, and testing  \n- Continuous self‑improvement and learning  \n"
+    "content": "\n# Professional Profile — Wahaj Aslam  \n### Audio/DSP Engineer • Embedded Systems • Real-Time Media • Research‑Driven Problem Solver\n\n---\n\n## 1. Who I Am\n\nI am an engineer who works at the intersection of **audio signal processing**, **embedded systems**, and\n**high‑performance software development**.  \nMy background spans **research**, **product engineering**, and **system‑level debugging**, with hands-on \nexperience building tools, algorithms, and testing frameworks that must perform reliably under real‑time \nconstraints.\n\nI approach problems by balancing:\n\n- scientific rigor,  \n- practical engineering constraints, and  \n- user‑centered intuition (how the system *should feel*).  \n\nMy work ranges from **DSP research** (speech bandwidth extension, pitch systems, wireless modeling) to\n**industry-grade product work**, such as audio codec feature development, media streaming, system-level\nintegration, and critical listening analysis.\n\n---\n\n## 2. What I’m Good At\n\n### **DSP & Audio Engineering**\n- Pitch detection, enhancement, envelopes, filters, formants, spectral analysis  \n- Real-time DSP pipelines (Core Audio, vDSP, FFT optimization)  \n- Speech bandwidth extension, time‑frequency modeling  \n- Algorithm tuning through critical listening and perceptual analysis  \n\n### **Embedded & Systems Engineering**\n- C as a primary language (Fraunhofer systems work)  \n- Modern C++ for application frameworks, tools, and integration layers  \n- Python for research tooling, automation, concurrency, data analysis  \n- Real-time debugging, timing constraints, memory-sensitive systems  \n\n### **Media, Streaming & Codec Work**\n- Working with internal encoders/decoders  \n- Streaming‑relevant features  \n- Quality investigations based on artifacts, logs, bitstreams  \n- Tools such as FFmpeg, MediaInfo, Adobe Audition, internal QA systems  \n\n### **Signal Testing & Evaluation**\n- Critical listening sessions (hundreds of hours)  \n- Subjective + objective evaluation of audio quality  \n- Artifact identification, regression detection  \n- Designing test plans and experiments  \n\n---\n\n## 3. How I Work\n\n### **Scientifically**\nI rely on theory where it matters:\n- modeling signals,  \n- evaluating tradeoffs,  \n- tuning algorithms based on measurable behavior.\n\n### **Practically**\nI make engineering decisions based on:\n- latency budgets,  \n- CPU/memory constraints,  \n- integration realities,  \nnot just idealized models.\n\n### **Empirically**\nI frequently prototype in Python or MATLAB, validate ideas, compare outputs, and refine them using:\n- spectral visualization,  \n- waveform inspection,  \n- controlled listening tests.\n\n### **Collaboratively**\nI work well with:\n- researchers,  \n- QA teams,  \n- firmware engineers,  \n- product teams,  \nensuring alignment between DSP theory and product needs.\n\n---\n\n## 4. Where I’ve Worked\n\n### **Fraunhofer IIS — Audio, Video & Media Systems**\n- C as primary development language  \n- Audio codec feature development  \n- Streaming-related system integration  \n- Artifact detection and quality analysis  \n- Critical listening evaluations  \n- Encoder/decoder feature testing and debugging  \n- Worked indirectly with formats and customers such as Netflix, Amazon, Microsoft, etc.  \n\n### **u‑blox**\n- Systems-level engineering  \n- DSP‑adjacent tasks  \n- C/C++ tooling development  \n- Software testing and integration work  \n\n### **TU Darmstadt (Research)**\n- Speech bandwidth extension (master thesis)  \n- Wireless modeling and MATLAB tool development  \n- Academic research presentations and implementation work  \n\n---\n\n## 5. What I Bring to a Team\n\n- **End‑to‑end ownership**: from research → prototyping → implementation → evaluation.  \n- **Strong debugging intuition**, especially in timing-/signal-/quality‑sensitive systems.  \n- **Cross‑disciplinary thinking**, blending DSP, embedded design, and software engineering.  \n- **Fast context ramp‑up** due to years of switching between research and product environments.  \n- **Stability under complexity** — I thrive in problem spaces where correctness, latency, and subjective \nquality all intersect.  \n\n---\n\n## 6. Personal Narrative (Short)\n\nI enjoy building systems that *sound good*, not just ones that *compute correctly*.  \nMuch of my work centers around bridging the gap between raw algorithms and real‑world perception—whether \nI’m tuning a bandwidth extension model, optimizing a pitch detector, or helping evaluate codec behavior.\n\nI’m driven by curiosity, long-term skill growth, and the satisfaction of making complex systems behave in\nclean, predictable, and perceptually meaningful ways.\n\n---\n\n## 7. Personal Interests\n\n- DSP research & algorithm design  \n- Audio enhancement and reconstruction  \n- Musical interface design (gestural controllers, pitch tools)  \n- Wireless systems  \n- System-level tooling, automation, and testing  \n- Continuous self‑improvement and learning  \n",
+    "chunks": [
+      {
+        "kind": "profile.summary",
+        "text": "I am an engineer who works at the intersection of audio signal processing, embedded systems, and\nhigh‑performance software development.  \nMy background spans research, product engineering, and system‑level debugging, with hands-on \nexperience building tools, algorithms, and testing frameworks that must perform reliably under real‑time \nconstraints.\n\nI approach problems by balancing:\n\nscientific rigor,  \npractical engineering constraints, and  \nuser‑centered intuition (how the system *should feel*).  \n\nMy work ranges from DSP research (speech bandwidth extension, pitch systems, wireless modeling) to\nindustry-grade product work, such as audio codec feature development, media streaming, system-level\nintegration, and critical listening analysis."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "# Professional Profile — Wahaj Aslam   ### Audio/DSP Engineer • Embedded Systems • Real-Time Media • Research‑Driven Problem Solver --- ## 1"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Who I Am I am an engineer who works at the intersection of audio signal processing, embedded systems, and high‑performance software development"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "My work ranges from DSP research (speech bandwidth extension, pitch systems, wireless modeling) to industry-grade product work, such as audio codec feature development, media streaming, system-level integration, and critical listening analysis"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "What I’m Good At ### DSP & Audio Engineering"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Pitch detection, enhancement, envelopes, filters, formants, spectral analysis"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Real-time DSP pipelines (Core Audio, vDSP, FFT optimization)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Speech bandwidth extension, time‑frequency modeling"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Real-time debugging, timing constraints, memory-sensitive systems   ### Media, Streaming & Codec Work"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Streaming‑relevant features"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Subjective + objective evaluation of audio quality"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "latency budgets,"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "spectral visualization,"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "product teams,   ensuring alignment between DSP theory and product needs"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Where I’ve Worked ### Fraunhofer IIS — Audio, Video & Media Systems"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Audio codec feature development"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Streaming-related system integration"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP‑adjacent tasks"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Speech bandwidth extension (master thesis)"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Strong debugging intuition, especially in timing-/signal-/quality‑sensitive systems"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Cross‑disciplinary thinking, blending DSP, embedded design, and software engineering"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Stability under complexity — I thrive in problem spaces where correctness, latency, and subjective  quality all intersect"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Much of my work centers around bridging the gap between raw algorithms and real‑world perception—whether  I’m tuning a bandwidth extension model, optimizing a pitch detector, or helping evaluate codec behavior"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP research & algorithm design"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Audio enhancement and reconstruction"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Musical interface design (gestural controllers, pitch tools)"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C++"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "FFmpeg"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "MediaInfo"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Adobe Audition"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Core Audio"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "vDSP"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "C++",
+        "Python",
+        "MATLAB"
+      ],
+      "tools": [
+        "FFmpeg",
+        "MediaInfo",
+        "Adobe Audition",
+        "Core Audio",
+        "vDSP"
+      ],
+      "audio_dsp": [
+        "# Professional Profile — Wahaj Aslam   ### Audio/DSP Engineer • Embedded Systems • Real-Time Media • Research‑Driven Problem Solver --- ## 1",
+        "Who I Am I am an engineer who works at the intersection of audio signal processing, embedded systems, and high‑performance software development",
+        "My work ranges from DSP research (speech bandwidth extension, pitch systems, wireless modeling) to industry-grade product work, such as audio codec feature development, media streaming, system-level integration, and critical listening analysis",
+        "What I’m Good At ### DSP & Audio Engineering",
+        "Pitch detection, enhancement, envelopes, filters, formants, spectral analysis",
+        "Real-time DSP pipelines (Core Audio, vDSP, FFT optimization)",
+        "Speech bandwidth extension, time‑frequency modeling",
+        "Real-time debugging, timing constraints, memory-sensitive systems   ### Media, Streaming & Codec Work",
+        "Streaming‑relevant features",
+        "Subjective + objective evaluation of audio quality",
+        "spectral visualization,",
+        "product teams,   ensuring alignment between DSP theory and product needs",
+        "Where I’ve Worked ### Fraunhofer IIS — Audio, Video & Media Systems",
+        "Audio codec feature development",
+        "Streaming-related system integration",
+        "DSP‑adjacent tasks",
+        "Speech bandwidth extension (master thesis)",
+        "Cross‑disciplinary thinking, blending DSP, embedded design, and software engineering",
+        "Much of my work centers around bridging the gap between raw algorithms and real‑world perception—whether  I’m tuning a bandwidth extension model, optimizing a pitch detector, or helping evaluate codec behavior",
+        "DSP research & algorithm design",
+        "Audio enhancement and reconstruction",
+        "Musical interface design (gestural controllers, pitch tools)"
+      ],
+      "real_time": [
+        "latency budgets,",
+        "Strong debugging intuition, especially in timing-/signal-/quality‑sensitive systems",
+        "Stability under complexity — I thrive in problem spaces where correctness, latency, and subjective  quality all intersect"
+      ]
+    }
   },
   {
     "id": "projects/arp_spoof_detector/index.md",
@@ -102,7 +563,46 @@
       "summary": "Python/Scapy ARP spoof detector with packet inspection, MAC/IP verification, and Wireshark-friendly logging.",
       "title": "ARP Spoof Detector"
     },
-    "content": "\n# ARP Spoof Detector — Python-Based Network Security Tool  \n\n## Overview\n\nThe **ARP Spoof Detector** is a Python-based defensive security tool that monitors a local network for\n**ARP poisoning** attacks. ARP spoofing is a common technique used to:\n\n- intercept traffic (Man-in-the-Middle attacks)  \n- disrupt network connectivity  \n- impersonate gateway or device IPs  \n\nThis tool continuously scans ARP packets, identifies suspicious MAC/IP mismatches, and alerts the user\nin real time.\n\nIt demonstrates:\n\n- network traffic analysis  \n- ARP protocol understanding  \n- attack detection logic  \n- practical cybersecurity engineering  \n\n## Problem Statement\n\nIn ARP spoofing:\n\n- an attacker sends false ARP replies  \n- associates their MAC with a victim’s IP address  \n- reroutes or intercepts traffic  \n\nMost devices never verify ARP messages, making the LAN vulnerable.\n\nThe goal of this project:\n\n- detect ARP spoof events quickly  \n- verify MAC/IP relationships  \n- warn the user immediately  \n- run efficiently on typical local networks  \n\n## System Architecture\n\n```\nNetwork Traffic → Packet Sniffer → ARP Analyzer → MAC Verification → Alert System\n```\n\n### Components\n\n1. **Packet Sniffer**  \n   - Uses `scapy` in Python  \n   - Listens for ARP “who-has” and “is-at” packets  \n\n2. **MAC Verification Engine**  \n   - Maintains a trusted MAC–IP mapping table  \n   - Detects changes or inconsistencies  \n\n3. **Spoof Detection Logic**\n   - Identifies if two different MAC addresses claim the same IP  \n   - Flags if gateway IP is claimed by a non-gateway MAC  \n\n4. **Alert System**\n   - Console warnings  \n   - Optional logging  \n   - Optional email/SMS alerts (extensible)\n\n## Implementation Details\n\n### Packet Sniffing\n\nUsing Scapy:\n\n```python\nfrom scapy.all import sniff, ARP\n\ndef sniff_packets():\n    sniff(store=False, prn=analyze_packet, filter=\"arp\")\n```\n\n### ARP Analysis Logic\n\n```python\ndef analyze_packet(pkt):\n    if pkt.haslayer(ARP) and pkt[ARP].op == 2:  # ARP Reply\n        ip = pkt[ARP].psrc\n        mac = pkt[ARP].hwsrc\n\n        if ip in ip_mac_table and ip_mac_table[ip] != mac:\n            alert(ip, ip_mac_table[ip], mac)\n        else:\n            ip_mac_table[ip] = mac\n```\n\n### Spoof Detection Conditions\n\n- **Condition A:** Same IP seen with two different MACs  \n- **Condition B:** Gateway IP claimed by an unknown MAC  \n- **Condition C:** MAC address appears on sudden multiple IPs  \n\n### Alert Function\n\n```python\ndef alert(ip, original_mac, spoofed_mac):\n    print(f\"[!] Possible ARP Spoof Detected:\")\n    print(f\"    IP Address: {ip}\")\n    print(f\"    Original MAC: {original_mac}\")\n    print(f\"    Detected MAC: {spoofed_mac}\")\n```\n\n### Performance Considerations\n\n- Real-time detection with low CPU usage  \n- Works on Wi-Fi and Ethernet  \n- No need for packet storage → memory efficient  \n\n## Results\n\n- Successfully detects ARP spoof attempts in real networks  \n- Works immediately on common networks without special setup  \n- Detects gateway spoofing (most dangerous case)  \n- Minimal system resource usage  \n- Easy to extend into a full IDS module  \n\n## Skills Demonstrated\n\n- Python networking  \n- Packet sniffing using Scapy  \n- Understanding ARP protocol internals  \n- Intrusion detection logic  \n- Pattern recognition for MAC/IP inconsistencies  \n- Practical cybersecurity tooling  \n\n## Narration / Reflection\n\nBuilding this tool gave me hands-on insight into how simple but dangerous ARP spoofing is on typical\nnetworks. It reinforced:\n\n- the importance of validating assumptions in protocols  \n- how fragile local network trust systems can be  \n- how lightweight detection can significantly improve security  \n\nThis project strengthened my ability to think like both an attacker **and** a defender — a skill that later\nhelped in debugging complex system interactions across networking, DSP, and embedded domains.\n\n---\n"
+    "content": "\n# ARP Spoof Detector — Python-Based Network Security Tool  \n\n## Overview\n\nThe **ARP Spoof Detector** is a Python-based defensive security tool that monitors a local network for\n**ARP poisoning** attacks. ARP spoofing is a common technique used to:\n\n- intercept traffic (Man-in-the-Middle attacks)  \n- disrupt network connectivity  \n- impersonate gateway or device IPs  \n\nThis tool continuously scans ARP packets, identifies suspicious MAC/IP mismatches, and alerts the user\nin real time.\n\nIt demonstrates:\n\n- network traffic analysis  \n- ARP protocol understanding  \n- attack detection logic  \n- practical cybersecurity engineering  \n\n## Problem Statement\n\nIn ARP spoofing:\n\n- an attacker sends false ARP replies  \n- associates their MAC with a victim’s IP address  \n- reroutes or intercepts traffic  \n\nMost devices never verify ARP messages, making the LAN vulnerable.\n\nThe goal of this project:\n\n- detect ARP spoof events quickly  \n- verify MAC/IP relationships  \n- warn the user immediately  \n- run efficiently on typical local networks  \n\n## System Architecture\n\n```\nNetwork Traffic → Packet Sniffer → ARP Analyzer → MAC Verification → Alert System\n```\n\n### Components\n\n1. **Packet Sniffer**  \n   - Uses `scapy` in Python  \n   - Listens for ARP “who-has” and “is-at” packets  \n\n2. **MAC Verification Engine**  \n   - Maintains a trusted MAC–IP mapping table  \n   - Detects changes or inconsistencies  \n\n3. **Spoof Detection Logic**\n   - Identifies if two different MAC addresses claim the same IP  \n   - Flags if gateway IP is claimed by a non-gateway MAC  \n\n4. **Alert System**\n   - Console warnings  \n   - Optional logging  \n   - Optional email/SMS alerts (extensible)\n\n## Implementation Details\n\n### Packet Sniffing\n\nUsing Scapy:\n\n```python\nfrom scapy.all import sniff, ARP\n\ndef sniff_packets():\n    sniff(store=False, prn=analyze_packet, filter=\"arp\")\n```\n\n### ARP Analysis Logic\n\n```python\ndef analyze_packet(pkt):\n    if pkt.haslayer(ARP) and pkt[ARP].op == 2:  # ARP Reply\n        ip = pkt[ARP].psrc\n        mac = pkt[ARP].hwsrc\n\n        if ip in ip_mac_table and ip_mac_table[ip] != mac:\n            alert(ip, ip_mac_table[ip], mac)\n        else:\n            ip_mac_table[ip] = mac\n```\n\n### Spoof Detection Conditions\n\n- **Condition A:** Same IP seen with two different MACs  \n- **Condition B:** Gateway IP claimed by an unknown MAC  \n- **Condition C:** MAC address appears on sudden multiple IPs  \n\n### Alert Function\n\n```python\ndef alert(ip, original_mac, spoofed_mac):\n    print(f\"[!] Possible ARP Spoof Detected:\")\n    print(f\"    IP Address: {ip}\")\n    print(f\"    Original MAC: {original_mac}\")\n    print(f\"    Detected MAC: {spoofed_mac}\")\n```\n\n### Performance Considerations\n\n- Real-time detection with low CPU usage  \n- Works on Wi-Fi and Ethernet  \n- No need for packet storage → memory efficient  \n\n## Results\n\n- Successfully detects ARP spoof attempts in real networks  \n- Works immediately on common networks without special setup  \n- Detects gateway spoofing (most dangerous case)  \n- Minimal system resource usage  \n- Easy to extend into a full IDS module  \n\n## Skills Demonstrated\n\n- Python networking  \n- Packet sniffing using Scapy  \n- Understanding ARP protocol internals  \n- Intrusion detection logic  \n- Pattern recognition for MAC/IP inconsistencies  \n- Practical cybersecurity tooling  \n\n## Narration / Reflection\n\nBuilding this tool gave me hands-on insight into how simple but dangerous ARP spoofing is on typical\nnetworks. It reinforced:\n\n- the importance of validating assumptions in protocols  \n- how fragile local network trust systems can be  \n- how lightweight detection can significantly improve security  \n\nThis project strengthened my ability to think like both an attacker **and** a defender — a skill that later\nhelped in debugging complex system interactions across networking, DSP, and embedded domains.\n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "The ARP Spoof Detector is a Python-based defensive security tool that monitors a local network for\nARP poisoning attacks. ARP spoofing is a common technique used to:\n\nintercept traffic (Man-in-the-Middle attacks)  \ndisrupt network connectivity  \nimpersonate gateway or device IPs  \n\nThis tool continuously scans ARP packets, identifies suspicious MAC/IP mismatches, and alerts the user\nin real time.\n\nIt demonstrates:\n\nnetwork traffic analysis  \nARP protocol understanding  \nattack detection logic  \npractical cybersecurity engineering"
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "In ARP spoofing:\n\nan attacker sends false ARP replies  \nassociates their MAC with a victim’s IP address  \nreroutes or intercepts traffic  \n\nMost devices never verify ARP messages, making the LAN vulnerable.\n\nThe goal of this project:\n\ndetect ARP spoof events quickly  \nverify MAC/IP relationships  \nwarn the user immediately  \nrun efficiently on typical local networks"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Real-time detection with low CPU usage"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "how lightweight detection can significantly improve security   This project strengthened my ability to think like both an attacker and a defender — a skill that later helped in debugging complex system interactions across networking, DSP, and embedded domains"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "Python"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "how lightweight detection can significantly improve security   This project strengthened my ability to think like both an attacker and a defender — a skill that later helped in debugging complex system interactions across networking, DSP, and embedded domains"
+      ],
+      "real_time": [
+        "Real-time detection with low CPU usage"
+      ]
+    }
   },
   {
     "id": "projects/beatnik-osc-glove/index.md",
@@ -133,7 +633,96 @@
       ],
       "article_slug": "beatnik-osc-glove"
     },
-    "content": "\n# BEATNIK – Gesture-Controlled OSC/MIDI Glove  \n\n## Overview\n\nBEATNIK is a wearable glove-based controller that converts gestures and finger movements into:\n\n- **OSC (Open Sound Control) messages**, and  \n- **MIDI notes / MIDI Control Change messages**\n\nIt enables expressive performance control for:\n\n- synthesizers  \n- DAWs (Ableton, Logic, FL Studio)  \n- modular synthesis environments (Max/MSP, SuperCollider, Pure Data)  \n- VST plugins and live performance rigs  \n\nThe system integrates:\n\n- flex sensors  \n- IMU/accelerometer  \n- embedded C firmware  \n- OSC/MIDI communication  \n- host-side sound engines  \n\nIts goal is to provide **fluid, human, gestural music control** that traditional knobs/sliders cannot offer.\n\n## Problem Statement\n\nMost music controllers:\n\n- are discrete  \n- rely on buttons/knobs  \n- lack expressive nuance  \n- feel mechanical rather rather than human  \n\nBEATNIK enables **natural, continuous, real-time control** using gestures.\n\nChallenges solved:\n\n- stable sensor readings under noise  \n- low-latency gesture detection  \n- expressive mapping to MIDI/OSC  \n- intuitive interface for performers  \n\n## System Architecture\n\n### Hardware Layer\n- Flex sensors (1 per finger)\n- IMU/accelerometer for tilt / roll / shake\n- Microcontroller (Arduino/Teensy class)\n\n### Signal Processing Layer\n- ADC sampling  \n- Exponential smoothing to reduce jitter  \n- Gesture classification  \n- Noise thresholding  \n\n### OSC & MIDI Output Layer\n- OSC message packer  \n- MIDI note generator  \n- MIDI CC mapping  \n- Configurable output mode (OSC-only, MIDI-only, hybrid)\n\n### Host System\n- DAW or synthesis environment that receives OSC or MIDI  \n\n## OSC Messaging (Full Technical Detail)\n\nOSC messages follow a structured namespace:\n\n```\n/beatnik/finger1      float 0.0–1.0\n/beatnik/finger2      float 0.0–1.0\n/beatnik/finger3      float 0.0–1.0\n/beatnik/finger4      float 0.0–1.0\n/beatnik/finger5      float 0.0–1.0\n\n/beatnik/tilt         float -1.0–1.0\n/beatnik/roll         float -1.0–1.0\n/beatnik/shake        float 0–127\n```\n\n### OSC Uses\n- Flex → filter cutoff, LFO depth, amplitude envelope  \n- Tilt → pitch bend or spatialization  \n- Shake → percussive trigger or FX burst  \n\n### OSC Rate\n- Sent at **30–60 Hz** for smooth motion without overloading host apps  \n\n## MIDI Note + CC Messaging (Full Detail)\n\nThe glove supports three musical modes:\n\n### MIDI Note Triggering\nEach finger can trigger notes:\n\n| Finger Gesture | Threshold | MIDI Output |\n|----------------|-----------|-------------|\n| Index bent     | > bend_t  | NOTE ON 60 velocity=X |\n| Index released | < bend_t  | NOTE OFF 60 |\n| Middle bent    | > bend_t  | NOTE ON 62 |\n| Ring bent      | …         | NOTE ON 64 |\n\n### Velocity Calculation\n```\nvelocity = clamp( (Δfinger_bend / Δt) * 127 )\n```\n\nThis creates **human feel** rather than fixed velocity.\n\n### MIDI CC Control (Continuous Control)\n\nRecommended mappings:\n\n```\nfinger1 → CC74 (Filter Cutoff)\nfinger2 → CC1  (Mod Wheel / Vibrato)\nfinger3 → CC11 (Expression)\ntilt    → CC10 (Pan)\nshake   → CC5  (Portamento or FX depth)\n```\n\nGestures map to CC values **0–127**.\n\n### Pitch Bend\nTilt angle → bend value:\n\n```\npitchbend = map(tilt, -1.0..1.0 → -8192..8191)\n```\n\n### Supported Output Modes\n\n| Mode | Behavior |\n|------|----------|\n| OSC-only | Continuous OSC messages only |\n| MIDI-only | Notes + CC only |\n| Hybrid | Sends both OSC + MIDI for experimental rigs |\n\n## Implementation Details\n\n### Firmware (C)\n- ADC sampling loop  \n- Normalization of sensor values  \n- Exponential smoothing filter  \n- State machine for gesture detection  \n- OSC packing (Lightweight OSC library)  \n- MIDI over USB or serial  \n\n### Latency Optimization\n- Non-blocking timing loops  \n- Minimal filtering delay (<5 ms)  \n- Efficient OSC batching  \n- USB MIDI for ultra-low latency  \n\n### Host Setup\nCompatible with:\n- Ableton Live (via virtual MIDI port or OSC bridge)\n- Max/MSP patches\n- SuperCollider SynthDefs\n- Logic Pro (MIDI layer)\n- Pure Data & VCV Rack (OSC)\n\n## Results\n\n- Very expressive modulation (filter/fx sweeps)  \n- Stable continuous CC values  \n- Clean note triggering  \n- <20 ms total end-to-end latency  \n- Natural gestural performance experience  \n\n## Skills Demonstrated\n\n- Embedded C  \n- Sensor fusion  \n- Real-time filtering  \n- OSC protocol implementation  \n- MIDI generation  \n- Human–computer interaction  \n- Hardware–software integration  \n\n## Narration / Reflection\n\nThis project showed me how raw movement becomes **musical performance**.\n\nI learned that:\n\n- sensor data is noisy and must be shaped,  \n- expressiveness requires continuous control,  \n- OSC and MIDI each offer unique strengths,  \n- real-time systems must feel responsive, not only correct.\n\nBEATNIK taught me to think from the **performer's perspective**, not just the engineer’s.  \nIt shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced\nmy DSP and audio engineering work.\n\n---\n"
+    "content": "\n# BEATNIK – Gesture-Controlled OSC/MIDI Glove  \n\n## Overview\n\nBEATNIK is a wearable glove-based controller that converts gestures and finger movements into:\n\n- **OSC (Open Sound Control) messages**, and  \n- **MIDI notes / MIDI Control Change messages**\n\nIt enables expressive performance control for:\n\n- synthesizers  \n- DAWs (Ableton, Logic, FL Studio)  \n- modular synthesis environments (Max/MSP, SuperCollider, Pure Data)  \n- VST plugins and live performance rigs  \n\nThe system integrates:\n\n- flex sensors  \n- IMU/accelerometer  \n- embedded C firmware  \n- OSC/MIDI communication  \n- host-side sound engines  \n\nIts goal is to provide **fluid, human, gestural music control** that traditional knobs/sliders cannot offer.\n\n## Problem Statement\n\nMost music controllers:\n\n- are discrete  \n- rely on buttons/knobs  \n- lack expressive nuance  \n- feel mechanical rather rather than human  \n\nBEATNIK enables **natural, continuous, real-time control** using gestures.\n\nChallenges solved:\n\n- stable sensor readings under noise  \n- low-latency gesture detection  \n- expressive mapping to MIDI/OSC  \n- intuitive interface for performers  \n\n## System Architecture\n\n### Hardware Layer\n- Flex sensors (1 per finger)\n- IMU/accelerometer for tilt / roll / shake\n- Microcontroller (Arduino/Teensy class)\n\n### Signal Processing Layer\n- ADC sampling  \n- Exponential smoothing to reduce jitter  \n- Gesture classification  \n- Noise thresholding  \n\n### OSC & MIDI Output Layer\n- OSC message packer  \n- MIDI note generator  \n- MIDI CC mapping  \n- Configurable output mode (OSC-only, MIDI-only, hybrid)\n\n### Host System\n- DAW or synthesis environment that receives OSC or MIDI  \n\n## OSC Messaging (Full Technical Detail)\n\nOSC messages follow a structured namespace:\n\n```\n/beatnik/finger1      float 0.0–1.0\n/beatnik/finger2      float 0.0–1.0\n/beatnik/finger3      float 0.0–1.0\n/beatnik/finger4      float 0.0–1.0\n/beatnik/finger5      float 0.0–1.0\n\n/beatnik/tilt         float -1.0–1.0\n/beatnik/roll         float -1.0–1.0\n/beatnik/shake        float 0–127\n```\n\n### OSC Uses\n- Flex → filter cutoff, LFO depth, amplitude envelope  \n- Tilt → pitch bend or spatialization  \n- Shake → percussive trigger or FX burst  \n\n### OSC Rate\n- Sent at **30–60 Hz** for smooth motion without overloading host apps  \n\n## MIDI Note + CC Messaging (Full Detail)\n\nThe glove supports three musical modes:\n\n### MIDI Note Triggering\nEach finger can trigger notes:\n\n| Finger Gesture | Threshold | MIDI Output |\n|----------------|-----------|-------------|\n| Index bent     | > bend_t  | NOTE ON 60 velocity=X |\n| Index released | < bend_t  | NOTE OFF 60 |\n| Middle bent    | > bend_t  | NOTE ON 62 |\n| Ring bent      | …         | NOTE ON 64 |\n\n### Velocity Calculation\n```\nvelocity = clamp( (Δfinger_bend / Δt) * 127 )\n```\n\nThis creates **human feel** rather than fixed velocity.\n\n### MIDI CC Control (Continuous Control)\n\nRecommended mappings:\n\n```\nfinger1 → CC74 (Filter Cutoff)\nfinger2 → CC1  (Mod Wheel / Vibrato)\nfinger3 → CC11 (Expression)\ntilt    → CC10 (Pan)\nshake   → CC5  (Portamento or FX depth)\n```\n\nGestures map to CC values **0–127**.\n\n### Pitch Bend\nTilt angle → bend value:\n\n```\npitchbend = map(tilt, -1.0..1.0 → -8192..8191)\n```\n\n### Supported Output Modes\n\n| Mode | Behavior |\n|------|----------|\n| OSC-only | Continuous OSC messages only |\n| MIDI-only | Notes + CC only |\n| Hybrid | Sends both OSC + MIDI for experimental rigs |\n\n## Implementation Details\n\n### Firmware (C)\n- ADC sampling loop  \n- Normalization of sensor values  \n- Exponential smoothing filter  \n- State machine for gesture detection  \n- OSC packing (Lightweight OSC library)  \n- MIDI over USB or serial  \n\n### Latency Optimization\n- Non-blocking timing loops  \n- Minimal filtering delay (<5 ms)  \n- Efficient OSC batching  \n- USB MIDI for ultra-low latency  \n\n### Host Setup\nCompatible with:\n- Ableton Live (via virtual MIDI port or OSC bridge)\n- Max/MSP patches\n- SuperCollider SynthDefs\n- Logic Pro (MIDI layer)\n- Pure Data & VCV Rack (OSC)\n\n## Results\n\n- Very expressive modulation (filter/fx sweeps)  \n- Stable continuous CC values  \n- Clean note triggering  \n- <20 ms total end-to-end latency  \n- Natural gestural performance experience  \n\n## Skills Demonstrated\n\n- Embedded C  \n- Sensor fusion  \n- Real-time filtering  \n- OSC protocol implementation  \n- MIDI generation  \n- Human–computer interaction  \n- Hardware–software integration  \n\n## Narration / Reflection\n\nThis project showed me how raw movement becomes **musical performance**.\n\nI learned that:\n\n- sensor data is noisy and must be shaped,  \n- expressiveness requires continuous control,  \n- OSC and MIDI each offer unique strengths,  \n- real-time systems must feel responsive, not only correct.\n\nBEATNIK taught me to think from the **performer's perspective**, not just the engineer’s.  \nIt shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced\nmy DSP and audio engineering work.\n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "BEATNIK is a wearable glove-based controller that converts gestures and finger movements into:\n\nOSC (Open Sound Control) messages, and  \nMIDI notes / MIDI Control Change messages\n\nIt enables expressive performance control for:\n\nsynthesizers  \nDAWs (Ableton, Logic, FL Studio)  \nmodular synthesis environments (Max/MSP, SuperCollider, Pure Data)  \nVST plugins and live performance rigs  \n\nThe system integrates:\n\nflex sensors  \nIMU/accelerometer  \nembedded C firmware  \nOSC/MIDI communication  \nhost-side sound engines  \n\nIts goal is to provide fluid, human, gestural music control that traditional knobs/sliders cannot offer."
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Most music controllers:\n\nare discrete  \nrely on buttons/knobs  \nlack expressive nuance  \nfeel mechanical rather rather than human  \n\nBEATNIK enables natural, continuous, real-time control using gestures.\n\nChallenges solved:\n\nstable sensor readings under noise  \nlow-latency gesture detection  \nexpressive mapping to MIDI/OSC  \nintuitive interface for performers"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "feel mechanical rather rather than human   BEATNIK enables natural, continuous, real-time control using gestures"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "low-latency gesture detection"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Exponential smoothing to reduce jitter"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Tilt → pitch bend or spatialization"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Pitch Bend Tilt angle → bend value:  pitchbend = map(tilt, -1.0..1.0 → -8192..8191)  ### Supported Output Modes | Mode | Behavior | |------|----------| | OSC-only | Continuous OSC messages only | | MIDI-only | Notes + CC only | | Hybrid | Sends both OSC + MIDI for experimental rigs | ## Implementation Details ### Firmware (C)"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "MIDI over USB or serial   ### Latency Optimization"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Non-blocking timing loops"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Minimal filtering delay (<5 ms)"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "USB MIDI for ultra-low latency   ### Host Setup Compatible with:"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "<20 ms total end-to-end latency"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Real-time filtering"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "real-time systems must feel responsive, not only correct"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "It shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced my DSP and audio engineering work"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "Tilt → pitch bend or spatialization",
+        "Pitch Bend Tilt angle → bend value:  pitchbend = map(tilt, -1.0..1.0 → -8192..8191)  ### Supported Output Modes | Mode | Behavior | |------|----------| | OSC-only | Continuous OSC messages only | | MIDI-only | Notes + CC only | | Hybrid | Sends both OSC + MIDI for experimental rigs | ## Implementation Details ### Firmware (C)",
+        "It shaped my sensitivity to latency, gesture dynamics, and expressive control — skills that later influenced my DSP and audio engineering work"
+      ],
+      "real_time": [
+        "feel mechanical rather rather than human   BEATNIK enables natural, continuous, real-time control using gestures",
+        "low-latency gesture detection",
+        "Exponential smoothing to reduce jitter",
+        "MIDI over USB or serial   ### Latency Optimization",
+        "Non-blocking timing loops",
+        "Minimal filtering delay (<5 ms)",
+        "USB MIDI for ultra-low latency   ### Host Setup Compatible with:",
+        "<20 ms total end-to-end latency",
+        "Real-time filtering",
+        "real-time systems must feel responsive, not only correct"
+      ]
+    }
   },
   {
     "id": "projects/dtmf_detector/index.md",
@@ -159,7 +748,21 @@
       ],
       "summary": "Goertzel-based DTMF detector on STM32/C with real-time tone validation, debouncing, and test coverage."
     },
-    "content": "\n# DTMF Detector — Goertzel-based DSP Project\n"
+    "content": "\n# DTMF Detector — Goertzel-based DSP Project\n",
+    "chunks": [
+      {
+        "kind": "experience.audio_dsp",
+        "text": "# DTMF Detector — Goertzel-based DSP Project"
+      }
+    ],
+    "facts": {
+      "languages": [],
+      "tools": [],
+      "audio_dsp": [
+        "# DTMF Detector — Goertzel-based DSP Project"
+      ],
+      "real_time": []
+    }
   },
   {
     "id": "projects/laser-harp/index.md",
@@ -190,7 +793,66 @@
       ],
       "article_slug": "laser-harp"
     },
-    "content": "\n# Laser Harp — Optical Motion-Based Musical Instrument  \n\n## Overview\n\nThe **Laser Harp** is an optical musical instrument where each “string” is a **beam of laser light**.  \nWhen a performer moves their hand through a beam, the interruption is detected and translated into a:\n\n- **MIDI note**,  \n- **OSC message**, or  \n- **control signal**  \n\ndepending on the chosen output mode.\n\nThe project combines:\n\n- real-time embedded sensing  \n- optical alignment and calibration  \n- noise filtering  \n- musical mapping logic  \n- gestural control concepts  \n\n## Problem Statement\n\nPhysical harps require string plucking.  \nThe goal here was to design a **touchless**, visually striking instrument that:\n\n- reacts instantly to hand motion  \n- avoids false triggers from ambient light  \n- maps gestures to musical notes cleanly  \n- is playable in low and high lighting conditions  \n\nChallenges solved:\n\n- optical noise from room lighting  \n- sensor threshold calibration  \n- fast detection of beam interruption  \n- avoiding note flicker and retriggers  \n- mapping multiple beams to a musical scale  \n\n## System Architecture\n\n### Optical Beam System\n- Multiple laser diodes positioned vertically  \n- Photodiodes or LDRs aligned opposite each laser  \n- A constant laser → photodiode reading indicates “beam intact”  \n- A drop in sensor voltage indicates “beam broken”  \n\n### Signal Conditioning\nTo create stable digital-like signals:\n\n- Analog low-pass filters  \n- Comparator circuits for thresholding  \n- Pull-up/pull-down stabilization  \n- Shielding to reduce ambient noise  \n\n### Embedded Controller\nA microcontroller (Arduino/Teensy-level) handled:\n\n- Reading photodiode outputs  \n- Applying debounce logic  \n- State transitions (INTACT → BROKEN → INTACT)  \n- Generating MIDI/OSC messages  \n\n### Output Layer\nSupports three modes:\n\n#### MIDI Mode\n- Note ON when the beam is broken  \n- Note OFF when the beam is restored  \n- Notes mapped to diatonic or chromatic scales  \n\n#### OSC Mode\n- OSC messages for:\n  ```\n  /laserharp/string1\n  /laserharp/string2\n  /laserharp/string3\n  ```\n- Useful for synthesis engines like Max/MSP, Pure Data, SuperCollider  \n\n#### Hybrid Mode\n- Both OSC + MIDI for advanced performance rigs  \n\n## Implementation Details\n\n### Photodiode Alignment\n- Required precise beam-to-sensor alignment  \n- Beam intensity adjusted to prevent oversaturation  \n- Ambient light tested in different environments  \n\n### Embedded Logic (C)\nThe core loop ran at a stable frequency:\n\n```c\nif (sensor_value < threshold && state == INTACT) {\n    trigger_note(string_id);\n    state = BROKEN;\n}\n\nif (sensor_value > threshold && state == BROKEN) {\n    release_note(string_id);\n    state = INTACT;\n}\n```\n\nAdditional logic:\n\n- Software debounce  \n- Minimum-hold timers  \n- Velocity/glide options  \n\n### MIDI Note Mapping\nTwo options:\n\n#### Fixed Scale\n```\nBeam 1 → MIDI 60 (C4)\nBeam 2 → MIDI 62 (D4)\nBeam 3 → MIDI 64 (E4)\n```\n\n#### Dynamic Mode\nPitch determined by:\n\n- hand height  \n- beam index  \n- external scale tables  \n\n### OSC Mapping\nExample:\n\n```\n/harp/beam1 1   → beam broken\n/harp/beam1 0   → beam restored\n```\n\n## Results\n- Intuitive and fun to play  \n- Clear on/off triggering with minimal jitter  \n- Visually striking, ideal for performance  \n- Low latency due to efficient embedded design  \n\n## Skills Demonstrated\n- Embedded C development  \n- Analog/digital signal conditioning  \n- Real-time state machine implementation  \n- MIDI and OSC output design  \n- Hardware prototyping  \n- UX design for interactive instruments  \n\n## Narration / Reflection\nBuilding a **touchless optical instrument** taught me how environmental factors, noise, timing stability, \nand physical placement influence real-time interaction.  \n\nA laser harp only feels “correct” when triggering is instantaneous and stable.  \nThis reinforced principles that later shaped my DSP and audio engineering mindset:\n\n- responsiveness matters  \n- noise must be controlled  \n- thresholds require tuning  \n- UX is just as important as code  \n\n---\n"
+    "content": "\n# Laser Harp — Optical Motion-Based Musical Instrument  \n\n## Overview\n\nThe **Laser Harp** is an optical musical instrument where each “string” is a **beam of laser light**.  \nWhen a performer moves their hand through a beam, the interruption is detected and translated into a:\n\n- **MIDI note**,  \n- **OSC message**, or  \n- **control signal**  \n\ndepending on the chosen output mode.\n\nThe project combines:\n\n- real-time embedded sensing  \n- optical alignment and calibration  \n- noise filtering  \n- musical mapping logic  \n- gestural control concepts  \n\n## Problem Statement\n\nPhysical harps require string plucking.  \nThe goal here was to design a **touchless**, visually striking instrument that:\n\n- reacts instantly to hand motion  \n- avoids false triggers from ambient light  \n- maps gestures to musical notes cleanly  \n- is playable in low and high lighting conditions  \n\nChallenges solved:\n\n- optical noise from room lighting  \n- sensor threshold calibration  \n- fast detection of beam interruption  \n- avoiding note flicker and retriggers  \n- mapping multiple beams to a musical scale  \n\n## System Architecture\n\n### Optical Beam System\n- Multiple laser diodes positioned vertically  \n- Photodiodes or LDRs aligned opposite each laser  \n- A constant laser → photodiode reading indicates “beam intact”  \n- A drop in sensor voltage indicates “beam broken”  \n\n### Signal Conditioning\nTo create stable digital-like signals:\n\n- Analog low-pass filters  \n- Comparator circuits for thresholding  \n- Pull-up/pull-down stabilization  \n- Shielding to reduce ambient noise  \n\n### Embedded Controller\nA microcontroller (Arduino/Teensy-level) handled:\n\n- Reading photodiode outputs  \n- Applying debounce logic  \n- State transitions (INTACT → BROKEN → INTACT)  \n- Generating MIDI/OSC messages  \n\n### Output Layer\nSupports three modes:\n\n#### MIDI Mode\n- Note ON when the beam is broken  \n- Note OFF when the beam is restored  \n- Notes mapped to diatonic or chromatic scales  \n\n#### OSC Mode\n- OSC messages for:\n  ```\n  /laserharp/string1\n  /laserharp/string2\n  /laserharp/string3\n  ```\n- Useful for synthesis engines like Max/MSP, Pure Data, SuperCollider  \n\n#### Hybrid Mode\n- Both OSC + MIDI for advanced performance rigs  \n\n## Implementation Details\n\n### Photodiode Alignment\n- Required precise beam-to-sensor alignment  \n- Beam intensity adjusted to prevent oversaturation  \n- Ambient light tested in different environments  \n\n### Embedded Logic (C)\nThe core loop ran at a stable frequency:\n\n```c\nif (sensor_value < threshold && state == INTACT) {\n    trigger_note(string_id);\n    state = BROKEN;\n}\n\nif (sensor_value > threshold && state == BROKEN) {\n    release_note(string_id);\n    state = INTACT;\n}\n```\n\nAdditional logic:\n\n- Software debounce  \n- Minimum-hold timers  \n- Velocity/glide options  \n\n### MIDI Note Mapping\nTwo options:\n\n#### Fixed Scale\n```\nBeam 1 → MIDI 60 (C4)\nBeam 2 → MIDI 62 (D4)\nBeam 3 → MIDI 64 (E4)\n```\n\n#### Dynamic Mode\nPitch determined by:\n\n- hand height  \n- beam index  \n- external scale tables  \n\n### OSC Mapping\nExample:\n\n```\n/harp/beam1 1   → beam broken\n/harp/beam1 0   → beam restored\n```\n\n## Results\n- Intuitive and fun to play  \n- Clear on/off triggering with minimal jitter  \n- Visually striking, ideal for performance  \n- Low latency due to efficient embedded design  \n\n## Skills Demonstrated\n- Embedded C development  \n- Analog/digital signal conditioning  \n- Real-time state machine implementation  \n- MIDI and OSC output design  \n- Hardware prototyping  \n- UX design for interactive instruments  \n\n## Narration / Reflection\nBuilding a **touchless optical instrument** taught me how environmental factors, noise, timing stability, \nand physical placement influence real-time interaction.  \n\nA laser harp only feels “correct” when triggering is instantaneous and stable.  \nThis reinforced principles that later shaped my DSP and audio engineering mindset:\n\n- responsiveness matters  \n- noise must be controlled  \n- thresholds require tuning  \n- UX is just as important as code  \n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "The Laser Harp is an optical musical instrument where each “string” is a beam of laser light.  \nWhen a performer moves their hand through a beam, the interruption is detected and translated into a:\n\nMIDI note,  \nOSC message, or  \ncontrol signal  \n\ndepending on the chosen output mode.\n\nThe project combines:\n\nreal-time embedded sensing  \noptical alignment and calibration  \nnoise filtering  \nmusical mapping logic  \ngestural control concepts"
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Physical harps require string plucking.  \nThe goal here was to design a touchless, visually striking instrument that:\n\nreacts instantly to hand motion  \navoids false triggers from ambient light  \nmaps gestures to musical notes cleanly  \nis playable in low and high lighting conditions  \n\nChallenges solved:\n\noptical noise from room lighting  \nsensor threshold calibration  \nfast detection of beam interruption  \navoiding note flicker and retriggers  \nmapping multiple beams to a musical scale"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "real-time embedded sensing"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Velocity/glide options   ### MIDI Note Mapping Two options: #### Fixed Scale  Beam 1 → MIDI 60 (C4) Beam 2 → MIDI 62 (D4) Beam 3 → MIDI 64 (E4)  #### Dynamic Mode Pitch determined by:"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Clear on/off triggering with minimal jitter"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Low latency due to efficient embedded design   ## Skills Demonstrated"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Real-time state machine implementation"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "UX design for interactive instruments   ## Narration / Reflection Building a touchless optical instrument taught me how environmental factors, noise, timing stability,  and physical placement influence real-time interaction"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "This reinforced principles that later shaped my DSP and audio engineering mindset:"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "Velocity/glide options   ### MIDI Note Mapping Two options: #### Fixed Scale  Beam 1 → MIDI 60 (C4) Beam 2 → MIDI 62 (D4) Beam 3 → MIDI 64 (E4)  #### Dynamic Mode Pitch determined by:",
+        "This reinforced principles that later shaped my DSP and audio engineering mindset:"
+      ],
+      "real_time": [
+        "real-time embedded sensing",
+        "Clear on/off triggering with minimal jitter",
+        "Low latency due to efficient embedded design   ## Skills Demonstrated",
+        "Real-time state machine implementation",
+        "UX design for interactive instruments   ## Narration / Reflection Building a touchless optical instrument taught me how environmental factors, noise, timing stability,  and physical placement influence real-time interaction"
+      ]
+    }
   },
   {
     "id": "projects/massive_mimo_seminar/index.md",
@@ -216,7 +878,55 @@
       "summary": "Academic seminar on massive MU-MIMO downlink: linear precoding, beamforming pilots, achievable rates, and MATLAB simulations.",
       "title": "Massive MU-MIMO Seminar"
     },
-    "content": "\n# Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots  \n\n## Overview\n\nThis seminar explored **Massive Multi-User MIMO** in TDD systems with a focus on:\n\n- Linear precoding (MRT, ZF)  \n- CSI acquisition  \n- Beamforming-based downlink training  \n- Achievable rate analysis  \n- MATLAB simulations  \n\nThis was an **academic research seminar**, not industry work, and provides foundational understanding of \nmulti-antenna wireless systems.\n\n## Problem Statement\n\nMassive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:\n\n- CSI acquisition challenges  \n- Pilot overhead  \n- Inter-user interference  \n- Precoding complexity  \n\nThe goal was to evaluate practical training schemes and achievable rate bounds under realistic constraints.\n\n## System Components\n\n- TDD reciprocity  \n- MMSE channel estimation  \n- Orthogonal pilot sequences  \n\n### Downlink Beamforming Pilots\nBeamformed pilots help users estimate **effective channel gain**, reducing overhead from M to K.\n\n### Linear Precoding\n- **MRT (Maximum Ratio Transmission)**  \n  - Simple, high SNR behavior  \n  - Poor interference suppression  \n\n- **ZF (Zero-Forcing)**  \n  - Better interference handling  \n  - Requires more accurate CSI  \n\n### Achievable Rate Analysis\nAnalytical lower bounds computed for both precoding schemes.\n\n## MATLAB Simulations\n\nSimulated:\n- Spectral efficiency vs SNR  \n- MRT vs ZF comparison  \n- Genie-aided receiver benchmarks  \n- Varying coherence intervals  \n- Impact of imperfect CSI  \n\nFindings:\n- ZF outperforms MRT in multi-user settings  \n- Beamforming training reduces pilot overhead significantly  \n- Longer coherence intervals improve achievable rates  \n\n## Skills Demonstrated\n\n- Wireless system modeling  \n- MATLAB simulation  \n- Linear algebra for communication systems  \n- Reading and summarizing research papers  \n- Understanding spectral efficiency bounds  \n\n## Narration\n\nThis seminar gave me foundational insight into how large-scale antenna systems operate.\nAlthough I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence \nin analyzing complex communication systems, which later supported my DSP and engineering mindset.\n"
+    "content": "\n# Academic Seminar – Massive MU-MIMO Downlink with Linear Precoding and Downlink Pilots  \n\n## Overview\n\nThis seminar explored **Massive Multi-User MIMO** in TDD systems with a focus on:\n\n- Linear precoding (MRT, ZF)  \n- CSI acquisition  \n- Beamforming-based downlink training  \n- Achievable rate analysis  \n- MATLAB simulations  \n\nThis was an **academic research seminar**, not industry work, and provides foundational understanding of \nmulti-antenna wireless systems.\n\n## Problem Statement\n\nMassive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:\n\n- CSI acquisition challenges  \n- Pilot overhead  \n- Inter-user interference  \n- Precoding complexity  \n\nThe goal was to evaluate practical training schemes and achievable rate bounds under realistic constraints.\n\n## System Components\n\n- TDD reciprocity  \n- MMSE channel estimation  \n- Orthogonal pilot sequences  \n\n### Downlink Beamforming Pilots\nBeamformed pilots help users estimate **effective channel gain**, reducing overhead from M to K.\n\n### Linear Precoding\n- **MRT (Maximum Ratio Transmission)**  \n  - Simple, high SNR behavior  \n  - Poor interference suppression  \n\n- **ZF (Zero-Forcing)**  \n  - Better interference handling  \n  - Requires more accurate CSI  \n\n### Achievable Rate Analysis\nAnalytical lower bounds computed for both precoding schemes.\n\n## MATLAB Simulations\n\nSimulated:\n- Spectral efficiency vs SNR  \n- MRT vs ZF comparison  \n- Genie-aided receiver benchmarks  \n- Varying coherence intervals  \n- Impact of imperfect CSI  \n\nFindings:\n- ZF outperforms MRT in multi-user settings  \n- Beamforming training reduces pilot overhead significantly  \n- Longer coherence intervals improve achievable rates  \n\n## Skills Demonstrated\n\n- Wireless system modeling  \n- MATLAB simulation  \n- Linear algebra for communication systems  \n- Reading and summarizing research papers  \n- Understanding spectral efficiency bounds  \n\n## Narration\n\nThis seminar gave me foundational insight into how large-scale antenna systems operate.\nAlthough I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence \nin analyzing complex communication systems, which later supported my DSP and engineering mindset.\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "This seminar explored Massive Multi-User MIMO in TDD systems with a focus on:\n\nLinear precoding (MRT, ZF)  \nCSI acquisition  \nBeamforming-based downlink training  \nAchievable rate analysis  \nMATLAB simulations  \n\nThis was an academic research seminar, not industry work, and provides foundational understanding of \nmulti-antenna wireless systems."
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Massive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:\n\nCSI acquisition challenges  \nPilot overhead  \nInter-user interference  \nPrecoding complexity  \n\nThe goal was to evaluate practical training schemes and achievable rate bounds under realistic constraints."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Problem Statement Massive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spectral efficiency vs SNR"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Understanding spectral efficiency bounds   ## Narration This seminar gave me foundational insight into how large-scale antenna systems operate"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Although I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence  in analyzing complex communication systems, which later supported my DSP and engineering mindset"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "MATLAB"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "Problem Statement Massive MIMO systems achieve high spectral efficiency using many antennas (M >> K), but face:",
+        "Spectral efficiency vs SNR",
+        "Understanding spectral efficiency bounds   ## Narration This seminar gave me foundational insight into how large-scale antenna systems operate",
+        "Although I don’t specialize in Massive MIMO professionally, the experience strengthened my confidence  in analyzing complex communication systems, which later supported my DSP and engineering mindset"
+      ],
+      "real_time": []
+    }
   },
   {
     "id": "projects/multihop_wireless_warp_prototyping/index.md",
@@ -242,7 +952,71 @@
       ],
       "summary": "WARP SDR multi-hop prototype with MATLAB tooling for packet tracing, channel modeling, and cooperative relay experiments."
     },
-    "content": "\n# Multi-Hop Wireless Prototyping with WARP SDR  \n\n## Overview\n\nThis project involved building a **research-grade multi-hop wireless prototyping system** using:\n\n- **WARP SDR boards**  \n- **MATLAB visualization tools**  \n- **Custom data parsing and analysis scripts**\n\nThe aim was to allow researchers and students to **see and understand** how packets propagate through\nmulti-hop and cooperative communication networks under real wireless conditions.\n\nThe project unified:\n\n- SDR experimentation  \n- Wireless communication theory  \n- Data visualization  \n- MATLAB GUI development  \n- Research methodology  \n\n## Problem Statement\n\nMulti-hop wireless networks behave far differently in practice than in theoretical models.  \nDifficulties include:\n\n- unpredictable packet drops  \n- timing misalignments between relays  \n- asymmetric link quality  \n- non-intuitive hop progression  \n- unclear forwarding behaviors in coded vs. uncoded relays  \n\nRaw logs alone make these behaviors **very hard to understand**.\n\nResearchers needed:\n\n✔ A visualization tool  \n✔ Real-time or near-real-time feedback  \n✔ Clear multi-hop path reconstruction  \n✔ Comparison between forwarding schemes  \n\n## System Architecture\n\n### WARP SDR Nodes\nRoles included:\n- Source  \n- One or more relays  \n- Destination  \n\nNodes were configured to run experiments on cooperative relaying and multi-hop forwarding.\n\n### Experiment Logging\nEach WARP node logged:\n- packet arrivals  \n- MAC/PHY timing  \n- hop counts  \n- relay decisions  \n- RSSI / link quality indicators  \n\n### MATLAB Data Interface\nA MATLAB module was written to:\n- import logs  \n- parse timestamps  \n- synchronize node records  \n- reconstruct packet paths  \n- compute per-hop statistics  \n\n### MATLAB Visualization GUI\nCustom GUI displayed:\n- node topology  \n- live or replayed packet flow  \n- hop progression animation  \n- RSSI bars  \n- coded vs. uncoded performance difference  \n- timelines and link behavior  \n\n## Implementation Details\n\n### MATLAB Parsing Logic\n- Parsed CSV/log files from each node  \n- Mapped packet IDs → forwarding chain  \n- Detected losses and duplicates  \n- Aligned timestamps across nodes  \n- Constructed directed graphs of packet movement  \n\n### GUI Modules\n- **Topology View**: nodes arranged visually, routing lines updated dynamically  \n- **Hop Timeline**: how many hops a packet took across time  \n- **RSSI Panel**: color-coded link quality  \n- **Per-packet Playback**: replay packet propagation step-by-step  \n\n### SDR Experiment Configuration\n- Configured transmit power  \n- Selected carrier frequency  \n- Adjusted PHY parameters  \n- Collected logs in controlled and noisy environments  \n\n### Data Analysis Scripts\n- computed per-hop success rates  \n- compared coded vs uncoded forwarding reliability  \n- plotted latency distributions  \n- identified link asymmetries  \n\n## Key Findings\n\nThe visualization revealed behaviors that were NOT obvious from theory:\n\n- **Relay–destination links behaved asymmetrically**, causing unexpected drops  \n- **Coded forwarding improved robustness**, especially under low SNR  \n- **Timing misalignment** between relays caused packet duplication or premature discard  \n- **Hop count fluctuated dynamically**, depending on the wireless environment  \n\nGraphs and animations provided immediate intuition about the multi-hop behavior that traditional logs\nand equations could not convey.\n\n## Skills Demonstrated\n\n### Wireless Communication Engineering\n- Understanding of multi-hop and cooperative relaying  \n- SDR hardware handling  \n- Wireless measurement interpretation  \n\n### MATLAB Engineering\n- GUI development  \n- Data parsing / cleaning  \n- Signal visualization  \n- Experiment automation  \n\n### Research Workflow Skills\n- Experiment design  \n- Interpretation of real channel behaviors  \n- Presenting wireless concepts visually  \n\n### Systems Thinking\n- Bridging hardware measurements → interpretable information  \n- Making complex wireless behavior intuitive  \n\n## Narration / Reflection\n\nThis project was my first experience in turning **raw wireless behavior** into **visual insight**.\n\nI realized:\n\n- Real channels don’t behave like textbook channels  \n- Logs are meaningless without visualization  \n- Timing mismatches and asymmetric links dominate multi-hop performance  \n- Visualization accelerates research understanding dramatically  \n\nThe project strengthened my skills in combining **engineering rigor**, **experimental thinking**, and \n**visual communication**, which later translated directly into how I approach debugging and system\nanalysis in DSP and audio engineering.\n\n---\n"
+    "content": "\n# Multi-Hop Wireless Prototyping with WARP SDR  \n\n## Overview\n\nThis project involved building a **research-grade multi-hop wireless prototyping system** using:\n\n- **WARP SDR boards**  \n- **MATLAB visualization tools**  \n- **Custom data parsing and analysis scripts**\n\nThe aim was to allow researchers and students to **see and understand** how packets propagate through\nmulti-hop and cooperative communication networks under real wireless conditions.\n\nThe project unified:\n\n- SDR experimentation  \n- Wireless communication theory  \n- Data visualization  \n- MATLAB GUI development  \n- Research methodology  \n\n## Problem Statement\n\nMulti-hop wireless networks behave far differently in practice than in theoretical models.  \nDifficulties include:\n\n- unpredictable packet drops  \n- timing misalignments between relays  \n- asymmetric link quality  \n- non-intuitive hop progression  \n- unclear forwarding behaviors in coded vs. uncoded relays  \n\nRaw logs alone make these behaviors **very hard to understand**.\n\nResearchers needed:\n\n✔ A visualization tool  \n✔ Real-time or near-real-time feedback  \n✔ Clear multi-hop path reconstruction  \n✔ Comparison between forwarding schemes  \n\n## System Architecture\n\n### WARP SDR Nodes\nRoles included:\n- Source  \n- One or more relays  \n- Destination  \n\nNodes were configured to run experiments on cooperative relaying and multi-hop forwarding.\n\n### Experiment Logging\nEach WARP node logged:\n- packet arrivals  \n- MAC/PHY timing  \n- hop counts  \n- relay decisions  \n- RSSI / link quality indicators  \n\n### MATLAB Data Interface\nA MATLAB module was written to:\n- import logs  \n- parse timestamps  \n- synchronize node records  \n- reconstruct packet paths  \n- compute per-hop statistics  \n\n### MATLAB Visualization GUI\nCustom GUI displayed:\n- node topology  \n- live or replayed packet flow  \n- hop progression animation  \n- RSSI bars  \n- coded vs. uncoded performance difference  \n- timelines and link behavior  \n\n## Implementation Details\n\n### MATLAB Parsing Logic\n- Parsed CSV/log files from each node  \n- Mapped packet IDs → forwarding chain  \n- Detected losses and duplicates  \n- Aligned timestamps across nodes  \n- Constructed directed graphs of packet movement  \n\n### GUI Modules\n- **Topology View**: nodes arranged visually, routing lines updated dynamically  \n- **Hop Timeline**: how many hops a packet took across time  \n- **RSSI Panel**: color-coded link quality  \n- **Per-packet Playback**: replay packet propagation step-by-step  \n\n### SDR Experiment Configuration\n- Configured transmit power  \n- Selected carrier frequency  \n- Adjusted PHY parameters  \n- Collected logs in controlled and noisy environments  \n\n### Data Analysis Scripts\n- computed per-hop success rates  \n- compared coded vs uncoded forwarding reliability  \n- plotted latency distributions  \n- identified link asymmetries  \n\n## Key Findings\n\nThe visualization revealed behaviors that were NOT obvious from theory:\n\n- **Relay–destination links behaved asymmetrically**, causing unexpected drops  \n- **Coded forwarding improved robustness**, especially under low SNR  \n- **Timing misalignment** between relays caused packet duplication or premature discard  \n- **Hop count fluctuated dynamically**, depending on the wireless environment  \n\nGraphs and animations provided immediate intuition about the multi-hop behavior that traditional logs\nand equations could not convey.\n\n## Skills Demonstrated\n\n### Wireless Communication Engineering\n- Understanding of multi-hop and cooperative relaying  \n- SDR hardware handling  \n- Wireless measurement interpretation  \n\n### MATLAB Engineering\n- GUI development  \n- Data parsing / cleaning  \n- Signal visualization  \n- Experiment automation  \n\n### Research Workflow Skills\n- Experiment design  \n- Interpretation of real channel behaviors  \n- Presenting wireless concepts visually  \n\n### Systems Thinking\n- Bridging hardware measurements → interpretable information  \n- Making complex wireless behavior intuitive  \n\n## Narration / Reflection\n\nThis project was my first experience in turning **raw wireless behavior** into **visual insight**.\n\nI realized:\n\n- Real channels don’t behave like textbook channels  \n- Logs are meaningless without visualization  \n- Timing mismatches and asymmetric links dominate multi-hop performance  \n- Visualization accelerates research understanding dramatically  \n\nThe project strengthened my skills in combining **engineering rigor**, **experimental thinking**, and \n**visual communication**, which later translated directly into how I approach debugging and system\nanalysis in DSP and audio engineering.\n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "This project involved building a research-grade multi-hop wireless prototyping system using:\n\nWARP SDR boards  \nMATLAB visualization tools  \nCustom data parsing and analysis scripts\n\nThe aim was to allow researchers and students to see and understand how packets propagate through\nmulti-hop and cooperative communication networks under real wireless conditions.\n\nThe project unified:\n\nSDR experimentation  \nWireless communication theory  \nData visualization  \nMATLAB GUI development  \nResearch methodology"
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Multi-hop wireless networks behave far differently in practice than in theoretical models.  \nDifficulties include:\n\nunpredictable packet drops  \ntiming misalignments between relays  \nasymmetric link quality  \nnon-intuitive hop progression  \nunclear forwarding behaviors in coded vs. uncoded relays  \n\nRaw logs alone make these behaviors very hard to understand.\n\nResearchers needed:\n\n✔ A visualization tool  \n✔ Real-time or near-real-time feedback  \n✔ Clear multi-hop path reconstruction  \n✔ Comparison between forwarding schemes"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "timing misalignments between relays"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Researchers needed: ✔ A visualization tool   ✔ Real-time or near-real-time feedback   ✔ Clear multi-hop path reconstruction   ✔ Comparison between forwarding schemes   ## System Architecture ### WARP SDR Nodes Roles included:"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "MAC/PHY timing"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "plotted latency distributions"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Timing misalignment between relays caused packet duplication or premature discard"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Timing mismatches and asymmetric links dominate multi-hop performance"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Visualization accelerates research understanding dramatically   The project strengthened my skills in combining engineering rigor, experimental thinking, and  visual communication, which later translated directly into how I approach debugging and system analysis in DSP and audio engineering"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "MATLAB"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "Visualization accelerates research understanding dramatically   The project strengthened my skills in combining engineering rigor, experimental thinking, and  visual communication, which later translated directly into how I approach debugging and system analysis in DSP and audio engineering"
+      ],
+      "real_time": [
+        "timing misalignments between relays",
+        "Researchers needed: ✔ A visualization tool   ✔ Real-time or near-real-time feedback   ✔ Clear multi-hop path reconstruction   ✔ Comparison between forwarding schemes   ## System Architecture ### WARP SDR Nodes Roles included:",
+        "MAC/PHY timing",
+        "plotted latency distributions",
+        "Timing misalignment between relays caused packet duplication or premature discard",
+        "Timing mismatches and asymmetric links dominate multi-hop performance"
+      ]
+    }
   },
   {
     "id": "projects/my-live-portfolio/index.md",
@@ -273,7 +1047,27 @@
       ],
       "article_slug": "my-live-portfolio"
     },
-    "content": "\n⸻\n\n🎞 My Live Portfolio\n\nWhy I Turned My Career Into a Living System Instead of a PDF\n\n⸻\n\nVHS INTRO\n\nThis tape contains the story behind one of my most personal projects: My Live Portfolio.\nIt’s not a technical breakdown. It’s the “why” — the honest, slightly funny journey that started when I realised my CV no longer matched the person I’ve actually become.\n\nPress play to enter the archives of my own professional confusion and rediscovery.\n\n⸻\n\nMy Live Portfolio — The Article (Polished Version)\n\nI didn’t create this project because I needed another fancy section on a website.\nI created it because, after years of working, I discovered something mildly disturbing:\n\nMy CV had become a stranger.\n\nThe titles were correct.\nThe job descriptions were accurate.\nThe bullet points looked well-behaved.\n\nBut the real substance of my work — the problems I solved, the systems I built, the mistakes I learned from, the ideas that actually shaped me — none of that existed on paper. Everything felt flattened and dehydrated. My career looked like an over-compressed audio file: recognisable, but missing all the richness.\n\nThe strangest part wasn’t that others couldn’t see it.\nThe strangest part was that I had forgotten half of it too.\n\n⸻\n\n## When a PDF stops being enough\n\nIt hit me when I tried to “properly update” my CV.\nScrolling through old sections, I realised I had to think hard just to remember certain projects I once worked on daily. Technical decisions I made confidently back then were now blurry details buried under years of new responsibilities.\n\nThat’s when it clicked:\nA CV is not a portrait.\nIt’s a passport photo — flat, tiny, and only vaguely similar to the real person.\n\nI didn’t want to be represented by something that forgettable.\n\n⸻\n\n## Excavating my own past\n\nBefore anything became a project, it became an excavation.\n\nI opened old internship reports, thesis documents, job folders, research notes, side projects, random screenshots, and files with suspicious names like “final_v3_realfinal_OK.pdf”. Some of it made me laugh. Some of it made me nostalgic. Some of it made me wonder how I ever did those things and then just… moved on.\n\nBut the more I organised, the more overwhelming it became.\nA mountain of content is still a mountain.\n\nIf I tried to dump all of it onto a webpage, no one would read it.\nNot even me.\n\nOrganisation alone wasn’t enough.\nI needed something that could make sense of it.\n\n⸻\n\n## What if my career could actually respond?\n\nThis was the moment the idea sharpened.\n\nInstead of juggling 15 versions of a CV or writing summaries for every purpose, I wondered:\n\nWhat if my portfolio could adapt?\nWhat if it could answer different questions?\nWhat if it could tell different stories based on what someone needs to know?\n\nWhat if it could link past work to future goals, without me manually rewriting everything?\n\nBasically:\nWhat if my career could talk back?\n\nThat’s how the idea of a Live Portfolio came to life — a system that doesn’t display my work, but understands it.\n\n⸻\n\n## The honest human motivation\n\nLet’s be direct.\nPart of this project is absolutely me refusing to let anyone judge my entire engineering life in eight seconds of CV scanning.\n\nThe other part is personal: I don’t want to forget who I became through all these years. Skills fade when they aren’t revisited. Memories blur. Achievements shrink when squeezed between bullet point formatting.\n\nI realised I needed something alive — something that grows with me, remembers for me, and helps me articulate my own capabilities with clarity, not guesswork.\n\n⸻\n\n## Then the engineer in me took over\n\nEmotions got me started, but systems thinking finished the idea.\n\nI began treating my career like an engineering problem:\n\t•\tRaw data: documents, projects, roles, timelines\n\t•\tStructure: skills, tags, technologies, responsibilities\n\t•\tMeaning: what these experiences actually say about me\n\t•\tOutputs: narratives for specific situations\n\t•\tInterface: simple, natural, adaptable\n\nIt’s basically an encoder for my professional identity:\n\nInput → messy but meaningful journey\nOutput → tailored, coherent, human explanations\n\nThis felt more “me” than any CV I had ever written.\n\n⸻\n\n## What My Live Portfolio really is\n\nIt is:\n\t•\tA rebellion against being reduced to two pages\n\t•\tA system that keeps my work alive instead of archived\n\t•\tA tool that helps me understand myself as much as others understand me\n\t•\tA way to tell richer stories without overwhelming people\n\t•\tA personal reminder of everything I’ve built and learned\n\t•\tA project that grows as I continue evolving\n\nBut most of all, it’s an honest attempt to represent myself properly — not as a static document, but as an ongoing story.\n\n⸻\n\nVHS OUTRO\n\nTape ends here.\nThe emotional journey is complete.\n\nIf you’re curious about the technical machinery behind My Live Portfolio — the data models, the structure, the AI logic — that’s on a separate tape in the archive.\nThis one was never about the system. It was about the person building it.\n\n⸻\n\nBack-Cover Summary\n\nA reflective and slightly humorous story about why I built My Live Portfolio. After years of work compressed into a lifeless CV, I went back through my past, rediscovered forgotten projects, and realised I needed a living system that understands and expresses my career in a way a PDF never could. This article is the story behind that decision.\n\n⸻\n"
+    "content": "\n⸻\n\n🎞 My Live Portfolio\n\nWhy I Turned My Career Into a Living System Instead of a PDF\n\n⸻\n\nVHS INTRO\n\nThis tape contains the story behind one of my most personal projects: My Live Portfolio.\nIt’s not a technical breakdown. It’s the “why” — the honest, slightly funny journey that started when I realised my CV no longer matched the person I’ve actually become.\n\nPress play to enter the archives of my own professional confusion and rediscovery.\n\n⸻\n\nMy Live Portfolio — The Article (Polished Version)\n\nI didn’t create this project because I needed another fancy section on a website.\nI created it because, after years of working, I discovered something mildly disturbing:\n\nMy CV had become a stranger.\n\nThe titles were correct.\nThe job descriptions were accurate.\nThe bullet points looked well-behaved.\n\nBut the real substance of my work — the problems I solved, the systems I built, the mistakes I learned from, the ideas that actually shaped me — none of that existed on paper. Everything felt flattened and dehydrated. My career looked like an over-compressed audio file: recognisable, but missing all the richness.\n\nThe strangest part wasn’t that others couldn’t see it.\nThe strangest part was that I had forgotten half of it too.\n\n⸻\n\n## When a PDF stops being enough\n\nIt hit me when I tried to “properly update” my CV.\nScrolling through old sections, I realised I had to think hard just to remember certain projects I once worked on daily. Technical decisions I made confidently back then were now blurry details buried under years of new responsibilities.\n\nThat’s when it clicked:\nA CV is not a portrait.\nIt’s a passport photo — flat, tiny, and only vaguely similar to the real person.\n\nI didn’t want to be represented by something that forgettable.\n\n⸻\n\n## Excavating my own past\n\nBefore anything became a project, it became an excavation.\n\nI opened old internship reports, thesis documents, job folders, research notes, side projects, random screenshots, and files with suspicious names like “final_v3_realfinal_OK.pdf”. Some of it made me laugh. Some of it made me nostalgic. Some of it made me wonder how I ever did those things and then just… moved on.\n\nBut the more I organised, the more overwhelming it became.\nA mountain of content is still a mountain.\n\nIf I tried to dump all of it onto a webpage, no one would read it.\nNot even me.\n\nOrganisation alone wasn’t enough.\nI needed something that could make sense of it.\n\n⸻\n\n## What if my career could actually respond?\n\nThis was the moment the idea sharpened.\n\nInstead of juggling 15 versions of a CV or writing summaries for every purpose, I wondered:\n\nWhat if my portfolio could adapt?\nWhat if it could answer different questions?\nWhat if it could tell different stories based on what someone needs to know?\n\nWhat if it could link past work to future goals, without me manually rewriting everything?\n\nBasically:\nWhat if my career could talk back?\n\nThat’s how the idea of a Live Portfolio came to life — a system that doesn’t display my work, but understands it.\n\n⸻\n\n## The honest human motivation\n\nLet’s be direct.\nPart of this project is absolutely me refusing to let anyone judge my entire engineering life in eight seconds of CV scanning.\n\nThe other part is personal: I don’t want to forget who I became through all these years. Skills fade when they aren’t revisited. Memories blur. Achievements shrink when squeezed between bullet point formatting.\n\nI realised I needed something alive — something that grows with me, remembers for me, and helps me articulate my own capabilities with clarity, not guesswork.\n\n⸻\n\n## Then the engineer in me took over\n\nEmotions got me started, but systems thinking finished the idea.\n\nI began treating my career like an engineering problem:\n\t•\tRaw data: documents, projects, roles, timelines\n\t•\tStructure: skills, tags, technologies, responsibilities\n\t•\tMeaning: what these experiences actually say about me\n\t•\tOutputs: narratives for specific situations\n\t•\tInterface: simple, natural, adaptable\n\nIt’s basically an encoder for my professional identity:\n\nInput → messy but meaningful journey\nOutput → tailored, coherent, human explanations\n\nThis felt more “me” than any CV I had ever written.\n\n⸻\n\n## What My Live Portfolio really is\n\nIt is:\n\t•\tA rebellion against being reduced to two pages\n\t•\tA system that keeps my work alive instead of archived\n\t•\tA tool that helps me understand myself as much as others understand me\n\t•\tA way to tell richer stories without overwhelming people\n\t•\tA personal reminder of everything I’ve built and learned\n\t•\tA project that grows as I continue evolving\n\nBut most of all, it’s an honest attempt to represent myself properly — not as a static document, but as an ongoing story.\n\n⸻\n\nVHS OUTRO\n\nTape ends here.\nThe emotional journey is complete.\n\nIf you’re curious about the technical machinery behind My Live Portfolio — the data models, the structure, the AI logic — that’s on a separate tape in the archive.\nThis one was never about the system. It was about the person building it.\n\n⸻\n\nBack-Cover Summary\n\nA reflective and slightly humorous story about why I built My Live Portfolio. After years of work compressed into a lifeless CV, I went back through my past, rediscovered forgotten projects, and realised I needed a living system that understands and expresses my career in a way a PDF never could. This article is the story behind that decision.\n\n⸻\n",
+    "chunks": [
+      {
+        "kind": "experience.audio_dsp",
+        "text": "My career looked like an over-compressed audio file: recognisable, but missing all the richness"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "My career looked like an over-compressed audio file: recognisable, but missing all the richness"
+      ],
+      "real_time": []
+    }
   },
   {
     "id": "projects/parallel-av-encoding-framework/index.md",
@@ -299,7 +1093,32 @@
         "monitoring"
       ]
     },
-    "content": "\n# Building an ABR Encoding Lab\n\nNeeded: explore encoder variants quickly, measure quality, and assemble ladder candidates without hand-running FFmpeg every time. Built a Python + FFmpeg harness that ingests, fragments, runs variants, and spits out HLS/DASH artifacts with consistent logging.\n\n⸻\n\n## Ingest & fragment\n- Auto-detect inputs, normalize tracks, segment into fragments with stable GOP alignment.\n- Write fragment manifests so every variant keeps matching metadata.\n\n## Concurrent runs\n- Spawn FFmpeg workers across cores; track PIDs, timeouts, per-job temp dirs.\n- Sweep GOP, tune/preset, RC mode, filters; produce fragmented MP4s per variant.\n- Concatenate select fragments into short A/B clips for quick playback checks.\n\n## Metrics & packaging\n- Generate HLS/DASH playlists and ladders automatically from successful variants.\n- Log VMAF, PSNR, bitrate, throughput; export CSVs to compare size vs. quality.\n- Add guardrails: retries on transient failures, cleanup of orphaned processes, disk budget enforcement.\n\n## Outcome\nFaster ladder tuning with reproducible runs, instant A/B inspection, and clear quality/bandwidth trade-offs.\n"
+    "content": "\n# Building an ABR Encoding Lab\n\nNeeded: explore encoder variants quickly, measure quality, and assemble ladder candidates without hand-running FFmpeg every time. Built a Python + FFmpeg harness that ingests, fragments, runs variants, and spits out HLS/DASH artifacts with consistent logging.\n\n⸻\n\n## Ingest & fragment\n- Auto-detect inputs, normalize tracks, segment into fragments with stable GOP alignment.\n- Write fragment manifests so every variant keeps matching metadata.\n\n## Concurrent runs\n- Spawn FFmpeg workers across cores; track PIDs, timeouts, per-job temp dirs.\n- Sweep GOP, tune/preset, RC mode, filters; produce fragmented MP4s per variant.\n- Concatenate select fragments into short A/B clips for quick playback checks.\n\n## Metrics & packaging\n- Generate HLS/DASH playlists and ladders automatically from successful variants.\n- Log VMAF, PSNR, bitrate, throughput; export CSVs to compare size vs. quality.\n- Add guardrails: retries on transient failures, cleanup of orphaned processes, disk budget enforcement.\n\n## Outcome\nFaster ladder tuning with reproducible runs, instant A/B inspection, and clear quality/bandwidth trade-offs.\n",
+    "chunks": [
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "FFmpeg"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "Python"
+      ],
+      "tools": [
+        "FFmpeg"
+      ],
+      "audio_dsp": [],
+      "real_time": []
+    }
   },
   {
     "id": "projects/parking_management_system/index.md",
@@ -325,7 +1144,60 @@
       "summary": "Embedded parking system in C with sensor polling, UART/display updates, and real-time slot tracking.",
       "title": "Intelligent Parking System"
     },
-    "content": "\n# Intelligent Parking System — Embedded C Project  \n\n## Overview\n\nThe **Intelligent Parking System** is an embedded project designed to detect parking slot occupancy in\nreal time using sensors and a microcontroller. The system reports free/occupied slots on a display and\ncan be extended for automated gate control or IoT integration.\n\nThis project demonstrates:\n\n- embedded C development  \n- real-time sensor polling  \n- decision logic  \n- LCD/LED display control  \n- hardware–software integration  \n\n## Problem Statement\n\nParking spaces require:\n\n- clear visibility of available slots  \n- fast and reliable detection  \n- low-cost hardware  \n- stable operation under noise  \n\nTraditional systems rely on manual observation or expensive camera setups. The goal was to build a\nsimple, reliable embedded solution using basic sensors and microcontroller logic.\n\n## System Architecture\n\n### Components\n- Microcontroller (e.g., AVR, PIC, or Arduino-class)\n- Ultrasonic or IR sensors for vehicle detection\n- LCD/LED display module\n- Optional buzzer/indicator lights\n- Power regulation and wiring\n\n### Architecture Flow\n\n```\nSensors → Microcontroller → Decision Logic → Display Output\n```\n\n### Detection Logic\n- Each sensor monitors a parking slot.\n- Sensor readings converted to digital occupancy state.\n- Microcontroller aggregates results and updates the display.\n\n## Implementation Details\n\n### Embedded C Logic\n\nKey functions:\n- Initialization of GPIO and sensor interfaces  \n- Continuous sampling loop  \n- Threshold-based detection  \n- Debounce and filtering to avoid false triggers  \n- Display update routines  \n\nExample pseudocode:\n\n```c\nif (distance < threshold && state == EMPTY) {\n    state = OCCUPIED;\n}\n\nif (distance > threshold && state == OCCUPIED) {\n    state = EMPTY;\n}\n```\n\n### Filtering & Stability\n- Simple moving average to reduce noise\n- Minimum-change thresholding\n- Timing delays to prevent rapid toggling\n\n### Display Output\n- Number of free slots\n- Visual indicators for each slot\n- Optional arrow signs or buzzer for user guidance\n\n## Results\n\n- Accurate detection in typical parking environments  \n- Low jitter after filtering  \n- Easy-to-read status output  \n- Low-cost hardware footprint  \n- Reliable operation under continuous polling  \n\n## Skills Demonstrated\n\n- Embedded C programming  \n- Sensor integration (IR/ultrasonic)  \n- Real-time signal filtering  \n- State-machine logic  \n- Display interfacing (LCD/LED)  \n- Debugging hardware–software interactions  \n\n## Narration / Reflection\n\nThis project helped me understand how real-time embedded systems behave under real-world noise and\nsensor inconsistency. Building a robust detection pipeline taught me fundamentals of:\n\n- threshold tuning  \n- debounce strategies  \n- display synchronization  \n- embedded timing constraints  \n\nIt was one of the earliest projects where I saw how **simple sensing + reliable logic** can create a usable,\nreal-world system.\n\n---\n"
+    "content": "\n# Intelligent Parking System — Embedded C Project  \n\n## Overview\n\nThe **Intelligent Parking System** is an embedded project designed to detect parking slot occupancy in\nreal time using sensors and a microcontroller. The system reports free/occupied slots on a display and\ncan be extended for automated gate control or IoT integration.\n\nThis project demonstrates:\n\n- embedded C development  \n- real-time sensor polling  \n- decision logic  \n- LCD/LED display control  \n- hardware–software integration  \n\n## Problem Statement\n\nParking spaces require:\n\n- clear visibility of available slots  \n- fast and reliable detection  \n- low-cost hardware  \n- stable operation under noise  \n\nTraditional systems rely on manual observation or expensive camera setups. The goal was to build a\nsimple, reliable embedded solution using basic sensors and microcontroller logic.\n\n## System Architecture\n\n### Components\n- Microcontroller (e.g., AVR, PIC, or Arduino-class)\n- Ultrasonic or IR sensors for vehicle detection\n- LCD/LED display module\n- Optional buzzer/indicator lights\n- Power regulation and wiring\n\n### Architecture Flow\n\n```\nSensors → Microcontroller → Decision Logic → Display Output\n```\n\n### Detection Logic\n- Each sensor monitors a parking slot.\n- Sensor readings converted to digital occupancy state.\n- Microcontroller aggregates results and updates the display.\n\n## Implementation Details\n\n### Embedded C Logic\n\nKey functions:\n- Initialization of GPIO and sensor interfaces  \n- Continuous sampling loop  \n- Threshold-based detection  \n- Debounce and filtering to avoid false triggers  \n- Display update routines  \n\nExample pseudocode:\n\n```c\nif (distance < threshold && state == EMPTY) {\n    state = OCCUPIED;\n}\n\nif (distance > threshold && state == OCCUPIED) {\n    state = EMPTY;\n}\n```\n\n### Filtering & Stability\n- Simple moving average to reduce noise\n- Minimum-change thresholding\n- Timing delays to prevent rapid toggling\n\n### Display Output\n- Number of free slots\n- Visual indicators for each slot\n- Optional arrow signs or buzzer for user guidance\n\n## Results\n\n- Accurate detection in typical parking environments  \n- Low jitter after filtering  \n- Easy-to-read status output  \n- Low-cost hardware footprint  \n- Reliable operation under continuous polling  \n\n## Skills Demonstrated\n\n- Embedded C programming  \n- Sensor integration (IR/ultrasonic)  \n- Real-time signal filtering  \n- State-machine logic  \n- Display interfacing (LCD/LED)  \n- Debugging hardware–software interactions  \n\n## Narration / Reflection\n\nThis project helped me understand how real-time embedded systems behave under real-world noise and\nsensor inconsistency. Building a robust detection pipeline taught me fundamentals of:\n\n- threshold tuning  \n- debounce strategies  \n- display synchronization  \n- embedded timing constraints  \n\nIt was one of the earliest projects where I saw how **simple sensing + reliable logic** can create a usable,\nreal-world system.\n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "The Intelligent Parking System is an embedded project designed to detect parking slot occupancy in\nreal time using sensors and a microcontroller. The system reports free/occupied slots on a display and\ncan be extended for automated gate control or IoT integration.\n\nThis project demonstrates:\n\nembedded C development  \nreal-time sensor polling  \ndecision logic  \nLCD/LED display control  \nhardware–software integration"
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Parking spaces require:\n\nclear visibility of available slots  \nfast and reliable detection  \nlow-cost hardware  \nstable operation under noise  \n\nTraditional systems rely on manual observation or expensive camera setups. The goal was to build a\nsimple, reliable embedded solution using basic sensors and microcontroller logic."
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "real-time sensor polling"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Timing delays to prevent rapid toggling ### Display Output"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Low jitter after filtering"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Real-time signal filtering"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Debugging hardware–software interactions   ## Narration / Reflection This project helped me understand how real-time embedded systems behave under real-world noise and sensor inconsistency"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "embedded timing constraints   It was one of the earliest projects where I saw how simple sensing + reliable logic can create a usable, real-world system"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [],
+      "audio_dsp": [],
+      "real_time": [
+        "real-time sensor polling",
+        "Timing delays to prevent rapid toggling ### Display Output",
+        "Low jitter after filtering",
+        "Real-time signal filtering",
+        "Debugging hardware–software interactions   ## Narration / Reflection This project helped me understand how real-time embedded systems behave under real-world noise and sensor inconsistency",
+        "embedded timing constraints   It was one of the earliest projects where I saw how simple sensing + reliable logic can create a usable, real-world system"
+      ]
+    }
   },
   {
     "id": "projects/post-processing-separated-speech/index.md",
@@ -356,7 +1228,150 @@
       ],
       "article_slug": "post-processing-separated-speech"
     },
-    "content": "\n# Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing  \n\n## Overview\n\nThis thesis focused on reconstructing **wideband speech** from narrowband (telephone-band) input\nusing **non-linear post-processing**, **excitation modelling**, and **spectral envelope reconstruction**.\nThe goal was to increase perceived bandwidth, restore brightness, and improve naturalness **without**\nrequiring changes to the encoder or any side information.\n\nThe work brought together:\n\n- Digital signal processing theory (LPC, source–filter models)\n- Practical system design\n- MATLAB & Python prototyping\n- Perceptual audio evaluation and tuning\n- Iterative refinement based on listening tests and spectral analysis\n\n## Problem Statement\n\nTraditional narrowband speech (0–4 kHz) loses:\n\n- High-frequency harmonics  \n- Brightness and “air”  \n- Natural articulation cues  \n- Wideband timbral characteristics  \n\nThe challenge is reconstructing plausible high-band components **from missing information**, not noisy\ninformation. This is fundamentally an **ill-posed inverse problem**, requiring:\n\n- Excitation generation  \n- Envelope reconstruction  \n- Stability against artifacts  \n- Low computational cost  \n\nGoal:  \nProduce **wideband-like speech** that is perceptually convincing and spectrally coherent.\n\n## System Architecture\n\nThe thesis designed a processing chain consisting of:\n\n### Narrowband Analysis\n- Pre-emphasis  \n- Windowing  \n- LPC analysis (10–14th order)  \n- Extraction of the excitation signal  \n\n### Excitation Modelling\nTested approaches included:\n\n- Non-linear expansion  \n- Odd/even harmonic generation  \n- Sign-preserving power functions  \n- Spectral folding  \n- Blended excitation shaping  \n\nThe final system used **non-linear excitation expansion** with a **high-band shaping filter**.\n\n### Envelope Reconstruction\nMethods explored:\n\n- LPC envelope extrapolation  \n- High-band envelope smoothing  \n- Adaptive energy matching  \n- Band-tilting adjustments  \n\n### Synthesis\n- Excitation filtering using reconstructed LPC coefficients  \n- Overlap–add synthesis  \n- Envelope smoothing and final spectral correction  \n\n## Block Diagram (Textual)\nNarrowband Speech\n↓\nAnalysis\n(LPC, excitation)\n↓\nNon-linear Excitation Expansion\n↓\nHigh-band Spectral Shaping\n↓\nEnvelope Reconstruction\n↓\nSynthesis\n↓\nEnhanced Wideband-like Speech\n\n## Implementation Details\n\n### MATLAB Prototyping\n- LPC extraction (autocorrelation & Burg methods)\n- Excitation expansion experiments\n- Envelope smoothing filters\n- Spectral envelope visualization\n- Objective metrics:\n  - log-spectral distance (LSD)\n  - harmonic envelope deviation\n\n### Python Experiments\n- Rapid testing of excitation functions\n- Plotting envelope differences\n- Generating spectrograms and comparison views\n- Automating batch evaluation sets\n\n## Evaluation Strategy\n\n### Objective Measures\n- High-band energy reconstruction accuracy  \n- Envelope shape similarity  \n- Temporal smoothness  \n\n### Perceptual Evaluation\nPerformed **A/B and A/B/X listening tests** on:\n\n- Male + female speech  \n- Different languages  \n- Varied articulation patterns  \n- Clean vs. challenging content  \n\nArtifacts tracked and tuned:\n\n- Metallic ringing  \n- Whistle-like tones  \n- Synthetic “hiss”  \n- Harsh high-frequency energy  \n- Energy mismatch between narrowband and high-band  \n\n**Perceptual testing was essential** — many methods that looked good numerically produced \nunacceptable artifacts during listening.\n\n## Key Results\n\n- Reconstructed high-band content **significantly improved** perceived brightness and clarity.  \n- Non-linear excitation + spectral shaping produced stable and natural-sounding results.  \n- High-band envelope reconstruction matched reference wideband behavior well.  \n- Objective and subjective evaluations aligned closely after tuning.\n\n## Skills Demonstrated\n\n### DSP Expertise\n- LPC modelling  \n- Excitation generation  \n- Non-linear processing  \n- Envelope shaping  \n- Filter design  \n- Time–frequency analysis  \n\n### Prototyping Skills\n- MATLAB algorithm development  \n- Python batch experiments + visualization  \n- Handling multi-file evaluation pipelines  \n\n### Perceptual Engineering\n- Systematic listening test methodology  \n- Artifact identification  \n- Iterative tuning based on perceptual + spectral evidence  \n\n### Research & Documentation\n- Reproducible experiments  \n- Clear reporting of results  \n- Scientific and engineering communication  \n\n## Narration / Personal Reflection\n\nThis thesis shaped my understanding of audio engineering at a deep level.  \nI learned that:\n\n- A mathematically “correct” algorithm may still sound terrible.  \n- Spectral plots, excitation behavior, and envelopes must align with what listeners perceive.  \n- Perceptual tuning is a **core part of DSP**, not an afterthought.  \n\nThe project taught me to think simultaneously like a:\n\n- **scientist** (theory, modelling)  \n- **engineer** (system design, prototyping)  \n- **listener** (perception, artifacts, tuning)  \n\nThis balance between **math, engineering, and human hearing** continues to define how I approach\naudio, DSP, and media systems today.\n\n---\n\n"
+    "content": "\n# Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing  \n\n## Overview\n\nThis thesis focused on reconstructing **wideband speech** from narrowband (telephone-band) input\nusing **non-linear post-processing**, **excitation modelling**, and **spectral envelope reconstruction**.\nThe goal was to increase perceived bandwidth, restore brightness, and improve naturalness **without**\nrequiring changes to the encoder or any side information.\n\nThe work brought together:\n\n- Digital signal processing theory (LPC, source–filter models)\n- Practical system design\n- MATLAB & Python prototyping\n- Perceptual audio evaluation and tuning\n- Iterative refinement based on listening tests and spectral analysis\n\n## Problem Statement\n\nTraditional narrowband speech (0–4 kHz) loses:\n\n- High-frequency harmonics  \n- Brightness and “air”  \n- Natural articulation cues  \n- Wideband timbral characteristics  \n\nThe challenge is reconstructing plausible high-band components **from missing information**, not noisy\ninformation. This is fundamentally an **ill-posed inverse problem**, requiring:\n\n- Excitation generation  \n- Envelope reconstruction  \n- Stability against artifacts  \n- Low computational cost  \n\nGoal:  \nProduce **wideband-like speech** that is perceptually convincing and spectrally coherent.\n\n## System Architecture\n\nThe thesis designed a processing chain consisting of:\n\n### Narrowband Analysis\n- Pre-emphasis  \n- Windowing  \n- LPC analysis (10–14th order)  \n- Extraction of the excitation signal  \n\n### Excitation Modelling\nTested approaches included:\n\n- Non-linear expansion  \n- Odd/even harmonic generation  \n- Sign-preserving power functions  \n- Spectral folding  \n- Blended excitation shaping  \n\nThe final system used **non-linear excitation expansion** with a **high-band shaping filter**.\n\n### Envelope Reconstruction\nMethods explored:\n\n- LPC envelope extrapolation  \n- High-band envelope smoothing  \n- Adaptive energy matching  \n- Band-tilting adjustments  \n\n### Synthesis\n- Excitation filtering using reconstructed LPC coefficients  \n- Overlap–add synthesis  \n- Envelope smoothing and final spectral correction  \n\n## Block Diagram (Textual)\nNarrowband Speech\n↓\nAnalysis\n(LPC, excitation)\n↓\nNon-linear Excitation Expansion\n↓\nHigh-band Spectral Shaping\n↓\nEnvelope Reconstruction\n↓\nSynthesis\n↓\nEnhanced Wideband-like Speech\n\n## Implementation Details\n\n### MATLAB Prototyping\n- LPC extraction (autocorrelation & Burg methods)\n- Excitation expansion experiments\n- Envelope smoothing filters\n- Spectral envelope visualization\n- Objective metrics:\n  - log-spectral distance (LSD)\n  - harmonic envelope deviation\n\n### Python Experiments\n- Rapid testing of excitation functions\n- Plotting envelope differences\n- Generating spectrograms and comparison views\n- Automating batch evaluation sets\n\n## Evaluation Strategy\n\n### Objective Measures\n- High-band energy reconstruction accuracy  \n- Envelope shape similarity  \n- Temporal smoothness  \n\n### Perceptual Evaluation\nPerformed **A/B and A/B/X listening tests** on:\n\n- Male + female speech  \n- Different languages  \n- Varied articulation patterns  \n- Clean vs. challenging content  \n\nArtifacts tracked and tuned:\n\n- Metallic ringing  \n- Whistle-like tones  \n- Synthetic “hiss”  \n- Harsh high-frequency energy  \n- Energy mismatch between narrowband and high-band  \n\n**Perceptual testing was essential** — many methods that looked good numerically produced \nunacceptable artifacts during listening.\n\n## Key Results\n\n- Reconstructed high-band content **significantly improved** perceived brightness and clarity.  \n- Non-linear excitation + spectral shaping produced stable and natural-sounding results.  \n- High-band envelope reconstruction matched reference wideband behavior well.  \n- Objective and subjective evaluations aligned closely after tuning.\n\n## Skills Demonstrated\n\n### DSP Expertise\n- LPC modelling  \n- Excitation generation  \n- Non-linear processing  \n- Envelope shaping  \n- Filter design  \n- Time–frequency analysis  \n\n### Prototyping Skills\n- MATLAB algorithm development  \n- Python batch experiments + visualization  \n- Handling multi-file evaluation pipelines  \n\n### Perceptual Engineering\n- Systematic listening test methodology  \n- Artifact identification  \n- Iterative tuning based on perceptual + spectral evidence  \n\n### Research & Documentation\n- Reproducible experiments  \n- Clear reporting of results  \n- Scientific and engineering communication  \n\n## Narration / Personal Reflection\n\nThis thesis shaped my understanding of audio engineering at a deep level.  \nI learned that:\n\n- A mathematically “correct” algorithm may still sound terrible.  \n- Spectral plots, excitation behavior, and envelopes must align with what listeners perceive.  \n- Perceptual tuning is a **core part of DSP**, not an afterthought.  \n\nThe project taught me to think simultaneously like a:\n\n- **scientist** (theory, modelling)  \n- **engineer** (system design, prototyping)  \n- **listener** (perception, artifacts, tuning)  \n\nThis balance between **math, engineering, and human hearing** continues to define how I approach\naudio, DSP, and media systems today.\n\n---\n\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "This thesis focused on reconstructing wideband speech from narrowband (telephone-band) input\nusing non-linear post-processing, excitation modelling, and spectral envelope reconstruction.\nThe goal was to increase perceived bandwidth, restore brightness, and improve naturalness without\nrequiring changes to the encoder or any side information.\n\nThe work brought together:\n\nDigital signal processing theory (LPC, source–filter models)\nPractical system design\nMATLAB & Python prototyping\nPerceptual audio evaluation and tuning\nIterative refinement based on listening tests and spectral analysis"
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Traditional narrowband speech (0–4 kHz) loses:\n\nHigh-frequency harmonics  \nBrightness and “air”  \nNatural articulation cues  \nWideband timbral characteristics  \n\nThe challenge is reconstructing plausible high-band components from missing information, not noisy\ninformation. This is fundamentally an ill-posed inverse problem, requiring:\n\nExcitation generation  \nEnvelope reconstruction  \nStability against artifacts  \nLow computational cost  \n\nGoal:  \nProduce wideband-like speech that is perceptually convincing and spectrally coherent."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "# Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing   ## Overview This thesis focused on reconstructing wideband speech from narrowband (telephone-band) input using non-linear post-processing, excitation modelling, and spectral envelope reconstruction"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Digital signal processing theory (LPC, source–filter models)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Perceptual audio evaluation and tuning"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Iterative refinement based on listening tests and spectral analysis ## Problem Statement Traditional narrowband speech (0–4 kHz) loses:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Low computational cost   Goal:   Produce wideband-like speech that is perceptually convincing and spectrally coherent"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "LPC analysis (10–14th order)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spectral folding"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "LPC envelope extrapolation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Excitation filtering using reconstructed LPC coefficients"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Envelope smoothing and final spectral correction   ## Block Diagram (Textual) Narrowband Speech ↓ Analysis (LPC, excitation) ↓ Non-linear Excitation Expansion ↓ High-band Spectral Shaping ↓ Envelope Reconstruction ↓ Synthesis ↓ Enhanced Wideband-like Speech ## Implementation Details ### MATLAB Prototyping"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "LPC extraction (autocorrelation & Burg methods)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spectral envelope visualization"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "log-spectral distance (LSD)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Male + female speech"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Non-linear excitation + spectral shaping produced stable and natural-sounding results"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Skills Demonstrated ### DSP Expertise"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "LPC modelling"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Iterative tuning based on perceptual + spectral evidence   ### Research & Documentation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Scientific and engineering communication   ## Narration / Personal Reflection This thesis shaped my understanding of audio engineering at a deep level"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spectral plots, excitation behavior, and envelopes must align with what listeners perceive"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Perceptual tuning is a core part of DSP, not an afterthought"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "listener (perception, artifacts, tuning)   This balance between math, engineering, and human hearing continues to define how I approach audio, DSP, and media systems today"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "Python",
+        "MATLAB"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "# Master Thesis — Speech Bandwidth Extension Using Non-Linear Post-Processing   ## Overview This thesis focused on reconstructing wideband speech from narrowband (telephone-band) input using non-linear post-processing, excitation modelling, and spectral envelope reconstruction",
+        "Digital signal processing theory (LPC, source–filter models)",
+        "Perceptual audio evaluation and tuning",
+        "Iterative refinement based on listening tests and spectral analysis ## Problem Statement Traditional narrowband speech (0–4 kHz) loses:",
+        "Low computational cost   Goal:   Produce wideband-like speech that is perceptually convincing and spectrally coherent",
+        "LPC analysis (10–14th order)",
+        "Spectral folding",
+        "LPC envelope extrapolation",
+        "Excitation filtering using reconstructed LPC coefficients",
+        "Envelope smoothing and final spectral correction   ## Block Diagram (Textual) Narrowband Speech ↓ Analysis (LPC, excitation) ↓ Non-linear Excitation Expansion ↓ High-band Spectral Shaping ↓ Envelope Reconstruction ↓ Synthesis ↓ Enhanced Wideband-like Speech ## Implementation Details ### MATLAB Prototyping",
+        "LPC extraction (autocorrelation & Burg methods)",
+        "Spectral envelope visualization",
+        "log-spectral distance (LSD)",
+        "Male + female speech",
+        "Non-linear excitation + spectral shaping produced stable and natural-sounding results",
+        "Skills Demonstrated ### DSP Expertise",
+        "LPC modelling",
+        "Iterative tuning based on perceptual + spectral evidence   ### Research & Documentation",
+        "Scientific and engineering communication   ## Narration / Personal Reflection This thesis shaped my understanding of audio engineering at a deep level",
+        "Spectral plots, excitation behavior, and envelopes must align with what listeners perceive",
+        "Perceptual tuning is a core part of DSP, not an afterthought",
+        "listener (perception, artifacts, tuning)   This balance between math, engineering, and human hearing continues to define how I approach audio, DSP, and media systems today"
+      ],
+      "real_time": []
+    }
   },
   {
     "id": "projects/traffic_signal_controller/index.md",
@@ -382,7 +1397,86 @@
       "summary": "Finite-state traffic light controller in C using timers/interrupts for deterministic, safe signal sequencing.",
       "title": "Traffic Signal Controller"
     },
-    "content": "# Traffic Signal Controller — Embedded C State Machine  \n\n## Overview\n\nThis project implements a **Traffic Signal Controller** using an embedded microcontroller and a  \n**finite state machine (FSM)**. The system handles:\n\n- red / yellow / green cycle timing  \n- safe state transitions  \n- pedestrian or extended-timing modes (optional)  \n- real-time light switching logic  \n\nIt demonstrates real-time embedded programming, state-machine design, and stable time-driven logic.\n\n## Problem Statement\n\nTraffic signals must operate:\n\n- predictably  \n- safely  \n- with strict timing control  \n- without glitches or ambiguous states  \n\nA naive implementation (e.g., delays or manual toggles) is unreliable.  \nA proper FSM is needed to ensure:\n\n- correct sequence → Red → Green → Yellow → Red  \n- timing consistency  \n- no illegal combinations  \n- clean reset behavior  \n\n## System Architecture\n\n### Hardware Components\n- Microcontroller (AVR / PIC / Arduino-class)\n- LED indicators:\n  - Red  \n  - Yellow  \n  - Green  \n- Timer module or software timer  \n- Optional input button (e.g., pedestrian mode)  \n\n### State Machine Diagram\n\n```\n      [RED]\n        |\n        v\n     [GREEN]\n        |\n        v\n     [YELLOW]\n        |\n        v\n      [RED]  (loop)\n```\n\n### State Definitions\n| State     | Lights Active         | Duration |\n|-----------|------------------------|----------|\n| RED       | Red ON                 | t_red    |\n| GREEN     | Green ON               | t_green  |\n| YELLOW    | Yellow ON              | t_yellow |\n\n## Implementation Details\n\n### FSM Structure (C)\n\n```c\nenum state { RED, GREEN, YELLOW };\nenum state current_state = RED;\n\nvoid loop() {\n    switch(current_state) {\n        case RED:\n            red_on(); green_off(); yellow_off();\n            wait(t_red);\n            current_state = GREEN;\n            break;\n\n        case GREEN:\n            green_on(); red_off(); yellow_off();\n            wait(t_green);\n            current_state = YELLOW;\n            break;\n\n        case YELLOW:\n            yellow_on(); red_off(); green_off();\n            wait(t_yellow);\n            current_state = RED;\n            break;\n    }\n}\n```\n\n### Timer Integration\n\n- Using hardware timers or non-blocking timing loops  \n- Ensures system remains responsive  \n\n### Optional Pedestrian Handling\n\n```c\nif (button_pressed() && safe_to_interrupt()) {\n    extend_red_phase();\n}\n```\n\n### Safety Guarantees\n\n- Never GREEN + RED at the same time  \n- Minimum time per state is enforced  \n- Guaranteed sequence order  \n- Optional emergency all-red mode  \n\n## Results\n\n- Smooth, predictable transitions  \n- Timing accuracy and stability  \n- Extensible to multi-intersection control  \n- No illegal LED combinations  \n- Reliable due to strict FSM structure  \n\n## Skills Demonstrated\n\n- Embedded C  \n- State machine design  \n- Real-time logic  \n- Timing systems  \n- IO interfacing  \n- Debugging embedded timing issues  \n\n## Narration / Reflection\n\nThis project taught me the importance of deterministic timing and clean control flow.  \nUsing a state machine made the behavior predictable and easy to reason about — an approach that applies\nnot only to embedded systems but also to larger software and DSP pipelines.\n"
+    "content": "# Traffic Signal Controller — Embedded C State Machine  \n\n## Overview\n\nThis project implements a **Traffic Signal Controller** using an embedded microcontroller and a  \n**finite state machine (FSM)**. The system handles:\n\n- red / yellow / green cycle timing  \n- safe state transitions  \n- pedestrian or extended-timing modes (optional)  \n- real-time light switching logic  \n\nIt demonstrates real-time embedded programming, state-machine design, and stable time-driven logic.\n\n## Problem Statement\n\nTraffic signals must operate:\n\n- predictably  \n- safely  \n- with strict timing control  \n- without glitches or ambiguous states  \n\nA naive implementation (e.g., delays or manual toggles) is unreliable.  \nA proper FSM is needed to ensure:\n\n- correct sequence → Red → Green → Yellow → Red  \n- timing consistency  \n- no illegal combinations  \n- clean reset behavior  \n\n## System Architecture\n\n### Hardware Components\n- Microcontroller (AVR / PIC / Arduino-class)\n- LED indicators:\n  - Red  \n  - Yellow  \n  - Green  \n- Timer module or software timer  \n- Optional input button (e.g., pedestrian mode)  \n\n### State Machine Diagram\n\n```\n      [RED]\n        |\n        v\n     [GREEN]\n        |\n        v\n     [YELLOW]\n        |\n        v\n      [RED]  (loop)\n```\n\n### State Definitions\n| State     | Lights Active         | Duration |\n|-----------|------------------------|----------|\n| RED       | Red ON                 | t_red    |\n| GREEN     | Green ON               | t_green  |\n| YELLOW    | Yellow ON              | t_yellow |\n\n## Implementation Details\n\n### FSM Structure (C)\n\n```c\nenum state { RED, GREEN, YELLOW };\nenum state current_state = RED;\n\nvoid loop() {\n    switch(current_state) {\n        case RED:\n            red_on(); green_off(); yellow_off();\n            wait(t_red);\n            current_state = GREEN;\n            break;\n\n        case GREEN:\n            green_on(); red_off(); yellow_off();\n            wait(t_green);\n            current_state = YELLOW;\n            break;\n\n        case YELLOW:\n            yellow_on(); red_off(); green_off();\n            wait(t_yellow);\n            current_state = RED;\n            break;\n    }\n}\n```\n\n### Timer Integration\n\n- Using hardware timers or non-blocking timing loops  \n- Ensures system remains responsive  \n\n### Optional Pedestrian Handling\n\n```c\nif (button_pressed() && safe_to_interrupt()) {\n    extend_red_phase();\n}\n```\n\n### Safety Guarantees\n\n- Never GREEN + RED at the same time  \n- Minimum time per state is enforced  \n- Guaranteed sequence order  \n- Optional emergency all-red mode  \n\n## Results\n\n- Smooth, predictable transitions  \n- Timing accuracy and stability  \n- Extensible to multi-intersection control  \n- No illegal LED combinations  \n- Reliable due to strict FSM structure  \n\n## Skills Demonstrated\n\n- Embedded C  \n- State machine design  \n- Real-time logic  \n- Timing systems  \n- IO interfacing  \n- Debugging embedded timing issues  \n\n## Narration / Reflection\n\nThis project taught me the importance of deterministic timing and clean control flow.  \nUsing a state machine made the behavior predictable and easy to reason about — an approach that applies\nnot only to embedded systems but also to larger software and DSP pipelines.\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "This project implements a Traffic Signal Controller using an embedded microcontroller and a  \nfinite state machine (FSM). The system handles:\n\nred / yellow / green cycle timing  \nsafe state transitions  \npedestrian or extended-timing modes (optional)  \nreal-time light switching logic  \n\nIt demonstrates real-time embedded programming, state-machine design, and stable time-driven logic."
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Traffic signals must operate:\n\npredictably  \nsafely  \nwith strict timing control  \nwithout glitches or ambiguous states  \n\nA naive implementation (e.g., delays or manual toggles) is unreliable.  \nA proper FSM is needed to ensure:\n\ncorrect sequence → Red → Green → Yellow → Red  \ntiming consistency  \nno illegal combinations  \nclean reset behavior"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "red / yellow / green cycle timing"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "pedestrian or extended-timing modes (optional)"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "real-time light switching logic   It demonstrates real-time embedded programming, state-machine design, and stable time-driven logic"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "with strict timing control"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "timing consistency"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Using hardware timers or non-blocking timing loops"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Timing accuracy and stability"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Real-time logic"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Timing systems"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Debugging embedded timing issues   ## Narration / Reflection This project taught me the importance of deterministic timing and clean control flow"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Using a state machine made the behavior predictable and easy to reason about — an approach that applies not only to embedded systems but also to larger software and DSP pipelines"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [],
+      "audio_dsp": [
+        "Using a state machine made the behavior predictable and easy to reason about — an approach that applies not only to embedded systems but also to larger software and DSP pipelines"
+      ],
+      "real_time": [
+        "red / yellow / green cycle timing",
+        "pedestrian or extended-timing modes (optional)",
+        "real-time light switching logic   It demonstrates real-time embedded programming, state-machine design, and stable time-driven logic",
+        "with strict timing control",
+        "timing consistency",
+        "Using hardware timers or non-blocking timing loops",
+        "Timing accuracy and stability",
+        "Real-time logic",
+        "Timing systems",
+        "Debugging embedded timing issues   ## Narration / Reflection This project taught me the importance of deterministic timing and clean control flow"
+      ]
+    }
   },
   {
     "id": "projects/vidi/index.md",
@@ -413,7 +1507,202 @@
       ],
       "article_slug": "vidi"
     },
-    "content": "\n# VIDI — Low-Latency, Reliable Pitch Detection & Pitch-Shifting Tool  \n\n## Overview\n\n**VIDI** is a real-time pitch detection and pitch-shifting tool designed for musicians who need  \n**fast, stable, low-latency pitch tracking** — even in noisy rooms or during rapid melodic passages.\n\nInstead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide\nconfidence-weighted pitch estimates that:\n\n- **lock quickly**,  \n- **don’t drift**,  \n- **remain stable under noise**, and  \n- **produce natural, musical pitch shifts** without chipmunk artifacts.\n\nIt was built with **Core Audio** and **vDSP**, optimized for **mobile-class hardware** with strict \nlatency and performance constraints.\n\n## Problem Statement\n\nMusicians need pitch tools that work **live**, not only in ideal studio conditions.  \nMost existing systems fail in at least one area:\n\n- too sensitive to noise  \n- unstable on fast notes  \n- slow lock-in time  \n- robotic or chipmunk-like pitch shifts  \n- MIDI output that drifts under load  \n\nVIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion.\n\n## System Architecture\n\n```\nIncoming Audio  \n      ↓  \nFrame Processing (Core Audio)  \n      ↓  \nParallel Pitch Estimators (AMDF / Autocorrelation / HPS)  \n      ↓  \nConfidence Fusion Engine  \n      ↓  \nFormant-Aware Pitch Shifting  \n      ↓  \nLow-Latency MIDI Output  \n```\n\n## Key DSP Components\n\n### Parallel Pitch Detection Engines\n\nVIDI runs three pitch detectors concurrently:\n\n#### AMDF (Average Magnitude Difference Function)\n- Excellent for fast passages  \n- Good resolution for monophonic signals  \n- Works well in noisy conditions  \n\n#### Autocorrelation\n- Stable periodicity detection  \n- Helps reduce octave errors  \n- Provides reliable fundamentals  \n\n#### Harmonic Product Spectrum (HPS)\n- FFT-based approach using harmonic reinforcement  \n- Useful for strong harmonic structures  \n- Helps refine ambiguous pitch regions  \n\n### Confidence-Weighted Fusion\n\nResults are combined using a confidence score per method:\n\n- consistency across methods  \n- signal periodicity  \n- harmonic energy distribution  \n- AMDF minima stability  \n- autocorrelation peak clarity  \n\nThe fusion engine outputs a **single, stable pitch value** resistant to noise and instability.\n\n## Low-Latency Architecture\n\n### Core Audio + vDSP Pipeline\n\nVIDI uses:\n\n- **Core Audio render callbacks** for sub-10 ms frame processing  \n- **vDSP FFTs** for spectral methods  \n- Hot loop optimizations:\n  - inlining critical operations  \n  - avoiding unnecessary heap allocations  \n  - tight C loops for AMDF  \n  - vectorized operations where beneficial  \n\n### Performance Targets\n\n- **Frame size:** 64–128 samples  \n- **Latency budget:** configurable, typically 10–20 ms end-to-end  \n- **CPU footprint:** optimized for mobile processors  \n\n## Formant-Aware Pitch Shifting\n\nStandard pitch shifting introduces:\n\n- chipmunk vocals  \n- unnatural brightness  \n- timbre distortion  \n\nVIDI avoids this with:\n\n- **formant tracking**  \n- **spectral envelope estimation**  \n- **formant-preserving warping**  \n- blending PSOLA-like and phase-vocoder concepts  \n\nResult: **natural, human-sounding pitch shifts**, even at large intervals.\n\n## MIDI Output Engine\n\nVIDI generates highly stable MIDI output:\n\n- configurable smoothing  \n- hysteresis to reduce jitter  \n- velocity modeling based on onset detection  \n- guarantee of no timing drift under CPU load  \n\nCompatible with:\n\n- Ableton Live  \n- Logic Pro  \n- FL Studio  \n- Max/MSP  \n- Hardware synthesizers  \n\n## Results\n\nVIDI delivered:\n\n- **fast pitch lock-in**  \n- **stable tracking** even with noise  \n- **natural pitch shifts** without artifacts  \n- **low latency**, suitable for live use  \n- **accurate MIDI output**  \n\nMusicians rated it as:\n\n- predictable  \n- responsive  \n- expressive  \n- trustworthy in live performance  \n\n## Skills Demonstrated\n\n- DSP algorithm design  \n- Multi-method pitch estimation  \n- Confidence scoring & fusion  \n- vDSP FFT optimization  \n- Core Audio real-time pipelines  \n- Formant-preserving pitch shifting  \n- MIDI integration  \n- Low-latency engineering  \n- Performance optimization  \n\n## Narration / Reflection\n\nVIDI was a significant step in understanding **real-time DSP under real-world constraints**.  \nI learned how:\n\n- AMDF + autocorrelation + HPS complement one another  \n- confidence fusion stabilizes noisy estimates  \n- low-latency budgets drive architectural choices  \n- musicians value *feel* as much as technical accuracy  \n\nVIDI fused **DSP theory**, **musical sensitivity**, and **engineering practicality**, shaping how I approach\naudio systems, performance tuning, and perceptually meaningful DSP.\n\n---\n"
+    "content": "\n# VIDI — Low-Latency, Reliable Pitch Detection & Pitch-Shifting Tool  \n\n## Overview\n\n**VIDI** is a real-time pitch detection and pitch-shifting tool designed for musicians who need  \n**fast, stable, low-latency pitch tracking** — even in noisy rooms or during rapid melodic passages.\n\nInstead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide\nconfidence-weighted pitch estimates that:\n\n- **lock quickly**,  \n- **don’t drift**,  \n- **remain stable under noise**, and  \n- **produce natural, musical pitch shifts** without chipmunk artifacts.\n\nIt was built with **Core Audio** and **vDSP**, optimized for **mobile-class hardware** with strict \nlatency and performance constraints.\n\n## Problem Statement\n\nMusicians need pitch tools that work **live**, not only in ideal studio conditions.  \nMost existing systems fail in at least one area:\n\n- too sensitive to noise  \n- unstable on fast notes  \n- slow lock-in time  \n- robotic or chipmunk-like pitch shifts  \n- MIDI output that drifts under load  \n\nVIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion.\n\n## System Architecture\n\n```\nIncoming Audio  \n      ↓  \nFrame Processing (Core Audio)  \n      ↓  \nParallel Pitch Estimators (AMDF / Autocorrelation / HPS)  \n      ↓  \nConfidence Fusion Engine  \n      ↓  \nFormant-Aware Pitch Shifting  \n      ↓  \nLow-Latency MIDI Output  \n```\n\n## Key DSP Components\n\n### Parallel Pitch Detection Engines\n\nVIDI runs three pitch detectors concurrently:\n\n#### AMDF (Average Magnitude Difference Function)\n- Excellent for fast passages  \n- Good resolution for monophonic signals  \n- Works well in noisy conditions  \n\n#### Autocorrelation\n- Stable periodicity detection  \n- Helps reduce octave errors  \n- Provides reliable fundamentals  \n\n#### Harmonic Product Spectrum (HPS)\n- FFT-based approach using harmonic reinforcement  \n- Useful for strong harmonic structures  \n- Helps refine ambiguous pitch regions  \n\n### Confidence-Weighted Fusion\n\nResults are combined using a confidence score per method:\n\n- consistency across methods  \n- signal periodicity  \n- harmonic energy distribution  \n- AMDF minima stability  \n- autocorrelation peak clarity  \n\nThe fusion engine outputs a **single, stable pitch value** resistant to noise and instability.\n\n## Low-Latency Architecture\n\n### Core Audio + vDSP Pipeline\n\nVIDI uses:\n\n- **Core Audio render callbacks** for sub-10 ms frame processing  \n- **vDSP FFTs** for spectral methods  \n- Hot loop optimizations:\n  - inlining critical operations  \n  - avoiding unnecessary heap allocations  \n  - tight C loops for AMDF  \n  - vectorized operations where beneficial  \n\n### Performance Targets\n\n- **Frame size:** 64–128 samples  \n- **Latency budget:** configurable, typically 10–20 ms end-to-end  \n- **CPU footprint:** optimized for mobile processors  \n\n## Formant-Aware Pitch Shifting\n\nStandard pitch shifting introduces:\n\n- chipmunk vocals  \n- unnatural brightness  \n- timbre distortion  \n\nVIDI avoids this with:\n\n- **formant tracking**  \n- **spectral envelope estimation**  \n- **formant-preserving warping**  \n- blending PSOLA-like and phase-vocoder concepts  \n\nResult: **natural, human-sounding pitch shifts**, even at large intervals.\n\n## MIDI Output Engine\n\nVIDI generates highly stable MIDI output:\n\n- configurable smoothing  \n- hysteresis to reduce jitter  \n- velocity modeling based on onset detection  \n- guarantee of no timing drift under CPU load  \n\nCompatible with:\n\n- Ableton Live  \n- Logic Pro  \n- FL Studio  \n- Max/MSP  \n- Hardware synthesizers  \n\n## Results\n\nVIDI delivered:\n\n- **fast pitch lock-in**  \n- **stable tracking** even with noise  \n- **natural pitch shifts** without artifacts  \n- **low latency**, suitable for live use  \n- **accurate MIDI output**  \n\nMusicians rated it as:\n\n- predictable  \n- responsive  \n- expressive  \n- trustworthy in live performance  \n\n## Skills Demonstrated\n\n- DSP algorithm design  \n- Multi-method pitch estimation  \n- Confidence scoring & fusion  \n- vDSP FFT optimization  \n- Core Audio real-time pipelines  \n- Formant-preserving pitch shifting  \n- MIDI integration  \n- Low-latency engineering  \n- Performance optimization  \n\n## Narration / Reflection\n\nVIDI was a significant step in understanding **real-time DSP under real-world constraints**.  \nI learned how:\n\n- AMDF + autocorrelation + HPS complement one another  \n- confidence fusion stabilizes noisy estimates  \n- low-latency budgets drive architectural choices  \n- musicians value *feel* as much as technical accuracy  \n\nVIDI fused **DSP theory**, **musical sensitivity**, and **engineering practicality**, shaping how I approach\naudio systems, performance tuning, and perceptually meaningful DSP.\n\n---\n",
+    "chunks": [
+      {
+        "kind": "projects.overview",
+        "text": "VIDI is a real-time pitch detection and pitch-shifting tool designed for musicians who need  \nfast, stable, low-latency pitch tracking — even in noisy rooms or during rapid melodic passages.\n\nInstead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide\nconfidence-weighted pitch estimates that:\n\nlock quickly,  \ndon’t drift,  \nremain stable under noise, and  \nproduce natural, musical pitch shifts without chipmunk artifacts.\n\nIt was built with Core Audio and vDSP, optimized for mobile-class hardware with strict \nlatency and performance constraints."
+      },
+      {
+        "kind": "projects.challenge",
+        "text": "Musicians need pitch tools that work live, not only in ideal studio conditions.  \nMost existing systems fail in at least one area:\n\ntoo sensitive to noise  \nunstable on fast notes  \nslow lock-in time  \nrobotic or chipmunk-like pitch shifts  \nMIDI output that drifts under load  \n\nVIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion."
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "# VIDI — Low-Latency, Reliable Pitch Detection & Pitch-Shifting Tool   ## Overview VIDI is a real-time pitch detection and pitch-shifting tool designed for musicians who need   fast, stable, low-latency pitch tracking — even in noisy rooms or during rapid melodic passages"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Instead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide confidence-weighted pitch estimates that:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "produce natural, musical pitch shifts without chipmunk artifacts"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "It was built with Core Audio and vDSP, optimized for mobile-class hardware with strict  latency and performance constraints"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Problem Statement Musicians need pitch tools that work live, not only in ideal studio conditions"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "robotic or chipmunk-like pitch shifts"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "MIDI output that drifts under load   VIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "System Architecture  Incoming Audio         ↓   Frame Processing (Core Audio)         ↓   Parallel Pitch Estimators (AMDF / Autocorrelation / HPS)         ↓   Confidence Fusion Engine         ↓   Formant-Aware Pitch Shifting         ↓   Low-Latency MIDI Output    ## Key DSP Components ### Parallel Pitch Detection Engines VIDI runs three pitch detectors concurrently: #### AMDF (Average Magnitude Difference Function)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Helps refine ambiguous pitch regions   ### Confidence-Weighted Fusion Results are combined using a confidence score per method:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "autocorrelation peak clarity   The fusion engine outputs a single, stable pitch value resistant to noise and instability"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Low-Latency Architecture ### Core Audio + vDSP Pipeline VIDI uses:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Core Audio render callbacks for sub-10 ms frame processing"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "vDSP FFTs for spectral methods"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Frame size: 64–128 samples"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Latency budget: configurable, typically 10–20 ms end-to-end"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "CPU footprint: optimized for mobile processors   ## Formant-Aware Pitch Shifting Standard pitch shifting introduces:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "spectral envelope estimation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "blending PSOLA-like and phase-vocoder concepts   Result: natural, human-sounding pitch shifts, even at large intervals"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "hysteresis to reduce jitter"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "guarantee of no timing drift under CPU load   Compatible with:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "fast pitch lock-in"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "natural pitch shifts without artifacts"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "low latency, suitable for live use"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP algorithm design"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Multi-method pitch estimation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "vDSP FFT optimization"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Core Audio real-time pipelines"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Formant-preserving pitch shifting"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "Low-latency engineering"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Performance optimization   ## Narration / Reflection VIDI was a significant step in understanding real-time DSP under real-world constraints"
+      },
+      {
+        "kind": "experience.real_time",
+        "text": "low-latency budgets drive architectural choices"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "musicians value *feel* as much as technical accuracy   VIDI fused DSP theory, musical sensitivity, and engineering practicality, shaping how I approach audio systems, performance tuning, and perceptually meaningful DSP"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Core Audio"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "vDSP"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C"
+      ],
+      "tools": [
+        "Core Audio",
+        "vDSP"
+      ],
+      "audio_dsp": [
+        "# VIDI — Low-Latency, Reliable Pitch Detection & Pitch-Shifting Tool   ## Overview VIDI is a real-time pitch detection and pitch-shifting tool designed for musicians who need   fast, stable, low-latency pitch tracking — even in noisy rooms or during rapid melodic passages",
+        "Instead of relying on a single pitch detection method, VIDI fuses multiple DSP techniques to provide confidence-weighted pitch estimates that:",
+        "produce natural, musical pitch shifts without chipmunk artifacts",
+        "It was built with Core Audio and vDSP, optimized for mobile-class hardware with strict  latency and performance constraints",
+        "Problem Statement Musicians need pitch tools that work live, not only in ideal studio conditions",
+        "robotic or chipmunk-like pitch shifts",
+        "MIDI output that drifts under load   VIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion",
+        "System Architecture  Incoming Audio         ↓   Frame Processing (Core Audio)         ↓   Parallel Pitch Estimators (AMDF / Autocorrelation / HPS)         ↓   Confidence Fusion Engine         ↓   Formant-Aware Pitch Shifting         ↓   Low-Latency MIDI Output    ## Key DSP Components ### Parallel Pitch Detection Engines VIDI runs three pitch detectors concurrently: #### AMDF (Average Magnitude Difference Function)",
+        "Helps refine ambiguous pitch regions   ### Confidence-Weighted Fusion Results are combined using a confidence score per method:",
+        "autocorrelation peak clarity   The fusion engine outputs a single, stable pitch value resistant to noise and instability",
+        "Low-Latency Architecture ### Core Audio + vDSP Pipeline VIDI uses:",
+        "Core Audio render callbacks for sub-10 ms frame processing",
+        "vDSP FFTs for spectral methods",
+        "CPU footprint: optimized for mobile processors   ## Formant-Aware Pitch Shifting Standard pitch shifting introduces:",
+        "spectral envelope estimation",
+        "blending PSOLA-like and phase-vocoder concepts   Result: natural, human-sounding pitch shifts, even at large intervals",
+        "fast pitch lock-in",
+        "natural pitch shifts without artifacts",
+        "DSP algorithm design",
+        "Multi-method pitch estimation",
+        "vDSP FFT optimization",
+        "Core Audio real-time pipelines",
+        "Formant-preserving pitch shifting",
+        "Performance optimization   ## Narration / Reflection VIDI was a significant step in understanding real-time DSP under real-world constraints",
+        "musicians value *feel* as much as technical accuracy   VIDI fused DSP theory, musical sensitivity, and engineering practicality, shaping how I approach audio systems, performance tuning, and perceptually meaningful DSP"
+      ],
+      "real_time": [
+        "Frame size: 64–128 samples",
+        "Latency budget: configurable, typically 10–20 ms end-to-end",
+        "hysteresis to reduce jitter",
+        "guarantee of no timing drift under CPU load   Compatible with:",
+        "low latency, suitable for live use",
+        "Low-latency engineering",
+        "low-latency budgets drive architectural choices"
+      ]
+    }
   },
   {
     "id": "skills/skills_master.md",
@@ -425,6 +1714,152 @@
       "visibility": "public",
       "use_for_ai": true
     },
-    "content": "\n# Skills – Wahaj Aslam\n\n## Core Programming & Engineering\n\n- **C (Primary)**  \n  - DSP modules, buffer flows, state machines, performance-sensitive logic  \n  - Used as main language at Fraunhofer (DSP / codec tooling) and u-blox (NAS state machines)\n\n- **Modern C++ (C++11/14/17)**  \n  - Media tools, Windows Media Foundation (MFT) integration, test harnesses  \n  - RAII, smart pointers, STL, modular structuring\n\n- **Python**  \n  - Evaluation frameworks, batch processing, plotting  \n  - Automation of codec tests, trace analysis, small research tools\n\n- **MATLAB**  \n  - DSP prototyping, spectral analysis, LPC, envelopes, filter design  \n  - Visualization GUIs (WARP multi-hop), thesis experiments\n\n- **Bash + GitLab CI**  \n  - Automation scripts, CI jobs, multi-step testing pipelines\n\n---\n\n## DSP & Audio Engineering\n\n- Spectral analysis (STFT, spectrograms)\n- LPC analysis, formant / envelope modeling\n- Filter design (FIR / IIR) for shaping and smoothing\n- Non-linear post-processing / excitation shaping\n- Speech bandwidth extension concepts (lowband → wideband cues)\n- Experience with codec-oriented DSP workflows\n\n---\n\n## Critical Listening & Perceptual Evaluation\n\n- Hundreds of hours of internal listening tests at Fraunhofer\n- Trained to detect:\n  - pre-echo, transient smearing\n  - metallic ringing, “synthetic” timbre\n  - spectral holes, band mismatch\n  - stereo image instability\n  - roughness, noise, pumping artifacts\n- Comfortable correlating what I hear with:\n  - spectrograms (Audition, Python/MATLAB)\n  - waveform / difference signal analysis\n\n---\n\n## Streaming & Media Ecosystem\n\n- Understanding of:\n  - ABR ladders & multiple-bitrate configurations\n  - segment-based encoding behavior\n  - consistency across renditions / presets\n- Practical usage of:\n  - **FFmpeg** for pipelines and diagnostics\n  - **MediaInfo** for metadata checks\n  - MFT-based integration for Windows playback chains\n\n---\n\n## Tools\n\n- **Adobe Audition** – detailed spectral + time-frequency inspection  \n- **FFmpeg** – encoding/transcoding, ABR, test pipelines  \n- **MediaInfo** – stream and codec metadata inspection  \n- Python + MATLAB plotting and analysis  \n- Git, GitLab CI, Bash automation\n\n---\n\n## Wireless & Academic Foundations\n\n- WARP SDR experiments (multi-hop, cooperative relays)\n- MATLAB visualization tools for wireless experiments\n- Academic seminar exposure to Massive MU-MIMO (linear precoding, CSI, beamforming – not a\n  professional specialization)\n\n---\n\n## AI & Machine Learning – Strategic Personal Expansion\n\n- Actively expanding into **AI-enhanced media and DSP workflows**:\n  - DSP–AI hybrid thinking for audio enhancement and analysis\n  - Using small models and RAG concepts to structure engineering knowledge\n  - Treating AI as a layer on top of a strong DSP / media foundation\n- This is **personal innovation and learning**, not past employer work, and is focused on where  \n  media and audio technologies are heading rather than rebranding past roles."
+    "content": "\n# Skills – Wahaj Aslam\n\n## Core Programming & Engineering\n\n- **C (Primary)**  \n  - DSP modules, buffer flows, state machines, performance-sensitive logic  \n  - Used as main language at Fraunhofer (DSP / codec tooling) and u-blox (NAS state machines)\n\n- **Modern C++ (C++11/14/17)**  \n  - Media tools, Windows Media Foundation (MFT) integration, test harnesses  \n  - RAII, smart pointers, STL, modular structuring\n\n- **Python**  \n  - Evaluation frameworks, batch processing, plotting  \n  - Automation of codec tests, trace analysis, small research tools\n\n- **MATLAB**  \n  - DSP prototyping, spectral analysis, LPC, envelopes, filter design  \n  - Visualization GUIs (WARP multi-hop), thesis experiments\n\n- **Bash + GitLab CI**  \n  - Automation scripts, CI jobs, multi-step testing pipelines\n\n---\n\n## DSP & Audio Engineering\n\n- Spectral analysis (STFT, spectrograms)\n- LPC analysis, formant / envelope modeling\n- Filter design (FIR / IIR) for shaping and smoothing\n- Non-linear post-processing / excitation shaping\n- Speech bandwidth extension concepts (lowband → wideband cues)\n- Experience with codec-oriented DSP workflows\n\n---\n\n## Critical Listening & Perceptual Evaluation\n\n- Hundreds of hours of internal listening tests at Fraunhofer\n- Trained to detect:\n  - pre-echo, transient smearing\n  - metallic ringing, “synthetic” timbre\n  - spectral holes, band mismatch\n  - stereo image instability\n  - roughness, noise, pumping artifacts\n- Comfortable correlating what I hear with:\n  - spectrograms (Audition, Python/MATLAB)\n  - waveform / difference signal analysis\n\n---\n\n## Streaming & Media Ecosystem\n\n- Understanding of:\n  - ABR ladders & multiple-bitrate configurations\n  - segment-based encoding behavior\n  - consistency across renditions / presets\n- Practical usage of:\n  - **FFmpeg** for pipelines and diagnostics\n  - **MediaInfo** for metadata checks\n  - MFT-based integration for Windows playback chains\n\n---\n\n## Tools\n\n- **Adobe Audition** – detailed spectral + time-frequency inspection  \n- **FFmpeg** – encoding/transcoding, ABR, test pipelines  \n- **MediaInfo** – stream and codec metadata inspection  \n- Python + MATLAB plotting and analysis  \n- Git, GitLab CI, Bash automation\n\n---\n\n## Wireless & Academic Foundations\n\n- WARP SDR experiments (multi-hop, cooperative relays)\n- MATLAB visualization tools for wireless experiments\n- Academic seminar exposure to Massive MU-MIMO (linear precoding, CSI, beamforming – not a\n  professional specialization)\n\n---\n\n## AI & Machine Learning – Strategic Personal Expansion\n\n- Actively expanding into **AI-enhanced media and DSP workflows**:\n  - DSP–AI hybrid thinking for audio enhancement and analysis\n  - Using small models and RAG concepts to structure engineering knowledge\n  - Treating AI as a layer on top of a strong DSP / media foundation\n- This is **personal innovation and learning**, not past employer work, and is focused on where  \n  media and audio technologies are heading rather than rebranding past roles.",
+    "chunks": [
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP modules, buffer flows, state machines, performance-sensitive logic"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Used as main language at Fraunhofer (DSP / codec tooling) and u-blox (NAS state machines)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Automation of codec tests, trace analysis, small research tools"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP prototyping, spectral analysis, LPC, envelopes, filter design"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Automation scripts, CI jobs, multi-step testing pipelines --- ## DSP & Audio Engineering"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Spectral analysis (STFT, spectrograms)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "LPC analysis, formant / envelope modeling"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Speech bandwidth extension concepts (lowband → wideband cues)"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Experience with codec-oriented DSP workflows --- ## Critical Listening & Perceptual Evaluation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "spectral holes, band mismatch"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "waveform / difference signal analysis --- ## Streaming & Media Ecosystem"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Adobe Audition – detailed spectral + time-frequency inspection"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "MediaInfo – stream and codec metadata inspection"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Actively expanding into AI-enhanced media and DSP workflows:"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "DSP–AI hybrid thinking for audio enhancement and analysis"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "Treating AI as a layer on top of a strong DSP / media foundation"
+      },
+      {
+        "kind": "experience.audio_dsp",
+        "text": "This is personal innovation and learning, not past employer work, and is focused on where     media and audio technologies are heading rather than rebranding past roles."
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "C++"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Python"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "MATLAB"
+      },
+      {
+        "kind": "skills.languages",
+        "text": "Bash"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "FFmpeg"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "MediaInfo"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Adobe Audition"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "GitLab CI"
+      },
+      {
+        "kind": "skills.tools",
+        "text": "Git"
+      }
+    ],
+    "facts": {
+      "languages": [
+        "C",
+        "C++",
+        "Python",
+        "MATLAB",
+        "Bash"
+      ],
+      "tools": [
+        "FFmpeg",
+        "MediaInfo",
+        "Adobe Audition",
+        "GitLab CI",
+        "Git"
+      ],
+      "audio_dsp": [
+        "DSP modules, buffer flows, state machines, performance-sensitive logic",
+        "Used as main language at Fraunhofer (DSP / codec tooling) and u-blox (NAS state machines)",
+        "Automation of codec tests, trace analysis, small research tools",
+        "DSP prototyping, spectral analysis, LPC, envelopes, filter design",
+        "Automation scripts, CI jobs, multi-step testing pipelines --- ## DSP & Audio Engineering",
+        "Spectral analysis (STFT, spectrograms)",
+        "LPC analysis, formant / envelope modeling",
+        "Speech bandwidth extension concepts (lowband → wideband cues)",
+        "Experience with codec-oriented DSP workflows --- ## Critical Listening & Perceptual Evaluation",
+        "spectral holes, band mismatch",
+        "waveform / difference signal analysis --- ## Streaming & Media Ecosystem",
+        "Adobe Audition – detailed spectral + time-frequency inspection",
+        "MediaInfo – stream and codec metadata inspection",
+        "Actively expanding into AI-enhanced media and DSP workflows:",
+        "DSP–AI hybrid thinking for audio enhancement and analysis",
+        "Treating AI as a layer on top of a strong DSP / media foundation",
+        "This is personal innovation and learning, not past employer work, and is focused on where     media and audio technologies are heading rather than rebranding past roles."
+      ],
+      "real_time": []
+    }
   }
 ]
