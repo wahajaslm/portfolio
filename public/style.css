@@ -1509,6 +1509,12 @@ footer {
 /* Removed filter: invert to prevent Shiki theme clash */
 /* [data-theme="light"] .detail-article pre { filter: invert(1) hue-rotate(180deg); } */
 
+/* Force Shiki to use our theme variables */
+.astro-code {
+    background-color: var(--card-bg) !important;
+    color: var(--text-main) !important;
+}
+
 .details-meta {
     color: var(--text-muted);
     font-family: var(--font-display);
