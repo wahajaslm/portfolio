@@ -146,21 +146,21 @@ declare module 'astro:content' {
   slug: "fraunhofer";
   body: string;
   collection: "experience";
-  data: any
+  data: InferEntrySchema<"experience">
 } & { render(): Render[".md"] };
 "tu_darmstadt/index.md": {
 	id: "tu_darmstadt/index.md";
   slug: "tu_darmstadt";
   body: string;
   collection: "experience";
-  data: any
+  data: InferEntrySchema<"experience">
 } & { render(): Render[".md"] };
 "u_blox/index.md": {
 	id: "u_blox/index.md";
   slug: "u_blox";
   body: string;
   collection: "experience";
-  data: any
+  data: InferEntrySchema<"experience">
 } & { render(): Render[".md"] };
 };
 "profile": {
@@ -169,7 +169,7 @@ declare module 'astro:content' {
   slug: "profile";
   body: string;
   collection: "profile";
-  data: any
+  data: InferEntrySchema<"profile">
 } & { render(): Render[".md"] };
 };
 "projects": {
@@ -178,84 +178,84 @@ declare module 'astro:content' {
   slug: "arp_spoof_detector";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "beatnik-osc-glove/index.md": {
 	id: "beatnik-osc-glove/index.md";
   slug: "beatnik-osc-glove";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "dtmf_detector/index.md": {
 	id: "dtmf_detector/index.md";
   slug: "dtmf_detector";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "laser-harp/index.md": {
 	id: "laser-harp/index.md";
   slug: "laser-harp";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "massive_mimo_seminar/index.md": {
 	id: "massive_mimo_seminar/index.md";
   slug: "massive_mimo_seminar";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "multihop_wireless_warp_prototyping/index.md": {
 	id: "multihop_wireless_warp_prototyping/index.md";
   slug: "multihop_wireless_warp_prototyping";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "my-live-portfolio/index.md": {
 	id: "my-live-portfolio/index.md";
   slug: "my-live-portfolio";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "parallel-av-encoding-framework/index.md": {
 	id: "parallel-av-encoding-framework/index.md";
   slug: "parallel-av-encoding-framework";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "parking_management_system/index.md": {
 	id: "parking_management_system/index.md";
   slug: "parking_management_system";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "post-processing-separated-speech/index.md": {
 	id: "post-processing-separated-speech/index.md";
   slug: "post-processing-separated-speech";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "traffic_signal_controller/index.md": {
 	id: "traffic_signal_controller/index.md";
   slug: "traffic_signal_controller";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 "vidi/index.md": {
 	id: "vidi/index.md";
   slug: "vidi";
   body: string;
   collection: "projects";
-  data: any
+  data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 };
 "skills": {
@@ -264,7 +264,7 @@ declare module 'astro:content' {
   slug: "skills_master";
   body: string;
   collection: "skills";
-  data: any
+  data: InferEntrySchema<"skills">
 } & { render(): Render[".md"] };
 };
 
@@ -276,5 +276,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

@@ -1,91 +1,167 @@
 <!DOCTYPE html><html lang="en" data-theme="light"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>My Live Portfolio — VHS</title><link rel="stylesheet" href="/portfolio/style.css"><script type="module">document.addEventListener("DOMContentLoaded",()=>{const t=document.getElementById("detailToc"),c=document.getElementById("detailContent");function a(){if(!t||!c)return;t.innerHTML="";const i=c.querySelectorAll("h2, h3, h4, h5");if(!i.length)return;const n=document.createElement("ul");n.className="toc-list",i.forEach(e=>{const d=e.id||e.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g,"-");e.id||(e.id=d||"section");const o=document.createElement("li");o.className="toc-item level-"+e.tagName.toLowerCase();const l=document.createElement("a");l.href="#"+e.id,l.textContent=e.textContent.trim(),o.appendChild(l),n.appendChild(o)}),t.innerHTML='<span class="toc-label">Contents</span>',t.appendChild(n)}a()});
-</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link">HOME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/resume/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <div style="display: flex; gap: 1rem; align-items: center;"> <a href="/portfolio/Wahaj_Aslam_CV.pdf" download class="btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" aria-label="Download CV PDF">DOWNLOAD CV</a> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </div> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">My Live Portfolio — VHS</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Personal System // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">portfolio</span><span class="detail-tag">web_design</span><span class="detail-tag">javascript</span><span class="detail-tag">css</span><span class="detail-tag">html</span><span class="detail-tag">accessibility</span><span class="detail-tag">writing</span><span class="detail-tag">branding</span><span class="detail-tag">ai</span><span class="detail-tag">storytelling</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <p>⸻</p>
-<p>🎞 My Live Portfolio</p>
-<p>Why I Turned My Career Into a Living System Instead of a PDF</p>
-<p>⸻</p>
-<p>VHS INTRO</p>
-<p>This tape contains the story behind one of my most personal projects: My Live Portfolio.
-It’s not a technical breakdown. It’s the “why” — the honest, slightly funny journey that started when I realised my CV no longer matched the person I’ve actually become.</p>
-<p>Press play to enter the archives of my own professional confusion and rediscovery.</p>
-<p>⸻</p>
-<p>My Live Portfolio — The Article (Polished Version)</p>
-<p>I didn’t create this project because I needed another fancy section on a website.
-I created it because, after years of working, I discovered something mildly disturbing:</p>
-<p>My CV had become a stranger.</p>
-<p>The titles were correct.
-The job descriptions were accurate.
-The bullet points looked well-behaved.</p>
-<p>But the real substance of my work — the problems I solved, the systems I built, the mistakes I learned from, the ideas that actually shaped me — none of that existed on paper. Everything felt flattened and dehydrated. My career looked like an over-compressed audio file: recognisable, but missing all the richness.</p>
-<p>The strangest part wasn’t that others couldn’t see it.
-The strangest part was that I had forgotten half of it too.</p>
-<p>⸻</p>
-<h2 id="when-a-pdf-stops-being-enough">When a PDF stops being enough</h2>
-<p>It hit me when I tried to “properly update” my CV.
-Scrolling through old sections, I realised I had to think hard just to remember certain projects I once worked on daily. Technical decisions I made confidently back then were now blurry details buried under years of new responsibilities.</p>
-<p>That’s when it clicked:
-A CV is not a portrait.
-It’s a passport photo — flat, tiny, and only vaguely similar to the real person.</p>
-<p>I didn’t want to be represented by something that forgettable.</p>
-<p>⸻</p>
-<h2 id="excavating-my-own-past">Excavating my own past</h2>
-<p>Before anything became a project, it became an excavation.</p>
-<p>I opened old internship reports, thesis documents, job folders, research notes, side projects, random screenshots, and files with suspicious names like “final_v3_realfinal_OK.pdf”. Some of it made me laugh. Some of it made me nostalgic. Some of it made me wonder how I ever did those things and then just… moved on.</p>
-<p>But the more I organised, the more overwhelming it became.
-A mountain of content is still a mountain.</p>
-<p>If I tried to dump all of it onto a webpage, no one would read it.
-Not even me.</p>
-<p>Organisation alone wasn’t enough.
-I needed something that could make sense of it.</p>
-<p>⸻</p>
-<h2 id="what-if-my-career-could-actually-respond">What if my career could actually respond?</h2>
-<p>This was the moment the idea sharpened.</p>
-<p>Instead of juggling 15 versions of a CV or writing summaries for every purpose, I wondered:</p>
-<p>What if my portfolio could adapt?
-What if it could answer different questions?
-What if it could tell different stories based on what someone needs to know?</p>
-<p>What if it could link past work to future goals, without me manually rewriting everything?</p>
-<p>Basically:
-What if my career could talk back?</p>
-<p>That’s how the idea of a Live Portfolio came to life — a system that doesn’t display my work, but understands it.</p>
-<p>⸻</p>
-<h2 id="the-honest-human-motivation">The honest human motivation</h2>
-<p>Let’s be direct.
-Part of this project is absolutely me refusing to let anyone judge my entire engineering life in eight seconds of CV scanning.</p>
-<p>The other part is personal: I don’t want to forget who I became through all these years. Skills fade when they aren’t revisited. Memories blur. Achievements shrink when squeezed between bullet point formatting.</p>
-<p>I realised I needed something alive — something that grows with me, remembers for me, and helps me articulate my own capabilities with clarity, not guesswork.</p>
-<p>⸻</p>
-<h2 id="then-the-engineer-in-me-took-over">Then the engineer in me took over</h2>
-<p>Emotions got me started, but systems thinking finished the idea.</p>
-<p>I began treating my career like an engineering problem:
-•	Raw data: documents, projects, roles, timelines
-•	Structure: skills, tags, technologies, responsibilities
-•	Meaning: what these experiences actually say about me
-•	Outputs: narratives for specific situations
-•	Interface: simple, natural, adaptable</p>
-<p>It’s basically an encoder for my professional identity:</p>
-<p>Input → messy but meaningful journey
-Output → tailored, coherent, human explanations</p>
-<p>This felt more “me” than any CV I had ever written.</p>
-<p>⸻</p>
-<h2 id="what-my-live-portfolio-really-is">What My Live Portfolio really is</h2>
-<p>It is:
-•	A rebellion against being reduced to two pages
-•	A system that keeps my work alive instead of archived
-•	A tool that helps me understand myself as much as others understand me
-•	A way to tell richer stories without overwhelming people
-•	A personal reminder of everything I’ve built and learned
-•	A project that grows as I continue evolving</p>
-<p>But most of all, it’s an honest attempt to represent myself properly — not as a static document, but as an ongoing story.</p>
-<p>⸻</p>
-<p>VHS OUTRO</p>
-<p>Tape ends here.
-The emotional journey is complete.</p>
-<p>If you’re curious about the technical machinery behind My Live Portfolio — the data models, the structure, the AI logic — that’s on a separate tape in the archive.
-This one was never about the system. It was about the person building it.</p>
-<p>⸻</p>
-<p>Back-Cover Summary</p>
-<p>A reflective and slightly humorous story about why I built My Live Portfolio. After years of work compressed into a lifeless CV, I went back through my past, rediscovered forgotten projects, and realised I needed a living system that understands and expresses my career in a way a PDF never could. This article is the story behind that decision.</p>
-<p>⸻</p> </div> </div> </div>   </main> <script>
+</script></head> <body class="projects-page article-page"> <header class="top-header"> <div class="ribbon-nav"> <a href="/portfolio" class="ribbon-link">HOME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/resume/" class="ribbon-link ">RESUME</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/projects/" class="ribbon-link active">PROJECTS</a> <span style="color:var(--card-border)">|</span> <a href="/portfolio/mygpt/" class="ribbon-link ">GPT</a> </div> <div style="display: flex; gap: 1rem; align-items: center;"> <a href="/portfolio/Wahaj_Aslam_CV.pdf" download class="btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" aria-label="Download CV PDF">DOWNLOAD CV</a> <button class="theme-switch" id="themeToggle" aria-label="Toggle theme">THEME</button> </div> </header> <main>  <div class="details-section"> <div class="details-meta"> <a href="/portfolio/projects/" class="detail-link" style="margin-bottom: 2rem;">← Back to Projects</a> <span class="label">PROJECT</span> <h2 style="font-size: 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">My Live Portfolio — VHS</h2> <p class="detail-year" style="margin-bottom: 0.5rem; color: var(--text-muted); font-family: var(--font-display); font-size: 0.9rem;"> Personal System // Project Archive </p> <p class="detail-summary" style="margin-bottom: 1rem;"> A living tape about why I turned my career into an adaptive portfolio instead of a flat PDF—humorous, reflective, and stubbornly alive. </p> <div class="detail-tags" style="margin-bottom:1rem;"> <span class="detail-tag">portfolio</span><span class="detail-tag">web_design</span><span class="detail-tag">javascript</span><span class="detail-tag">css</span><span class="detail-tag">html</span><span class="detail-tag">accessibility</span><span class="detail-tag">writing</span><span class="detail-tag">branding</span><span class="detail-tag">ai</span><span class="detail-tag">storytelling</span> </div> <div id="detailToc" class="detail-toc"></div> </div> <div class="details-body"> <div id="detailContent" class="detail-article"> <p>I didn’t create this project because I was looking for another section to add to my website. I created it because I discovered something mildly disturbing after years of working.</p>
+<p><strong>My CV had become a stranger.</strong></p>
+<p>The titles were correct and the job descriptions were technically accurate, but the real substance of my work was completely missing. The problems I solved, the systems I built, and the mistakes I learned from didn’t exist on paper. Everything felt flattened and dehydrated. My career looked like an over-compressed audio file that was recognizable but missing all the richness. The strangest part wasn’t that others couldn’t see the real work I had done. The strangest part was that I had started to forget half of it myself.</p>
+<p>It hit me when I tried to update my CV properly. Scrolling through old sections, I realized I had to think hard just to remember certain projects I once worked on daily. Technical decisions I made confidently back then were now blurry details buried under years of new responsibilities. That’s when it clicked.</p>
+<p><strong>A CV is not a portrait. It is a passport photo.</strong></p>
+<p>It is flat, tiny, and only vaguely similar to the real person. I decided I didn’t want to be represented by something that forgettable.</p>
+<p>Before anything became a project, it became an excavation. I opened old internship reports, thesis documents, job folders, research notes, side projects, and random screenshots. I even found files with suspicious names like <code>final_v3_realfinal_OK.pdf</code>. Some of it made me laugh, some of it made me nostalgic. But the more I organized, the more overwhelming it became because a mountain of content is still a mountain. If I tried to dump all of it onto a webpage, I knew no one would read it—not even me. Organization alone wasn’t enough. I needed something that could make sense of it all.</p>
+<p>This was the moment the idea sharpened. Instead of juggling fifteen versions of a CV or writing summaries for every purpose, I wondered if my portfolio could adapt. I wanted to know if it could answer different questions or tell different stories based on what someone needs to know.</p>
+<p><strong>What if my career could talk back?</strong></p>
+<p>That is how the idea of a Live Portfolio came to life. It is a system that doesn’t just display my work, but actually understands it. Emotions got me started, but systems thinking finished the idea. I began treating my career like an engineering problem. I took all the raw data of documents and timelines, structured them by skills and responsibilities, and looked for the meaning in what those experiences actually say about me. It became an encoder for my professional identity: taking the messy but meaningful journey as input, and outputting tailored, coherent human explanations.</p>
+<p>This felt more like me than any CV I had ever written. Part of this project is absolutely me refusing to let anyone judge my entire engineering life in the eight seconds they spend scanning a CV. But the other part is personal. I realized I needed something alive that grows with me. It is a rebellion against being reduced to two pages, a system that keeps my work alive instead of archived, and a tool that helps me understand myself as much as others understand me. Most of all, it’s an honest attempt to represent myself properly—not as a static document, but as an ongoing story.</p>
+<hr>
+<h2 id="turning-a-portfolio-into-a-queryable-system">Turning a Portfolio Into a Queryable System</h2>
+<p>Designing a Deterministic RAG Assistant on Cloudflare Workers</p>
+<p>Most technical portfolios are static descriptions of work. They contain useful information, but the structure is optimized for reading, not for answering questions.</p>
+<p>A recruiter may want to know whether someone has worked on real-time audio systems, which programming languages they use daily, or what kind of constraints they have operated under. The answers are often present, but spread across different pages and written for narrative flow rather than direct retrieval.</p>
+<p>This project explores a different approach: treating a portfolio as a small, well-defined dataset that can be queried directly. The goal was not to build a chatbot in the usual sense, but a constrained question–answering system that only responds using verifiable information from the portfolio itself.</p>
+<hr>
+<h3 id="1-why-a-generic-chatbot-was-not-sufficient">1. Why a generic chatbot was not sufficient</h3>
+<p>The most obvious way to add AI to a portfolio is to attach a chat interface and send user questions to a large language model. This approach breaks down quickly.</p>
+<p>Language models tend to generalize, fill gaps, and smooth over missing details. That behavior is useful in many applications, but it is a poor fit for a portfolio, where precision matters more than fluency.</p>
+<p>From the beginning, one constraint guided the design:</p>
+<p>Every answer must be grounded in existing portfolio content, and the system must explicitly say when the information is not available.</p>
+<p>This immediately pushed the design toward a retrieval-augmented generation setup, but with tighter controls than most RAG examples.</p>
+<hr>
+<h3 id="2-treating-the-portfolio-as-data">2. Treating the portfolio as data</h3>
+<p>The portfolio already existed as Markdown files used by a static site generator. These files were written for human readers and contained headers, lists, formatting, and narrative sections.</p>
+<p>Instead of letting the AI interpret rendered pages, the first step was to create a dedicated export pipeline that converts all portfolio content into a structured JSON file. This file becomes the single source of truth for the assistant.</p>
+<p>Each Markdown file is parsed and converted into an object containing metadata, raw text, and a set of smaller semantic chunks.</p>
+<p>A simplified version of the export logic looks like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> files</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getAllFiles</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">CONTENT_DIR</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> files.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">file</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> raw</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">readFileSync</span><span style="color:#E1E4E8">(file, </span><span style="color:#9ECBFF">'utf8'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">frontmatter</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">content</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> matter</span><span style="color:#E1E4E8">(raw);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    id: file,</span></span>
+<span class="line"><span style="color:#E1E4E8">    collection: </span><span style="color:#B392F0">detectCollection</span><span style="color:#E1E4E8">(file),</span></span>
+<span class="line"><span style="color:#E1E4E8">    slug: </span><span style="color:#B392F0">detectSlug</span><span style="color:#E1E4E8">(file),</span></span>
+<span class="line"><span style="color:#E1E4E8">    data: frontmatter,</span></span>
+<span class="line"><span style="color:#E1E4E8">    content,</span></span>
+<span class="line"><span style="color:#E1E4E8">    chunks: </span><span style="color:#B392F0">extractChunks</span><span style="color:#E1E4E8">(content)</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>The important point is that this step is deterministic. There is no AI involved. The same Markdown input always produces the same JSON output.</p>
+<hr>
+<h3 id="3-semantic-chunking-instead-of-arbitrary-splitting">3. Semantic chunking instead of arbitrary splitting</h3>
+<p>Many RAG systems split text by character count or token length. That approach works for large documents, but portfolios are small and intent-driven.</p>
+<p>Here, chunking is semantic and explicit. Each chunk represents one idea and is labeled with a type, such as:
+•	skills.languages
+•	experience.audio_dsp
+•	projects.real_time
+•	experience.constraints</p>
+<p>Chunk extraction is based on headers and known section names rather than token limits.</p>
+<p>For example, in the export script:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (collection </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'skills'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.languages'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">Languages</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.tools'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">Tools</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.domains'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">DSP &#x26; Audio</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>These labels later allow the retrieval layer to treat skills, experience, and projects differently without relying on probabilistic inference.</p>
+<p>At this stage, most of the intelligence is already encoded in the data preparation step. The model is intentionally kept simple.</p>
+<hr>
+<h3 id="4-a-deterministic-baseline-before-embeddings">4. A deterministic baseline before embeddings</h3>
+<p>Before introducing embeddings, a keyword-based retrieval layer was implemented as a baseline.</p>
+<p>Incoming questions were matched against chunk text and metadata. Some information, such as skills and profile summaries, was always included. Experience and project chunks were ranked by relevance.</p>
+<p>This logic ran directly inside the Cloudflare Worker:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> scoreChunk</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">question</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">tags</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> []) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> qWords</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> question.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#79B8FF">\s</span><span style="color:#F97583">+</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chunk.text.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> tagText</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> tags.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">" "</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> qWords.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">    w</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(w) </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> tagText.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(w)</span></span>
+<span class="line"><span style="color:#E1E4E8">  ).</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>This approach was predictable and safe, but insufficient for questions that relied on meaning rather than exact wording.</p>
+<hr>
+<h3 id="5-adding-embeddings-with-strict-boundaries">5. Adding embeddings with strict boundaries</h3>
+<p>Embeddings were introduced to improve retrieval quality, not to loosen control.</p>
+<p>Each semantic chunk is converted into an embedding and stored in a Cloudflare Vectorize index. Metadata such as chunk type and source document is preserved alongside the vector.</p>
+<p>Index creation is handled once during setup:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">wrangler</span><span style="color:#9ECBFF"> vectorize</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> portfolio_chunks</span><span style="color:#79B8FF"> --dimensions=768</span></span>
+<span class="line"></span></code></pre>
+<p>Chunk ingestion happens offline or during a controlled update process, not at runtime.</p>
+<p>At query time, the worker performs semantic search:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> embedding</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> env.</span><span style="color:#79B8FF">AI</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">run</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">  "@cf/baai/bge-base-en-v1.5"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  { text: question }</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> env.</span><span style="color:#79B8FF">VECTOR_INDEX</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">query</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  embedding.data[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  { topK: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span></code></pre>
+<p>The result is a ranked list of chunks, each of which still corresponds to a specific, authored piece of text.</p>
+<hr>
+<h3 id="6-overall-system-architecture">6. Overall system architecture</h3>
+<p>Once all pieces are in place, the architecture is straightforward:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Static HTML / JS site (GitHub Pages)</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        | POST question</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Cloudflare Worker</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        | vector search</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Vectorize index (semantic chunks)</span></span>
+<span class="line"><span>        |</span></span>
+<span class="line"><span>        | selected context</span></span>
+<span class="line"><span>        v</span></span>
+<span class="line"><span>Language model (answer generation)</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>The static site never talks to the model directly. All logic is centralized in the worker, which keeps the system auditable and versioned.</p>
+<hr>
+<h3 id="7-controlled-answer-generation">7. Controlled answer generation</h3>
+<p>The model is used only after retrieval, and only to turn retrieved evidence into a readable answer.</p>
+<p>The system prompt is intentionally strict:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  role</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"system"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  content</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#9ECBFF">    "You are a portfolio assistant for recruiters and hiring managers. "</span><span style="color:#F97583"> +</span></span>
+<span class="line"><span style="color:#9ECBFF">    "Answer only using the provided context. "</span><span style="color:#F97583"> +</span></span>
+<span class="line"><span style="color:#9ECBFF">    "Do not generalize or infer beyond the text. "</span><span style="color:#F97583"> +</span></span>
+<span class="line"><span style="color:#9ECBFF">    "Use explicit terms and concrete examples."</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>If the retrieved context does not contain the answer, the model is expected to say so.</p>
+<p>This constraint prevents hallucinated seniority, inflated scope, or inferred responsibilities.</p>
+<hr>
+<h3 id="8-example-queries-and-behavior">8. Example queries and behavior</h3>
+<p>A question such as:</p>
+<p><strong>What audio and DSP experience does Wahaj have and which languages does he know?</strong></p>
+<p>produces an answer assembled from multiple chunk types:
+•	experience.audio_dsp
+•	projects.real_time
+•	skills.languages</p>
+<p>The response is concise, grounded, and traceable to specific portfolio sections.</p>
+<p>By contrast, a question like:</p>
+<p><strong>How long did he work at Fraunhofer?</strong></p>
+<p>correctly returns that the information is not present, exposing a documentation gap rather than guessing.</p>
+<hr>
+<h3 id="9-refactoring-this-into-a-reusable-rag-template">9. Refactoring this into a reusable RAG template</h3>
+<p>Although this system was built for a personal portfolio, the design generalizes cleanly.</p>
+<p>A reusable template consists of four layers:</p>
+<p><strong>Content preparation</strong>
+Markdown or text files are parsed, normalized, and chunked semantically.</p>
+<p><strong>Indexing</strong>
+Each chunk becomes one embedding with preserved metadata.</p>
+<p><strong>Retrieval</strong>
+Semantic search selects evidence deterministically with hard limits.</p>
+<p><strong>Generation</strong>
+A constrained prompt produces readable answers without inference.</p>
+<p>This template works particularly well for small, high-signal datasets where correctness matters more than creativity.</p>
+<hr>
+<h3 id="closing-remarks">Closing remarks</h3>
+<p>This project treats AI as an interface layer, not an authority. The system does not decide what is true. It only retrieves and presents what has already been written.</p>
+<p>By structuring the data carefully and keeping generation constrained, it becomes possible to ask precise questions and receive reliable answers from a static portfolio.</p> </div> </div> </div>   </main> <script>
       const html = document.documentElement;
       const themes = ['light', 'dark'];
       (function initTheme() {
