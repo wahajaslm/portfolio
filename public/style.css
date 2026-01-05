@@ -1506,9 +1506,8 @@ footer {
     line-height: 1.6;
 }
 
-[data-theme="light"] .detail-article pre {
-    filter: invert(1) hue-rotate(180deg);
-}
+/* Removed filter: invert to prevent Shiki theme clash */
+/* [data-theme="light"] .detail-article pre { filter: invert(1) hue-rotate(180deg); } */
 
 .details-meta {
     color: var(--text-muted);
@@ -1596,14 +1595,10 @@ footer {
     margin-top: 2rem;
     margin-bottom: 1rem;
     color: var(--text-main);
-    counter-increment: subsection;
+    /* Removed counter-increment */
 }
 
-.detail-article h3::before {
-    content: counter(section) "." counter(subsection) " ";
-    color: var(--accent);
-    margin-right: 0.5rem;
-}
+/* Removed h3::before counter */
 
 .detail-article h4 {
     font-size: 1.25rem;
@@ -1930,7 +1925,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    counter-reset: toc-section;
+    /* Removed counter-reset */
 }
 
 .detail-toc .toc-item a {
@@ -1946,29 +1941,19 @@ footer {
 }
 
 .detail-toc .toc-item.level-h2 {
-    counter-reset: toc-subsection;
-    counter-increment: toc-section;
+    /* Removed counter-reset & counter-increment */
 }
 
-.detail-toc .toc-item.level-h2 a::before {
-    content: counter(toc-section) ". ";
-    color: var(--text-muted);
-    margin-right: 0.4rem;
-}
+/* Removed toc-item.level-h2 a::before counter */
 
 .detail-toc .toc-item.level-h3 {
     padding-left: 0.5rem;
     font-size: 0.9rem;
     color: var(--text-muted);
-    counter-increment: toc-subsection;
+    /* Removed counter-increment */
 }
 
-.detail-toc .toc-item.level-h3 a::before {
-    content: counter(toc-section) "." counter(toc-subsection) " ";
-    color: var(--text-muted);
-    margin-right: 0.4rem;
-    font-size: 0.8em;
-}
+/* Removed toc-item.level-h3 a::before counter */
 
 .detail-toc .toc-item.level-h4 {
     padding-left: 0.75rem;
