@@ -32,7 +32,7 @@ in real time.</p>
 <li>run efficiently on typical local networks</li>
 </ul>
 <h2 id="system-architecture">System Architecture</h2>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Network Traffic → Packet Sniffer → ARP Analyzer → MAC Verification → Alert System</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Network Traffic → Packet Sniffer → ARP Analyzer → MAC Verification → Alert System</span></span>
 <span class="line"><span></span></span></code></pre>
 <h3 id="components">Components</h3>
 <ol>
@@ -69,21 +69,21 @@ in real time.</p>
 <h2 id="implementation-details">Implementation Details</h2>
 <h3 id="packet-sniffing">Packet Sniffing</h3>
 <p>Using Scapy:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> scapy.all </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> sniff, </span><span style="color:#79B8FF">ARP</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">from</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> scapy.all </span><span style="color:#D73A49;--shiki-dark:#F97583">import</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> sniff, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">ARP</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> sniff_packets</span><span style="color:#E1E4E8">():</span></span>
-<span class="line"><span style="color:#E1E4E8">    sniff(</span><span style="color:#FFAB70">store</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">prn</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">analyze_packet, </span><span style="color:#FFAB70">filter</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"arp"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> sniff_packets</span><span style="color:#24292E;--shiki-dark:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    sniff(</span><span style="color:#E36209;--shiki-dark:#FFAB70">store</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#005CC5;--shiki-dark:#79B8FF">False</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">prn</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8">analyze_packet, </span><span style="color:#E36209;--shiki-dark:#FFAB70">filter</span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"arp"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"></span></code></pre>
 <h3 id="arp-analysis-logic">ARP Analysis Logic</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> analyze_packet</span><span style="color:#E1E4E8">(pkt):</span></span>
-<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> pkt.haslayer(</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].op </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">:  </span><span style="color:#6A737D"># ARP Reply</span></span>
-<span class="line"><span style="color:#E1E4E8">        ip </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].psrc</span></span>
-<span class="line"><span style="color:#E1E4E8">        mac </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pkt[</span><span style="color:#79B8FF">ARP</span><span style="color:#E1E4E8">].hwsrc</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> analyze_packet</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(pkt):</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> pkt.haslayer(</span><span style="color:#005CC5;--shiki-dark:#79B8FF">ARP</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) </span><span style="color:#D73A49;--shiki-dark:#F97583">and</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> pkt[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">ARP</span><span style="color:#24292E;--shiki-dark:#E1E4E8">].op </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 2</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:  </span><span style="color:#6A737D;--shiki-dark:#6A737D"># ARP Reply</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">        ip </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> pkt[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">ARP</span><span style="color:#24292E;--shiki-dark:#E1E4E8">].psrc</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">        mac </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> pkt[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">ARP</span><span style="color:#24292E;--shiki-dark:#E1E4E8">].hwsrc</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> ip </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> ip_mac_table </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> ip_mac_table[ip] </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> mac:</span></span>
-<span class="line"><span style="color:#E1E4E8">            alert(ip, ip_mac_table[ip], mac)</span></span>
-<span class="line"><span style="color:#F97583">        else</span><span style="color:#E1E4E8">:</span></span>
-<span class="line"><span style="color:#E1E4E8">            ip_mac_table[ip] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> mac</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> ip </span><span style="color:#D73A49;--shiki-dark:#F97583">in</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> ip_mac_table </span><span style="color:#D73A49;--shiki-dark:#F97583">and</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> ip_mac_table[ip] </span><span style="color:#D73A49;--shiki-dark:#F97583">!=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> mac:</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            alert(ip, ip_mac_table[ip], mac)</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        else</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            ip_mac_table[ip] </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> mac</span></span>
 <span class="line"></span></code></pre>
 <h3 id="spoof-detection-conditions">Spoof Detection Conditions</h3>
 <ul>
@@ -92,11 +92,11 @@ in real time.</p>
 <li><strong>Condition C:</strong> MAC address appears on sudden multiple IPs</li>
 </ul>
 <h3 id="alert-function">Alert Function</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> alert</span><span style="color:#E1E4E8">(ip, original_mac, spoofed_mac):</span></span>
-<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"[!] Possible ARP Spoof Detected:"</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    IP Address: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">ip</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    Original MAC: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">original_mac</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#79B8FF">    print</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"    Detected MAC: </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">spoofed_mac</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">def</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> alert</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(ip, original_mac, spoofed_mac):</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    print</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">f</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"[!] Possible ARP Spoof Detected:"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    print</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">f</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"    IP Address: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">{</span><span style="color:#24292E;--shiki-dark:#E1E4E8">ip</span><span style="color:#005CC5;--shiki-dark:#79B8FF">}</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    print</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">f</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"    Original MAC: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">{</span><span style="color:#24292E;--shiki-dark:#E1E4E8">original_mac</span><span style="color:#005CC5;--shiki-dark:#79B8FF">}</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">    print</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#D73A49;--shiki-dark:#F97583">f</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"    Detected MAC: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">{</span><span style="color:#24292E;--shiki-dark:#E1E4E8">spoofed_mac</span><span style="color:#005CC5;--shiki-dark:#79B8FF">}</span><span style="color:#032F62;--shiki-dark:#9ECBFF">"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">)</span></span>
 <span class="line"></span></code></pre>
 <h3 id="performance-considerations">Performance Considerations</h3>
 <ul>
@@ -142,7 +142,7 @@ helped in debugging complex system interactions across networking, DSP, and embe
 <h2 id="system-overview">System Overview</h2>
 <p>The Beatnik system acts as a translation layer between physical gesture and digital sound synthesis. Unlike discrete controllers (keyboards, buttons), it provides continuous multi-dimensional control data.</p>
 <h3 id="architecture-block-diagram">Architecture Block Diagram:</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Flex Sensors] -> [Voltage Divider/Filter] -> [ADC (LPC1768)]</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Flex Sensors] -> [Voltage Divider/Filter] -> [ADC (LPC1768)]</span></span>
 <span class="line"><span>                                                  | (DMA Transfer)</span></span>
 <span class="line"><span>                                            [Memory Buffer]</span></span>
 <span class="line"><span>                                                  |</span></span>
@@ -170,13 +170,13 @@ helped in debugging complex system interactions across networking, DSP, and embe
 <p>The firmware is developed in C++ on the mbed platform (ARM Cortex-M3). A critical design constraint was keeping the main execution loop non-blocking to maintain network throughput.</p>
 <h3 id="dma-driven-acquisition">DMA-Driven Acquisition</h3>
 <p>Standard ADC polling introduces CPU overhead and timing jitter. This implementation utilizes the LPC1768’s <strong>GPDMA (General Purpose Direct Memory Access)</strong> controller. The ADC is configured in “Burst Mode,” continuously sampling the sensor channels and writing results directly to a circular memory buffer. This decouples sampling from processing.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// ADC Burst Mode Configuration with DMA</span></span>
-<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> setup_dma</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#E1E4E8">    dma.</span><span style="color:#B392F0">Setup</span><span style="color:#E1E4E8">( conf ); </span></span>
-<span class="line"><span style="color:#E1E4E8">    dma.</span><span style="color:#B392F0">Enable</span><span style="color:#E1E4E8">( conf );</span></span>
-<span class="line"><span style="color:#E1E4E8">    LPC_ADC->ADCR </span><span style="color:#F97583">|=</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">1</span><span style="color:#F97583">UL</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // Enable Burst Mode</span></span>
-<span class="line"><span style="color:#6A737D">    // The hardware now manages sampling independently of the CPU</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// ADC Burst Mode Configuration with DMA</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">void</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> setup_dma</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    dma.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">Setup</span><span style="color:#24292E;--shiki-dark:#E1E4E8">( conf ); </span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    dma.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">Enable</span><span style="color:#24292E;--shiki-dark:#E1E4E8">( conf );</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    LPC_ADC->ADCR </span><span style="color:#D73A49;--shiki-dark:#F97583">|=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#005CC5;--shiki-dark:#79B8FF">1</span><span style="color:#D73A49;--shiki-dark:#F97583">UL</span><span style="color:#D73A49;--shiki-dark:#F97583"> &#x3C;&#x3C;</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 16</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // Enable Burst Mode</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // The hardware now manages sampling independently of the CPU</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="digital-filtering">Digital Filtering</h3>
 <p>To further stabilize the signal without introducing perceptible lag, a two-stage software filter is applied:</p>
@@ -193,7 +193,7 @@ helped in debugging complex system interactions across networking, DSP, and embe
 <li><strong>OSC Resolution:</strong> 32-bit Float. Eliminates “zipper noise” (audible stepping artifacts) during slow sweeps.</li>
 </ul>
 <h3 id="namespace-structure">Namespace Structure</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/beatnik/finger/[id]  &#x3C;float> (0.0 - 1.0)</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/beatnik/finger/[id]  &#x3C;float> (0.0 - 1.0)</span></span>
 <span class="line"><span>/beatnik/imu/pitch    &#x3C;float> (-1.0 - 1.0)</span></span>
 <span class="line"><span>/beatnik/imu/roll     &#x3C;float> (-1.0 - 1.0)</span></span>
 <span class="line"><span></span></span></code></pre>
@@ -277,7 +277,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <h4 id="osc-mode">OSC Mode</h4>
 <ul>
 <li>OSC messages for:
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/laserharp/string1</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/laserharp/string1</span></span>
 <span class="line"><span>/laserharp/string2</span></span>
 <span class="line"><span>/laserharp/string3</span></span>
 <span class="line"><span></span></span></code></pre>
@@ -297,15 +297,15 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 </ul>
 <h3 id="embedded-logic-c">Embedded Logic (C)</h3>
 <p>The core loop ran at a stable frequency:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (sensor_value </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> INTACT) {</span></span>
-<span class="line"><span style="color:#B392F0">    trigger_note</span><span style="color:#E1E4E8">(string_id);</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> BROKEN;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (sensor_value </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> INTACT) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    trigger_note</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(string_id);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> BROKEN;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (sensor_value </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> BROKEN) {</span></span>
-<span class="line"><span style="color:#B392F0">    release_note</span><span style="color:#E1E4E8">(string_id);</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> INTACT;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (sensor_value </span><span style="color:#D73A49;--shiki-dark:#F97583">></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> BROKEN) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    release_note</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(string_id);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> INTACT;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>Additional logic:</p>
 <ul>
@@ -316,7 +316,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 <h3 id="midi-note-mapping">MIDI Note Mapping</h3>
 <p>Two options:</p>
 <h4 id="fixed-scale">Fixed Scale</h4>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Beam 1 → MIDI 60 (C4)</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Beam 1 → MIDI 60 (C4)</span></span>
 <span class="line"><span>Beam 2 → MIDI 62 (D4)</span></span>
 <span class="line"><span>Beam 3 → MIDI 64 (E4)</span></span>
 <span class="line"><span></span></span></code></pre>
@@ -329,7 +329,7 @@ The goal here was to design a <strong>touchless</strong>, visually striking inst
 </ul>
 <h3 id="osc-mapping">OSC Mapping</h3>
 <p>Example:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/harp/beam1 1   → beam broken</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/harp/beam1 1   → beam broken</span></span>
 <span class="line"><span>/harp/beam1 0   → beam restored</span></span>
 <span class="line"><span></span></span></code></pre>
 <h2 id="results">Results</h2>
@@ -611,21 +611,21 @@ analysis in DSP and audio engineering.</p>
 <p>Instead of letting the AI interpret rendered pages, the first step was to create a dedicated export pipeline that converts all portfolio content into a structured JSON file. This file becomes the single source of truth for the assistant.</p>
 <p>Each Markdown file is parsed and converted into an object containing metadata, raw text, and a set of smaller semantic chunks.</p>
 <p>A simplified version of the export logic looks like this:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> files</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getAllFiles</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">CONTENT_DIR</span><span style="color:#E1E4E8">);</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> files</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> getAllFiles</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#005CC5;--shiki-dark:#79B8FF">CONTENT_DIR</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> files.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">file</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> raw</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">readFileSync</span><span style="color:#E1E4E8">(file, </span><span style="color:#9ECBFF">'utf8'</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">frontmatter</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">content</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> matter</span><span style="color:#E1E4E8">(raw);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> data</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> files.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">map</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#E36209;--shiki-dark:#FFAB70">file</span><span style="color:#D73A49;--shiki-dark:#F97583"> =></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> raw</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> fs.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">readFileSync</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file, </span><span style="color:#032F62;--shiki-dark:#9ECBFF">'utf8'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> { </span><span style="color:#E36209;--shiki-dark:#FFAB70">data</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">frontmatter</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">content</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> } </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> matter</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(raw);</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#E1E4E8">    id: file,</span></span>
-<span class="line"><span style="color:#E1E4E8">    collection: </span><span style="color:#B392F0">detectCollection</span><span style="color:#E1E4E8">(file),</span></span>
-<span class="line"><span style="color:#E1E4E8">    slug: </span><span style="color:#B392F0">detectSlug</span><span style="color:#E1E4E8">(file),</span></span>
-<span class="line"><span style="color:#E1E4E8">    data: frontmatter,</span></span>
-<span class="line"><span style="color:#E1E4E8">    content,</span></span>
-<span class="line"><span style="color:#E1E4E8">    chunks: </span><span style="color:#B392F0">extractChunks</span><span style="color:#E1E4E8">(content)</span></span>
-<span class="line"><span style="color:#E1E4E8">  };</span></span>
-<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    id: file,</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    collection: </span><span style="color:#6F42C1;--shiki-dark:#B392F0">detectCollection</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file),</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    slug: </span><span style="color:#6F42C1;--shiki-dark:#B392F0">detectSlug</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(file),</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    data: frontmatter,</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    content,</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    chunks: </span><span style="color:#6F42C1;--shiki-dark:#B392F0">extractChunks</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(content)</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">});</span></span>
 <span class="line"></span></code></pre>
 <p>The important point is that this step is deterministic. There is no AI involved. The same Markdown input always produces the same JSON output.</p>
 <hr>
@@ -638,11 +638,11 @@ analysis in DSP and audio engineering.</p>
 •	experience.constraints</p>
 <p>Chunk extraction is based on headers and known section names rather than token limits.</p>
 <p>For example, in the export script:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (collection </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'skills'</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.languages'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">Languages</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
-<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.tools'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">Tools</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
-<span class="line"><span style="color:#B392F0">  addListChunks</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'skills.domains'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">getListItems</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">DSP &#x26; Audio</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">));</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (collection </span><span style="color:#D73A49;--shiki-dark:#F97583">===</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> 'skills'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  addListChunks</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'skills.languages'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">getListItems</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#032F62;--shiki-dark:#DBEDFF">Languages</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#D73A49;--shiki-dark:#F97583">i</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  addListChunks</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'skills.tools'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">getListItems</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#032F62;--shiki-dark:#DBEDFF">Tools</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#D73A49;--shiki-dark:#F97583">i</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  addListChunks</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">'skills.domains'</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#6F42C1;--shiki-dark:#B392F0">getListItems</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#032F62;--shiki-dark:#DBEDFF">DSP &#x26; Audio</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#D73A49;--shiki-dark:#F97583">i</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>These labels later allow the retrieval layer to treat skills, experience, and projects differently without relying on probabilistic inference.</p>
 <p>At this stage, most of the intelligence is already encoded in the data preparation step. The model is intentionally kept simple.</p>
@@ -651,15 +651,15 @@ analysis in DSP and audio engineering.</p>
 <p>Before introducing embeddings, a keyword-based retrieval layer was implemented as a baseline.</p>
 <p>Incoming questions were matched against chunk text and metadata. Some information, such as skills and profile summaries, was always included. Experience and project chunks were ranked by relevance.</p>
 <p>This logic ran directly inside the Cloudflare Worker:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> scoreChunk</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">question</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">tags</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> []) {</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> qWords</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> question.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#79B8FF">\s</span><span style="color:#F97583">+</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> chunk.text.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> tagText</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> tags.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">" "</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">();</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">function</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> scoreChunk</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#E36209;--shiki-dark:#FFAB70">question</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">chunk</span><span style="color:#24292E;--shiki-dark:#E1E4E8">, </span><span style="color:#E36209;--shiki-dark:#FFAB70">tags</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> []) {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> qWords</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> question.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">toLowerCase</span><span style="color:#24292E;--shiki-dark:#E1E4E8">().</span><span style="color:#6F42C1;--shiki-dark:#B392F0">split</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#005CC5;--shiki-dark:#79B8FF">\s</span><span style="color:#D73A49;--shiki-dark:#F97583">+</span><span style="color:#032F62;--shiki-dark:#9ECBFF">/</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> text</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> chunk.text.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">toLowerCase</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> tagText</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> tags.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">join</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span><span style="color:#032F62;--shiki-dark:#9ECBFF">" "</span><span style="color:#24292E;--shiki-dark:#E1E4E8">).</span><span style="color:#6F42C1;--shiki-dark:#B392F0">toLowerCase</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> qWords.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span></span>
-<span class="line"><span style="color:#FFAB70">    w</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(w) </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> tagText.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(w)</span></span>
-<span class="line"><span style="color:#E1E4E8">  ).</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">  return</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> qWords.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">filter</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E36209;--shiki-dark:#FFAB70">    w</span><span style="color:#D73A49;--shiki-dark:#F97583"> =></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> text.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">includes</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(w) </span><span style="color:#D73A49;--shiki-dark:#F97583">||</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> tagText.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">includes</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(w)</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  ).</span><span style="color:#005CC5;--shiki-dark:#79B8FF">length</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>This approach was predictable and safe, but insufficient for questions that relied on meaning rather than exact wording.</p>
 <hr>
@@ -667,25 +667,25 @@ analysis in DSP and audio engineering.</p>
 <p>Embeddings were introduced to improve retrieval quality, not to loosen control.</p>
 <p>Each semantic chunk is converted into an embedding and stored in a Cloudflare Vectorize index. Metadata such as chunk type and source document is preserved alongside the vector.</p>
 <p>Index creation is handled once during setup:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">wrangler</span><span style="color:#9ECBFF"> vectorize</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> portfolio_chunks</span><span style="color:#79B8FF"> --dimensions=768</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">wrangler</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> vectorize</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> create</span><span style="color:#032F62;--shiki-dark:#9ECBFF"> portfolio_chunks</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> --dimensions=768</span></span>
 <span class="line"></span></code></pre>
 <p>Chunk ingestion happens offline or during a controlled update process, not at runtime.</p>
 <p>At query time, the worker performs semantic search:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> embedding</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> env.</span><span style="color:#79B8FF">AI</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">run</span><span style="color:#E1E4E8">(</span></span>
-<span class="line"><span style="color:#9ECBFF">  "@cf/baai/bge-base-en-v1.5"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">  { text: question }</span></span>
-<span class="line"><span style="color:#E1E4E8">);</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> embedding</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#D73A49;--shiki-dark:#F97583"> await</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> env.</span><span style="color:#005CC5;--shiki-dark:#79B8FF">AI</span><span style="color:#24292E;--shiki-dark:#E1E4E8">.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">run</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">  "@cf/baai/bge-base-en-v1.5"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  { text: question }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> env.</span><span style="color:#79B8FF">VECTOR_INDEX</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">query</span><span style="color:#E1E4E8">(</span></span>
-<span class="line"><span style="color:#E1E4E8">  embedding.data[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">],</span></span>
-<span class="line"><span style="color:#E1E4E8">  { topK: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8"> }</span></span>
-<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">const</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> results</span><span style="color:#D73A49;--shiki-dark:#F97583"> =</span><span style="color:#D73A49;--shiki-dark:#F97583"> await</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> env.</span><span style="color:#005CC5;--shiki-dark:#79B8FF">VECTOR_INDEX</span><span style="color:#24292E;--shiki-dark:#E1E4E8">.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">query</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  embedding.data[</span><span style="color:#005CC5;--shiki-dark:#79B8FF">0</span><span style="color:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">  { topK: </span><span style="color:#005CC5;--shiki-dark:#79B8FF">6</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
 <span class="line"></span></code></pre>
 <p>The result is a ranked list of chunks, each of which still corresponds to a specific, authored piece of text.</p>
 <hr>
 <h3 id="6-overall-system-architecture">6. Overall system architecture</h3>
 <p>Once all pieces are in place, the architecture is straightforward:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Static HTML / JS site (GitHub Pages)</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Static HTML / JS site (GitHub Pages)</span></span>
 <span class="line"><span>        |</span></span>
 <span class="line"><span>        | POST question</span></span>
 <span class="line"><span>        v</span></span>
@@ -704,14 +704,14 @@ analysis in DSP and audio engineering.</p>
 <h3 id="7-controlled-answer-generation">7. Controlled answer generation</h3>
 <p>The model is used only after retrieval, and only to turn retrieved evidence into a readable answer.</p>
 <p>The system prompt is intentionally strict:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
-<span class="line"><span style="color:#B392F0">  role</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"system"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#B392F0">  content</span><span style="color:#E1E4E8">:</span></span>
-<span class="line"><span style="color:#9ECBFF">    "You are a portfolio assistant for recruiters and hiring managers. "</span><span style="color:#F97583"> +</span></span>
-<span class="line"><span style="color:#9ECBFF">    "Answer only using the provided context. "</span><span style="color:#F97583"> +</span></span>
-<span class="line"><span style="color:#9ECBFF">    "Do not generalize or infer beyond the text. "</span><span style="color:#F97583"> +</span></span>
-<span class="line"><span style="color:#9ECBFF">    "Use explicit terms and concrete examples."</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  role</span><span style="color:#24292E;--shiki-dark:#E1E4E8">: </span><span style="color:#032F62;--shiki-dark:#9ECBFF">"system"</span><span style="color:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">  content</span><span style="color:#24292E;--shiki-dark:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">    "You are a portfolio assistant for recruiters and hiring managers. "</span><span style="color:#D73A49;--shiki-dark:#F97583"> +</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">    "Answer only using the provided context. "</span><span style="color:#D73A49;--shiki-dark:#F97583"> +</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">    "Do not generalize or infer beyond the text. "</span><span style="color:#D73A49;--shiki-dark:#F97583"> +</span></span>
+<span class="line"><span style="color:#032F62;--shiki-dark:#9ECBFF">    "Use explicit terms and concrete examples."</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>If the retrieved context does not contain the answer, the model is expected to say so.</p>
 <p>This constraint prevents hallucinated seniority, inflated scope, or inferred responsibilities.</p>
@@ -797,7 +797,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Power regulation and wiring</li>
 </ul>
 <h3 id="architecture-flow">Architecture Flow</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sensors → Microcontroller → Decision Logic → Display Output</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sensors → Microcontroller → Decision Logic → Display Output</span></span>
 <span class="line"><span></span></span></code></pre>
 <h3 id="detection-logic">Detection Logic</h3>
 <ul>
@@ -816,13 +816,13 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Display update routines</li>
 </ul>
 <p>Example pseudocode:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> EMPTY) {</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> OCCUPIED;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (distance </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EMPTY) {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> OCCUPIED;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> OCCUPIED) {</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> EMPTY;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (distance </span><span style="color:#D73A49;--shiki-dark:#F97583">></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> OCCUPIED) {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EMPTY;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="filtering--stability">Filtering &#x26; Stability</h3>
 <ul>
@@ -1083,7 +1083,7 @@ A proper FSM is needed to ensure:</p>
 <li>Optional input button (e.g., pedestrian mode)</li>
 </ul>
 <h3 id="state-machine-diagram">State Machine Diagram</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
 <span class="line"><span>        |</span></span>
 <span class="line"><span>        v</span></span>
 <span class="line"><span>     [GREEN]</span></span>
@@ -1123,30 +1123,30 @@ A proper FSM is needed to ensure:</p>
 <table><thead><tr><th>State</th><th>Lights Active</th><th>Duration</th></tr></thead><tbody><tr><td>RED</td><td>Red ON</td><td>t_red</td></tr><tr><td>GREEN</td><td>Green ON</td><td>t_green</td></tr><tr><td>YELLOW</td><td>Yellow ON</td><td>t_yellow</td></tr></tbody></table>
 <h2 id="implementation-details">Implementation Details</h2>
 <h3 id="fsm-structure-c">FSM Structure (C)</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
-<span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">enum</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">enum</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> loop</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#F97583">    switch</span><span style="color:#E1E4E8">(current_state) {</span></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> RED:</span></span>
-<span class="line"><span style="color:#B392F0">            red_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_red);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> GREEN;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">void</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> loop</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    switch</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(current_state) {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            red_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">green_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">yellow_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_red);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> GREEN;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> GREEN:</span></span>
-<span class="line"><span style="color:#B392F0">            green_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_green);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> YELLOW;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> GREEN:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            green_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">red_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">yellow_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_green);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> YELLOW;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> YELLOW:</span></span>
-<span class="line"><span style="color:#B392F0">            yellow_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_yellow);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> YELLOW:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            yellow_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">red_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">green_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_yellow);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="timer-integration">Timer Integration</h3>
 <ul>
@@ -1154,9 +1154,9 @@ A proper FSM is needed to ensure:</p>
 <li>Ensures system remains responsive</li>
 </ul>
 <h3 id="optional-pedestrian-handling">Optional Pedestrian Handling</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">button_pressed</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#B392F0"> safe_to_interrupt</span><span style="color:#E1E4E8">()) {</span></span>
-<span class="line"><span style="color:#B392F0">    extend_red_phase</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">button_pressed</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> safe_to_interrupt</span><span style="color:#24292E;--shiki-dark:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    extend_red_phase</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="safety-guarantees">Safety Guarantees</h3>
 <ul>
@@ -1211,7 +1211,7 @@ Most existing systems fail in at least one area:</p>
 </ul>
 <p>VIDI solves these by combining multiple pitch algorithms and stabilizing them through DSP fusion.</p>
 <h2 id="system-architecture">System Architecture</h2>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Incoming Audio  </span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Incoming Audio  </span></span>
 <span class="line"><span>      ↓  </span></span>
 <span class="line"><span>Frame Processing (Core Audio)  </span></span>
 <span class="line"><span>      ↓  </span></span>

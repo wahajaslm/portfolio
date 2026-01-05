@@ -41,7 +41,7 @@ A proper FSM is needed to ensure:</p>
 <li>Optional input button (e.g., pedestrian mode)</li>
 </ul>
 <h3 id="state-machine-diagram">State Machine Diagram</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>      [RED]</span></span>
 <span class="line"><span>        |</span></span>
 <span class="line"><span>        v</span></span>
 <span class="line"><span>     [GREEN]</span></span>
@@ -81,30 +81,30 @@ A proper FSM is needed to ensure:</p>
 <table><thead><tr><th>State</th><th>Lights Active</th><th>Duration</th></tr></thead><tbody><tr><td>RED</td><td>Red ON</td><td>t_red</td></tr><tr><td>GREEN</td><td>Green ON</td><td>t_green</td></tr><tr><td>YELLOW</td><td>Yellow ON</td><td>t_yellow</td></tr></tbody></table>
 <h2 id="implementation-details">Implementation Details</h2>
 <h3 id="fsm-structure-c">FSM Structure (C)</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
-<span class="line"><span style="color:#F97583">enum</span><span style="color:#E1E4E8"> state current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">enum</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state { RED, GREEN, YELLOW };</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">enum</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> loop</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#F97583">    switch</span><span style="color:#E1E4E8">(current_state) {</span></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> RED:</span></span>
-<span class="line"><span style="color:#B392F0">            red_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_red);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> GREEN;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">void</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> loop</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">    switch</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(current_state) {</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            red_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">green_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">yellow_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_red);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> GREEN;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> GREEN:</span></span>
-<span class="line"><span style="color:#B392F0">            green_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">yellow_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_green);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> YELLOW;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> GREEN:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            green_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">red_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">yellow_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_green);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> YELLOW;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">        case</span><span style="color:#E1E4E8"> YELLOW:</span></span>
-<span class="line"><span style="color:#B392F0">            yellow_on</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">red_off</span><span style="color:#E1E4E8">(); </span><span style="color:#B392F0">green_off</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#B392F0">            wait</span><span style="color:#E1E4E8">(t_yellow);</span></span>
-<span class="line"><span style="color:#E1E4E8">            current_state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> RED;</span></span>
-<span class="line"><span style="color:#F97583">            break</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">        case</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> YELLOW:</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            yellow_on</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">red_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(); </span><span style="color:#6F42C1;--shiki-dark:#B392F0">green_off</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">            wait</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(t_yellow);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">            current_state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> RED;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">            break</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="timer-integration">Timer Integration</h3>
 <ul>
@@ -112,9 +112,9 @@ A proper FSM is needed to ensure:</p>
 <li>Ensures system remains responsive</li>
 </ul>
 <h3 id="optional-pedestrian-handling">Optional Pedestrian Handling</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">button_pressed</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#B392F0"> safe_to_interrupt</span><span style="color:#E1E4E8">()) {</span></span>
-<span class="line"><span style="color:#B392F0">    extend_red_phase</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#6F42C1;--shiki-dark:#B392F0">button_pressed</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> safe_to_interrupt</span><span style="color:#24292E;--shiki-dark:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#6F42C1;--shiki-dark:#B392F0">    extend_red_phase</span><span style="color:#24292E;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="safety-guarantees">Safety Guarantees</h3>
 <ul>

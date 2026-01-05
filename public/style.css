@@ -1555,8 +1555,7 @@ footer {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    counter-reset: section;
-    /* Start referencing H2s */
+    /* Removed counter-reset */
 }
 
 /* Typography - Headings */
@@ -1587,15 +1586,10 @@ footer {
     margin-bottom: 1.25rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--card-border);
-    counter-reset: subsection;
-    counter-increment: section;
+    /* Removed counter-increment */
 }
 
-.detail-article h2::before {
-    content: counter(section) ". ";
-    color: var(--accent);
-    margin-right: 0.5rem;
-}
+/* Removed h2::before counter */
 
 .detail-article h3 {
     font-size: 1.5rem;

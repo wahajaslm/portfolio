@@ -10,7 +10,7 @@
 <h2 id="system-overview">System Overview</h2>
 <p>The Beatnik system acts as a translation layer between physical gesture and digital sound synthesis. Unlike discrete controllers (keyboards, buttons), it provides continuous multi-dimensional control data.</p>
 <h3 id="architecture-block-diagram">Architecture Block Diagram:</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Flex Sensors] -> [Voltage Divider/Filter] -> [ADC (LPC1768)]</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Flex Sensors] -> [Voltage Divider/Filter] -> [ADC (LPC1768)]</span></span>
 <span class="line"><span>                                                  | (DMA Transfer)</span></span>
 <span class="line"><span>                                            [Memory Buffer]</span></span>
 <span class="line"><span>                                                  |</span></span>
@@ -38,13 +38,13 @@
 <p>The firmware is developed in C++ on the mbed platform (ARM Cortex-M3). A critical design constraint was keeping the main execution loop non-blocking to maintain network throughput.</p>
 <h3 id="dma-driven-acquisition">DMA-Driven Acquisition</h3>
 <p>Standard ADC polling introduces CPU overhead and timing jitter. This implementation utilizes the LPC1768’s <strong>GPDMA (General Purpose Direct Memory Access)</strong> controller. The ADC is configured in “Burst Mode,” continuously sampling the sensor channels and writing results directly to a circular memory buffer. This decouples sampling from processing.</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D">// ADC Burst Mode Configuration with DMA</span></span>
-<span class="line"><span style="color:#F97583">void</span><span style="color:#B392F0"> setup_dma</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#E1E4E8">    dma.</span><span style="color:#B392F0">Setup</span><span style="color:#E1E4E8">( conf ); </span></span>
-<span class="line"><span style="color:#E1E4E8">    dma.</span><span style="color:#B392F0">Enable</span><span style="color:#E1E4E8">( conf );</span></span>
-<span class="line"><span style="color:#E1E4E8">    LPC_ADC->ADCR </span><span style="color:#F97583">|=</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">1</span><span style="color:#F97583">UL</span><span style="color:#F97583"> &#x3C;&#x3C;</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">);</span><span style="color:#6A737D"> // Enable Burst Mode</span></span>
-<span class="line"><span style="color:#6A737D">    // The hardware now manages sampling independently of the CPU</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// ADC Burst Mode Configuration with DMA</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">void</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> setup_dma</span><span style="color:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    dma.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">Setup</span><span style="color:#24292E;--shiki-dark:#E1E4E8">( conf ); </span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    dma.</span><span style="color:#6F42C1;--shiki-dark:#B392F0">Enable</span><span style="color:#24292E;--shiki-dark:#E1E4E8">( conf );</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    LPC_ADC->ADCR </span><span style="color:#D73A49;--shiki-dark:#F97583">|=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="color:#005CC5;--shiki-dark:#79B8FF">1</span><span style="color:#D73A49;--shiki-dark:#F97583">UL</span><span style="color:#D73A49;--shiki-dark:#F97583"> &#x3C;&#x3C;</span><span style="color:#005CC5;--shiki-dark:#79B8FF"> 16</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span><span style="color:#6A737D;--shiki-dark:#6A737D"> // Enable Burst Mode</span></span>
+<span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">    // The hardware now manages sampling independently of the CPU</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="digital-filtering">Digital Filtering</h3>
 <p>To further stabilize the signal without introducing perceptible lag, a two-stage software filter is applied:</p>
@@ -61,7 +61,7 @@
 <li><strong>OSC Resolution:</strong> 32-bit Float. Eliminates “zipper noise” (audible stepping artifacts) during slow sweeps.</li>
 </ul>
 <h3 id="namespace-structure">Namespace Structure</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/beatnik/finger/[id]  &#x3C;float> (0.0 - 1.0)</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/beatnik/finger/[id]  &#x3C;float> (0.0 - 1.0)</span></span>
 <span class="line"><span>/beatnik/imu/pitch    &#x3C;float> (-1.0 - 1.0)</span></span>
 <span class="line"><span>/beatnik/imu/roll     &#x3C;float> (-1.0 - 1.0)</span></span>
 <span class="line"><span></span></span></code></pre>

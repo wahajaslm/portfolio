@@ -32,7 +32,7 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Power regulation and wiring</li>
 </ul>
 <h3 id="architecture-flow">Architecture Flow</h3>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sensors → Microcontroller → Decision Logic → Display Output</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Sensors → Microcontroller → Decision Logic → Display Output</span></span>
 <span class="line"><span></span></span></code></pre>
 <h3 id="detection-logic">Detection Logic</h3>
 <ul>
@@ -51,13 +51,13 @@ simple, reliable embedded solution using basic sensors and microcontroller logic
 <li>Display update routines</li>
 </ul>
 <p>Example pseudocode:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> EMPTY) {</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> OCCUPIED;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (distance </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x3C;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EMPTY) {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> OCCUPIED;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (distance </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> threshold </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> state </span><span style="color:#F97583">==</span><span style="color:#E1E4E8"> OCCUPIED) {</span></span>
-<span class="line"><span style="color:#E1E4E8">    state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> EMPTY;</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">if</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> (distance </span><span style="color:#D73A49;--shiki-dark:#F97583">></span><span style="color:#24292E;--shiki-dark:#E1E4E8"> threshold </span><span style="color:#D73A49;--shiki-dark:#F97583">&#x26;&#x26;</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> state </span><span style="color:#D73A49;--shiki-dark:#F97583">==</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> OCCUPIED) {</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">    state </span><span style="color:#D73A49;--shiki-dark:#F97583">=</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> EMPTY;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <h3 id="filtering--stability">Filtering &#x26; Stability</h3>
 <ul>
