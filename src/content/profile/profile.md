@@ -40,6 +40,13 @@ My journey has taken me through world-class institutions. At **Fraunhofer IIS**,
 
 ---
 
-## 5. What I Bring
+---
+
+## Availability
+
+Open to new roles, freelance work, and collaborations.
+
+---
+
 
 I bring end-to-end ownership to every project, moving comfortably from research and prototyping to implementation and evaluation. I offer a strong debugging intuition for timing-sensitive systems and the stability to stay focused when complexity spikes. Ultimately, I am driven by curiosity and the satisfaction of building systems that are clean, predictable, and perceptually meaningful.
